@@ -27,4 +27,19 @@ class MessageThreadTests: XCTestCase {
         
         wait(for: [expectation], timeout: 10)
     }
+    
+    func testServerFetch() {
+        let expectation = XCTestExpectation(description: "Fetch Message Thread from Server")
+        
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.fetchMessageThreads {
+            // make sure there is at least one message in there now
+            XCTAssertNotEqual(messageThreadController.messageThreads.count, 0) // was never called?
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
 }

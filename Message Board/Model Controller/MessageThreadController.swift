@@ -18,30 +18,43 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
+        
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
-                completion()
+                DispatchQueue.main.async {
+                    completion()
+                }
                 return
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let decodedDictionaries = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                let decodedMessages = decodedDictionaries.map({ $0.value })
+                
+                DispatchQueue.main.async {
+                    self.messageThreads = decodedMessages
+                }
             } catch {
-                self.messageThreads = []
+                DispatchQueue.main.async {
+                    self.messageThreads = []
+                }
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
-            
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
         }.resume()
     }
     
