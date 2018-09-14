@@ -19,12 +19,25 @@ struct MessageThreadPage: TestPage {
     }
     
     var textField: XCUIElement {
-        return app.textFields.staticTexts["MessageThreadsTableViewController.TextField"]
+        return app.textFields["MessageThreadsTableViewController.TextField"]
     }
     
     // MARK: - Actions
     
+    @discardableResult func tapOnCell(at index: Int, file: String = #file, line: UInt = #line) -> MessageThreadPage {
+        let cell = threadCell(at: index)
+        testCase.expect(exists: cell, file: file, line: line)
+        cell.tap()
+        return self
+    }
     
+    @discardableResult func createThread(title: String, file: String = #file, line: UInt = #line) -> MessageThreadPage {
+        testCase.expect(exists: textField, file: file, line: line)
+        textField.tap()
+        textField.typeText(title)
+        app.keyboards.buttons["Return"].tap()
+        return self
+    }
     
     // MARK: - Verifications
     

@@ -24,7 +24,11 @@ struct MessagesPage: TestPage {
     
     // MARK: - Actions
     
-    
+    @discardableResult func tapAddButton(file: String = #file, line: UInt = #line) -> MessagesPage {
+        testCase.expect(exists: addMessageButton, file: file, line: line)
+        addMessageButton.tap()
+        return self
+    }
     
     // MARK: - Verifications
     

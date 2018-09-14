@@ -23,6 +23,16 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    
+    func testCreatingThreads() {
+        MessageThreadPage(testCase: self)
+        .createThread(title: "Test with UITesting")
+        .tapOnCell(at: 0)
+        MessagesPage(testCase: self)
+        .tapAddButton()
+        DetailMessagePage(testCase: self)
+        .typeSenderInTextField(text: "Lisa")
+        .typeMessageInTextView(text: "This is a test with UITesting")
+        .tapOnSendButton()
+    }
     
 }

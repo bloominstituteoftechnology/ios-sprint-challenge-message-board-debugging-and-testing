@@ -15,20 +15,38 @@ struct DetailMessagePage: TestPage {
     // MARK: - Elements
     
     var sendButton: XCUIElement {
-        return app.navigationBars.element(boundBy: 0).buttons["Add"]
+        return app.navigationBars.element(boundBy: 0).buttons["Send"]
     }
     
     var textField: XCUIElement {
-        return app.textFields.staticTexts["MessageDetailViewController.TextField"]
+        return app.textFields["MessageDetailViewController.TextField"]
     }
     
     var textView: XCUIElement {
-        return app.textViews.staticTexts["MessageDetailViewController.TextView"]
+        return app.textViews["MessageDetailViewController.TextView"]
     }
     
     // MARK: - Actions
     
+    @discardableResult func tapOnSendButton(file: String = #file, line: UInt = #line) -> DetailMessagePage {
+        testCase.expect(exists: sendButton, file: file, line: line)
+        sendButton.tap()
+        return self
+    }
     
+    @discardableResult func typeSenderInTextField(text: String, file: String = #file, line: UInt = #line) -> DetailMessagePage {
+        testCase.expect(exists: textField, file: file, line: line)
+        textField.tap()
+        textField.typeText(text)
+        return self
+    }
+    
+    @discardableResult func typeMessageInTextView(text: String, file: String = #file, line: UInt = #line) -> DetailMessagePage {
+        testCase.expect(exists: textView, file: file, line: line)
+        textView.tap()
+        textView.typeText(text)
+        return self
+    }
     
     // MARK: - Verifications
     
