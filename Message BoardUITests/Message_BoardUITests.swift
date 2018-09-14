@@ -23,6 +23,15 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    
+    func testUIAddingMessageThreadToMessageThreads() {
+        let mtp = MessageThreadPage(testCase: self)
+        
+        mtp.newThreadTextField.tap()
+        mtp.newThreadTextField.typeText("Test Message")
+        mtp.pressEnter()
+        
+        XCTAssertTrue(mtp.cellFor(0).staticTexts["Test Message"].label == "Test Message")
+        XCTAssertFalse(mtp.cellFor(0).staticTexts["Test Message"].label == "Test Messae")
+    }
     
 }
