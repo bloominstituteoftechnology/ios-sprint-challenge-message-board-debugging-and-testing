@@ -10,9 +10,10 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    func testAddingMessageToMessageThreads() {
+    func testAddingMessageThreadToMessageThreads() {
         let messageThreadController = MessageThreadController()
         let messageThreadCount = messageThreadController.messageThreads.count
+        
         
         messageThreadController.createMessageThread(with: "Test Message") {
             NSLog("Message created successfully")
