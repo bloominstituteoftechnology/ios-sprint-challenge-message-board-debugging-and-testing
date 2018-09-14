@@ -35,7 +35,7 @@ class MessageThread: Codable, Equatable {
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
+        let messageText: String // messageText has a 'text'
         let sender: String
         let timestamp: Date
         
@@ -43,6 +43,12 @@ class MessageThread: Codable, Equatable {
             self.messageText = text
             self.sender = sender
             self.timestamp = timestamp
+        }
+        
+        enum CodingKeys: String, CodingKey {
+            case messageText = "text"
+            case sender
+            case timestamp
         }
     }
     

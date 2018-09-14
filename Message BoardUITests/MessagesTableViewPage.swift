@@ -31,6 +31,14 @@ struct MessagesTableViewPage: TestPage {
         return self
     }
     
+    @discardableResult func tapCell(at index: Int, file: String = #file, line: UInt = #line) -> MessageThreadDetailTableViewControllerPage {
+        let cell = tableViewCell(at: index)
+        testCase.expect(exists: cell, file: file, line: line)
+        cell.tap()
+        
+        return MessageThreadDetailTableViewControllerPage(testCase: testCase) // go to next screen
+    }
+    
     // MARK: - Verifications
     
     @discardableResult func verifyTableViewCell(at index: Int, file: String = #file, line: UInt = #line) -> MessagesTableViewPage {
