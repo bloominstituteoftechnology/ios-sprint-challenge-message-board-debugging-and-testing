@@ -105,12 +105,11 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
             completion()
             
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://ios-sprint-challenge-8.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
