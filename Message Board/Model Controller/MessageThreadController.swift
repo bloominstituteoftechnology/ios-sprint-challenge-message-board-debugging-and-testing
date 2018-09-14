@@ -59,6 +59,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -68,11 +69,12 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
-            self.messageThreads.append(thread)
-            completion()
-            
+            DispatchQueue.main.async{
+                self.messageThreads.append(thread)
+                completion()
+            }
         }
+        .resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -86,7 +88,7 @@ class MessageThreadController {
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
-        messageThreads[index].messages.append(message)
+//        messageThreads[index].messages.append(message)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -105,12 +107,12 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
+            self.messageThreads[index].messages.append(message)
             completion()
             
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://mymovies-dee4d.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
