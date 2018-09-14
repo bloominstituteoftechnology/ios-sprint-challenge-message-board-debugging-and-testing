@@ -84,13 +84,14 @@ class MessageThreadController {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+            completion()
             return
         }
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
-        messageThreads[index].messages.append(message)
+        //messageThreads[index].messages.append(message)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -109,7 +110,7 @@ class MessageThreadController {
                 completion()
                 return
             }
-            //self.messageThreads[index].messages.append(message)
+            self.messageThreads[index].messages.append(message)
             completion()
             
         }.resume()
