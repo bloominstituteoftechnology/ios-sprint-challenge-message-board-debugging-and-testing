@@ -10,7 +10,7 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    func testAddingMessageToMessageThreads() {
+    func testAddingMessageThreadToMessageThreads() {
         let messageThreadController = MessageThreadController()
         let messageThreadCount = messageThreadController.messageThreads.count
         let expectationForMessageThread = expectation(description: "Appended to thread successfully")
@@ -50,5 +50,9 @@ class MessageThreadTests: XCTestCase {
                 XCTAssertNotEqual(messageThreadCount, messageThreadController.messageThreads.count)
             }
         }
+    }
+    
+    func testAddingMessageToMessageThread() {
+        
     }
 }
