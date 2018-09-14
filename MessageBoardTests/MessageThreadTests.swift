@@ -46,5 +46,13 @@ class MessageThreadTests: XCTestCase {
     
     // MARK: - MessageThreadController
     
-    
+    func testFetchMessageThreadFunction() {
+        let exp = expectation(description: "Fetch")
+        XCTAssertEqual(messageThreadController.messageThreads, [])
+        messageThreadController.fetchMessageThreads {
+            XCTAssertNotEqual(self.messageThreadController.messageThreads, [])
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 30, handler: nil)
+    }
 }
