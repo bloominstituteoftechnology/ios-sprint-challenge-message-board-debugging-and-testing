@@ -14,7 +14,13 @@ struct MessageThreadPage: TestPage {
     
     // MARK: - Elements
     
+    func threadCell(at index: Int) -> XCUIElement {
+        return app.tableRows.cells.element(boundBy: index)
+    }
     
+    var textField: XCUIElement {
+        return app.textFields.staticTexts["MessageThreadsTableViewController.TextField"]
+    }
     
     // MARK: - Actions
     

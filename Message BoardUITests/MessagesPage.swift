@@ -14,7 +14,9 @@ struct MessagesPage: TestPage {
     
     // MARK: - Elements
     
-    
+    func messageCell(at index: Int) -> XCUIElement {
+        return app.tableRows.cells.element(boundBy: index)
+    }
     
     // MARK: - Actions
     
