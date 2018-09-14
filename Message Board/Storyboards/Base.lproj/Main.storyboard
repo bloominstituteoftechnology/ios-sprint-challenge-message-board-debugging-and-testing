@@ -113,6 +113,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="MessageThreadDetailTableViewController.MessageThreadCell"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

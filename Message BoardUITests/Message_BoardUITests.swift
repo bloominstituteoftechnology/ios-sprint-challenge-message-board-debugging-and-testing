@@ -38,4 +38,20 @@ class Message_BoardUITests: XCTestCase {
         .cellTapped()
     }
     
+    func testMessageDetailCell() {
+        MessagePage(testCase: self)
+        .detailCellTapped()
+    }
+    
+    func testDetailViewTextField() {
+        MessagePage(testCase: self)
+        .detailViewTextFieldTap()
+    }
+    
+    func testDetailViewTextView() {
+        MessagePage(testCase: self)
+        .detailViewTextViewTap()
+    }
+    
+    
 }

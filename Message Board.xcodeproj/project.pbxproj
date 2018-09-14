@@ -157,8 +157,8 @@
 		4629C7E7214BA09600E7FF73 /* Message BoardUITests */ = {
 			isa = PBXGroup;
 			children = (
-				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				49148D5A214C0F9600054DE0 /* MessagePage.swift */,
+				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				49148D5E214C12DD00054DE0 /* XCTestCase+Expect.swift */,
 				49148D5C214C0FC500054DE0 /* TestPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
