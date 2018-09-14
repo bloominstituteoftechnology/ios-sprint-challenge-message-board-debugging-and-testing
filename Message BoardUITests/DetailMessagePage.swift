@@ -15,7 +15,7 @@ struct DetailMessagePage: TestPage {
     // MARK: - Elements
     
     var sendButton: XCUIElement {
-        return app.buttons[""]
+        return app.navigationBars.element(boundBy: 0).buttons["Add"]
     }
     
     var textField: XCUIElement {

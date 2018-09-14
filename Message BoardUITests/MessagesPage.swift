@@ -15,7 +15,11 @@ struct MessagesPage: TestPage {
     // MARK: - Elements
     
     func messageCell(at index: Int) -> XCUIElement {
-        return app.tableRows.cells.element(boundBy: index)
+        return app.tables.element(boundBy: 0).cells.element(boundBy: index)
+    }
+    
+    var addMessageButton: XCUIElement {
+        return app.navigationBars.buttons.element(boundBy: 1)
     }
     
     // MARK: - Actions
