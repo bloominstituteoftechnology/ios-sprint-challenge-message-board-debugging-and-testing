@@ -23,21 +23,11 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    func testCreateThread() {
-        let app = XCUIApplication()
-        let tablesQuery = app.tables
-        tablesQuery.textFields["Create a new thread:"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["fruit"]/*[[".cells.staticTexts[\"fruit\"]",".staticTexts[\"fruit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["fruit"].buttons["Add"].tap()
-        
-        let enterYourNameTextField = app.textFields["Enter your name:"]
-        enterYourNameTextField.tap()
-        enterYourNameTextField.tap()
-        
-        let textView = app.otherElements.containing(.navigationBar, identifier:"New Message").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
-        textView.tap()
-        textView.tap()
-        app.navigationBars["New Message"].buttons["Send"].tap()
-        
+    
+    func testFields()
+    {
+        MessageDetailPage(testCase: self)
+        .typeName(with: name)
+        .typeMessage(with: "message")
     }
 }
