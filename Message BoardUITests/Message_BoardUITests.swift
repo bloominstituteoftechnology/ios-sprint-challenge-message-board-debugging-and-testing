@@ -26,6 +26,11 @@ class Message_BoardUITests: XCTestCase {
     
     func testExample() {
         MessageThreadsTablePage(testCase: self)
-        .tableViewCell(for: 0).tap()
+        .createThread(withTitle: "Hello")
+        .tapOnCell(at: 0)
+        .tapOnAddBarButton()
+        .enterSenderName(text: "Sammie")
+        .enterMessageText(text: "This is a message text")
+        .tapOnSendBarButton()
     }
 }

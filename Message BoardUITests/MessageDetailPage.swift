@@ -15,22 +15,40 @@ struct MessageDetailPage: TestPage {
     
     // MARK: - Elements
     
-    var addBarButton: XCUIElement {
-        return app.navigationBars.element(boundBy: 0).buttons["Add"]
+    var sendBarButton: XCUIElement {
+        return app.navigationBars.element(boundBy: 0).buttons["Send"]
     }
     
     var senderNameTextField: XCUIElement {
-        return app.staticTexts["MessageDetailViewController.senderNameTextField"]
+        return app.textFields["MessageDetailViewController.senderNameTextField"]
     }
     
     var messageTextView: XCUIElement {
-        return app.staticTexts["MessageDetailViewController.messageTextView"]
+        return app.textViews["MessageDetailViewController.messageTextView"]
     }
     
     
     // MARK: - Actions
     
+    @discardableResult func enterSenderName(text: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        testCase.expect(exists: senderNameTextField, file: file, line: line)
+        senderNameTextField.tap()
+        senderNameTextField.typeText(text)
+        return self
+    }
     
+    @discardableResult func enterMessageText(text: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        testCase.expect(exists: messageTextView, file: file, line: line)
+        messageTextView.tap()
+        messageTextView.typeText(text)
+        return self
+    }
+    
+    @discardableResult func tapOnSendBarButton(file: String = #file, line: UInt = #line) -> MessagesTablePage {
+        testCase.expect(exists: sendBarButton, file: file, line: line)
+        sendBarButton.tap()
+        return MessagesTablePage(testCase: testCase)
+    }
     
     
     // MARK: - Verifications

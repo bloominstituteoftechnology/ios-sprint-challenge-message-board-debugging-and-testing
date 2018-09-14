@@ -27,7 +27,11 @@ struct MessagesTablePage: TestPage {
     
     // MARK: - Actions
     
-    
+    @discardableResult func tapOnAddBarButton(file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        testCase.expect(exists: addNewMessageBarButton, file: file, line: line)
+        addNewMessageBarButton.tap()
+        return MessageDetailPage(testCase: testCase)
+    }
     
     
     // MARK: - Verifications

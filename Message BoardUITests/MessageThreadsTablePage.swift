@@ -16,7 +16,7 @@ struct MessageThreadsTablePage: TestPage {
     // MARK: - Elements
     
     var createThreadTextField: XCUIElement {
-        return app.staticTexts["MessageThreadsTableView.threadTitleTextField"]
+        return app.textFields["MessageThreadsTableView.threadTitleTextField"]
     }
     
     func tableViewCell(for index: Int) -> XCUIElement {
@@ -24,9 +24,21 @@ struct MessageThreadsTablePage: TestPage {
     }
     
     
-    // MARK: - Actions
+    // McreateThreadTextField  
+    @discardableResult func createThread(withTitle text: String, file: String = #file, line: UInt = #line) -> MessageThreadsTablePage {
+        testCase.expect(exists: createThreadTextField, file: file, line: line)
+        createThreadTextField.tap()
+        createThreadTextField.typeText(text)
+        app.keyboards.buttons["Return"].tap()
+        return self
+    }
     
-    
+    @discardableResult func tapOnCell(at index: Int, file: String = #file, line: UInt = #line) -> MessagesTablePage {
+        let cell = tableViewCell(for: index)
+        testCase.expect(exists: cell, file: file, line: line)
+        cell.tap()
+        return MessagesTablePage(testCase: testCase)
+    }
     
     
     // MARK: - Verifications
