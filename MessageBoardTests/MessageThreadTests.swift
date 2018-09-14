@@ -14,12 +14,23 @@ class MessageThreadTests: XCTestCase {
     func testCreateMessageThread() {
         // create a message thread
         var mtc = MessageThreadController()
-        mtc.createMessageThread(with: "Hi there") { }
-        XCTAssert(mtc.messageThreads.count > 0)
+        let expectation = self.expectation(description: "Networked MessageThread")
+        
+        mtc.createMessageThread(with: "Hi there") {
+            expectation.fulfill()
+        }
+        
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        
+        XCTAssertTrue(mtc.messageThreads.count > 0)
     }
     
-    func testCreateMessage() {
-        let mtc = MessageThreadController()
-        
-    }
+//    func testCreateMessage() {
+//        var mtc = MessageThreadController()
+//        mtc.createMessageThread(with: "Hi there") { }
+//        let index = mtc.messageThreads.contains(<#T##element: MessageThread##MessageThread#>)
+//        mtc.createMessage(in: mtc.messageThreads[0], withText: <#T##String#>, sender: <#T##String#>, completion: <#T##() -> Void#>)
+//    }
 }
