@@ -13,4 +13,24 @@ struct MessagesTablePage: TestPage {
     let testCase: XCTestCase
     
     
+    // MARK: - Elements
+    
+    func tableViewCell(for index: Int) -> XCUIElement {
+        return app.tables.element(boundBy: 0).cells.element(boundBy: index)
+    }
+    
+    var addNewMessageBarButton: XCUIElement {
+        // 0 should be back button
+        return app.navigationBars.buttons.element(boundBy: 1)
+    }
+    
+    
+    // MARK: - Actions
+    
+    
+    
+    
+    // MARK: - Verifications
+    
+    
 }

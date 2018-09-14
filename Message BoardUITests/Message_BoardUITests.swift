@@ -9,7 +9,8 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-        
+    
+    
     override func setUp() {
         super.setUp()
 
@@ -23,4 +24,8 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testExample() {
+        MessageThreadsTablePage(testCase: self)
+        .tableViewCell(for: 0).tap()
+    }
 }

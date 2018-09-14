@@ -13,4 +13,23 @@ struct MessageThreadsTablePage: TestPage {
     let testCase: XCTestCase
     
     
+    // MARK: - Elements
+    
+    var createThreadTextField: XCUIElement {
+        return app.staticTexts["MessageThreadsTableView.threadTitleTextField"]
+    }
+    
+    func tableViewCell(for index: Int) -> XCUIElement {
+        return app.tables.element(boundBy: 0).cells.element(boundBy: index)
+    }
+    
+    
+    // MARK: - Actions
+    
+    
+    
+    
+    // MARK: - Verifications
+    
+    
 }
