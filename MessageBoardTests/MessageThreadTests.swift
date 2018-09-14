@@ -23,6 +23,12 @@ class MessageThreadTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
         
+        mtc.fetchMessageThreads {
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
         
         XCTAssertTrue(mtc.messageThreads.count > 0)
     }

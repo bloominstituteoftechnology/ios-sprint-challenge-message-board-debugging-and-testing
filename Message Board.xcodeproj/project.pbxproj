@@ -22,6 +22,9 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		F811D66D214C2DF2001BFA7A /* MessageThreadsTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811D66C214C2DF2001BFA7A /* MessageThreadsTableViewPage.swift */; };
+		F811D66F214C2E1C001BFA7A /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811D66E214C2E1C001BFA7A /* TestPage.swift */; };
+		F811D671214C3016001BFA7A /* MessageThreadDetailTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811D670214C3016001BFA7A /* MessageThreadDetailTableViewPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		F811D66C214C2DF2001BFA7A /* MessageThreadsTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewPage.swift; sourceTree = "<group>"; };
+		F811D66E214C2E1C001BFA7A /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		F811D670214C3016001BFA7A /* MessageThreadDetailTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +141,11 @@
 		4629C7E7214BA09600E7FF73 /* Message BoardUITests */ = {
 			isa = PBXGroup;
 			children = (
+				F811D66C214C2DF2001BFA7A /* MessageThreadsTableViewPage.swift */,
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
+				F811D66E214C2E1C001BFA7A /* TestPage.swift */,
+				F811D670214C3016001BFA7A /* MessageThreadDetailTableViewPage.swift */,
 			);
 			path = "Message BoardUITests";
 			sourceTree = "<group>";
@@ -345,6 +354,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F811D66D214C2DF2001BFA7A /* MessageThreadsTableViewPage.swift in Sources */,
+				F811D671214C3016001BFA7A /* MessageThreadDetailTableViewPage.swift in Sources */,
+				F811D66F214C2E1C001BFA7A /* TestPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
