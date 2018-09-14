@@ -30,8 +30,10 @@ class Message_BoardUITests: XCTestCase {
         mtp.newThreadTextField.typeText("Test Message")
         mtp.pressEnter()
         
-        XCTAssertTrue(mtp.cellFor(0).staticTexts["Test Message"].label == "Test Message")
-        XCTAssertFalse(mtp.cellFor(0).staticTexts["Test Message"].label == "Test Messae")
+        XCTAssertTrue(mtp.messageIs("Test Message", index: 0, expectedMessage: "Test Message"))
+        XCTAssertFalse(mtp.messageIs("Test Message", index: 0, expectedMessage: "Test Mesage"))
     }
+    
+    
     
 }

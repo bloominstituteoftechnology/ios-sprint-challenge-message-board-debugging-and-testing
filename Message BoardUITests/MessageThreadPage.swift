@@ -35,4 +35,11 @@ struct MessageThreadPage: TestPage {
     }
     
     // MARK: - Verifications
+    @discardableResult func messageIs(_ label: String,
+                                      index: Int,
+                                      expectedMessage: String,
+                                      file: String = #file,
+                                      line: UInt = #line) -> Bool {
+        return cellFor(index).staticTexts[label].label == expectedMessage
+    }
 }
