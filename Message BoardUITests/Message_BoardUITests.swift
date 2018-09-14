@@ -23,4 +23,17 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testExample() {
+        
+        let emptyListTable = XCUIApplication().tables["Empty list"]
+        emptyListTable.textFields["Create a new thread:"].tap()
+        emptyListTable.tap()
+        
+    }
+    
+    func testCreateMessage() {
+        MessagesTableViewPage(testCase: self)
+        .tapMessageTextField()
+        .verifyTableViewCell(at: 0)
+    }
 }

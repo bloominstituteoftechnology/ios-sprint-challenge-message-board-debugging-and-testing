@@ -11,5 +11,20 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+//    var messageThreadController = MessageThreadController()
     
+    func testCreateMessageThread() {
+        let expectation = XCTestExpectation(description: "Create Message Thread on Server")
+        
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.createMessageThread(with: "Test") {
+            // make sure there is at least one message in there now
+            XCTAssertNotEqual(messageThreadController.messageThreads.count, 0) // was never called?
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
 }
