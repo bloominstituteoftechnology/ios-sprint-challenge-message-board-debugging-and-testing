@@ -82,12 +82,15 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                DispatchQueue.main.async {
+                    completion()
+                }
                 return
             }
-            
-            self.messageThreads.append(thread)
-            completion()
+            DispatchQueue.main.async {
+                self.messageThreads.append(thread)
+                completion()
+            }
             
         }.resume()
     }
@@ -119,12 +122,14 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                DispatchQueue.main.async {
+                    completion()
+                }
                 return
             }
-            
-            completion()
-            
+            DispatchQueue.main.async {
+                completion()
+            }
         }.resume()
     }
     
