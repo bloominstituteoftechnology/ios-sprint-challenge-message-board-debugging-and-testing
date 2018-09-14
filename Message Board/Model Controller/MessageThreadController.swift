@@ -90,6 +90,7 @@ class MessageThreadController {
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
+		sortMessages()
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -113,6 +114,13 @@ class MessageThreadController {
             
         }.resume()
     }
+
+	func sortMessages()
+	{
+		for i in 0..<messageThreads.count {
+			messageThreads[i].messages.sort(by: {$0.timestamp > $1.timestamp})
+		}
+	}
     
     static let baseURL = URL(string: "https://pushier-and-postier.firebaseio.com/")!
     var messageThreads: [MessageThread] = []

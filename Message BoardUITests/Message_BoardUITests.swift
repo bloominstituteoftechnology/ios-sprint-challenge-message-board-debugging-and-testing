@@ -28,11 +28,26 @@ class Message_BoardUITests: XCTestCase {
 	func testSendingMessage()
 	{
 		// navigate to new message screen
-		app.cells["Thread.cell0"].tap()
-		app.cells["Messages.newMessage"].tap()
+		app.tables["Threads.table"].cells["Threads.cell0"].tap()
+		app.navigationBars.buttons["Messages.newMessage"].tap()
 
 		// verify
 		NewMessagePage(testCase: self).verifyMessageSend(file: #file, line: #line)
+	}
+
+	func testCreatingThread()
+	{
+		ThreadTablePage(testCase:self).verifyThreadCreation(file: #file, line: #line)
+	}
+
+	func testSegueToMessageView()
+	{
+		let ttp = ThreadTablePage(testCase:self)
+		let cellLabel = ttp.cellLabelAt(0).label
+		ttp.cellAt(0).tap()
+
+		self.expect(exists: app.navigationBars["Messages.navBar"])
+		self.expect(exists: app.navigationBars["Messages.navBar"].staticTexts[cellLabel])
 	}
     
 }

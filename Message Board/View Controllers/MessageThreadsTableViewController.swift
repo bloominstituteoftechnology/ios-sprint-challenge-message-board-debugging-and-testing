@@ -51,6 +51,7 @@ class MessageThreadsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
+		cell.textLabel?.accessibilityIdentifier = "Threads.cell\(indexPath.row).text"
 		cell.accessibilityIdentifier = "Threads.cell\(indexPath.row)"
 
         return cell

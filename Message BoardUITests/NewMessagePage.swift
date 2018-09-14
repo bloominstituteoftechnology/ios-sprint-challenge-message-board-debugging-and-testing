@@ -22,11 +22,11 @@ struct NewMessagePage: TestPage
 	}
 
 	var sendButton:XCUIElement {
-		return app.navigationBars.buttons["Detail.send"]
+		return app.navigationBars.buttons["Detail.sendButton"]
 	}
 
 	var firstCell:XCUIElement {
-		return app.tableRows["Messages.cell0"]
+		return app.tables["Messages.table"].cells["Messages.cell0"]
 	}
 
 
@@ -42,8 +42,15 @@ struct NewMessagePage: TestPage
 		testCase.expect(exists:sendButton, file:file, line:line)
 		sendButton.tap()
 
+		// lol?
+		_ = firstCell.waitForExistence(timeout: 10)
 		testCase.expect(exists:firstCell, file:file, line:line)
-		testCase.expect(firstCell.label, equals: "Hello, World!")
+		let label = firstCell.staticTexts["Messages.cell0.label"]
+		testCase.expect(exists:label, file:file, line:line)
+		testCase.expect(label.label, equals: "Hello, World!")
+		let detail = firstCell.staticTexts["Messages.cell0.detail"]
+		testCase.expect(exists:detail, file:file, line:line)
+		testCase.expect(detail.label, equals: "Test User")
 
 		return self
 	}
