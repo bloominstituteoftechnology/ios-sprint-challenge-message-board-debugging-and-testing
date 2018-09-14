@@ -24,6 +24,10 @@ struct MessagesTablePage: TestPage {
         return app.navigationBars.buttons.element(boundBy: 1)
     }
     
+    var title: String {
+        return app.navigationBars.element(boundBy: 0).identifier
+    }
+    
     
     // MARK: - Actions
     
@@ -36,5 +40,14 @@ struct MessagesTablePage: TestPage {
     
     // MARK: - Verifications
     
+    @discardableResult func verfiyTitle(forThread text: String, file: String = #file, line: UInt = #line) -> MessagesTablePage {
+        testCase.expect(title, equals: text, file: file, line: line)
+        return self
+    }
     
+    @discardableResult func verifyCellWasCreated(with text: String, file: String = #file, line: UInt = #line) -> MessagesTablePage {
+        let cell = app.tables.element(boundBy: 0).cells.staticTexts[text]
+        testCase.expect(exists: cell, file: file, line: line)
+        return self
+    }
 }

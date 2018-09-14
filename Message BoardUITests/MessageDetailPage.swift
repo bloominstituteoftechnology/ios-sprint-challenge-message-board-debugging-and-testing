@@ -53,5 +53,15 @@ struct MessageDetailPage: TestPage {
     
     // MARK: - Verifications
     
+    @discardableResult func verifySenderNameWasEntered(name: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        let senderNameTextField = app.textFields[name]
+        testCase.expect(exists: senderNameTextField, file: file, line: line)
+        return self
+    }
     
+    @discardableResult func verifyMessageTextWasEntered(text: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        let messageTextView = app.textViews[text]
+        testCase.expect(exists: messageTextView, file: file, line: line)
+        return self
+    }
 }

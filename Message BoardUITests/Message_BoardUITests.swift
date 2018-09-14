@@ -24,13 +24,27 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    func testExample() {
+    func testApp() {
+        let threadTitle = "This is a UI test thread"
+        let senderName = "Sammie"
+        let messageText = "This is a message text"
+        
         MessageThreadsTablePage(testCase: self)
-        .createThread(withTitle: "Hello")
-        .tapOnCell(at: 3)
-        .tapOnAddBarButton()
-        .enterSenderName(text: "Sammie")
-        .enterMessageText(text: "This is a message text")
-        .tapOnSendBarButton()
+            .createThread(withTitle: threadTitle)
+            .verifyCellWasCreated(for: threadTitle)
+            
+            .tapOnCell(at: 2)
+            .verfiyTitle(forThread: threadTitle)
+            
+            .tapOnAddBarButton()
+            .enterSenderName(text: senderName)
+            .enterMessageText(text: messageText)
+            
+            .verifySenderNameWasEntered(name: senderName)
+            .verifyMessageTextWasEntered(text: messageText)
+            
+            .tapOnSendBarButton()
+            .verifyCellWasCreated(with: senderName)
+            .verifyCellWasCreated(with: messageText)
     }
 }
