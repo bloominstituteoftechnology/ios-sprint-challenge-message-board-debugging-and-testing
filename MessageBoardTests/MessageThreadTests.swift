@@ -46,6 +46,7 @@ class MessageThreadTests: XCTestCase {
     
     // MARK: - MessageThreadController
     
+    // only succeeds if json has data in it (is not empty)
     func testFetchMessageThreadFunction() {
         let exp = expectation(description: "Fetch")
         XCTAssertEqual(messageThreadController.messageThreads, [])
@@ -55,4 +56,34 @@ class MessageThreadTests: XCTestCase {
         }
         waitForExpectations(timeout: 30, handler: nil)
     }
+    
+    func testCreateMessageThreadFunction() {
+        let exp1 = expectation(description: "Fetch")
+        let exp2 = expectation(description: "Create")
+        
+        var messageThreadsAfterFetch: [MessageThread] = []
+        
+        // Makes sure messageThreads are empty before fetching
+        XCTAssertEqual(messageThreadController.messageThreads, [])
+        
+        // Fetches messages/threads
+        messageThreadController.fetchMessageThreads {
+            // Makes sure fetch returned data
+            XCTAssertNotEqual(self.messageThreadController.messageThreads, [])
+            // stores messageThreads after fetching them
+            messageThreadsAfterFetch = self.messageThreadController.messageThreads
+            exp1.fulfill()
+            
+            // Creates thread
+            self.messageThreadController.createMessageThread(with: "Testing") {
+                // makes sure stored message threads aren't empty
+                XCTAssertNotEqual(messageThreadsAfterFetch, [])
+                XCTAssertNotEqual(self.messageThreadController.messageThreads, messageThreadsAfterFetch)
+                exp2.fulfill()
+            }
+        }
+        // might have to change timeout int depending on internet speed?
+        waitForExpectations(timeout: 60, handler: nil)
+    }
+        
 }
