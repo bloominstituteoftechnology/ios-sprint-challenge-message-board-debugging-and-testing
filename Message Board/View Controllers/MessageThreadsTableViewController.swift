@@ -23,6 +23,7 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
+		//TODO: createThread doesn't seem to work
         threadTitleTextField.resignFirstResponder()
 
         guard let threadTitle = threadTitleTextField.text else { return }

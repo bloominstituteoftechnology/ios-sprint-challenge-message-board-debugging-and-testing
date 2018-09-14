@@ -25,7 +25,7 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a new thread:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72q-hR-yhN">
                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
-                                    <accessibility key="accessibilityConfiguration">
+                                    <accessibility key="accessibilityConfiguration" identifier="MTTVC.CreateThreadBox">
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
                                     <nil key="textColor"/>
@@ -61,6 +61,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="MTTVC.Cell"/>
                                 <connections>
                                     <segue destination="haD-iA-YGa" kind="show" identifier="ViewMessageThread" id="pxs-pL-1M3"/>
                                 </connections>

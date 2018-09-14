@@ -31,6 +31,7 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
+				// TODO: fix thread decoding
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
             } catch {
                 self.messageThreads = []
@@ -72,7 +73,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume() 
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +112,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://pushier-and-postier.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
