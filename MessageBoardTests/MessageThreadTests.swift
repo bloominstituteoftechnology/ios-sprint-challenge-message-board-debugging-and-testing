@@ -10,6 +10,14 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    
-    
+    func testAddingMessageToMessageThreads() {
+        let messageThreadController = MessageThreadController()
+        let messageThreadCount = messageThreadController.messageThreads.count
+        
+        messageThreadController.createMessageThread(with: "Test Message") {
+            NSLog("Message created successfully")
+        }
+        
+        XCTAssertNotEqual(messageThreadCount, messageThreadController.messageThreads.count)
+    }
 }
