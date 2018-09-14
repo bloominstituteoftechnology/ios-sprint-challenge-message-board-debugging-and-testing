@@ -9,7 +9,8 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-        
+    
+    
     override func setUp() {
         super.setUp()
 
@@ -23,4 +24,27 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testApp() {
+        let threadTitle = "This is a UI test thread"
+        let senderName = "Sammie"
+        let messageText = "This is a message text"
+        
+        MessageThreadsTablePage(testCase: self)
+            .createThread(withTitle: threadTitle)
+            .verifyCellWasCreated(for: threadTitle)
+            
+            .tapOnCell(at: 2)
+            .verfiyTitle(forThread: threadTitle)
+            
+            .tapOnAddBarButton()
+            .enterSenderName(text: senderName)
+            .enterMessageText(text: messageText)
+            
+            .verifySenderNameWasEntered(name: senderName)
+            .verifyMessageTextWasEntered(text: messageText)
+            
+            .tapOnSendBarButton()
+            .verifyCellWasCreated(with: senderName)
+            .verifyCellWasCreated(with: messageText)
+    }
 }
