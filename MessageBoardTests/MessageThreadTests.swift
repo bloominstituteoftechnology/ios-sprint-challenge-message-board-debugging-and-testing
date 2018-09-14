@@ -59,7 +59,7 @@ class MessageThreadTests: XCTestCase {
     
     func testCreateMessageThreadFunction() {
         let exp1 = expectation(description: "Fetch")
-        let exp2 = expectation(description: "Create")
+        let exp2 = expectation(description: "CreateThread")
         
         var messageThreadsAfterFetch: [MessageThread] = []
         
@@ -85,5 +85,49 @@ class MessageThreadTests: XCTestCase {
         // might have to change timeout int depending on internet speed?
         waitForExpectations(timeout: 60, handler: nil)
     }
+    
+    func testCreateMessageFunction() {
+        let exp1 = expectation(description: "Fetch1")
+        let exp2 = expectation(description: "CreateMessage")
+        let exp3 = expectation(description: "Fetch2")
         
+        var messageThreadsAfterFetch: [MessageThread] = []
+        
+        // Makes sure messageThreads are empty before fetching
+        XCTAssertEqual(messageThreadController.messageThreads, [])
+        
+        // Fetches messages/threads
+        messageThreadController.fetchMessageThreads {
+            // Makes sure fetch returned data
+            XCTAssertNotEqual(self.messageThreadController.messageThreads, [])
+            // stores messageThreads after fetching them
+            messageThreadsAfterFetch = self.messageThreadController.messageThreads
+            exp1.fulfill()
+            
+            // Makes sure messageThreadsAfterFetch isn't nil
+            XCTAssertNotNil(messageThreadsAfterFetch.first)
+            // Stores messages in thread
+            guard let messageThread = messageThreadsAfterFetch.first else { return }
+            let messages = messageThread.messages
+            
+            
+            // Creates message in first thread
+            self.messageThreadController.createMessage(in: messageThread, withText: "This is a unit test message", sender: "Sam") {
+                // Makes sure stored messages aren't equal to the new array of messages after creating one
+                XCTAssertNotEqual(messageThread.messages, messages)
+                exp2.fulfill()
+                
+                // Makes sure it doesn't break the json
+                let newMessageThreadController = MessageThreadController()
+                XCTAssertEqual(newMessageThreadController.messageThreads, [])
+                newMessageThreadController.fetchMessageThreads {
+                    XCTAssertNotEqual(newMessageThreadController.messageThreads, [])
+                    exp3.fulfill()
+                }
+            }
+        }
+        
+        // might have to change timeout int depending on internet speed?
+        waitForExpectations(timeout: 60, handler: nil)
+    }
 }
