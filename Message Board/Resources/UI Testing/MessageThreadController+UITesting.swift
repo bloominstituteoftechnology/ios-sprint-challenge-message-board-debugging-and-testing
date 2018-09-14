@@ -37,6 +37,8 @@ extension MessageThreadController {
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
+        
+        completion()
     }
     
     var mockDataURL: URL {
