@@ -39,12 +39,11 @@ class MessageThreadTests: XCTestCase {
     
     // Initial bug: decoding message: try container.decodeIfPresent([Message].self, forKey: .messages)? ?? []
     func testThreadDecodingMessages() {
-        
 //        let thread = MessageThread(title: "Test")
 //        let encodedMessage = try! JSONSerialization.data(withJSONObject: thread, options: .prettyPrinted)
-//        // let jsonMessage = try! JSONSerialization.jsonObject(with: encodedMessage, options: [])
-//        let decodedMessage = try! Array(JSONDecoder().decode([String : MessageThread].self, from: encodedMessage).values)
-//        print(decodedMessage)
+//        let jsonMessage = try! JSONSerialization.jsonObject(with: encodedMessage, options: [])
+//        let decodedMessages = try! Array(JSONDecoder().decode([String : MessageThread].self, from: jsonMessage as! Data).values)
+//        XCTAssertTrue(decodedMessages[0].title == "Test")
     }
     
     // Initial bug: after hitting send the view did not pop back to the Thread view controller
