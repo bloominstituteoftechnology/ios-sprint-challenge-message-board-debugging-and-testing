@@ -18,7 +18,7 @@ The goal of this application is threefold. You must debug the Lambda Message Boa
 
 ### As this is a project that you have written before, do not use past code. It will not benefit yourself at all in the long run.
 
-**NOTE:** For the **UI tests**, code has been provided in the project that will use mock data in order to avoid making network calls. There are a few comments that show where code has been added to support this feature. You may disregard those parts when debugging the app.
+**NOTE:** For the **UI tests**, code has been provided in the project that will use mock data in order to avoid making network calls. There are a few comments that show where code has been added to support this feature. You may disregard those parts when debugging the app. Also, there are two threads with messages that will load every time the app runs but the threads and messages you create will not persist. **This is normal and should not be regarded as a bug.**
 
 The requirements for this project are as follows:
 
