@@ -36,6 +36,10 @@ struct MessageThreadPage: TestPage {
         return app.navigationBars["New Message"].buttons["Send"]
     }
     
+    var currentNavigationBar: XCUIElement {
+        return app.navigationBars.element(boundBy: 0)
+    }
+    
     // MARK: - Actions
     
     @discardableResult func tapOnCell(cellIndex: Int, file: String = #file, line: UInt = #line) -> MessageThreadPage {

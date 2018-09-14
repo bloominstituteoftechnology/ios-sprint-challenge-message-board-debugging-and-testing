@@ -48,6 +48,8 @@ class Message_BoardUITests: XCTestCase {
         mtp.tapOnMessageTextView()
         mtp.addMessageTextView.typeText("Test Message Text")
         mtp.tapOnSaveButton()
+        
+        XCTAssertTrue(mtp.currentNavigationBar.identifier == "Test Message")
     }
     
 }
