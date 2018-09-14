@@ -27,4 +27,8 @@ class MessageThreadTests: XCTestCase {
             }
         }
     }
+    
+    func testDecodingMessageThreads() {
+        
+    }
 }
