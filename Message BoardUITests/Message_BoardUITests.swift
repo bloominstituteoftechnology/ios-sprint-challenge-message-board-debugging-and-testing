@@ -34,6 +34,20 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertFalse(mtp.messageIs("Test Message", index: 0, expectedMessage: "Test Mesage"))
     }
     
-    
+    func testUIAddingMessageToThreadPopsNavigation() {
+        let mtp = MessageThreadPage(testCase: self)
+        mtp.newThreadTextField.tap()
+        mtp.newThreadTextField.typeText("Test Message")
+        mtp.pressEnter()
+        
+        mtp.tapOnCell(cellIndex: 0)
+            .tapOnAddButton()
+            .tapOnNameTextField()
+        mtp.addMessageTextField.typeText("Test Message")
+        
+        mtp.tapOnMessageTextView()
+        mtp.addMessageTextView.typeText("Test Message Text")
+        mtp.tapOnSaveButton()
+    }
     
 }
