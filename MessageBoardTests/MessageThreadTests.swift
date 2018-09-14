@@ -32,11 +32,4 @@ class MessageThreadTests: XCTestCase
 			XCTAssert(mc.messageThreads.first!.title == "TestThread")
 		})
 	}
-
-	func testDecodeThreadsFromJson()
-	{
-		
-	}
-
-
 }

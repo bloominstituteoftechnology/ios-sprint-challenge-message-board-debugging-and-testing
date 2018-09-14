@@ -14,6 +14,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = messageThread?.title
+		tableView.accessibilityIdentifier = "Messages.table"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +36,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         cell.textLabel?.text = message?.messageText
         cell.detailTextLabel?.text = message?.sender
+		cell.accessibilityIdentifier = "Messages.cell\(indexPath.row)"
         
         return cell
     }

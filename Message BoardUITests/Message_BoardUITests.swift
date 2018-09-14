@@ -9,18 +9,30 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-        
+	var app:XCUIApplication!
+
     override func setUp() {
         super.setUp()
 
         // KEEP THIS SETUP FUNCTION EXACTLY AS IS.
+		// ...no
         
         continueAfterFailure = false
         
-        let app = XCUIApplication()
+        app = XCUIApplication()
         
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+
+	func testSendingMessage()
+	{
+		// navigate to new message screen
+		app.cells["Thread.cell0"].tap()
+		app.cells["Messages.newMessage"].tap()
+
+		// verify
+		NewMessagePage(testCase: self).verifyMessageSend(file: #file, line: #line)
+	}
     
 }
