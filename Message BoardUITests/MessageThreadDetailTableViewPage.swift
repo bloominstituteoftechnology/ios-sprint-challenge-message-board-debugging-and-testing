@@ -10,10 +10,11 @@ import Foundation
 import XCTest
 
 struct MessageThreadDetailTableViewPage: TestPage {
-  
+ //MessageThreadDetailTableView
+    
     // UI Elements
     var messageThreadDetailTableViewController: XCUIElement {
-        return app.tableRows.element(boundBy: 0)
+        return app.tableRows["MessageThreadDetailTableView"]
     }
     
     @discardableResult func messageThreadDetailTableViewCell(at index: Int) -> XCUIElement {
@@ -28,15 +29,17 @@ struct MessageThreadDetailTableViewPage: TestPage {
     
     // Verifications
     
-    @discardableResult func testMessageToDetailMessageView() {
-        XCTAssertTrue(app.messageThreadDetailTableViews("identifier").exists)
+    func testMessageToDetailMessageView() {
+        let app = XCUIApplication()
+
+        XCTAssertTrue(app.tableRows["MessageThreadDetailTableView"].exists)
         
         app.cells.element(boundBy: 1).tap()
         
-        XCTAssertFalse(app.messageThreadDetailTableViews("identifier").exists)
-        XCTAssertTrue(app.messageDetailViews("identifier").exists)
+        XCTAssertFalse(app.tableRows["MessageThreadDetailTableView"].exists)
+        XCTAssertTrue(app.tableRows["MessageDetailView"].exists)
         
-        app.messagesButton().tap()
+        //app.messagesButton().tap()
     }
     
 //    func testShowsNotesDetails() {

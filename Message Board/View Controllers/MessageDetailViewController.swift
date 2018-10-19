@@ -10,6 +10,12 @@ import UIKit
 
 class MessageDetailViewController: UIViewController {
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.accessibilityIdentifier = "MessageDetailView"
+    }
+    
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -21,11 +27,10 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        self.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
-    
-    self.accessibilityIdentifier = "MessageThreadDetailTableView"
     
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?

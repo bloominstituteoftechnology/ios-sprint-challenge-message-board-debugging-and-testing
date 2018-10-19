@@ -10,9 +10,12 @@ import Foundation
 import XCTest
 
 struct MessageThreadTableViewPage: TestPage {
+    //MessageThreadsTableView
     
     // UI Elements
-    
+    var messageThreadTableViewController: XCUIElement {
+        return app.tableRows["MessageThreadsTableView"]
+    }
 //MessageThreadsTableViewController.NewThreadTextField
 //MessageThreadsTableViewController.TitleLabel
 //MessageThreadsTableViewController.Cell

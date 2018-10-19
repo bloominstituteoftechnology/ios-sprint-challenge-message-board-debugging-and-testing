@@ -10,14 +10,29 @@ import Foundation
 import XCTest
 
 struct MessageDetailViewPage: TestPage {
+//MessageDetailView
 
-
-// Title
-// 2 Nav Bar Buttons
-//MessageDetailViewController.TextField
-//MessageDetailViewController.TextView
+    // Title
+    // 2 Nav Bar Buttons
     
+    // UI Elements
+    var messageDetailViewController: XCUIElement {
+        return app.tableRows["MessageDetailView"]
+    }
     
+    //MessageDetailViewController.TextField
+    var messageTextField: XCUIElement {
+        return app.textFields["MessageDetailViewController.TextField"]
+    }
+    
+    //MessageDetailViewController.TextView
+    var messageTextView: XCUIElement {
+        return app.textViews["MessageDetailViewController.TextView"]
+    }
+    
+    // (Inter)Actions
+    
+    // Verifications
     
     var testCase: XCTestCase
 }
