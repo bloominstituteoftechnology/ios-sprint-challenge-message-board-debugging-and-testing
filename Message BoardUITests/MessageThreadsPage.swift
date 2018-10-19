@@ -34,7 +34,7 @@ struct MessageThreadsPage: TestPage {
         testCase.expect(exists: newMessageThreadTextField, file: #file, line: #line)
         newMessageThreadTextField.tap()
         newMessageThreadTextField.typeText(title)
-        app.keyboards.buttons["Return"].tap()
+        app.keyboards.buttons["return"].tap()
         return self
     }
     

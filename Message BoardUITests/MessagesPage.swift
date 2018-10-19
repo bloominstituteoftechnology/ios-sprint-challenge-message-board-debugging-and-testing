@@ -35,8 +35,8 @@ struct MessagesPage: TestPage {
     }
     
     //Verifications
-    @discardableResult func verifyMessage(title: String) -> MessagesPage {
-        testCase.expect(exists: app.cells.staticTexts[title], file: #file, line: #line)
+    @discardableResult func verifyMessage(message: String) -> MessagesPage {
+        testCase.expect(exists: app.cells.staticTexts[message], file: #file, line: #line)
         return self
     }
 }
