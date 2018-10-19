@@ -22,6 +22,8 @@ class MessageThread: Codable, Equatable {
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+//        let container = try decoder.ke
+        
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
