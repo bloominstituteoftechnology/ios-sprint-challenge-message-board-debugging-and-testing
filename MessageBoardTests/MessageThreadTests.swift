@@ -23,9 +23,18 @@ class MessageThreadTests: XCTestCase {
     
     // 2. Bug. Not fetching threads
     
-    func testLocalFetch() {
-        messageThreadController.fetchLocalMessageThreads {
+    func testFetch() {
+        messageThreadController.fetchMessageThreads {
         }
         XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
+    }
+    
+    // 3. Create a message
+    
+    func testCreateMessage() {
+        let thread = MessageThread(title: "Test thread")
+        messageThreadController.messageThreads.append(thread)
+        messageThreadController.createMessage(in: thread, withText: "Test Title", sender: "Test sender") {  }
+        XCTAssertFalse(thread.messages.isEmpty)
     }
 }
