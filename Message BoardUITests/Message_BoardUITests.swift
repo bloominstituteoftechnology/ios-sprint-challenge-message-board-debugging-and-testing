@@ -23,4 +23,21 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testMakingNewThread() {
+        let title1 = "Test Thread"
+        let title2 = "Second Test Thread"
+        MessageThreadTVCTestPage(testCase: self)
+        .createNewThread(title1)
+        .cellExists(title1)
+        .createNewThread(title2)
+        .cellExists(title2)
+    }
+    
+    func testTappingOnThread() {
+        MessageThreadTVCTestPage(testCase: self)
+        .cellExists("A New Thread")
+        .cellExists("Testing again")
+        .tapCell("A New Thread")
+    }
+    
 }
