@@ -21,7 +21,11 @@ class MessageThreadTests: XCTestCase {
         XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
     }
     
-    func testFetch() {
-        
+    // 2. Bug. Not fetching threads
+    
+    func testLocalFetch() {
+        messageThreadController.fetchLocalMessageThreads {
+        }
+        XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
     }
 }
