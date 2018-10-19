@@ -48,6 +48,6 @@ class Message_BoardUITests: XCTestCase {
         messageThreadPage.addMessageTextView.typeText("Test Body")
         messageThreadPage.tapOnSaveButton()
         
-        XCTAssertTrue(XCUIApplication().staticTexts["Test Thread"].exists)
+        XCTAssertTrue(XCUIApplication().staticTexts["Test Body"].exists)
     }
 }
