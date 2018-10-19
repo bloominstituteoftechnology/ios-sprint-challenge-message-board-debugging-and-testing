@@ -5,8 +5,9 @@
 //  Created by Spencer Curtis on 9/14/18.
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
-
+import Foundation
 import XCTest
+
 
 class Message_BoardUITests: XCTestCase {
         
@@ -24,6 +25,10 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testTest(){
+        ThreadsTableViewControllerPage(testCase: self)
+        .addNewThread()
+        .verifyThreadExists()
+        .firstCell.tap()
         
     }
     
