@@ -25,6 +25,8 @@ class MessageDetailViewController: UIViewController {
 
     // MARK: - Properties
     
+    self.accessibilityIdentifier = "MessageThreadDetailTableView"
+    
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
 

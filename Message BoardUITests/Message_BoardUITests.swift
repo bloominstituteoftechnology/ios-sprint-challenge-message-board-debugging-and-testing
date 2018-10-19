@@ -23,4 +23,11 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testExample() {
+        
+        let app = XCUIApplication()
+        
+        
+    }
+    
 }

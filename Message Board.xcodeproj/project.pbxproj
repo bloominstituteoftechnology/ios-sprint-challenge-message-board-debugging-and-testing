@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115ECDE8217A37730049529E /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ECDE7217A37730049529E /* TestPage.swift */; };
+		115ECDEA217A37D90049529E /* MessageThreadTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ECDE9217A37D90049529E /* MessageThreadTableViewPage.swift */; };
+		115ECDEC217A37EF0049529E /* MessageThreadDetailTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ECDEB217A37EF0049529E /* MessageThreadDetailTableViewPage.swift */; };
+		115ECDEE217A37FE0049529E /* MessageDetailViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ECDED217A37FE0049529E /* MessageDetailViewPage.swift */; };
+		115ECDF0217A3D710049529E /* UITestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ECDEF217A3D710049529E /* UITestCase+Expect.swift */; };
 		4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612B5C7211AB41100E7FF73 /* AppDelegate.swift */; };
 		4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CB211AB41200E7FF73 /* Main.storyboard */; };
 		4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CE211AB41300E7FF73 /* Assets.xcassets */; };
@@ -42,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		115ECDE7217A37730049529E /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		115ECDE9217A37D90049529E /* MessageThreadTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTableViewPage.swift; sourceTree = "<group>"; };
+		115ECDEB217A37EF0049529E /* MessageThreadDetailTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewPage.swift; sourceTree = "<group>"; };
+		115ECDED217A37FE0049529E /* MessageDetailViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewPage.swift; sourceTree = "<group>"; };
+		115ECDEF217A3D710049529E /* UITestCase+Expect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITestCase+Expect.swift"; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,7 +146,12 @@
 			isa = PBXGroup;
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
+				115ECDE7217A37730049529E /* TestPage.swift */,
+				115ECDE9217A37D90049529E /* MessageThreadTableViewPage.swift */,
+				115ECDEB217A37EF0049529E /* MessageThreadDetailTableViewPage.swift */,
+				115ECDED217A37FE0049529E /* MessageDetailViewPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
+				115ECDEF217A3D710049529E /* UITestCase+Expect.swift */,
 			);
 			path = "Message BoardUITests";
 			sourceTree = "<group>";
@@ -345,7 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115ECDEE217A37FE0049529E /* MessageDetailViewPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
+				115ECDEC217A37EF0049529E /* MessageThreadDetailTableViewPage.swift in Sources */,
+				115ECDEA217A37D90049529E /* MessageThreadTableViewPage.swift in Sources */,
+				115ECDF0217A3D710049529E /* UITestCase+Expect.swift in Sources */,
+				115ECDE8217A37730049529E /* TestPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
