@@ -22,6 +22,11 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		EB9B8267217A3FED00166391 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B8266217A3FED00166391 /* TestPage.swift */; };
+		EB9B8269217A40F800166391 /* TestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B8268217A40F800166391 /* TestCase+Expect.swift */; };
+		EB9B826B217A41DE00166391 /* MessageThreadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B826A217A41DE00166391 /* MessageThreadTest.swift */; };
+		EB9B826D217A425B00166391 /* MessageTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B826C217A425B00166391 /* MessageTestPage.swift */; };
+		EB9B826F217A477100166391 /* DetailMesagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B826E217A477100166391 /* DetailMesagePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,11 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		EB9B8266217A3FED00166391 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		EB9B8268217A40F800166391 /* TestCase+Expect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestCase+Expect.swift"; sourceTree = "<group>"; };
+		EB9B826A217A41DE00166391 /* MessageThreadTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTest.swift; sourceTree = "<group>"; };
+		EB9B826C217A425B00166391 /* MessageTestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTestPage.swift; sourceTree = "<group>"; };
+		EB9B826E217A477100166391 /* DetailMesagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMesagePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +147,11 @@
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
+				EB9B8266217A3FED00166391 /* TestPage.swift */,
+				EB9B8268217A40F800166391 /* TestCase+Expect.swift */,
+				EB9B826A217A41DE00166391 /* MessageThreadTest.swift */,
+				EB9B826C217A425B00166391 /* MessageTestPage.swift */,
+				EB9B826E217A477100166391 /* DetailMesagePage.swift */,
 			);
 			path = "Message BoardUITests";
 			sourceTree = "<group>";
@@ -345,7 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB9B8267217A3FED00166391 /* TestPage.swift in Sources */,
+				EB9B826D217A425B00166391 /* MessageTestPage.swift in Sources */,
+				EB9B8269217A40F800166391 /* TestCase+Expect.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
+				EB9B826B217A41DE00166391 /* MessageThreadTest.swift in Sources */,
+				EB9B826F217A477100166391 /* DetailMesagePage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +603,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MessageBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -603,7 +623,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MessageBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
