@@ -11,30 +11,44 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    let messageThreadController = MessageThreadController()
-
-    // 1. Bug. Not creates a thread
+    // 1. Create a local thread
     
     func testCreateLocalThread() {
+        let messageThreadController = MessageThreadController()
         messageThreadController.createLocalMessageThread(with: "Test Local Thread") {
+            XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
         }
-        XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
     }
     
-    // 2. Bug. Not fetching threads
+    // 2. Create a thread
     
-    func testFetch() {
-        messageThreadController.fetchMessageThreads {
+    func testCreateThread() {
+        let messageThreadController = MessageThreadController()
+        messageThreadController.createMessageThread(with: "Test Thread") {
+            XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
         }
-        XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
     }
     
-    // 3. Create a message
+    
+    // 3. Create a local message
+    
+    func testCreateLocalMessage() {
+        let messageThreadController = MessageThreadController()
+        let thread = MessageThread(title: "Test local thread")
+        messageThreadController.messageThreads.append(thread)
+        messageThreadController.createLocalMessage(in: thread, withText: "Test Title", sender: "Testsender") {
+            XCTAssertFalse(thread.messages.isEmpty)
+        }
+    }
+    
+    // 4. Create a message
     
     func testCreateMessage() {
+        let messageThreadController = MessageThreadController()
         let thread = MessageThread(title: "Test thread")
         messageThreadController.messageThreads.append(thread)
-        messageThreadController.createMessage(in: thread, withText: "Test Title", sender: "Test sender") {  }
-        XCTAssertFalse(thread.messages.isEmpty)
+        messageThreadController.createMessage(in: thread, withText: "Test Title", sender: "Test sender") {
+            XCTAssertFalse(thread.messages.isEmpty)
+        }
     }
 }
