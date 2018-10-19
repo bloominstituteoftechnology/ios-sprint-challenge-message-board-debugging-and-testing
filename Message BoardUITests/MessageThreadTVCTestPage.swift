@@ -16,10 +16,6 @@ struct MessageThreadTVCTestPage: TestPage {
         return app.textFields["MessageThreadsTableViewController.NewThreadTextField"]
     }
     
-    private func cell(_ index: Int) -> XCUIElement {
-        return app.cells.element(boundBy: index)
-    }
-    
     private func cell(_ title: String) -> XCUIElement {
         return app.staticTexts[title]
     }
@@ -37,7 +33,7 @@ struct MessageThreadTVCTestPage: TestPage {
         let cell = self.cell(title)
         testCase.expect(exists: cell, file: file, line: line)
         cell.tap()
-        return MessageThreadDetailTVCTestPage(testCase: testCase)
+        return MessageThreadDetailTVCTestPage(testCase: testCase, parent: self, title: title)
     }
     
     // MARK: - Verifications
@@ -45,6 +41,12 @@ struct MessageThreadTVCTestPage: TestPage {
     @discardableResult func cellExists(_ title: String, file: String = #file, line: UInt = #line) -> MessageThreadTVCTestPage {
         let cell = self.cell(title)
         testCase.expect(exists: cell, file: file, line: line)
+        return self
+    }
+    
+    @discardableResult func titleDisplays(_ title: String, file: String = #file, line: UInt = #line) -> MessageThreadTVCTestPage {
+        let navBar = app.navigationBars.firstMatch
+        testCase.expect(navBar.identifier, equals: title, file: file, line: line)
         return self
     }
 }

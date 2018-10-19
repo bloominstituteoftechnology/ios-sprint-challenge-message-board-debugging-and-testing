@@ -9,6 +9,13 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        senderNameTextField.accessibilityIdentifier = "MessageDetailViewController.NameTextField"
+        messageTextView.accessibilityIdentifier = "MessageDetailViewController.MessageTextView"
+    }
 
     // MARK: - Actions
     
@@ -20,6 +27,7 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            self.navigationController?.popViewController(animated: true)
         })
     }
 
