@@ -19,7 +19,7 @@ class Message_BoardUITests: XCTestCase {
         
         let app = XCUIApplication()
         
-        app.launchArguments = ["UITesting"]
+        app.launchArguments = ["UITesting"] // IMPORTANT for mocking data !!!
         app.launch()
     }
     

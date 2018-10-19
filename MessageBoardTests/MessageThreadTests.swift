@@ -11,5 +11,17 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    let messageThreadController = MessageThreadController()
+
+    // 1. Bug. Not creates a thread
     
+    func testCreateLocalThread() {
+        messageThreadController.createLocalMessageThread(with: "Test Local Thread") {
+        }
+        XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
+    }
+    
+    func testFetch() {
+        
+    }
 }

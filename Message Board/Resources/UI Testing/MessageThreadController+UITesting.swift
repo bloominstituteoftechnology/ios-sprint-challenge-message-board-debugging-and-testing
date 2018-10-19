@@ -8,8 +8,10 @@
 
 import Foundation
 
+// Extension fo Local Data
 extension MessageThreadController {
     
+    // 1. Func Local
     func fetchLocalMessageThreads(completion: @escaping () -> Void) {
         
         do {
@@ -24,6 +26,8 @@ extension MessageThreadController {
         completion()
     }
     
+    
+    // 2. Func Local
     func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
         let thread = MessageThread(title: title)
         messageThreads.append(thread)
@@ -31,6 +35,8 @@ extension MessageThreadController {
         completion()
     }
     
+    
+    // 3. Func Local
     func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
@@ -41,6 +47,7 @@ extension MessageThreadController {
         completion()
     }
     
+    // 4. Property
     var mockDataURL: URL {
         return Bundle.main.url(forResource: "MockMessages", withExtension: "json")!
     }
