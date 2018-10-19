@@ -85,5 +85,7 @@ class Message_BoardUITests: XCTestCase {
             .tapBackButton()
             .titleDisplays(newThread)
             .numberOfCellsIs(1)
+            .tapBackButton()
+            .titleDisplays(messageBoard)
     }
 }

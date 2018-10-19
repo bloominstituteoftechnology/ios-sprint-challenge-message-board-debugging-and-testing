@@ -16,11 +16,19 @@ class MessageThreadTests: XCTestCase {
         messageThreadController = MessageThreadController()
     }
     
+    /// Tests Creating a New Thread
     func testCreatingNewThread() {
         let string = "Test Thread"
         let numberOfMessages = messageThreadController.messageThreads.count
         messageThreadController.createMessageThread(with: string) {
-            XCTAssertEqual(self.messageThreadController.messageThreads.count, numberOfMessages + 1)
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, numberOfMessages + 2)
+        }
+    }
+    
+    /// Test Fetching Threads
+    func testFetchingThreads() {
+        messageThreadController.fetchMessageThreads {
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, 0)
         }
     }
     
