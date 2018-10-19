@@ -11,6 +11,8 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    //Should actually be testing examples of json or a json file (no real networking calls)
+    
     func testCreateNewThread() {
         let messageThreadController = MessageThreadController()
         

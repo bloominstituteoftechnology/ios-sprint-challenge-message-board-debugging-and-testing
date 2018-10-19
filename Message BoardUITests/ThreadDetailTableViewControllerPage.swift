@@ -27,8 +27,8 @@ struct ThreadDetailTableViewControllerPage: TestPage {
     // MARK: - Verifications
     
     // See messages
-    @discardableResult func seeMessageAtFirstCell() -> ThreadDetailTableViewControllerPage {
-        testCase.expect(exists: firstCell, file: #file, line: #line)
+    @discardableResult func verifyMessageExists(at index: Int) -> ThreadDetailTableViewControllerPage {
+        testCase.expect(true: cell(0).isHittable, file: #file, line: #line)
         return self
     }
     
@@ -46,9 +46,9 @@ struct ThreadDetailTableViewControllerPage: TestPage {
         return app.navigationBars["\(threadName)"]
     }
     
-    // First cell
-    var firstCell: XCUIElement {
-        return app.tables.cells["MessageThreadDetailTableViewController.MessageCell"].firstMatch
+    // Cell at index by
+    func cell(_ index: Int) -> XCUIElement {
+        return app.tables.cells.element(boundBy: index)
     }
     
     // Back button

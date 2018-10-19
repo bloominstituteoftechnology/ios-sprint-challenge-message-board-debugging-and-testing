@@ -22,16 +22,25 @@ struct ThreadsTableViewControllerPage: TestPage {
     }
     
     // View exisiting thread
-    @discardableResult func seeThread() -> ThreadDetailTableViewControllerPage {
-        firstCell.tap()
+    @discardableResult func seeThread(at index: Int) -> ThreadDetailTableViewControllerPage {
+        let selectedCell = cell(index)
+        selectedCell.tap()
         return ThreadDetailTableViewControllerPage(testCase: self.testCase, threadsTableViewControllerPage: self)
     }
     
     // MARK: - Verifications
     
     //Thread exists
-    @discardableResult func verifyThreadExists() -> ThreadsTableViewControllerPage {
-        testCase.expect(exists: firstCell, file: #file, line: #line)
+    @discardableResult func verifyThreadExists(at index: Int) -> ThreadsTableViewControllerPage {
+        let selectedCell = cell(index)
+        testCase.expect(exists: selectedCell, file: #file, line: #line)
+        return self
+    }
+    
+    //Check thread title
+    @discardableResult func verifyThread(at index: Int) -> ThreadsTableViewControllerPage {
+        let selectedCell = cell(index)
+        testCase.expect(true: selectedCell.isHittable, file: #file, line: #line)
         return self
     }
     
@@ -43,8 +52,8 @@ struct ThreadsTableViewControllerPage: TestPage {
     }
     
     // First cell
-    var firstCell: XCUIElement {
-        return app.tables.cells["MessageThreadsTableViewController.ThreadCell"].firstMatch
+    func cell(_ index: Int) -> XCUIElement {
+        return app.tables.cells.element(boundBy: index)
     }
     
     var testCase: XCTestCase

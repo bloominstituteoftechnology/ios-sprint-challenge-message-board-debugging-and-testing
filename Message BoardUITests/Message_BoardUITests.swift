@@ -24,12 +24,26 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    func testTest(){
+    func testCreatingNewThread() {
         ThreadsTableViewControllerPage(testCase: self)
         .addNewThread()
-        .verifyThreadExists()
-        .firstCell.tap()
-        
+            .verifyThreadExists(at: 0)
     }
+    
+    func testMockMessageThreadsLoaded() {
+        ThreadsTableViewControllerPage(testCase: self)
+            .verifyThread(at: 0)
+            .verifyThread(at: 1)
+    }
+    
+    func testCreatingNewMessageOnExistingThread() {
+        ThreadsTableViewControllerPage(testCase: self)
+        .seeThread(at: 0)
+        .clickAddButton()
+        .writeMessage(from: "Me", with: "Test")
+        .clickSendButton()
+        .verifyMessageExists(at: 1)
+    }
+    
     
 }

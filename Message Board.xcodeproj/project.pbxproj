@@ -146,8 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
-				7BC72152217A3C7B00C08DCF /* ThreadDetailTableViewControllerPage.swift */,
 				7BC72154217A3D4100C08DCF /* MessageDetailViewControllerPage.swift */,
+				7BC72152217A3C7B00C08DCF /* ThreadDetailTableViewControllerPage.swift */,
 				7BC72150217A38FB00C08DCF /* ThreadsTableViewControllerPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 				7BC7214C217A2ED000C08DCF /* UITestCase+Expect.swift */,
