@@ -23,6 +23,9 @@
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		7BC7214D217A2ED000C08DCF /* UITestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7214C217A2ED000C08DCF /* UITestCase+Expect.swift */; };
 		7BC7214F217A2EEF00C08DCF /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7214E217A2EEF00C08DCF /* TestPage.swift */; };
+		7BC72151217A38FB00C08DCF /* ThreadsTableViewControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC72150217A38FB00C08DCF /* ThreadsTableViewControllerPage.swift */; };
+		7BC72153217A3C7B00C08DCF /* ThreadDetailTableViewControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC72152217A3C7B00C08DCF /* ThreadDetailTableViewControllerPage.swift */; };
+		7BC72155217A3D4200C08DCF /* MessageDetailViewControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC72154217A3D4100C08DCF /* MessageDetailViewControllerPage.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		7BC7214C217A2ED000C08DCF /* UITestCase+Expect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITestCase+Expect.swift"; sourceTree = "<group>"; };
 		7BC7214E217A2EEF00C08DCF /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		7BC72150217A38FB00C08DCF /* ThreadsTableViewControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadsTableViewControllerPage.swift; sourceTree = "<group>"; };
+		7BC72152217A3C7B00C08DCF /* ThreadDetailTableViewControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadDetailTableViewControllerPage.swift; sourceTree = "<group>"; };
+		7BC72154217A3D4100C08DCF /* MessageDetailViewControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewControllerPage.swift; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
+				7BC72152217A3C7B00C08DCF /* ThreadDetailTableViewControllerPage.swift */,
+				7BC72154217A3D4100C08DCF /* MessageDetailViewControllerPage.swift */,
+				7BC72150217A38FB00C08DCF /* ThreadsTableViewControllerPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 				7BC7214C217A2ED000C08DCF /* UITestCase+Expect.swift */,
 				7BC7214E217A2EEF00C08DCF /* TestPage.swift */,
@@ -351,8 +360,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC72153217A3C7B00C08DCF /* ThreadDetailTableViewControllerPage.swift in Sources */,
 				7BC7214D217A2ED000C08DCF /* UITestCase+Expect.swift in Sources */,
+				7BC72155217A3D4200C08DCF /* MessageDetailViewControllerPage.swift in Sources */,
 				7BC7214F217A2EEF00C08DCF /* TestPage.swift in Sources */,
+				7BC72151217A38FB00C08DCF /* ThreadsTableViewControllerPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
