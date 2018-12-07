@@ -38,7 +38,7 @@ class MessageThreadController {
             }
             
             completion()
-        }.resume()
+            }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -72,7 +72,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+            }.resume() // create test for this ******** 1) bug number 1
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -108,9 +108,9 @@ class MessageThreadController {
             
             completion()
             
-        }.resume()
+            }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://moses-lambda-message-board.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
