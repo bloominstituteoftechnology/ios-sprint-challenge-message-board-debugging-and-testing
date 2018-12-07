@@ -38,7 +38,10 @@ class MessageThreadController {
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
+            
         }.resume()
     }
     
@@ -70,8 +73,10 @@ class MessageThreadController {
                 return
             }
             
-            self.messageThreads.append(thread)
-            completion()
+            DispatchQueue.main.async {
+                self.messageThreads.append(thread)
+                completion()
+            }
             
         }.resume()
     }
@@ -107,8 +112,10 @@ class MessageThreadController {
                 return
             }
             
-            completion()
-            
+            DispatchQueue.main.async {
+                completion()
+            }
+           
         }.resume()
     }
     

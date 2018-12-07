@@ -38,7 +38,6 @@ class ThreadTVCTests: XCTestCase {
     
     func testSendingMessage() {
         ThreadTVCPage(testCase: self)
-        .createNewThread()
         .clickOnCell(at: 0)
         .tapAddButton()
         .sendNewMessage()

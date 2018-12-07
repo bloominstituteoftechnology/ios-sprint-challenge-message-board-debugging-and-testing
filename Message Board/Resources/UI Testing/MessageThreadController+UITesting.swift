@@ -20,15 +20,19 @@ extension MessageThreadController {
         } catch {
             NSLog("Error decoding mock data: \(error)")
         }
+        DispatchQueue.main.async {
+            completion()
+        }
         
-        completion()
     }
     
     func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
         let thread = MessageThread(title: title)
         messageThreads.append(thread)
         
-        completion()
+        DispatchQueue.main.async {
+            completion()
+        }
     }
     
     func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -37,8 +41,11 @@ extension MessageThreadController {
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
+            
+        DispatchQueue.main.async {
+            completion()
+        }
         
-        completion()
     }
     
     var mockDataURL: URL {
