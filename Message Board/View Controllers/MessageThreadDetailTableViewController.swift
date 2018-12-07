@@ -38,15 +38,23 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         return cell
     }
+    
 
-    // MARK: - Navigation
+    // MARK:- Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+        
+        guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+        
+        destinationVC.messageThreadController = messageThreadController
+        destinationVC.messageThread = messageThread
+        
+        switch segue.identifier {
+        case "ShowMessage":
+            guard let index = tableView.indexPathForSelectedRow?.row else { return }
+            destinationVC.message = messageThread?.messages[index]
+        default:
+            destinationVC.message = nil
         }
     }
     

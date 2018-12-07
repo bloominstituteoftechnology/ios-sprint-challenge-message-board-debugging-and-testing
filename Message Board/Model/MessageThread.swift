@@ -8,13 +8,25 @@
 
 import Foundation
 
+//struct MessageThread: Codable {
+//    let identifier: String
+//    let messages: [String: Message]
+//    let title: String
+//}
+//
+//struct Message: Codable {
+//    let messageText, sender: String
+//    let timestamp: Double
+//}
+
+
 class MessageThread: Codable, Equatable {
 
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+    init(title: String, messages: [Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
@@ -25,7 +37,9 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages)
+        
+        let messages = messagesDictionaries?.compactMap({ $0.value }) ?? []
         
         self.title = title
         self.identifier = identifier
@@ -35,14 +49,16 @@ class MessageThread: Codable, Equatable {
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
-        let sender: String
-        let timestamp: Date
+        var messageText: String
+        var sender: String
+        var timestamp: Date
+        let identifier: String
         
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text
             self.sender = sender
             self.timestamp = timestamp
+            self.identifier = UUID().uuidString
         }
     }
     
