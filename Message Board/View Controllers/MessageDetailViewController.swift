@@ -15,7 +15,6 @@ class MessageDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        navigationController?.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "MessageDetailViewController.SendOrUpdateButton"
     }
     
     

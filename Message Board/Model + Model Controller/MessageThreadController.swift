@@ -94,15 +94,13 @@ class MessageThreadController {
         updatedMessage.messageText = text
         updatedMessage.sender = sender
         
-        let messageToPUT = [updatedMessage.identifier: updatedMessage]
-        
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathComponent(updatedMessage.identifier).appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
         do {
-            request.httpBody = try JSONEncoder().encode(messageToPUT)
+            request.httpBody = try JSONEncoder().encode(updatedMessage)
             
             URLSession.shared.dataTask(with: request) { (data, _, error) in
                 
