@@ -21,6 +21,8 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
+		4C9611AA21BAFAC0008A5C25 /* ThreadInputTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */; };
+		4C9611AC21BAFB2B008A5C25 /* MyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611AB21BAFB2B008A5C25 /* MyTest.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadInputTest.swift; sourceTree = "<group>"; };
+		4C9611AB21BAFB2B008A5C25 /* MyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTest.swift; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
+				4C9611AB21BAFB2B008A5C25 /* MyTest.swift */,
 			);
 			path = "Message BoardUITests";
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */,
+				4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */,
 				9D9B6B00214B7A66006381F7 /* Info.plist */,
 			);
 			path = MessageBoardTests;
@@ -346,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
+				4C9611AC21BAFB2B008A5C25 /* MyTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C9611AA21BAFAC0008A5C25 /* ThreadInputTest.swift in Sources */,
 				9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
