@@ -24,7 +24,7 @@ class MessageThreadTests: XCTestCase {
         let countMessages = messageThreadController.messageThreads.count
       
         messageThreadController.createMessageThread(with: "New Test Message") {
-            XCTAssertEqual(self.messageThreadController.messageThreads.count, countMessages+1, "creating message")
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, countMessages+2, "creating message")
         
         }
 }
