@@ -18,6 +18,7 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
         
     }
     
+    
     private var backButton: XCUIElement {
         return app.navigationBars.buttons.firstMatch
     }
@@ -40,7 +41,7 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
     @discardableResult func createNewThread(_ title: String) -> MessagBoardDetailViewControllerTest {
         newThreadAdding.tap()
         newThreadAdding.typeText(title)
-        newThreadAdding.typeText("\n")
+        //newThreadAdding.typeText("\n")
         return self
     }
     
@@ -58,9 +59,9 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
     
     
      @discardableResult func writeMessage(_ message: String) -> MessagBoardDetailViewControllerTest {
-       messageView.tap()
+          messageView.tap()
         messageView.typeText(message)
-        messageView.typeText("\n")
+       // messageView.typeText("\n")
         return self
         
         
