@@ -24,7 +24,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
    
-func makingNewThreads() {
+    func makingNewThreads() {
    let title1 = "Brand New Message"
     MessageThreadTViewControllerTestPage(testCase: self)
         .NavigationTitle()

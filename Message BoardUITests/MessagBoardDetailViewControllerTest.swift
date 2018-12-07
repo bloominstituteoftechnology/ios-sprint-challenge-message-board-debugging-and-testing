@@ -13,19 +13,52 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
     
     //Elements
     
-    private var newThreadTextField: XCUIElement {
+    private var newThreadAdding: XCUIElement {
    return app.textFields["MessageDetailViewController.NewMessageName"]
+        
     }
+    
+    private var backButton: XCUIElement {
+        return app.navigationBars.buttons.firstMatch
+    }
+    
+      private var messageView: XCUIElement {
+   return app.textViews["MessageDetailViewController.NewMessageView"]
+    }
+    
     
     private func cell(_ title: String) -> XCUIElement {
         return app.staticTexts[title]
     }
     
+    private var sendButton: XCUIElement {
+        return app.navigationBars.buttons["Send"]
+    }
+    
     //Actions
     
+    @discardableResult func createNewThread(_ title: String) -> MessagBoardDetailViewControllerTest {
+        newThreadAdding.tap()
+        newThreadAdding.typeText(title)
+        newThreadAdding.typeText("\n")
+        return self
+    }
+    
+    @discardableResult func goBack() -> MessageThreadDetailTableVCTestPage{
+        backButton.tap()
+        return MessageThreadDetailTableVCTestPage(testCase: testCase)
+    }
     
     
-    
+     @discardableResult func writeMessage(_ message: String) -> MessagBoardDetailViewControllerTest {
+       messageView.tap()
+        messageView.typeText(message)
+        messageView.typeText("\n")
+        return self
+        
+        
+    }
+
     
     //Verifications
     
