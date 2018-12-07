@@ -110,7 +110,12 @@ class MessageThreadController {
                     return
                 }
                 
-                if message == nil { self.messageThreads[index].messages.append(updatedMessage) }
+                if message == nil { self.messageThreads[index].messages.append(updatedMessage) } else {
+                    let ids = messageThread.messages.compactMap({ $0.identifier })
+                    let index = ids.index(of: updatedMessage.identifier) ?? 0
+                    messageThread.messages.remove(at: index)
+                    messageThread.messages.insert(updatedMessage, at: index)
+                }
                 
                 NSLog("PUT successful")
                 completion()
