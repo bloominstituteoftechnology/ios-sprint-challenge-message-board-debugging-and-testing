@@ -12,4 +12,32 @@ import XCTest
 class MessageThreadTests: XCTestCase {
     
     
+    var messageThreadController = MessageThreadController()
+    
+    override func setUp() {
+       messageThreadController = MessageThreadController()
+    }
+   
+    
+    func testCreateNewThread() {
+    
+        let countMessages = messageThreadController.messageThreads.count
+      
+        messageThreadController.createMessageThread(with: "New Test Message") {
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, countMessages+1, "creating message")
+        
+        }
+}
+    
+    
+    func testFetchMessages() {
+    
+        messageThreadController.fetchMessageThreads {
+            XCTAssertNotEqual(self.messageThreadController.messageThreads, [])
+        }
+        
+        
+    }
+    
+    
 }
