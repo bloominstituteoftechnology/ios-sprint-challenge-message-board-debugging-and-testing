@@ -17,7 +17,7 @@ struct MessageThreadDetailTableVCTestPage: TestPage {
     }
     
     private var addMessageButton: XCUIElement {
-        return app.buttons["Add"]
+       return app.buttons["Add"]
     }
     
     private func cell(_ title: String) -> XCUIElement {
@@ -32,18 +32,17 @@ struct MessageThreadDetailTableVCTestPage: TestPage {
     }
     
     @discardableResult func tapAddButton() -> MessagBoardDetailViewControllerTest {
-        backButton.tap()
+        addMessageButton.tap()
         return MessagBoardDetailViewControllerTest(testCase: testCase)
     }
     
     //Verifications
-    
-    @discardableResult func cellIsthere(_ title: String)-> MessageThreadDetailTableVCTestPage {
-    
-    let cell = self.cell(title)
-    XCTAssert(cell.exists)
-        return self
-    }
+//
+//    @discardableResult func cellIsthere()-> MessageThreadDetailTableVCTestPage {
+//
+//     XCTAssert(cell.exists)
+//        return self
+//    }
     
     @discardableResult func titleShows(_ title: String)-> MessageThreadDetailTableVCTestPage {
 

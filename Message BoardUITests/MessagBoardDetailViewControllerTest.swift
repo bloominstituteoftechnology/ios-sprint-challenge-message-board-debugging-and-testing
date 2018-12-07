@@ -32,7 +32,7 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
     }
     
     private var sendButton: XCUIElement {
-        return app.navigationBars.buttons["Send"]
+         return app.navigationBars.element(boundBy: 0).buttons["Send"]
     }
     
     //Actions

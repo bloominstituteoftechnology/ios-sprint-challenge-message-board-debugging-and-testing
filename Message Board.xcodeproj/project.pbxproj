@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44B670EB21BB089900304FEC /* Message_BoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */; };
 		44D5F23C21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5F23B21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift */; };
 		44D5F23E21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5F23D21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift */; };
 		44D5F24021BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5F23F21BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift */; };
@@ -20,7 +21,6 @@
 		4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */ = {isa = PBXBuildFile; fileRef = 4629C7DB214B924900E7FF73 /* MockMessages.json */; };
 		4629C7DE214B925E00E7FF73 /* IsUITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629C7DD214B925E00E7FF73 /* IsUITesting.swift */; };
 		4629C7E0214B961800E7FF73 /* MessageThreadController+UITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629C7DF214B961800E7FF73 /* MessageThreadController+UITesting.swift */; };
-		4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */; };
 		4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436029211AB90900E7FF73 /* HTTPMethod.swift */; };
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
@@ -359,9 +359,9 @@
 			files = (
 				44D5F23E21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift in Sources */,
 				44D5F23C21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift in Sources */,
-				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
 				44D5F24221BAD56100CAA846 /* TestPage.swift in Sources */,
 				44D5F24021BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift in Sources */,
+				44B670EB21BB089900304FEC /* Message_BoardUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
