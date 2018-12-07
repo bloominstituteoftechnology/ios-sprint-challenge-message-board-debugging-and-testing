@@ -31,11 +31,16 @@ struct MessageThreadsPage: TestPage {
         return self
     }
     
+    @discardableResult func tappedMessageThreadCell(at index: Int) -> MessageThreadDetailPage {
+        messageThreadCell(at: index).tap()
+        
+        return MessageThreadDetailPage(testCase: testCase)
+    }
+    
     
     // Verifications
     @discardableResult func verifyMessageThreadCell(at index: Int) -> MessageThreadsPage {
-        let cell = messageThreadCell(at: index)
-        XCTAssert(cell.exists)
+        XCTAssert(messageThreadCell(at: index).exists)
         
         return self
     }
