@@ -53,6 +53,7 @@ class Message_BoardUITests: XCTestCase {
         .writeMessage(message)
         .showTitle()
         .tapSendButton()
+        .goBack()
     }
     
     
