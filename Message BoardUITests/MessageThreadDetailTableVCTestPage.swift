@@ -12,18 +12,45 @@ struct MessageThreadDetailTableVCTestPage: TestPage {
     var testCase: XCTestCase
     
     //Elements
+    private var backButton: XCUIElement {
+        return app.navigationBars.buttons.firstMatch
+    }
     
+    private var addMessageButton: XCUIElement {
+        return app.buttons["Add"]
+    }
     
-    
+    private func cell(_ title: String) -> XCUIElement {
+        return app.staticTexts[title]
+    }
     
     //Actions
     
+    @discardableResult func goBack() -> MessageThreadTViewControllerTestPage {
+        backButton.tap()
+        return MessageThreadTViewControllerTestPage(testCase: testCase)
+    }
     
-    
-    
+    @discardableResult func tapAddButton() -> MessagBoardDetailViewControllerTest {
+        backButton.tap()
+        return MessagBoardDetailViewControllerTest(testCase: testCase)
+    }
     
     //Verifications
     
+    @discardableResult func cellIsthere(_ title: String)-> MessageThreadDetailTableVCTestPage {
+    
+    let cell = self.cell(title)
+    XCTAssert(cell.exists)
+        return self
+    }
+    
+    @discardableResult func titleShows(_ title: String)-> MessageThreadDetailTableVCTestPage {
+
+        let navigationBar = app.navigationBars.firstMatch
+        XCTAssert(navigationBar.exists)
+        return self
+    }
     
     
 }

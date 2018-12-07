@@ -13,8 +13,13 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
     
     //Elements
     
+    private var newThreadTextField: XCUIElement {
+   return app.textFields["MessageDetailViewController.NewMessageName"]
+    }
     
-    
+    private func cell(_ title: String) -> XCUIElement {
+        return app.staticTexts[title]
+    }
     
     //Actions
     

@@ -145,9 +145,9 @@
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
-				44D5F23B21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift */,
-				44D5F23D21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift */,
 				44D5F23F21BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift */,
+				44D5F23D21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift */,
+				44D5F23B21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift */,
 				44D5F24121BAD56100CAA846 /* TestPage.swift */,
 			);
 			path = "Message BoardUITests";
@@ -562,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NH6AR4LY3J;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,6 +581,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NH6AR4LY3J;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -599,7 +601,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = NH6AR4LY3J;
 				INFOPLIST_FILE = MessageBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -619,7 +621,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = NH6AR4LY3J;
 				INFOPLIST_FILE = MessageBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

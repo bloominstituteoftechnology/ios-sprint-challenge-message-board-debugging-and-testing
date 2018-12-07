@@ -23,4 +23,31 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+   
+func makingNewThreads() {
+   let title1 = "Brand New Message"
+    MessageThreadTViewControllerTestPage(testCase: self)
+        .NavigationTitle()
+        .createNewThread(title1)
+        .verifyingCell(title1)
+        .tapOnCell(at:1)
+    }
+    
+    func tappingOnThread() {
+       let title1 = "Brand New Message"
+        MessageThreadDetailTableVCTestPage(testCase: self)
+            .titleShows(title1)
+            .cellIsthere(title1)
+            .goBack()
+            .tapOnCell(at: 1)
+            .tapAddButton()
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 }
