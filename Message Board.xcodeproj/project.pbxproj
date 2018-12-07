@@ -113,8 +113,7 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
-				4643602B211ABBF800E7FF73 /* Model */,
-				4643602C211ABBFE00E7FF73 /* Model Controller */,
+				4643602B211ABBF800E7FF73 /* Model + Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
 				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602D211ABC0900E7FF73 /* Resources */,
@@ -141,20 +140,13 @@
 			path = "Message BoardUITests";
 			sourceTree = "<group>";
 		};
-		4643602B211ABBF800E7FF73 /* Model */ = {
+		4643602B211ABBF800E7FF73 /* Model + Model Controller */ = {
 			isa = PBXGroup;
 			children = (
 				4612B5D9211AB66600E7FF73 /* MessageThread.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4643602C211ABBFE00E7FF73 /* Model Controller */ = {
-			isa = PBXGroup;
-			children = (
 				4612B5DB211AB6C500E7FF73 /* MessageThreadController.swift */,
 			);
-			path = "Model Controller";
+			path = "Model + Model Controller";
 			sourceTree = "<group>";
 		};
 		4643602D211ABC0900E7FF73 /* Resources */ = {
@@ -546,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7LHTMK9AWG;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,6 +557,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7LHTMK9AWG;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -583,7 +577,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 7LHTMK9AWG;
 				INFOPLIST_FILE = MessageBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -603,7 +597,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 7LHTMK9AWG;
 				INFOPLIST_FILE = MessageBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

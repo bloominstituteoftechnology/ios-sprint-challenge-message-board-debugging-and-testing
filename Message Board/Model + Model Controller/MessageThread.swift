@@ -8,18 +8,6 @@
 
 import Foundation
 
-//struct MessageThread: Codable {
-//    let identifier: String
-//    let messages: [String: Message]
-//    let title: String
-//}
-//
-//struct Message: Codable {
-//    let messageText, sender: String
-//    let timestamp: Double
-//}
-
-
 class MessageThread: Codable, Equatable {
 
     let title: String
