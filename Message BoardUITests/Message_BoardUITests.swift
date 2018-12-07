@@ -23,4 +23,11 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreateMessageThread() {
+        let messageThreadsPage = MessageThreadsPage(testCase: self)
+        
+        messageThreadsPage.createMessageThread()
+        .verifyMessageThreadCell(at: 0)
+    }
+    
 }

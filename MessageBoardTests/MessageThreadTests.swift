@@ -11,5 +11,14 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    let messageThreadController = MessageThreadController()
+    
+    func testCreateMessageThread() {
+        
+        messageThreadController.createMessageThread(with: "Testing") {
+            XCTAssertNotEqual(self.messageThreadController.messageThreads, [])
+        }
+    }
+    
     
 }

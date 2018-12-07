@@ -25,8 +25,8 @@ struct MessageThreadsPage: TestPage {
     @discardableResult func createMessageThread() -> MessageThreadsPage {
         XCTAssert(messageThreadTextField.exists)
         messageThreadTextField.tap()
-        messageThreadTextField.typeText("Something something test")
-        messageThreadTextField.keyboards.buttons["Return"].tap()
+        messageThreadTextField.typeText("Something something test\n")
+    //  messageThreadTextField.keyboards.buttons["return"].tap()
         
         return self
     }
