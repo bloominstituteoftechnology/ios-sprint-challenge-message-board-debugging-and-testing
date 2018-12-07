@@ -29,6 +29,14 @@ struct ThreadTVCPage: TestPage {
         return self
     }
     
+    @discardableResult func clickOnCell(at index: Int) -> DetailVCPage {
+        let cell = getCell(at: 0)
+        XCTAssert(cell.exists)
+        
+        cell.tap()
+        return DetailVCPage(testCase: testCase)
+    }
+    
     
     
     // Verifications

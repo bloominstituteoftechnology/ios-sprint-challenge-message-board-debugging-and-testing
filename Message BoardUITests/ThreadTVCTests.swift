@@ -25,5 +25,15 @@ class ThreadTVCTests: XCTestCase {
             
         .verifyThreadCell(at: 0)
     }
+    
+    
+    func testThreadServerLoad() {
+        ThreadTVCPage(testCase: self)
+        .createNewThread()
+        .clickOnCell(at: 0)
+        .tapBackButton()
+            
+        .verifyThreadCell(at: 0)
+    }
 
 }
