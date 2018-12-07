@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44D5F23C21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5F23B21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift */; };
+		44D5F23E21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5F23D21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift */; };
+		44D5F24021BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5F23F21BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift */; };
+		44D5F24221BAD56100CAA846 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5F24121BAD56100CAA846 /* TestPage.swift */; };
 		4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612B5C7211AB41100E7FF73 /* AppDelegate.swift */; };
 		4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CB211AB41200E7FF73 /* Main.storyboard */; };
 		4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CE211AB41300E7FF73 /* Assets.xcassets */; };
@@ -42,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44D5F23B21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagBoardDetailViewControllerTest.swift; sourceTree = "<group>"; };
+		44D5F23D21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableVCTestPage.swift; sourceTree = "<group>"; };
+		44D5F23F21BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " MessageThreadTViewControllerTestPage.swift"; sourceTree = "<group>"; };
+		44D5F24121BAD56100CAA846 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +145,10 @@
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
+				44D5F23B21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift */,
+				44D5F23D21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift */,
+				44D5F23F21BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift */,
+				44D5F24121BAD56100CAA846 /* TestPage.swift */,
 			);
 			path = "Message BoardUITests";
 			sourceTree = "<group>";
@@ -345,7 +357,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D5F23E21BAD43400CAA846 /* MessageThreadDetailTableVCTestPage.swift in Sources */,
+				44D5F23C21BAD3CA00CAA846 /* MessagBoardDetailViewControllerTest.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
+				44D5F24221BAD56100CAA846 /* TestPage.swift in Sources */,
+				44D5F24021BAD47900CAA846 /*  MessageThreadTViewControllerTestPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
