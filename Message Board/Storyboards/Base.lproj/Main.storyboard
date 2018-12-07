@@ -24,7 +24,7 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a new thread:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72q-hR-yhN">
                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
-                                    <accessibility key="accessibilityConfiguration">
+                                    <accessibility key="accessibilityConfiguration" identifier="MessageThreadsTableViewController.ThreadTextField">
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
                                     <nil key="textColor"/>
@@ -60,6 +60,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="MessageThreadsTableViewController.ThreadCell"/>
                                 <connections>
                                     <segue destination="haD-iA-YGa" kind="show" identifier="ViewMessageThread" id="pxs-pL-1M3"/>
                                 </connections>
@@ -111,6 +112,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="MessageThreadDetailTableViewController.MessageCell"/>
                                 <connections>
                                     <segue destination="BoB-4p-ZG3" kind="show" identifier="ShowMessage" id="5qo-Qh-ACt"/>
                                 </connections>
@@ -207,4 +209,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="5qo-Qh-ACt"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
