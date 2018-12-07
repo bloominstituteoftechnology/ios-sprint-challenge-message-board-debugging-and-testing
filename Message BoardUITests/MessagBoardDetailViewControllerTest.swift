@@ -1,5 +1,5 @@
 //
-//  MessagBoard-DetailViewControllerTest.swift
+//  MessagBoardDetailViewControllerTest.swift
 //  Message BoardUITests
 //
 //  Created by Yvette Zhukovsky on 12/7/18.
@@ -44,6 +44,13 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
         return self
     }
     
+    
+    @discardableResult func tapSendButton()->MessageThreadDetailTableVCTestPage {
+        sendButton.tap()
+        return MessageThreadDetailTableVCTestPage(testCase: testCase)
+        
+    }
+    
     @discardableResult func goBack() -> MessageThreadDetailTableVCTestPage{
         backButton.tap()
         return MessageThreadDetailTableVCTestPage(testCase: testCase)
@@ -62,5 +69,11 @@ struct  MessagBoardDetailViewControllerTest: TestPage {
     
     //Verifications
     
+    @discardableResult func showTitle() -> MessagBoardDetailViewControllerTest{
+        let navigationBar = app.navigationBars.firstMatch
+        XCTAssert(navigationBar.exists)
+        return self
+        
+    }
     
 }

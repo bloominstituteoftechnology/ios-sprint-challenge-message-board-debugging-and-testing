@@ -45,6 +45,15 @@ class Message_BoardUITests: XCTestCase {
     }
     
     
+    func addindNewMessage() {
+         let title11 = "Brand New Message More"
+        let message = "Hello There!!!"
+     MessagBoardDetailViewControllerTest(testCase: self)
+        .createNewThread(title11)
+        .writeMessage(message)
+        .showTitle()
+        .tapSendButton()
+    }
     
     
     
