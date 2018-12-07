@@ -44,6 +44,7 @@ class Message_BoardUITests: XCTestCase {
             .verifyingCell(title1)
             .tapOnCell(at: 1)
             .tapAddButton()
+            .showTitle()
             .createNewThread(title2)
             .writeMessage(message)
             .tapSendButton()

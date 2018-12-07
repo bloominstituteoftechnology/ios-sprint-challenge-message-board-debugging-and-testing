@@ -44,7 +44,7 @@ struct MessageThreadDetailTableVCTestPage: TestPage {
 //        return self
 //    }
     
-    @discardableResult func titleShows(_ title: String)-> MessageThreadDetailTableVCTestPage {
+    @discardableResult func titleShows()-> MessageThreadDetailTableVCTestPage {
 
         let navigationBar = app.navigationBars.firstMatch
         XCTAssert(navigationBar.exists)
