@@ -111,6 +111,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messageboard-fb33c.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
