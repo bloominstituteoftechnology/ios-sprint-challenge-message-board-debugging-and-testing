@@ -39,7 +39,7 @@ class MessageThreadController {
             }
             
             completion()
-        }.resume()
+            }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -73,7 +73,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             ///
-        }.resume()
+            }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -107,9 +107,11 @@ class MessageThreadController {
                 return
             }
             
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
             
-        }.resume()
+            }.resume()
     }
     
     static let baseURL = URL(string: "https://messageboard-fb33c.firebaseio.com/")!

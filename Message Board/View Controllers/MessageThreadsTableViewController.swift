@@ -9,7 +9,7 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +30,7 @@ class MessageThreadsTableViewController: UITableViewController {
     
     @IBAction func createThread(_ sender: Any) {
         threadTitleTextField.resignFirstResponder()
-
+        
         guard let threadTitle = threadTitleTextField.text else { return }
         
         threadTitleTextField.text = ""
@@ -47,17 +47,17 @@ class MessageThreadsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageThreadController.messageThreads.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
-
+        
         return cell
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
