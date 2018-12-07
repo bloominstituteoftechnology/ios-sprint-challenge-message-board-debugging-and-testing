@@ -21,14 +21,16 @@ struct NewMessagePage: TestPage {
     }
     
     var messageInput: XCUIElement {
-        return app.textFields["newMessageView.messageInput"]
+        return app.textViews["newMessageView.messageInput"]
     }
     
     
     // Actions
     
     @discardableResult func sendNewMessage() -> DetailVCPage {
-        nameInput.typeText("TestName")
+        nameInput.tap()
+        nameInput.typeText("TestName\n")
+        messageInput.tap()
         messageInput.typeText("TestMessage")
         sendButton.tap()
         return DetailVCPage(testCase: testCase)
