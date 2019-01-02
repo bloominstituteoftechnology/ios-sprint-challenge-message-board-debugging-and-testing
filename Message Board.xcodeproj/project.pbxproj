@@ -21,6 +21,11 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
+		4754915C21BADBC60049FCDB /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754915B21BADBC60049FCDB /* TestPage.swift */; };
+		4754915E21BAF9F70049FCDB /* ThreadMessagesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754915D21BAF9F70049FCDB /* ThreadMessagesPage.swift */; };
+		4754916021BAFAE60049FCDB /* ThreadTVCPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754915F21BAFAE60049FCDB /* ThreadTVCPage.swift */; };
+		4754916221BAFB610049FCDB /* ThreadDVCPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754916121BAFB610049FCDB /* ThreadDVCPage.swift */; };
+		4754916421BAFE170049FCDB /* MessageThreadTVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754916321BAFE170049FCDB /* MessageThreadTVCTests.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +65,11 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		4754915B21BADBC60049FCDB /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		4754915D21BAF9F70049FCDB /* ThreadMessagesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadMessagesPage.swift; sourceTree = "<group>"; };
+		4754915F21BAFAE60049FCDB /* ThreadTVCPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTVCPage.swift; sourceTree = "<group>"; };
+		4754916121BAFB610049FCDB /* ThreadDVCPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadDVCPage.swift; sourceTree = "<group>"; };
+		4754916321BAFE170049FCDB /* MessageThreadTVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTVCTests.swift; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -135,7 +145,12 @@
 		4629C7E7214BA09600E7FF73 /* Message BoardUITests */ = {
 			isa = PBXGroup;
 			children = (
+				4754915D21BAF9F70049FCDB /* ThreadMessagesPage.swift */,
+				4754915F21BAFAE60049FCDB /* ThreadTVCPage.swift */,
+				4754916121BAFB610049FCDB /* ThreadDVCPage.swift */,
+				4754916321BAFE170049FCDB /* MessageThreadTVCTests.swift */,
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
+				4754915B21BADBC60049FCDB /* TestPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 			);
 			path = "Message BoardUITests";
@@ -259,7 +274,7 @@
 		4612B5BC211AB41100E7FF73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
@@ -345,7 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4754916021BAFAE60049FCDB /* ThreadTVCPage.swift in Sources */,
+				4754916221BAFB610049FCDB /* ThreadDVCPage.swift in Sources */,
+				4754915C21BADBC60049FCDB /* TestPage.swift in Sources */,
+				4754916421BAFE170049FCDB /* MessageThreadTVCTests.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
+				4754915E21BAF9F70049FCDB /* ThreadMessagesPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +566,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JG93VFG2G;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JG93VFG2G;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

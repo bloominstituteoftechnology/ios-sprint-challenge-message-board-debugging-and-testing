@@ -20,13 +20,17 @@ class MessageThreadTVCTests: XCTestCase {
         
     }
 
-    func createNewThread() {
-        ThreadTVCPage(testCase: self).createNewThread()
+    func testCreateNewThread() {
+        ThreadTVCPage(testCase: self)
+        .createNewThread()
         .verifyCell(at: 0)
     }
 
     func testFetchServer(){
-        
+        ThreadTVCPage(testCase: self)
+            .verifyCell(at: 0)
+            .tapAddButton()
+            .sendNewMessage()
     }
     
    

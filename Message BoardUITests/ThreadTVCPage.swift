@@ -12,8 +12,8 @@ struct ThreadTVCPage: TestPage {
      var testCase: XCTestCase
     
     // Elements
-    var threadTextField: XCUIElement {
-        return app.textFields["ThreadTVC.textField"]
+    var textField: XCUIElement {
+        return app.textFields["newThread.textField"]
     }
     
     func firstCell(at index: Int) -> XCUIElement {
@@ -24,9 +24,10 @@ struct ThreadTVCPage: TestPage {
     
     // create new thread
     @discardableResult func createNewThread() -> ThreadTVCPage {
-        threadTextField.tap()
-        threadTextField.typeText("TestThread")
-        app.keyboards.buttons["Return"].tap()
+       XCTAssert(textField.exists)
+        textField.tap()
+        textField.typeText("TestThread")
+        //app.keyboards.buttons["Return"].tap()
         return self
     }
     
