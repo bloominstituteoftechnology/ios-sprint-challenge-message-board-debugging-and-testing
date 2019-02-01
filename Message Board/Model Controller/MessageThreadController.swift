@@ -15,10 +15,10 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            fetchLocalMessageThreads(completion: completion)
-            return
-        }
+//        if isUITesting {
+//            fetchLocalMessageThreads(completion: completion)
+//            return
+//        }
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
@@ -46,10 +46,10 @@ class MessageThreadController {
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            createLocalMessageThread(with: title, completion: completion)
-            return
-        }
+//        if isUITesting {
+//            createLocalMessageThread(with: title, completion: completion)
+//            return
+//        }
         
         let thread = MessageThread(title: title)
         self.messageThreads.append(thread)
@@ -80,10 +80,10 @@ class MessageThreadController {
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
-            return
-        }
+//        if isUITesting {
+//            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+//            return
+//        }
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
@@ -114,9 +114,5 @@ class MessageThreadController {
     }
     
     static let baseURL = URL(string: "https://ios-journal.firebaseio.com/")!
-    var messageThreads: [MessageThread] = [] {
-        didSet {
-            print(messageThreads.count)
-        }
-    }
+    var messageThreads: [MessageThread] = []
 }

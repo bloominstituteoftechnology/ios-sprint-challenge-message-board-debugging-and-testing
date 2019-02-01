@@ -31,7 +31,18 @@ struct MessageDetailPage: TestPage {
         sendButton.tap()
         return self
     }
-    
+    @discardableResult func typeTextIntoTextField(file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        testCase.expect(exists: senderNameTextField, file: file, line: line)
+        senderNameTextField.tap()
+        senderNameTextField.typeText("Austin")
+        return self
+    }
+    @discardableResult func typeTextIntoTextView(file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        testCase.expect(exists: messageTextView, file: file, line: line)
+        messageTextView.tap()
+        messageTextView.typeText("This is my awesome message to all of Lambda: Hello.")
+        return self
+    }
     
     // Verifications
     

@@ -15,10 +15,13 @@ struct MessageThreadsDetailPage: TestPage {
     // Elements
     
     func getCertainCell(index: Int) -> XCUIElement {
-        return app.collectionViews.children(matching: .cell).element(boundBy: index).children(matching: .other).element
+        return app.tables.children(matching: .cell).element(boundBy: 0)
     }
     var addButton: XCUIElement {
     return app.navigationBars.buttons["Add"]
+    }
+    var backButton: XCUIElement {
+        return app.navigationBars.buttons["λ Message Board"]
     }
     // Interactions
     
@@ -30,6 +33,11 @@ struct MessageThreadsDetailPage: TestPage {
     @discardableResult func tapOnAddButton(file: String = #file, line: UInt = #line) -> MessageThreadsDetailPage {
         testCase.expect(exists: addButton)
         addButton.tap()
+        return self
+    }
+    @discardableResult func tapOnBackButton(file: String = #file, line: UInt = #line) -> MessageThreadsDetailPage {
+        testCase.expect(exists: backButton)
+        backButton.tap()
         return self
     }
     

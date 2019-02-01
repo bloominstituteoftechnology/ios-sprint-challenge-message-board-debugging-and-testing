@@ -25,6 +25,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return messageThread?.messages.count ?? 0
     }
 
@@ -52,6 +53,10 @@ class MessageThreadDetailTableViewController: UITableViewController {
     
     // MARK: - Properties
 
-    var messageThread: MessageThread?
+    var messageThread: MessageThread? {
+        didSet {
+            print(messageThread)
+        }
+    }
     var messageThreadController: MessageThreadController?
 }

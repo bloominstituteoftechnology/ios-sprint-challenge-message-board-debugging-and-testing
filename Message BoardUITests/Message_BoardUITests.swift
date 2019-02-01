@@ -17,22 +17,40 @@ class Message_BoardUITests: XCTestCase {
         
         continueAfterFailure = false
         
-        let app = XCUIApplication()
+        app = XCUIApplication()
         
-        app.launchArguments = ["UITesting"]
-        app.launch()
+        app?.launchArguments = ["UITesting"]
+        app?.launch()
     }
     
-    func testSendMessageButton() {
+    func testCreatingAMessage() {
         
-            sleep(5)
         MessageThreadsPage(testCase: self)
             .tapOnCell(index: 0)
         MessageThreadsDetailPage(testCase: self)
         .tapOnAddButton()
         MessageDetailPage(testCase: self)
+            .typeTextIntoTextField()
+            .typeTextIntoTextView()
         .tapOnSendButton()
         
     }
     
+    func testCreatingAThread() {
+        MessageThreadsPage(testCase: self)
+        .typeInTextField()
+    }
+    
+    func testGeneralNavigation() {
+        
+        MessageThreadsPage(testCase: self)
+            .tapOnCell(index: 0)
+        MessageThreadsDetailPage(testCase: self)
+            .tapOnAddButton()
+        MessageDetailPage(testCase: self)
+            .tapOnSendButton()
+        MessageThreadsDetailPage(testCase: self)
+            .tapOnBackButton
+    }
+    var app: XCUIApplication?
 }

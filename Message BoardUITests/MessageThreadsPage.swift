@@ -15,17 +15,26 @@ struct MessageThreadsPage: TestPage {
     // Elements
     
     func getCertainCell(index: Int) -> XCUIElement {
-        return app.collectionViews.children(matching: .cell).element(boundBy: index).children(matching: .other).element
+        return app.tables.children(matching: .cell).element(boundBy: 0)
+    }
+    var threadTextField: XCUIElement {
+        return app.tables.textFields["Create a new thread:"]
     }
     
     // Interactions
+    
+    @discardableResult func typeInTextField(file: String = #file, line: UInt = #line) -> MessageThreadsPage {
+        testCase.expect(exists: threadTextField, file: file, line: line)
+        threadTextField.tap()
+        threadTextField.typeText("Hello")
+        return self
+    }
     
     @discardableResult func tapOnCell(index: Int, file: String = #file, line: UInt = #line) -> MessageThreadsPage {
         testCase.expect(exists: getCertainCell(index: index), file: file, line: line)
         getCertainCell(index: 0).tap()
         return self
     }
-    
     // Verifications
     
 }

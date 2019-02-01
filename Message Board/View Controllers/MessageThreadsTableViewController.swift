@@ -39,7 +39,6 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(messageThreadController.messageThreads.count)
         return messageThreadController.messageThreads.count
     }
 
@@ -59,6 +58,7 @@ class MessageThreadsTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
+            
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         }
     }

@@ -47,8 +47,8 @@ class MessageThread: Codable, Equatable {
         if container.contains(.messages) {
         let messagesContainer = try container.nestedContainer(keyedBy: GenericCodingKey.self, forKey: .messages)
             let allKeys = messagesContainer.allKeys
-            while !messagesContainer.contains(allKeys[0]) {
-            let message = try messagesContainer.decode(Message.self, forKey: allKeys[0])
+            for key in allKeys {
+                let message = try messagesContainer.decode(Message.self, forKey: key)
             newMessages.append(message)
         }
         }

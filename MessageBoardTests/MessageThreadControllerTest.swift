@@ -25,7 +25,11 @@ class MessageThreadControllerTest: XCTestCase {
         mtc?.createMessageThread(with: "Hello World", completion: {})
         XCTAssert((mtc?.messageThreads.count)! > 0, "Expected MessageThreadController.messageThreads.count to be more than 0.")
     }
-    
+    func testCreateMessage() {
+        let messageThread = MessageThread(title: "Hello")
+        mtc?.createMessage(in: messageThread, withText: "Simple Things", sender: "Austin") {
+        }
+    }
     var mtc: MessageThreadController?
 
 }
