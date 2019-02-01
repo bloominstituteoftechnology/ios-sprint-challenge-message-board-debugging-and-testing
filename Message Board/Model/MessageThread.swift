@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class MessageThread: Codable, Equatable {
 
     let title: String
@@ -25,11 +26,25 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messagesContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .messages)
+        
+        var newMessages: [Message] = []
+        while !messagesContainer.contains(.identifier) {
+            let message = try messagesContainer.decode(Message.self, forKey: .identifier)
+            newMessages.append(message)
+        }
+        
+        
+        
+        
+
+        
+//        let speciesContainer = try container.nestedContainer(keyedBy: Keys.speciesKeys.self, forKey: .species)
+//        species = try speciesContainer.decode(String.self, forKey: .name)
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages
+        self.messages = newMessages
     }
 
     

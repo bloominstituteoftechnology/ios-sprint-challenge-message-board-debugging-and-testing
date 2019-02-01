@@ -23,4 +23,16 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testSendMessageButton() {
+        
+            sleep(5)
+        MessageThreadsPage(testCase: self)
+            .tapOnCell(index: 0)
+        MessageThreadsDetailPage(testCase: self)
+        .tapOnAddButton()
+        MessageDetailPage(testCase: self)
+        .tapOnSendButton()
+        
+    }
+    
 }

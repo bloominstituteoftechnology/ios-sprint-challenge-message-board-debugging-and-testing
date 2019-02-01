@@ -39,6 +39,7 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(messageThreadController.messageThreads.count)
         return messageThreadController.messageThreads.count
     }
 
@@ -65,6 +66,6 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Properties
     
     let messageThreadController = MessageThreadController()
-    
+
     @IBOutlet weak var threadTitleTextField: UITextField!
 }
