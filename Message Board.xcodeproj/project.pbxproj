@@ -25,6 +25,7 @@
 		D14028672204A51F0043BE69 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14028662204A51F0043BE69 /* TestPage.swift */; };
 		D14028692204A53A0043BE69 /* XCTestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14028682204A53A0043BE69 /* XCTestCase+Expect.swift */; };
 		D140286B2204A55D0043BE69 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D140286A2204A55D0043BE69 /* MessagePage.swift */; };
+		D14028702204BE5B0043BE69 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D140286F2204BE5B0043BE69 /* Appearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		D14028662204A51F0043BE69 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		D14028682204A53A0043BE69 /* XCTestCase+Expect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Expect.swift"; sourceTree = "<group>"; };
 		D140286A2204A55D0043BE69 /* MessagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePage.swift; sourceTree = "<group>"; };
+		D140286F2204BE5B0043BE69 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
+				D140286E2204BE4B0043BE69 /* Appearance */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
@@ -204,6 +207,14 @@
 				9D9B6B00214B7A66006381F7 /* Info.plist */,
 			);
 			path = MessageBoardTests;
+			sourceTree = "<group>";
+		};
+		D140286E2204BE4B0043BE69 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				D140286F2204BE5B0043BE69 /* Appearance.swift */,
+			);
+			path = Appearance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +354,7 @@
 				4612B5DA211AB66600E7FF73 /* MessageThread.swift in Sources */,
 				4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */,
 				46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */,
+				D14028702204BE5B0043BE69 /* Appearance.swift in Sources */,
 				4629C7DE214B925E00E7FF73 /* IsUITesting.swift in Sources */,
 				46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */,
 				46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */,
