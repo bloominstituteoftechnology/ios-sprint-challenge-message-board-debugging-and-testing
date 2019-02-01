@@ -17,38 +17,46 @@ struct MessagePage: TestPage {
     
     // MARK: - Elements
     
-    /// - Requires: The value of the index should be from 0 to 8.
-    private func cellFor(_ item: Int) -> XCUIElement {
-        return app.collectionViews.children(matching:.cell).element(boundBy: item)
+    private func threadCellFor(_ index: Int) -> XCUIElement {
+        return app.tables.cells["MessageThreadsTableViewController.ThreadCell\(index)"]
         
     }
     
-    var cameraLabel: XCUIElement {
-        return app.staticTexts["PhotoDetailViewController.CameraLabel"]
+    private func messageCellFor(_ index: Int) -> XCUIElement {
+        return app.tables.cells["MessageThreadDetailTableViewController.MessageCell\(index)"]
+        
     }
     
-    var saveButton: XCUIElement {
-        return app.buttons["PhotoDetailViewController.SaveButton"]
+    var threadTitleTextField: XCUIElement {
+        return app.textFields["MessageThreadsTableViewController.ThreadTitleTextField"]
     }
     
-    var detailedPhotoImageView: XCUIElement {
-        return app.images["PhotoDetailViewController.ImageView"]
+    var addButton: XCUIElement {
+        return app.navigationBars.buttons["add"]
     }
     
-    var nextMessageBarButton: XCUIElement {
-        return app.buttons["PhotosCollectionViewController.NextMessageButton"]
+    var sendButton: XCUIElement {
+        return app.navigationBars.buttons["Send"]
     }
     
-    var previousMessageBarButton: XCUIElement {
-        return app.buttons["PhotosCollectionViewController.PreviousMessageButton"]
-    }
     
     
     // MARK: - Actions (interactions)
     
-    @discardableResult func tapOnCollectionViewCell(at item: Int, file: String = #file, line: UInt = #line) -> MessagePage {
+    @discardableResult func tapAndEnterTextOnThreadTitleTextField(with string: String, file: String = #file, line: UInt = #line) -> MessagePage {
         
-        let cell = cellFor(item)
+        testCase.expect(exists: threadTitleTextField, file: file, line: line)
+        threadTitleTextField.tap()
+        
+        threadTitleTextField.typeText(string)
+        
+        return self
+        
+    }
+    
+    @discardableResult func tapOnThreadCell(at index: Int, file: String = #file, line: UInt = #line) -> MessagePage {
+        
+        let cell = threadCellFor(index)
         
         testCase.expect(exists: cell, file: file, line: line)
         cell.tap()
@@ -56,71 +64,32 @@ struct MessagePage: TestPage {
         return self
         
     }
-    
-    @discardableResult func tapOnNextMessageBarButton(file: String = #file, line: UInt = #line) -> MessagePage {
-        
-        testCase.expect(exists: nextMessageBarButton, file: file, line: line)
-        nextMessageBarButton.tap()
-        
-        return self
-        
-    }
-    
-    @discardableResult func tapOnPreviousMessageBarButton(file: String = #file, line: UInt = #line) -> MessagePage {
-        
-        testCase.expect(exists: previousMessageBarButton, file: file, line: line)
-        previousMessageBarButton.tap()
-        
-        return self
-        
-    }
-    
-    @discardableResult func tapOnSaveButton(file: String = #file, line: UInt = #line) -> MessagePage {
-        
-        testCase.expect(exists: saveButton, file: file, line: line)
-        saveButton.tap()
-        
-        return self
-        
-    }
+
     
     
     // MARK: - Verifications
     
-    @discardableResult func verifyCameraLabel(file: String = #file, line: UInt = #line) -> MessagePage {
-        
-        testCase.expect(exists: cameraLabel, file: file, line: line)
-        testCase.expect(cameraLabel.label, equals: "Front Hazard Avoidance Camera")
-        
+    
+    @discardableResult func verifyThreadsHaveLoaded(file: String = #file, line: UInt = #line) -> MessagePage {
+
+        let predicate = NSPredicate(format: "count > 0")
+
+        testCase.expectation(for: predicate, evaluatedWith: app.tables.cells)
+        testCase.waitForExpectations(timeout: 4, handler: nil)
+
         return self
-        
+
     }
     
-    
-    @discardableResult func verifyMessageHasPictures(file: String = #file, line: UInt = #line) -> MessagePage {
+    @discardableResult func verifyMessagesHaveLoaded(file: String = #file, line: UInt = #line) -> MessagePage {
         
         let predicate = NSPredicate(format: "count > 0")
         
-        testCase.expectation(for: predicate, evaluatedWith: app.collectionViews.cells)
+        testCase.expectation(for: predicate, evaluatedWith: app.tables.cells)
         testCase.waitForExpectations(timeout: 4, handler: nil)
         
         return self
         
-    }
-    
-    @discardableResult func verifyDetailedPhotoImageView(file: String = #file, line: UInt = #line) -> MessagePage {
-        
-        testCase.expect(exists: detailedPhotoImageView, file: file, line: line)
-        
-        return self
-        
-    }
-    
-    struct Camera: Codable, Equatable {
-        let id: Int
-        let name: String
-        let roverId: Int
-        let fullName: String
     }
     
 }
