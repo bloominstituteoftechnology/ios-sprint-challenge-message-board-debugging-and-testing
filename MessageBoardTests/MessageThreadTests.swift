@@ -11,5 +11,28 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testNoErrorDecodingJSON() {
+        
+    }
+    
+    func testMakingPutRequest() {
+        
+    }
+    
+    func testSendButtonWorking() {
+        
+    }
+    
+    func testSenderNameRequirement() {
+        
+    }
+    
+    func testNoDuplicationOfThreads() {
+        
+    }
+    
+    func testGettingRightSegue() {
+        
+    }
     
 }
