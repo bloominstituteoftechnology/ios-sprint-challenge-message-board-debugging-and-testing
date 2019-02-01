@@ -26,6 +26,8 @@
 		D14028692204A53A0043BE69 /* XCTestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14028682204A53A0043BE69 /* XCTestCase+Expect.swift */; };
 		D140286B2204A55D0043BE69 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D140286A2204A55D0043BE69 /* MessagePage.swift */; };
 		D14028702204BE5B0043BE69 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D140286F2204BE5B0043BE69 /* Appearance.swift */; };
+		D1402872220504890043BE69 /* ThreadPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1402871220504890043BE69 /* ThreadPage.swift */; };
+		D1402874220504970043BE69 /* MessageDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1402873220504970043BE69 /* MessageDetailPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		D14028682204A53A0043BE69 /* XCTestCase+Expect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Expect.swift"; sourceTree = "<group>"; };
 		D140286A2204A55D0043BE69 /* MessagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePage.swift; sourceTree = "<group>"; };
 		D140286F2204BE5B0043BE69 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		D1402871220504890043BE69 /* ThreadPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadPage.swift; sourceTree = "<group>"; };
+		D1402873220504970043BE69 /* MessageDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,8 @@
 				D14028662204A51F0043BE69 /* TestPage.swift */,
 				D14028682204A53A0043BE69 /* XCTestCase+Expect.swift */,
 				D140286A2204A55D0043BE69 /* MessagePage.swift */,
+				D1402871220504890043BE69 /* ThreadPage.swift */,
+				D1402873220504970043BE69 /* MessageDetailPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 			);
 			path = "Message BoardUITests";
@@ -366,6 +372,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1402872220504890043BE69 /* ThreadPage.swift in Sources */,
+				D1402874220504970043BE69 /* MessageDetailPage.swift in Sources */,
 				D14028672204A51F0043BE69 /* TestPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
 				D140286B2204A55D0043BE69 /* MessagePage.swift in Sources */,

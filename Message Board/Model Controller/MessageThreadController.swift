@@ -29,11 +29,6 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            // check if data equals "null"
-            
-            if String(decoding: data, as: UTF8.self) == "null" {
-                NSLog("\"Null\" returned from data task"); completion(); return
-            }
             
             
             do {
@@ -85,6 +80,33 @@ class MessageThreadController {
             
         }.resume()
     }
+    
+    
+//    func deleteMessageThread(with thread: MessageThread) {
+//        
+//        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+//        if isUITesting {
+////            createLocalMessageThread(with: thread.identifier)
+//            return
+//        }
+//        
+//        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = "DELETE"
+//        
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+//            
+//            if let error = error {
+//                NSLog("Error with message thread creation data task: \(error)")
+//                
+//                    return
+//                }
+//                
+//                self.messageThreads.remove(at: <#T##Int#>)
+//            
+//            
+//            }.resume()
+//    }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         

@@ -23,11 +23,6 @@ class MessageThreadsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        messageThreadController.fetchMessageThreads {
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
     }
     
     // MARK: - Actions
@@ -59,6 +54,15 @@ class MessageThreadsTableViewController: UITableViewController {
         cell.accessibilityIdentifier = "MessageThreadsTableViewController.ThreadCell\(indexPath.row)"
         return cell
     }
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            
+//            let thread = messageThreadController.messageThreads[indexPath.row]
+//            
+//            messageThreadController.deleteMessageThread(with: thread)
+//        }
+//    }
     
     // MARK: - Navigation
 

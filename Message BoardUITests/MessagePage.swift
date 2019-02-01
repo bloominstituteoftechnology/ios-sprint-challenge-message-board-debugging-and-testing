@@ -17,51 +17,28 @@ struct MessagePage: TestPage {
     
     // MARK: - Elements
     
-    private func threadCellFor(_ index: Int) -> XCUIElement {
-        return app.tables.cells["MessageThreadsTableViewController.ThreadCell\(index)"]
-        
-    }
-    
     private func messageCellFor(_ index: Int) -> XCUIElement {
         return app.tables.cells["MessageThreadDetailTableViewController.MessageCell\(index)"]
         
     }
     
-    var threadTitleTextField: XCUIElement {
-        return app.textFields["MessageThreadsTableViewController.ThreadTitleTextField"]
-    }
-    
     var addButton: XCUIElement {
-        return app.navigationBars.buttons["add"]
+        return app.navigationBars.buttons["Add"]
     }
-    
-    var sendButton: XCUIElement {
-        return app.navigationBars.buttons["Send"]
-    }
-    
     
     
     // MARK: - Actions (interactions)
     
-    @discardableResult func tapAndEnterTextOnThreadTitleTextField(with string: String, file: String = #file, line: UInt = #line) -> MessagePage {
-        
-        testCase.expect(exists: threadTitleTextField, file: file, line: line)
-        threadTitleTextField.tap()
-        
-        threadTitleTextField.typeText(string)
-        
-        return self
-        
-    }
     
-    @discardableResult func tapOnThreadCell(at index: Int, file: String = #file, line: UInt = #line) -> MessagePage {
+    
+    @discardableResult func tapOnAddButton(at index: Int, file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
-        let cell = threadCellFor(index)
+        testCase.expect(exists: addButton, file: file, line: line)
+        addButton.tap()
         
-        testCase.expect(exists: cell, file: file, line: line)
-        cell.tap()
+        let messageDetailPage = MessageDetailPage(testCase: testCase)
         
-        return self
+        return messageDetailPage
         
     }
 
@@ -91,6 +68,16 @@ struct MessagePage: TestPage {
         return self
         
     }
+    
+//    @discardableResult func verifyPopViewControllerAfterSend(file: String = #file, line: UInt = #line) -> MessagePage {
+//        
+//        
+//        testCase.expect(exists: sendButton, file: file, line: line)
+//        
+//        return self
+//        
+//    }
+    
     
 }
 

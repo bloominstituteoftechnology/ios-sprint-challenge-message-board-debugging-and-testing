@@ -44,6 +44,12 @@ class MessageThread: Codable, Equatable {
         let sender: String
         let timestamp: Date
         
+        enum CodingKeys: String, CodingKey {
+            case messageText = "text"
+            case sender
+            case timestamp
+        }
+        
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text
             self.sender = sender
