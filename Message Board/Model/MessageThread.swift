@@ -10,6 +10,24 @@ import Foundation
 
 
 class MessageThread: Codable, Equatable {
+    
+    struct GenericCodingKey: CodingKey {
+        var stringValue: String
+        
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+            self.intValue = nil
+        }
+        
+        var intValue: Int?
+        
+        init?(intValue: Int) {
+            self.stringValue = ""
+            self.intValue = intValue
+        }
+        
+        
+    }
 
     let title: String
     var messages: [MessageThread.Message]
@@ -24,15 +42,18 @@ class MessageThread: Codable, Equatable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let title = try container.decode(String.self, forKey: .title)
-        let identifier = try container.decode(String.self, forKey: .identifier)
-        let messagesContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .messages)
-        
         var newMessages: [Message] = []
-        while !messagesContainer.contains(.identifier) {
-            let message = try messagesContainer.decode(Message.self, forKey: .identifier)
+        let identifier = try container.decode(String.self, forKey: .identifier)
+        if container.contains(.messages) {
+        let messagesContainer = try container.nestedContainer(keyedBy: GenericCodingKey.self, forKey: .messages)
+            let allKeys = messagesContainer.allKeys
+            while !messagesContainer.contains(allKeys[0]) {
+            let message = try messagesContainer.decode(Message.self, forKey: allKeys[0])
             newMessages.append(message)
         }
+        }
+        
+        let title = try container.decode(String.self, forKey: .title)
         
         
         
