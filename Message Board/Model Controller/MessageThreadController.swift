@@ -29,9 +29,20 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            // check if data equals "null"
+            
+            if String(decoding: data, as: UTF8.self) == "null" {
+                NSLog("\"Null\" returned from data task"); completion(); return
+            }
+            
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageResult = try JSONDecoder().decode([String:MessageThread].self, from: data)
+
+                for messageThread in self.messageResult {
+                    self.messageThreads.append(messageThread.value)
+                }
+                
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -53,7 +64,7 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpMethod = "PUT"
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
@@ -72,7 +83,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -113,4 +124,6 @@ class MessageThreadController {
     
     static let baseURL = URL(string: "https://first-project-263b0.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
+    var messageResult: [String : MessageThread] = [:]
+
 }
