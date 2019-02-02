@@ -40,6 +40,7 @@ class MessageThreadTests: XCTestCase {
     func testDecodingFromFetchServer() {
 
         let messageThreadController = MessageThreadController()
+        
         let expectation = self.expectation(description: "Add Thread")
         
         messageThreadController.fetchMessageThreads {
@@ -48,14 +49,17 @@ class MessageThreadTests: XCTestCase {
             }
         }
         waitForExpectations(timeout: 3, handler: nil)
+        
+        XCTAssert(messageThreadController.messageThreads.count > 0)
 
     }
     
     func testAddingOneMessageToAThread() {
 
-        // Why too verbose but this works as long as
-        // a one-in-100 million chance of a random collision
-        // TODO: - Make more Efficient
+        // This is really bad and I wouln't mind some
+        // feedback on this one
+        // is the scope of this test too large?
+        // could I use NSOperation to my advantage here?
         let messageThreadController = MessageThreadController()
         var randomInt = Int.random(in: 0...100000000)
         let newThreadTitle = "Thread\(randomInt)"

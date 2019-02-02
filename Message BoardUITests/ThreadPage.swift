@@ -68,7 +68,6 @@ struct ThreadPage: TestPage {
         
         let predicate = NSPredicate(format: "count == 2")
         
-        // TODO: fix to filter for thread table only
         testCase.expectation(for: predicate, evaluatedWith: threadsTableView.cells)
         testCase.waitForExpectations(timeout: 4, handler: nil)
         
@@ -81,7 +80,6 @@ struct ThreadPage: TestPage {
         
         let predicate = NSPredicate(format: "count == 3")
         
-        // TODO: fix to filter for thread table only
         testCase.expectation(for: predicate, evaluatedWith: threadsTableView.cells)
         testCase.waitForExpectations(timeout: 4, handler: nil)
         
@@ -94,7 +92,6 @@ struct ThreadPage: TestPage {
         
         let cell = threadCellFor(index)
         
-        // TODO: fix to filter for thread table only
         testCase.expect(exists: cell)
         
         return self
