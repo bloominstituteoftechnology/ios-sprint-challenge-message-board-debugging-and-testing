@@ -33,7 +33,10 @@ class Message_BoardUITests: XCTestCase {
             .typeTextIntoTextField()
             .typeTextIntoTextView()
         .tapOnSendButton()
-        
+        MessageThreadsDetailPage(testCase: self)
+        .verifyMessageCellExists()
+
+
     }
     
     func testCreatingAThread() {
