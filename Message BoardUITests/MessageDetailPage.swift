@@ -27,42 +27,83 @@ struct MessageDetailPage: TestPage {
         return app.textFields["MessageDetailViewController.SenderTextField"]
     }
     
-    var messageTextField: XCUIElement {
-        return app.textFields["MessageDetailViewController.MessageTextField"]
+    var messageTextView: XCUIElement {
+        return app.textViews["MessageDetailViewController.MessageTextView"]
+    }
+    
+    var okButton: XCUIElement {
+        return app.buttons["OK"]
     }
     
     
     // MARK: - Actions (interactions)
     
-    @discardableResult func enterTextIntoSenderTextField(with string: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
+    @discardableResult func enterTextIntoSenderTextField(sender string: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
         testCase.expect(exists: senderTextField, file: file, line: line)
+        senderTextField.tap()
         senderTextField.typeText(string)
         
         return self
         
     }
     
-    @discardableResult func tapSendButton(with string: String, file: String = #file, line: UInt = #line) -> MessagePage {
+    @discardableResult func enterTextIntoMessageTextView(text string: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        
+        testCase.expect(exists: messageTextView, file: file, line: line)
+        messageTextView.tap()
+        messageTextView.typeText(string)
+        
+        return self
+        
+    }
+    
+    @discardableResult func tapSendButtonSuccess(file: String = #file, line: UInt = #line) -> MessagePage {
         
         testCase.expect(exists: sendButton, file: file, line: line)
         sendButton.tap()
         
         let messagePage = MessagePage(testCase: testCase)
-        
         return messagePage
     
     }
+    
+    @discardableResult func tapSendButtonFail(file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        
+        testCase.expect(exists: sendButton, file: file, line: line)
+        sendButton.tap()
+        
+        return self
+        
+    }
+    
+    @discardableResult func tapAlertOkay(file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        
+        testCase.expect(exists: okButton, file: file, line: line)
+        okButton.tap()
+        
+        return self
+        
+    }
+    
     // MARK: - Verifications
     
     
-//    @discardableResult func verifySendButtonNotification(with string: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
-//        
-//        testCase.expect(exists: sendButton, file: file, line: line)
-//        sendButton.tap()
-//        
-//        return self
-//        
-//    }
+    @discardableResult func verifySendButtonNotification(with string: String, file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        
+        testCase.expect(exists: sendButton, file: file, line: line)
+        sendButton.tap()
+        
+        return self
+        
+    }
+    
+    @discardableResult func verifyAlertExists(file: String = #file, line: UInt = #line) -> MessageDetailPage {
+        
+        testCase.expect(exists: okButton, file: file, line: line)
+        
+        return self
+        
+    }
     
 }

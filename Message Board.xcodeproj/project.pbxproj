@@ -28,6 +28,7 @@
 		D14028702204BE5B0043BE69 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D140286F2204BE5B0043BE69 /* Appearance.swift */; };
 		D1402872220504890043BE69 /* ThreadPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1402871220504890043BE69 /* ThreadPage.swift */; };
 		D1402874220504970043BE69 /* MessageDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1402873220504970043BE69 /* MessageDetailPage.swift */; };
+		D1F99725220582A500462232 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F997232205829C00462232 /* XCUIElement+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		D140286F2204BE5B0043BE69 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		D1402871220504890043BE69 /* ThreadPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadPage.swift; sourceTree = "<group>"; };
 		D1402873220504970043BE69 /* MessageDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailPage.swift; sourceTree = "<group>"; };
+		D1F997232205829C00462232 /* XCUIElement+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +127,7 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
-				D140286E2204BE4B0043BE69 /* Appearance */,
+				D140286E2204BE4B0043BE69 /* Helpers */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
@@ -154,6 +156,7 @@
 				D1402871220504890043BE69 /* ThreadPage.swift */,
 				D140286A2204A55D0043BE69 /* MessagePage.swift */,
 				D1402873220504970043BE69 /* MessageDetailPage.swift */,
+				D1F997232205829C00462232 /* XCUIElement+Extension.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 			);
 			path = "Message BoardUITests";
@@ -215,12 +218,12 @@
 			path = MessageBoardTests;
 			sourceTree = "<group>";
 		};
-		D140286E2204BE4B0043BE69 /* Appearance */ = {
+		D140286E2204BE4B0043BE69 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				D140286F2204BE5B0043BE69 /* Appearance.swift */,
 			);
-			path = Appearance;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +380,7 @@
 				D14028672204A51F0043BE69 /* TestPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
 				D140286B2204A55D0043BE69 /* MessagePage.swift in Sources */,
+				D1F99725220582A500462232 /* XCUIElement+Extension.swift in Sources */,
 				D14028692204A53A0043BE69 /* XCTestCase+Expect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = S5U94G8XN2;
 				INFOPLIST_FILE = "$(SRCROOT)/Message Board/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,7 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = S5U94G8XN2;
 				INFOPLIST_FILE = "$(SRCROOT)/Message Board/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

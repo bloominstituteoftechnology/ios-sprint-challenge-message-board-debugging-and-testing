@@ -81,4 +81,5 @@ class MessageThreadsTableViewController: UITableViewController {
     let messageThreadController = MessageThreadController()
     
     @IBOutlet weak var threadTitleTextField: UITextField!
+    @IBOutlet weak var enterButton: UIButton!
 }

@@ -26,6 +26,11 @@ struct ThreadPage: TestPage {
         return app.textFields["MessageThreadsTableViewController.ThreadTitleTextField"]
     }
     
+    var threadsTableView: XCUIElement {
+        
+        return app.tables.containing(.cell, identifier:"MessageThreadsTableViewController.ThreadCell0").element
+    }
+    
     // MARK: - Actions (interactions)
     
     
@@ -48,24 +53,54 @@ struct ThreadPage: TestPage {
         threadTitleTextField.tap()
         
         threadTitleTextField.typeText(string)
+        threadTitleTextField.typeText("\n")
         
         return self
         
     }
+    
+    
     
     // MARK: - Verifications
     
     
     @discardableResult func verifyThreadsHaveLoaded(file: String = #file, line: UInt = #line) -> ThreadPage {
         
-        let predicate = NSPredicate(format: "count > 0")
+        let predicate = NSPredicate(format: "count == 2")
         
-        testCase.expectation(for: predicate, evaluatedWith: app.tables.cells)
+        // TODO: fix to filter for thread table only
+        testCase.expectation(for: predicate, evaluatedWith: threadsTableView.cells)
         testCase.waitForExpectations(timeout: 4, handler: nil)
         
         return self
         
     }
+    
+    
+    @discardableResult func verifyThreadsCount(file: String = #file, line: UInt = #line) -> ThreadPage {
+        
+        let predicate = NSPredicate(format: "count == 3")
+        
+        // TODO: fix to filter for thread table only
+        testCase.expectation(for: predicate, evaluatedWith: threadsTableView.cells)
+        testCase.waitForExpectations(timeout: 4, handler: nil)
+        
+        XCTAssertTrue(threadsTableView.cells.count == 3)
+        return self
+        
+    }
+    
+    @discardableResult func verifyThreadCellExists(at index: Int, file: String = #file, line: UInt = #line) -> ThreadPage {
+        
+        let cell = threadCellFor(index)
+        
+        // TODO: fix to filter for thread table only
+        testCase.expect(exists: cell)
+        
+        return self
+        
+    }
+    
 
     
 }

@@ -30,6 +30,7 @@ class Message_BoardUITests: XCTestCase {
     func testTapOnThreadCell(){
 
         ThreadPage(testCase: self)
+            .verifyThreadCellExists(at: 0)
             .tapOnThreadsCell(at: 0)
 
 
@@ -39,50 +40,73 @@ class Message_BoardUITests: XCTestCase {
 
         ThreadPage(testCase: self)
             .tapAndEnterTextOnThreadTitleTextField(with: "Hello")
-            .tapOnThreadsCell(at: 0)
+            .verifyThreadCellExists(at: 2)
+            .tapOnThreadsCell(at: 2)
+        MessagePage(testCase: self)
+            .verifyMessagesCount(count: 0)
 
     }
 
     func testThreadsHaveLoaded(){
 
-        MessagePage(testCase: self)
-            .verifyMessagesHaveLoaded()
+        ThreadPage(testCase: self)
+            .verifyThreadsHaveLoaded()
 
     }
 
     func testMessagesHaveLoaded(){
-
+        
+        ThreadPage(testCase: self)
+            .verifyThreadCellExists(at: 0)
+            .tapOnThreadsCell(at: 0)
         MessagePage(testCase: self)
             .verifyMessagesHaveLoaded()
 
     }
 
-    func testPopAfterMessageSend(){
+    func testEnterNewMessageAndSend(){
 
+        ThreadPage(testCase: self)
+            .tapOnThreadsCell(at: 0)
         MessagePage(testCase: self)
-//            .tapAndEnterTextOnThreadTitleTextField(with: "Hello")
+            .tapOnAddButton()
+        MessageDetailPage(testCase: self)
+            .enterTextIntoSenderTextField(sender: "Ben")
+            .enterTextIntoMessageTextView(text: "Sample Text")
+            .tapSendButtonSuccess()
+            .verifyMessagesWithSenderTitleExists(with: "Ben")
 
     }
 
-    func testRequiredSenderAlert(){
+    func testNoSenderAlert(){
 
+        ThreadPage(testCase: self)
+            .tapOnThreadsCell(at: 0)
         MessagePage(testCase: self)
-        //            .tapAndEnterTextOnThreadTitleTextField(with: "Hello")
-
-    }
-
-    func testAddNewMessage(){
-
-        MessagePage(testCase: self)
-        //            .tapAndEnterTextOnThreadTitleTextField(with: "Hello")
-
-    }
-
-    func testSendButton(){
-
-        MessagePage(testCase: self)
-//            .tapAndEnterTextOnThreadTitleTextField(with: "Hello")
+            .tapOnAddButton()
+        MessageDetailPage(testCase: self)
+            .tapSendButtonFail()
+            .verifyAlertExists()
+            .tapAlertOkay()
 
     }
     
+    func testGettingRightSegueToDetail(){
+        
+        ThreadPage(testCase: self)
+            .tapOnThreadsCell(at: 0)
+        MessagePage(testCase: self)
+            .tapOnAddButton()
+
+    }
+    
+    func testNoDuplicationOfThreads() {
+        ThreadPage(testCase: self)
+            .tapAndEnterTextOnThreadTitleTextField(with: "Hello")
+            .tapOnThreadsCell(at: 2)
+        MessagePage(testCase: self)
+            .goBackToThreadCell(with: "Hello")
+            .verifyThreadsCount()
+        
+    }
 }
