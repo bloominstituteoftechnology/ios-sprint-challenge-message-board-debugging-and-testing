@@ -26,10 +26,7 @@ struct MessagePage: TestPage {
         return app.navigationBars.buttons["Add"]
     }
     
-    
     // MARK: - Actions (interactions)
-    
-    
     
     @discardableResult func tapOnAddButton(at index: Int, file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
@@ -41,22 +38,8 @@ struct MessagePage: TestPage {
         return messageDetailPage
         
     }
-
-    
     
     // MARK: - Verifications
-    
-    
-    @discardableResult func verifyThreadsHaveLoaded(file: String = #file, line: UInt = #line) -> MessagePage {
-
-        let predicate = NSPredicate(format: "count > 0")
-
-        testCase.expectation(for: predicate, evaluatedWith: app.tables.cells)
-        testCase.waitForExpectations(timeout: 4, handler: nil)
-
-        return self
-
-    }
     
     @discardableResult func verifyMessagesHaveLoaded(file: String = #file, line: UInt = #line) -> MessagePage {
         
@@ -69,15 +52,7 @@ struct MessagePage: TestPage {
         
     }
     
-//    @discardableResult func verifyPopViewControllerAfterSend(file: String = #file, line: UInt = #line) -> MessagePage {
-//        
-//        
-//        testCase.expect(exists: sendButton, file: file, line: line)
-//        
-//        return self
-//        
-//    }
-    
+
     
 }
 

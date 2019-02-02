@@ -53,8 +53,6 @@ struct ThreadPage: TestPage {
         
     }
     
-    
-    
     // MARK: - Verifications
     
     

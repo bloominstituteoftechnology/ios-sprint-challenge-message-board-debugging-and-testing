@@ -151,8 +151,8 @@
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				D14028662204A51F0043BE69 /* TestPage.swift */,
 				D14028682204A53A0043BE69 /* XCTestCase+Expect.swift */,
-				D140286A2204A55D0043BE69 /* MessagePage.swift */,
 				D1402871220504890043BE69 /* ThreadPage.swift */,
+				D140286A2204A55D0043BE69 /* MessagePage.swift */,
 				D1402873220504970043BE69 /* MessageDetailPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 			);

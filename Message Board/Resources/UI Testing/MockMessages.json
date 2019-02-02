@@ -15,7 +15,7 @@
         "messages": {
             "-LMFqDrLu56ad9P_gur0": {
                 "sender": "Bob",
-                "test": "It’s working!",
+                "text": "It’s working!",
                 "timestamp": 5.58500002217834E8
             }
         },
