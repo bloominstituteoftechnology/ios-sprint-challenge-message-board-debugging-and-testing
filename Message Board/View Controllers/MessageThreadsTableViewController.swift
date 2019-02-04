@@ -58,6 +58,7 @@ class MessageThreadsTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
+            
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         }
     }
@@ -65,6 +66,6 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Properties
     
     let messageThreadController = MessageThreadController()
-    
+
     @IBOutlet weak var threadTitleTextField: UITextField!
 }
