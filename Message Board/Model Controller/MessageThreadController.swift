@@ -10,6 +10,12 @@ import Foundation
 
 class MessageThreadController {
     
+    init() {
+        fetchMessageThreads {
+            
+        }
+    }
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
