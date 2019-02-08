@@ -22,9 +22,8 @@ class MessageThreadTests: XCTestCase {
     // App doesn't create new threads
     func testCreateNewThread() {
     
-        
-    
-    
+        let controller = MessageThreadController()
+        XCTAssertTrue(controller.messageThreads != [])
     }
     
 
