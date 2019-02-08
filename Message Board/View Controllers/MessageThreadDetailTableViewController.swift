@@ -14,6 +14,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = messageThread?.title
+        navigationItem.leftBarButtonItem?.accessibilityIdentifier = "TitleScene.backButton"
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "TitleScene.addButton"
     }
     
     override func viewWillAppear(_ animated: Bool) {
