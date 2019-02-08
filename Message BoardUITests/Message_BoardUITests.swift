@@ -12,10 +12,28 @@ class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication = XCUIApplication()
     // MessageThreadsTableViewController
-   
-    //MessageThreadDetailTableViewController
+    var createNewThread: XCUIElement {
+        return app.textFields["MessageThreadsTableViewController.ThreadTitleTextField"]
+    }
     
-    //MessageDetailViewController
+    var messageThreadCell: XCUIElement {
+        return app.cells["MessageThreadsTableViewController.MessageThreadCell"]
+    }
+    
+    // MessageThreadDetailTableViewController
+    var messageCell: XCUIElement {
+        return app.cells["MessageThreadDetailTableViewController.MessageCell"]
+    }
+    // Message Add button...
+    
+    // MessageDetailViewController
+    var messageSender: XCUIElement {
+        return app.textFields["MessageDetailViewController.SenderNameTextField"]
+    }
+    
+    var messageContent: XCUIElement {
+        return app.textViews["MessageDetailViewController.MessageTextView"]
+    }
     
     override func setUp() {
         super.setUp()
