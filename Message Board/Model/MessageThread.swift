@@ -13,7 +13,14 @@ class MessageThread: Codable, Equatable {
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
-
+    
+    // MARK: App had no coding keys
+//    enum CodingKeys: String, CodingKey {
+//        case title
+//        case messages
+//        case identifier
+//    }
+    
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages

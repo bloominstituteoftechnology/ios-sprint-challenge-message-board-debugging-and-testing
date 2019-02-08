@@ -18,9 +18,12 @@ class MessageDetailViewController: UIViewController {
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
         
+        
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            print("Message created!")
-        })
+                print("Message created!")
+            })
+        // MARK: Pop navigation controller so it goes back to previous VC
+        //navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties

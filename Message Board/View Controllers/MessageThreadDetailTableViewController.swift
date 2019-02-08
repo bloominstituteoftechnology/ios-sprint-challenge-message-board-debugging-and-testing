@@ -43,8 +43,11 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+            guard let destinationVC = segue.destination as? MessageDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
             
+            // MARK: Segue did not pass indexPath to corresponding messageThread
+            destinationVC.messageThread = messageThreadController?.messageThreads[indexPath.row]
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
