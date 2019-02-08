@@ -12,6 +12,12 @@ class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.backBarButtonItem!.accessibilityIdentifier = "NewMessageScen.backButton"
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "NewMessageScen.sendButton"
+    }
+    
     @IBAction func sendMessage(_ sender: Any) {
         
         guard let senderName = senderNameTextField.text,

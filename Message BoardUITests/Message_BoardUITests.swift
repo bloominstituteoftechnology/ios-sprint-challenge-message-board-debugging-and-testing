@@ -85,12 +85,65 @@ class Message_BoardUITests: XCTestCase {
         createNewMessage.typeText("TestingTapToCell")
         createNewMessage.typeText("\n")
         messageCell.tap()
-       // messageCellInDetait.tap()
+        messageCellInDetait.tap()
     }
     
     
     
     // message detail
     
+    var enterNewMessageText: XCUIElement {
+        let app = XCUIApplication()
+        return app.textFields["NewMessageScen.newMessage"]
+    }
+    
+    var enterNewMessageDescription: XCUIElement {
+        let app = XCUIApplication()
+        return app.textFields["NewMessageScen.newMessageDescription"]
+    }
+    
+    var navigationSendButton: XCUIElement {
+        let app = XCUIApplication()
+        return app.navigationBars.buttons["NewMessageScen.sendButton"]
+    }
+    
+    var navigationBackButton: XCUIElement {
+        let app = XCUIApplication()
+        return app.navigationBars.buttons["NewMessageScen.backButton"]
+    }
+    
+    func testEnterTextNameOnNewMessage() {
+        createNewMessage.tap()
+        createNewMessage.typeText("TestingTapToCell")
+        createNewMessage.typeText("\n")
+        messageCell.tap()
+        navigationAddButton.tap()
+        enterNewMessageText.tap()
+        enterNewMessageText.typeText("TestingTextField")
+    }
+    
+    func testEnterTextOnNewMessageDescripton() {
+        createNewMessage.tap()
+        createNewMessage.typeText("TestingTapToCell")
+        createNewMessage.typeText("\n")
+        messageCell.tap()
+        navigationAddButton.tap()
+        enterNewMessageText.tap()
+        enterNewMessageText.typeText("TestingTextField")
+        enterNewMessageText.typeText("\n")
+        enterNewMessageDescription.tap()
+        enterNewMessageDescription.typeText("Hello")
+    }
+    
+    func testSendButton() {
+        createNewMessage.tap()
+        createNewMessage.typeText("TestingTapToCell")
+        createNewMessage.typeText("\n")
+        messageCell.tap()
+        navigationAddButton.tap()
+        enterNewMessageText.tap()
+        enterNewMessageText.typeText("TestingTextField")
+        navigationSendButton.tap()
+    }
     
 }
