@@ -48,9 +48,9 @@ class Message_BoardUITests: XCTestCase {
     }
     
     // Massage Board Detail
-    var navigationBackButton: XCUIElement {
+    var mainNavigationBackButton: XCUIElement {
         let app = XCUIApplication()
-        return app.buttons["TitleScene.backButton"]
+        return app.buttons["λ Message Board"]
     }
     
     var navigationAddButton: XCUIElement {
@@ -70,7 +70,7 @@ class Message_BoardUITests: XCTestCase {
         createNewMessage.typeText("TestingTapToCell")
         createNewMessage.typeText("\n")
         messageCell.tap()
-        //navigationBackButton.tap()
+        mainNavigationBackButton.tap()
     }
     
     func testnavigationAddButtonTap() {
@@ -85,8 +85,11 @@ class Message_BoardUITests: XCTestCase {
         createNewMessage.typeText("TestingTapToCell")
         createNewMessage.typeText("\n")
         messageCell.tap()
-        // need to create one
-    
+        navigationAddButton.tap()
+        enterNewMessageText.tap()
+        enterNewMessageText.typeText("TestingTextField")
+        navigationSendButton.tap()
+        detailNvigationBackButton.tap()
         messageCellInDetait.tap()
     }
     
@@ -101,7 +104,7 @@ class Message_BoardUITests: XCTestCase {
     
     var enterNewMessageDescription: XCUIElement {
         let app = XCUIApplication()
-        return app.textFields["NewMessageScen.newMessageDescription"]
+        return app.textViews["NewMessageScen.newMessageDescription"]
     }
     
     var navigationSendButton: XCUIElement {
@@ -111,7 +114,7 @@ class Message_BoardUITests: XCTestCase {
     
     var detailNvigationBackButton: XCUIElement {
         let app = XCUIApplication()
-        return app.navigationBars.buttons["NewMessageScen.backButton"]
+        return app.navigationBars.buttons["TestingTapToCell"]
     }
     
     func testEnterTextNameOnNewMessage() {
@@ -149,7 +152,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
     
-    func testbackButton() {
+    func testCteateNewMassageAndBackButton() {
         createNewMessage.tap()
         createNewMessage.typeText("TestingTapToCell")
         createNewMessage.typeText("\n")
@@ -158,7 +161,7 @@ class Message_BoardUITests: XCTestCase {
         enterNewMessageText.tap()
         enterNewMessageText.typeText("TestingTextField")
         navigationSendButton.tap()
-       // detailNvigationBackButton.tap()
+        detailNvigationBackButton.tap()
     }
     
 }
