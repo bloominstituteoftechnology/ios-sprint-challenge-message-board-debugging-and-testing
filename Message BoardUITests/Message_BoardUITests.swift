@@ -3,13 +3,9 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
-    // MARK: - Element Identifiers
-    
     var app = XCUIApplication()
     
-//    var initialTableViewController: XCUIElement {
-//        return app.
-//    }
+    // MARK: - Element Identifiers
     
     var createLabel: XCUIElement {
         return app.staticTexts["MessageThreadsTableViewController.CreateLabel"]
@@ -50,9 +46,25 @@ class Message_BoardUITests: XCTestCase {
     
     func testInitialTableView() {
         
+        // verify that I can find the label
+        XCTAssertTrue(createLabel.exists)
+    }
+    
+    func testAddThread() {
+        
+        app.tables["Empty list"].textFields["Create a new thread:"].tap()
+        
+        // Assert that whatever was typed into the createLabel appears in the first table view cell
+        XCTAssertEqual(messageThreadCell.value as! String, "\(createLabel.staticTexts)")
+        
+//        let firstCell = app.tables.cells.element(boundBy: 0)
+//        firstCell.staticTexts["\(createLabel.title)"]
+        
     }
     
     func testThreadTableView() {
+        
+        
         
     }
     
