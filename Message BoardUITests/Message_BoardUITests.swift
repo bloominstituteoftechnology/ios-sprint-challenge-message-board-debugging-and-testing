@@ -28,7 +28,17 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testExample() {
-        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery.textFields["Create a new thread:"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["CHICKEN"]/*[[".cells.staticTexts[\"CHICKEN\"]",".staticTexts[\"CHICKEN\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let chickenNavigationBar = app.navigationBars["CHICKEN"]
+        chickenNavigationBar.buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.otherElements.containing(.navigationBar, identifier:"New Message").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.tap()
+        app.textViews.containing(.button, identifier:"Lab").element.tap()
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        chickenNavigationBar.buttons["λ Message Board"].tap()
 
     }
     
