@@ -11,5 +11,4 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    
 }

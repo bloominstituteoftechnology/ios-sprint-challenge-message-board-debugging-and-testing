@@ -9,7 +9,6 @@
 import Foundation
 
 class MessageThread: Codable, Equatable {
-
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
@@ -25,7 +24,11 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        
+        // Mark: Bug 04
+        // let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messagesDictionary = try container.decodeIfPresent([String: Message].self, forKey: .messages)
+        let messages = messagesDictionary?.compactMap({ $0.value }) ?? []
         
         self.title = title
         self.identifier = identifier
@@ -34,7 +37,6 @@ class MessageThread: Codable, Equatable {
 
     
     struct Message: Codable, Equatable {
-        
         let messageText: String
         let sender: String
         let timestamp: Date
