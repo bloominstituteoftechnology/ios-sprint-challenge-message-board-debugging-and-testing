@@ -20,6 +20,12 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            // shouldn't we pop our VC here?
+            // ON THE MAIN QUEUE
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
+            
         })
     }
 

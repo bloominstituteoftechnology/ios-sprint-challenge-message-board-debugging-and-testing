@@ -43,6 +43,7 @@ class MessageThread: Codable, Equatable {
         let timestamp: Date
         
         init(text: String, sender: String, timestamp: Date = Date()) {
+            //this was different in MockMessages.json - changed it there
             self.messageText = text
             self.sender = sender
             self.timestamp = timestamp
