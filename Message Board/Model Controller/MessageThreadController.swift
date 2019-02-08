@@ -1,10 +1,3 @@
-//
-//  MessageThreadController.swift
-//  Message Board
-//
-//  Created by Spencer Curtis on 8/7/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
-//
 
 import Foundation
 
@@ -32,6 +25,7 @@ class MessageThreadController {
             
             do {
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -72,7 +66,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume() // missing resume
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +105,7 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://message-thread-debugging.firebaseio.com/")!
+    //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
