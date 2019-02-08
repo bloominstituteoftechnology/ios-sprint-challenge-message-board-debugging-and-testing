@@ -85,6 +85,8 @@ class Message_BoardUITests: XCTestCase {
         createNewMessage.typeText("TestingTapToCell")
         createNewMessage.typeText("\n")
         messageCell.tap()
+        // need to create one
+    
         messageCellInDetait.tap()
     }
     
@@ -107,7 +109,7 @@ class Message_BoardUITests: XCTestCase {
         return app.navigationBars.buttons["NewMessageScen.sendButton"]
     }
     
-    var navigationBackButton: XCUIElement {
+    var detailNvigationBackButton: XCUIElement {
         let app = XCUIApplication()
         return app.navigationBars.buttons["NewMessageScen.backButton"]
     }
@@ -144,6 +146,19 @@ class Message_BoardUITests: XCTestCase {
         enterNewMessageText.tap()
         enterNewMessageText.typeText("TestingTextField")
         navigationSendButton.tap()
+    }
+    
+    
+    func testbackButton() {
+        createNewMessage.tap()
+        createNewMessage.typeText("TestingTapToCell")
+        createNewMessage.typeText("\n")
+        messageCell.tap()
+        navigationAddButton.tap()
+        enterNewMessageText.tap()
+        enterNewMessageText.typeText("TestingTextField")
+        navigationSendButton.tap()
+       // detailNvigationBackButton.tap()
     }
     
 }

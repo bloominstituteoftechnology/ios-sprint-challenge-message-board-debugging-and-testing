@@ -14,7 +14,7 @@ class MessageDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem!.accessibilityIdentifier = "NewMessageScen.backButton"
+        navigationItem.backBarButtonItem?.accessibilityIdentifier = "NewMessageScen.backButton"
         navigationItem.rightBarButtonItem?.accessibilityIdentifier = "NewMessageScen.sendButton"
     }
     
