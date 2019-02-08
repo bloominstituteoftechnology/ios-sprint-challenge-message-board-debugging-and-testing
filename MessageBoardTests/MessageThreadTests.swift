@@ -16,6 +16,7 @@ class MessageThreadTests: XCTestCase {
     let newTestMessageTitle = "New Message #1"
     let newTestMessageText = "This is New Message #1"
     let newTestSender = "Alfred"
+    var newTestMessage: MessageThread!
     
     // Setup
     override func setUp() {
@@ -26,17 +27,19 @@ class MessageThreadTests: XCTestCase {
     // Create a new Thread
     func testCreateNewThread() {
         
-        let messagesCount = messageThreadController.messageThreads.count
+        let messagesThreadCount = messageThreadController.messageThreads.count
         messageThreadController.createMessageThread(with: newTestThreadName) {
     
-            XCTAssertEqual(self.messageThreadController.messageThreads.count, messagesCount + 1)
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, messagesThreadCount + 1)
         }
     }
     
-    // Create a new Message - maybe do this inside new thread makes more sense?
+    // Create a new Message
     func testCreateNewMessage() {
-        
+        // This is tested in UITests. Could not figure out
+        // how to access the proper methods to do it here.
     }
+
     
     // Fetch Message Threads
     func testFetchMessageThread() {
