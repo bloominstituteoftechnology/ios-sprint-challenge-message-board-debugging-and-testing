@@ -193,14 +193,14 @@ class Message_BoardUITests: XCTestCase {
         sendButton.tap()
         // test cell exists
         XCTAssertTrue(app.tables.cells.staticTexts[newTestMessage1Title].exists)
-
-        // test abort without send
-        
-        // test send without input?
-        
         
     }
     
+    // MARK: - Some Possible Further Testing Scenarios
+    
+    // test abort without send?
+    
+    // test send without input?
     
     
 }
