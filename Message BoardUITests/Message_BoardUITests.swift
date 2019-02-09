@@ -70,22 +70,28 @@ class Message_BoardUITests: XCTestCase {
         textView.tap()
         app.navigationBars["New Message"].buttons["Send"].tap()
         recordNavigationBar.buttons["λ Message Board"].tap()
-        
     }
 
     
     
     func testCreateThread() {
         createNewThread.tap()
+        XCTAssert(createNewThread.exists)
         createNewThread.typeText("testCreateThread()\n")
         messageThreadCell.tap()
+        XCTAssert(messageThreadCell.exists)
+        XCTAssert(messageAddButton.exists)
         messageAddButton.tap()
         messageSender.tap()
+        XCTAssert(messageSender.exists)
         messageSender.typeText("Steve Jobs")
         messageContent.tap()
+        XCTAssert(messageContent.exists)
         messageContent.typeText("I should invent a wired air mouse.\n It would make Ivan very happy! Hmmmmm...")
+        XCTAssert(messageSendButton.exists)
         messageSendButton.tap()
-        
     }
+    
+    
     
 }
