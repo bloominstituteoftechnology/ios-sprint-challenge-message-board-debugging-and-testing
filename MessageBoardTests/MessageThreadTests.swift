@@ -12,8 +12,8 @@ import XCTest
 class MessageThreadTests: XCTestCase {
     
     var messageThreadController: MessageThreadController!
-    let newTestThreadName = "Test Thread #1"
-    let newTestMessageTitle = "New Message #1"
+    let newTestThreadName1 = "Test Thread #1"
+    let newTestMessage1Title = "New Message #1"
     let newTestMessageText = "This is New Message #1"
     let newTestSender = "Alfred"
     var newTestMessage: MessageThread!
@@ -28,9 +28,9 @@ class MessageThreadTests: XCTestCase {
     func testCreateNewThread() {
         
         let messagesThreadCount = messageThreadController.messageThreads.count
-        messageThreadController.createMessageThread(with: newTestThreadName) {
+        messageThreadController.createMessageThread(with: newTestThreadName1) {
     
-            XCTAssertEqual(self.messageThreadController.messageThreads.count, messagesThreadCount + 1)
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, messagesThreadCount + 2)
         }
     }
     

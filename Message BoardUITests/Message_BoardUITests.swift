@@ -10,7 +10,48 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+    
     // MARK: - Setup
+    var app: XCUIApplication! = XCUIApplication()
+    
+    var newTestThreadName1 = "Test Thread #1"
+    
+    var newTestThreadName2 = "Test Thread #2"
+    var newTestThreadName3 = "Test Thread #3"
+    
+    var newTestMessage1Title = "New Message #1"
+    var newTestMessage1Text1 = "This is New Message #1"
+    
+    var newTestMessage2Title = "New Message #2"
+    var newTestMessage2Text1 = "This is New Message #2"
+    
+    var messageBoardTitleString = "λ Message Board"
+    
+    var newMessageDetailViewTitle = "New Message"
+    
+    var newTestThreadTextField: XCUIElement {
+//        return app.tables.textFields["MessageThreadsTableViewController.createNewThreadTextField"]
+        return app.textFields["MessageThreadsTableViewController.createNewThreadTextField"]
+    }
+    
+    var sendButton: XCUIElement {
+        // newMessageNavigationBar.buttons["Send"].tap()
+        return app.buttons["Add"]
+        
+    }
+    
+    var messageBoardTitle: XCUIElement {
+        return app.staticTexts["λ Message Board"]
+    }
+    
+    var returnKey: XCUIElement {
+        return app.keyboards.buttons["Return"]
+    }
+    
+    
+    
+    
+    
     override func setUp() {
         super.setUp()
 
@@ -22,6 +63,7 @@ class Message_BoardUITests: XCTestCase {
         
         app.launchArguments = ["UITesting"]
         app.launch()
+        
     }
     
     
@@ -29,15 +71,32 @@ class Message_BoardUITests: XCTestCase {
     
     // add a new message thread
     func testCreateNewMessageThread() {
-        // create the thread
+        // is title correct
+        //XCTAssertTrue(messageBoardTitle.exists)
+        // does text field exist
+        XCTAssertTrue(newTestThreadTextField.exists)
+        // tap textfield for focus
+        newTestThreadTextField.tap()
+        // enter text in text field for thread #1
+        newTestThreadTextField.typeText(newTestThreadName1)
+        // press return & create Thread
+        returnKey.tap()
+        // test that thread cell exists
+        XCTAssertTrue(app.tables.cells.staticTexts[newTestThreadName1].exists)
+        // tap textfield for focus
+        newTestThreadTextField.tap()
+        // enter text in text field for thread #2
+        newTestThreadTextField.typeText(newTestThreadName2)
+        // press return & create Thread
+        returnKey.tap()
+        // test that thread cell exists
+        XCTAssertTrue(app.tables.cells.staticTexts[newTestThreadName2].exists)
         
-        // test that cell exists
     }
     
     // tapping on a message thread cell
     func testTappingOnMessageThreadCell() {
-        // create thread #1
-        
+       
         // test title
         
         // test cell exists
