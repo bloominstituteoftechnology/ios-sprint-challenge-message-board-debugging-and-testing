@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Message_Board
 
 class Message_BoardUITests: XCTestCase {
     
@@ -29,26 +30,45 @@ class Message_BoardUITests: XCTestCase {
     
     var newMessageDetailViewTitle = "New Message"
     
+    
+    
     var newTestThreadTextField: XCUIElement {
 //        return app.tables.textFields["MessageThreadsTableViewController.createNewThreadTextField"]
         return app.textFields["MessageThreadsTableViewController.createNewThreadTextField"]
     }
     
+    var newMessageTextField: XCUIElement {
+        return app.textFields["MessageDetailViewController.createNewMessageTextField"]
+    }
+    
+    var newMessageTextView: XCUIElement {
+        return app.textViews["MessageDetailViewController.createNewMessageTextView"]
+    }
+    
     var sendButton: XCUIElement {
         // newMessageNavigationBar.buttons["Send"].tap()
-        return app.buttons["Add"]
+        return app.buttons["Send"]
         
     }
     
     var messageBoardTitle: XCUIElement {
-        return app.staticTexts["λ Message Board"]
+        
+        //return app.staticTexts["λ Message Board"]
+        return app.otherElements["MessageThreadTVCTitle"]
     }
     
     var returnKey: XCUIElement {
         return app.keyboards.buttons["Return"]
     }
     
+    var backButton: XCUIElement {
+        return app.buttons["λ Message Board"]
+        
+    }
     
+    var addButton: XCUIElement {
+        return app.buttons["Add"]
+    }
     
     
     
@@ -72,7 +92,8 @@ class Message_BoardUITests: XCTestCase {
     // add a new message thread
     func testCreateNewMessageThread() {
         // is title correct
-        //XCTAssertTrue(messageBoardTitle.exists)
+        //FIXME: - 🤬🤬🤬
+//        XCTAssertTrue(messageBoardTitle.exists)
         // does text field exist
         XCTAssertTrue(newTestThreadTextField.exists)
         // tap textfield for focus
@@ -92,29 +113,36 @@ class Message_BoardUITests: XCTestCase {
         // test that thread cell exists
         XCTAssertTrue(app.tables.cells.staticTexts[newTestThreadName2].exists)
         
+        
+   
+       // app.navigationBars["trees art"].buttons["λ Message Board"].tap()
+        
     }
     
     // tapping on a message thread cell
     func testTappingOnMessageThreadCell() {
        
         // test title
-        
+        // does text field exist
+        XCTAssertTrue(newTestThreadTextField.exists)
+        // tap textfield for focus
+        newTestThreadTextField.tap()
+        // enter text in text field for thread #1
+        newTestThreadTextField.typeText(newTestThreadName1)
+        // press return & create Thread
+        returnKey.tap()
         // test cell exists
-        
+        XCTAssertTrue(app.tables.cells.staticTexts[newTestThreadName1].exists)
         // tap on cell
-        
+        app.tables.cells.staticTexts[newTestThreadName1].tap()
         // test cell title matches thread title
+        XCTAssertTrue(app.staticTexts[newTestThreadName1].exists)
+        // test back button exisits
+        XCTAssertTrue(backButton.exists)
+        // test add button exists
+        backButton.tap()
         
-        // test back button
-        
-        // test create new thread #2
-        
-        // test cell exists
-        
-        // tap on it
-        
-        // test title matches thread title again
-        
+
     }
     
 
@@ -122,27 +150,51 @@ class Message_BoardUITests: XCTestCase {
     
     // add a new message to thread
     func testAddNewMessageToThread() {
-        // tap on existing cell **YAY persistence**
         
-        // does title still match
-        
-        // does add button exist
-        
-        // tap on it
-        
-        // test title
-        
+        // does text field exist
+        XCTAssertTrue(newTestThreadTextField.exists)
+        // tap textfield for focus
+        newTestThreadTextField.tap()
+        // enter text in text field for thread #1
+        newTestThreadTextField.typeText(newTestThreadName1)
+        // press return & create Thread
+        returnKey.tap()
+        // test cell exists
+        XCTAssertTrue(app.tables.cells.staticTexts[newTestThreadName1].exists)
+        // tap on cell
+        app.tables.cells.staticTexts[newTestThreadName1].tap()
+        // test cell title matches thread title
+        XCTAssertTrue(app.staticTexts[newTestThreadName1].exists)
+        // test back button exisits
+        XCTAssertTrue(backButton.exists)
+        // test add button exists
+        XCTAssertTrue(addButton.exists)
+        // tap add button
+        addButton.tap()
+        // test create message
         // test text field exists
-        
+        XCTAssertTrue(newMessageTextField.exists)
+        // tap text field to focus
+        newMessageTextField.tap()
+        //enter message title
+        app.textFields["Enter your name:"].typeText(newTestMessage1Title)
+        //newTestThreadTextField.typeText(newTestMessage1Title)
+        // hit enter just in case
+        returnKey.tap()
         // test text view exists
-        
+        XCTAssertTrue(newMessageTextView.exists)
+        // tap it to focus
+        newMessageTextView.tap()
+        // enter message body text
+        app.textViews["MessageDetailViewController.createNewMessageTextView"].typeText(newTestMessage1Text1)
+        // tap enter JIC
+        returnKey.tap()
+        // tap save button
+        sendButton.tap()
+        // test cell exists
+        XCTAssertTrue(app.tables.cells.staticTexts[newTestMessage1Title].exists)
+
         // test abort without send
-        
-        // test input textfield
-        
-        // test input textview
-        
-        // test send button
         
         // test send without input?
         
