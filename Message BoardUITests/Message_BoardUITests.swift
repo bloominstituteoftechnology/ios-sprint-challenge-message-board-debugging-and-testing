@@ -4,29 +4,7 @@ import XCTest
 class Message_BoardUITests: XCTestCase {
     
     var app = XCUIApplication()
-    
-    // MARK: - Element Identifiers
-    
-    var createLabel: XCUIElement {
-        return app.staticTexts["MessageThreadsTableViewController.CreateLabel"]
-    }
-    
-    var messageThreadCell: XCUIElement {
-        return app.cells["MessageThreadsTableViewController.MessageThreadCell"]
-    }
-    
-    var messageCell: XCUIElement {
-        return app.cells["MessageThreadDetailTableViewController.MessageCell"]
-    }
-    
-    var senderNameTextField: XCUIElement {
-        return app.staticTexts["MessageDetailViewController.SenderNameTextField"]
-    }
-    
-    var messageTextView: XCUIElement {
-        return app.staticTexts["MessageDetailViewController.MessageTextView"]
-    }
-    
+
     // MARK: - Setup
     
     override func setUp() {
@@ -42,33 +20,126 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    // MARK: - Test Functions
+    
+    
+    // MARK: - Message Threads Table View Controller Tests
+    
+    var createLabel: XCUIElement {
+        return app.textFields["MessageThreadsTableViewController.CreateLabel"]
+    }
+    
+    var messageThreadCell: XCUIElement {
+        return app.cells["MessageThreadsTableViewController.MessageThreadCell"]
+    }
+    
+    // returns the XCUIElement that has the static text inside of a cell with this title
+    func cell(with title: String) -> XCUIElement {
+        // returns an XCUIElement with the static text that you pass into it
+        return app.cells.staticTexts[title]
+    }
     
     func testInitialTableView() {
         
         // verify that I can find the label
-        XCTAssertTrue(createLabel.exists)
+        XCTAssert(createLabel.exists)
     }
     
     func testAddThread() {
         
-        app.tables["Empty list"].textFields["Create a new thread:"].tap()
+        // Whatever is typed into the createLabel appears in the table view cell
+        let testString = "Test String"
+        createLabel.tap()
+        createLabel.typeText(testString)
+        createLabel.typeText("\n")
         
-        // Assert that whatever was typed into the createLabel appears in the first table view cell
-        XCTAssertEqual(messageThreadCell.value as! String, "\(createLabel.staticTexts)")
+        createLabel.tap()
+        createLabel.typeText(testString+" 2")
+        createLabel.typeText("\n")
         
-//        let firstCell = app.tables.cells.element(boundBy: 0)
-//        firstCell.staticTexts["\(createLabel.title)"]
+        XCTAssert(cell(with: testString).exists)
+    }
+    
+    func testDelete() {
         
+        let testString = "Test String"
+        createLabel.tap()
+        createLabel.typeText(testString)
+        createLabel.typeText("\n")
+        
+        //cell(with: testString)
+    }
+    
+    
+    
+    // MARK: - Message Thread Detail Table View Controller Tests
+    
+    var messageCell: XCUIElement {
+        return app.cells["MessageThreadDetailTableViewController.MessageCell"]
     }
     
     func testThreadTableView() {
         
+        let testString = "Test String"
+        createLabel.tap()
+        createLabel.typeText(testString)
+        createLabel.typeText("\n")
         
+        // tap cell leading to new controller
+        cell(with: testString).tap()
+        
+        // verify title
+        XCTAssert(app.navigationBars[testString].exists)
+        
+        // tap on add button
+        app.navigationBars["Test String"].buttons["Add"].tap()
+    }
+    
+    func testDetailDelete() {
         
     }
     
+    func testEdit() {
+        
+    }
+    
+    
+    
+    // MARK: - Message Detail View Controller Tests
+    
+    var senderNameTextField: XCUIElement {
+        return app.textFields["MessageDetailViewController.SenderNameTextField"]
+    }
+    
+    var messageTextView: XCUIElement {
+        return app.textViews["MessageDetailViewController.MessageTextView"]
+    }
+    
     func testDetailView() {
+        
+        let testString = "Test String"
+        createLabel.tap()
+        createLabel.typeText(testString)
+        createLabel.typeText("\n")
+        cell(with: testString).tap()
+        
+        XCTAssert(app.navigationBars[testString].exists)
+        app.navigationBars["Test String"].buttons["Add"].tap()
+        
+        // Verify title
+        XCTAssert(app.navigationBars["New Message"].exists)
+        
+        // Type text into text fields
+        let name = "Name"
+        let message = "Test message"
+        senderNameTextField.tap()
+        senderNameTextField.typeText(name)
+        messageTextView.tap()
+        messageTextView.typeText(message)
+        
+        // Tap send button
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        
+        // Verify 'name' and 'message' appear in cell on Detail Table View Controller
         
     }
     
