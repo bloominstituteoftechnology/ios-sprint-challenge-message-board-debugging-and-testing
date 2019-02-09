@@ -9,45 +9,41 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-    
-    //var app: XCUIApplication = XCUIApplication()
-    //var app: XCUIApplication!
-    
+    // Where is the coverage test...
+    var app: XCUIApplication = XCUIApplication()
+
     // MessageThreadsTableViewController
     var createNewThread: XCUIElement {
-        let app = XCUIApplication()
-        //return app.tables.textFields["MessageThreadsTableViewController.ThreadTitleTextField"]
         return app.textFields["MessageThreadsTableViewController.ThreadTitleTextField"]
-        //return app.staticTexts["Create a new thread:"]
     }
-    
     var messageThreadCell: XCUIElement {
-        let app = XCUIApplication()
         return app.cells["MessageThreadsTableViewController.MessageThreadCell"]
     }
     
     // MessageThreadDetailTableViewController
     var messageCell: XCUIElement {
-        let app = XCUIApplication()
         return app.cells["MessageThreadDetailTableViewController.MessageCell"]
     }
-    // Message Add button...
+    var messageAddButton: XCUIElement {
+        return app.buttons["Add"]
+    }
     
     // MessageDetailViewController
     var messageSender: XCUIElement {
-        let app = XCUIApplication()
         return app.textFields["MessageDetailViewController.SenderNameTextField"]
     }
-    
     var messageContent: XCUIElement {
-        let app = XCUIApplication()
         return app.textViews["MessageDetailViewController.MessageTextView"]
     }
-    
-    
-    
-    
-    
+    var messageSendButton: XCUIElement {
+        return app.buttons["Send"]
+    }
+    var messageTitleButton: XCUIElement {
+        return app.buttons["Title"]
+    }
+    var messageBackButton: XCUIElement {
+        return app.navigationBars["New Message"].buttons["Back"]
+    }
     
     
     override func setUp() {
@@ -61,10 +57,6 @@ class Message_BoardUITests: XCTestCase {
     
 
     func testRecordCreated() {
-      
-      
-        
-        let app = XCUIApplication()
         let tablesQuery = app.tables
         tablesQuery.textFields["Create a new thread:"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Record"]/*[[".cells.matching(identifier: \"MessageThreadsTableViewController.MessageThreadCell\").staticTexts[\"Record\"]",".staticTexts[\"Record\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -85,7 +77,15 @@ class Message_BoardUITests: XCTestCase {
     
     func testCreateThread() {
         createNewThread.tap()
-       // createNewThread.typeText("Testing testCreateThread()\n")
+        createNewThread.typeText("testCreateThread()\n")
+        messageThreadCell.tap()
+        messageAddButton.tap()
+        messageSender.tap()
+        messageSender.typeText("Steve Jobs")
+        messageContent.tap()
+        messageContent.typeText("I should invent a wired air mouse.\n It would make Ivan very happy! Hmmmmm...")
+        messageSendButton.tap()
+        
     }
     
 }
