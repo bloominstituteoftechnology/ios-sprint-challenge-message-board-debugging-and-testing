@@ -12,4 +12,20 @@ import XCTest
 class MessageThreadTests: XCTestCase {
     var messageThreadController = MessageThreadController()
     
+    func testFetchMessages() {
+        messageThreadController.fetchMessageThreads {
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, 0)
+        }
+    }
+    
+    func testCreateMessages() {
+        let dinners = ["Teriyaki Kabobs", "Beef and Brocoli", "Korean BBQ"]
+        var count = 1
+        for dinner in dinners {
+            messageThreadController.createMessageThread(with: dinner){
+                XCTAssertEqual(self.messageThreadController.messageThreads.count, count)
+                count += 1
+            }
+        }
+    }
 }
