@@ -13,14 +13,7 @@ class MessageThread: Codable, Equatable {
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
-    
-    // MARK: App had no coding keys
-//    enum CodingKeys: String, CodingKey {
-//        case title
-//        case messages
-//        case identifier
-//    }
-    
+        
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
@@ -32,7 +25,12 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        //let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        
+        // These two lines
+        let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages)
+        let messages = messagesDictionaries?.compactMap({ $0.value }) ?? []
+        
         
         self.title = title
         self.identifier = identifier

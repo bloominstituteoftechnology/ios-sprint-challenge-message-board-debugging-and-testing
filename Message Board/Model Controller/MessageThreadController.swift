@@ -33,7 +33,8 @@ class MessageThreadController {
             do {
                 //self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
                 // MARK: Should be a dictionary
-                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({$0.value})
+                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({ $0.value })
+                
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -92,12 +93,15 @@ class MessageThreadController {
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier)
+                                                        .appendingPathComponent("messages")
+                                                        .appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
+            
         } catch {
             NSLog("Error encoding message to JSON: \(error)")
         }
@@ -109,7 +113,7 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
+
             completion()
             
         }.resume()
