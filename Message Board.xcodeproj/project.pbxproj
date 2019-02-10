@@ -22,6 +22,9 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		4C26ECD7220F81DC00D95C0E /* DebuggingNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECD6220F81DC00D95C0E /* DebuggingNotes.swift */; };
+		4C26ECD922109E3800D95C0E /* MessageThreadControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECD822109E3800D95C0E /* MessageThreadControllerTests.swift */; };
+		4C26ECDB22109E9B00D95C0E /* MessageDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECDA22109E9B00D95C0E /* MessageDetailTests.swift */; };
+		4C26ECDD22109EA400D95C0E /* MessageThreadDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECDC22109EA400D95C0E /* MessageThreadDetailTests.swift */; };
 		4C9611AA21BAFAC0008A5C25 /* ThreadInputTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */; };
 		4C9611AC21BAFB2B008A5C25 /* MyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611AB21BAFB2B008A5C25 /* MyTest.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
@@ -64,6 +67,9 @@
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		4C26ECD6220F81DC00D95C0E /* DebuggingNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggingNotes.swift; sourceTree = "<group>"; };
+		4C26ECD822109E3800D95C0E /* MessageThreadControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadControllerTests.swift; sourceTree = "<group>"; };
+		4C26ECDA22109E9B00D95C0E /* MessageDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailTests.swift; sourceTree = "<group>"; };
+		4C26ECDC22109EA400D95C0E /* MessageThreadDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTests.swift; sourceTree = "<group>"; };
 		4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadInputTest.swift; sourceTree = "<group>"; };
 		4C9611AB21BAFB2B008A5C25 /* MyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTest.swift; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +206,9 @@
 			isa = PBXGroup;
 			children = (
 				9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */,
+				4C26ECDA22109E9B00D95C0E /* MessageDetailTests.swift */,
+				4C26ECDC22109EA400D95C0E /* MessageThreadDetailTests.swift */,
+				4C26ECD822109E3800D95C0E /* MessageThreadControllerTests.swift */,
 				4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */,
 				9D9B6B00214B7A66006381F7 /* Info.plist */,
 			);
@@ -366,6 +375,9 @@
 			files = (
 				4C9611AA21BAFAC0008A5C25 /* ThreadInputTest.swift in Sources */,
 				9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */,
+				4C26ECDB22109E9B00D95C0E /* MessageDetailTests.swift in Sources */,
+				4C26ECDD22109EA400D95C0E /* MessageThreadDetailTests.swift in Sources */,
+				4C26ECD922109E3800D95C0E /* MessageThreadControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

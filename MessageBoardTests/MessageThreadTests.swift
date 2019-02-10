@@ -11,31 +11,6 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    func testNewThreadCreation(title: String) {
-        //This should test createMessageThread function in Message Thread Controller.
-        
-        let thread = MessageThread(title: title)
-        
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.put.rawValue
-        
-        do {
-            request.httpBody = try JSONEncoder().encode(thread)
-        } catch {
-            NSLog("Error encoding thread to JSON: \(error)")
-        }
-        
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
-            if let error = error {
-                NSLog("Error with message thread creation data task: \(error)")
-                return
-            }
-            
-            self.messageThreads.append(thread)
-        
-    }
+    func testMessagesDecodeFromContainer() {}
     
-}
 }
