@@ -21,6 +21,7 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
+		4C26ECD7220F81DC00D95C0E /* DebuggingNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECD6220F81DC00D95C0E /* DebuggingNotes.swift */; };
 		4C9611AA21BAFAC0008A5C25 /* ThreadInputTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */; };
 		4C9611AC21BAFB2B008A5C25 /* MyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611AB21BAFB2B008A5C25 /* MyTest.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
@@ -62,6 +63,7 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		4C26ECD6220F81DC00D95C0E /* DebuggingNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggingNotes.swift; sourceTree = "<group>"; };
 		4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadInputTest.swift; sourceTree = "<group>"; };
 		4C9611AB21BAFB2B008A5C25 /* MyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTest.swift; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 				4612B5C7211AB41100E7FF73 /* AppDelegate.swift */,
 				4612B5CE211AB41300E7FF73 /* Assets.xcassets */,
 				4612B5D3211AB41300E7FF73 /* Info.plist */,
+				4C26ECD6220F81DC00D95C0E /* DebuggingNotes.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			files = (
 				4629C7E0214B961800E7FF73 /* MessageThreadController+UITesting.swift in Sources */,
 				4612B5DC211AB6C500E7FF73 /* MessageThreadController.swift in Sources */,
+				4C26ECD7220F81DC00D95C0E /* DebuggingNotes.swift in Sources */,
 				4612B5DA211AB66600E7FF73 /* MessageThread.swift in Sources */,
 				4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */,
 				46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */,

@@ -19,6 +19,8 @@ class MessageThreadController {
             fetchLocalMessageThreads(completion: completion)
             return
         }
+        /////////////
+        
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
@@ -82,6 +84,7 @@ class MessageThreadController {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
             return
         }
+        //////////////////
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
