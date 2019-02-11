@@ -16,6 +16,6 @@
 
 //In createMessage function, no return to previous view in MessageDetailViewController
 
-//Spelling mistake in Segue in MessageThreadDetailTableViewController
+//FIXED ->Spelling mistake in Segue in MessageThreadDetailTableViewController
 
 
