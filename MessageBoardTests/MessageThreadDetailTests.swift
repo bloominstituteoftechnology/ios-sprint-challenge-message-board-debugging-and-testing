@@ -7,11 +7,20 @@
 //
 
 import XCTest
+import UIKit
 @testable import Message_Board
 
 class MessageThreadDetailTests: XCTestCase {
     
     
-    func testMispelledSegue() {}
+    func testMispelledSegue() {
+        
+        let MTD = MessageThreadDetailTableViewController()
+        
+        
+            
+        
+        
+    }
     
 }

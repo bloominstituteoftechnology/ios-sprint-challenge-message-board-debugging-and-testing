@@ -11,6 +11,10 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    func testMessagesDecodeFromContainer() {}
+    func testMessagesDecodeFromContainer() {
+        
+        let MTT = MessageThreadsTableViewController()
+
+    }
     
 }

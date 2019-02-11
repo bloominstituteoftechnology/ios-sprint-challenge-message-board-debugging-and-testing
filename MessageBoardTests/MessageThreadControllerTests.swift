@@ -11,7 +11,7 @@ import XCTest
 
 class MessageThreadControllerTests: XCTestCase {
 
-    func testNewThreadCreation(title: String) {
+    func testNewThreadCreation() {
         //This should test createMessageThread function in Message Thread Controller.
         
         let MTC = MessageThreadController()

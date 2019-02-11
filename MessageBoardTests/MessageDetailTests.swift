@@ -11,6 +11,11 @@ import XCTest
 
 class MessageDetailTests: XCTestCase {
 
-    func testPopViewController() {}
+    func testPopViewController() {
+        let MDV = MessageDetailViewController()
+
+        
+    }
+    
     
 }
