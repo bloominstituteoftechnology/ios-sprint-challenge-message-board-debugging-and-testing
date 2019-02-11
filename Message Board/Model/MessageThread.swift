@@ -32,17 +32,18 @@ class MessageThread: Codable, Equatable {
 //        let messages = try messagesContainer.decodeIfPresent(Message.self, forKey: .messages)
 //        messagesArray.append(messages!)
 
-        var messagesArray: [Message] = []
-        let message = try container.decodeIfPresent(Message.self, forKey: .messages)
-        messagesArray.append(message!)
+//        var messagesArray: [Message] = []
+//        let message = try container.decodeIfPresent(Message.self, forKey: .messages)
+//        messagesArray.append(message!)
         
         // original
-        //let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
-
+        let messageDictionary = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:]
+        let messages = messageDictionary.map({ $0.value })
+        
         self.title = title
         self.identifier = identifier
-        //self.messages = messages
-        self.messages = messagesArray
+        self.messages = messages
+        //self.messages = messagesArray
     }
 
 
