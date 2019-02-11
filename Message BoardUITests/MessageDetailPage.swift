@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-struct MessageDetailTests: TestPage {
+struct MessageDetailPage: TestPage {
     
     let testCase: XCTestCase
 
@@ -24,14 +24,14 @@ struct MessageDetailTests: TestPage {
     }
     
     
-    @discardableResult func tapOnSendButton(file: String = #file, line: UInt = #line) -> MessageDetailTests {
+    @discardableResult func tapOnSendButton(file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
         testCase.expect(exists: sendButton, file: file, line: line)
         sendButton.tap()
         return self
     }
     
-    @discardableResult func textEntryTextField(file: String = #file, line: UInt = #line) -> MessageDetailTests {
+    @discardableResult func textEntryTextField(file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
         testCase.expect(exists: senderNameTextField, file: file, line: line)
         senderNameTextField.tap()
@@ -39,7 +39,7 @@ struct MessageDetailTests: TestPage {
         return self
     }
     
-    @discardableResult func textEntryTextView(file: String = #file, line: UInt = #line) -> MessageDetailTests {
+    @discardableResult func textEntryTextView(file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
         testCase.expect(exists: messageTextView, file: file, line: line)
         messageTextView.tap()
@@ -48,13 +48,13 @@ struct MessageDetailTests: TestPage {
     }
     
     
-    @discardableResult func senderNameTextFieldExists(file: String = #file, line: UInt = #line) -> MessageDetailTests {
+    @discardableResult func senderNameTextFieldExists(file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
         testCase.expect(exists: senderNameTextField, file: file, line: line)
         return self
     }
     
-    @discardableResult func messageTextViewExists(file: String = #file, line: UInt = #line) -> MessageDetailTests {
+    @discardableResult func messageTextViewExists(file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
         testCase.expect(exists: messageTextView, file: file, line: line)
         return self

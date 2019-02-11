@@ -25,35 +25,40 @@ class Message_BoardUITests: XCTestCase {
     
     func testCreateMessage() {
         
-        MessageTestsPage(testCase: self)
+        MThreadsDetailPage(testCase: self)
             .tapOnAddButton()
-        MessageDetailTests(testCase: self)
+        MessageDetailPage(testCase: self)
+            .senderNameTextFieldExists()
             .textEntryTextField()
             .textEntryTextView()
             .tapOnSendButton()
     }
     
+    func testMisc() {
+        MThreadsDetailPage(testCase: self)
+            .messageCellExists()
+    }
+    
     func testCell() {
         
-//        MessageTestsPage(testCase: self)
-//            .messageCellExists()
-        MessageTestsPage(testCase: self)
+
+        MThreadsDetailPage(testCase: self)
             .getCell(index: 0)
     }
     
     func testCreateThread() {
         
-        TestMessageThreads(testCase: self)
-            .AddTextTitleTextField(with: "Test")
+        MessageThreadsPage(testCase: self)
+            .addTextTitleTextField(with: "Test")
     }
     
     func testNavigation() {
         
-        MessageTestsPage(testCase: self)
+        MThreadsDetailPage(testCase: self)
             .tapOnAddButton()
-        MessageDetailTests(testCase: self)
+        MessageDetailPage(testCase: self)
             .tapOnSendButton()
-        MessageTestsPage(testCase: self)
+        MThreadsDetailPage(testCase: self)
             .tapOnBackButton
     }
     

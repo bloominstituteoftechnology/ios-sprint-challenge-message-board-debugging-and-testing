@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-struct TestMessageThreads: TestPage {
+struct MessageThreadsPage: TestPage {
     
     let testCase: XCTestCase
     
@@ -25,24 +25,23 @@ struct TestMessageThreads: TestPage {
         return app.tables.containing(.cell, identifier:"MessageThreadsTableViewController.MessageThreadCell0").element
     }
     
-    @discardableResult func AddTextTitleTextField(with string: String, file: String = #file, line: UInt = #line) -> TestMessageThreads {
+    @discardableResult func addTextTitleTextField(with string: String, file: String = #file, line: UInt = #line) -> MessageThreadsPage {
         
         testCase.expect(exists: threadsTitleTextField, file: file, line: line)
         threadsTitleTextField.tap()
         threadsTitleTextField.typeText(string)
-        threadsTitleTextField.typeText("\n")
         
         return self
     }
     
-    @discardableResult func tapOnThreadsCell(at index: Int, file: String = #file, line: UInt = #line) -> MessageTestsPage {
+    @discardableResult func tapOnThreadsCell(at index: Int, file: String = #file, line: UInt = #line) -> MThreadsDetailPage {
         
         let cell = threadsCell(index)
         testCase.expect(exists: cell, file: file, line: line)
         cell.tap()
         
-        let messageTestsPage = MessageTestsPage(testCase: testCase)
-        return messageTestsPage
+        let mThreadsDetailPage = MThreadsDetailPage(testCase: testCase)
+        return mThreadsDetailPage
     }
 
 }

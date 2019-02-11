@@ -28,8 +28,8 @@ class MessageThread: Codable, Equatable {
         //let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
         
         // These two lines
-        let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages)
-        let messages = messagesDictionaries?.compactMap({ $0.value }) ?? []
+        let messagesDictionary = try container.decodeIfPresent([String: Message].self, forKey: .messages)
+        let messages = messagesDictionary?.compactMap({ $0.value }) ?? []
         
         
         self.title = title
@@ -43,6 +43,12 @@ class MessageThread: Codable, Equatable {
         let messageText: String
         let sender: String
         let timestamp: Date
+        
+        enum CodingKeys: String, CodingKey {
+            case messageText = "text"
+            case sender
+            case timestamp
+        }
         
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text

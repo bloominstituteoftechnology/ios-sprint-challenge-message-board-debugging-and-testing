@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-struct MessageTestsPage: TestPage {
+struct MThreadsDetailPage: TestPage {
     
     let testCase: XCTestCase
     
@@ -24,13 +24,15 @@ struct MessageTestsPage: TestPage {
     }
     
     
-    @discardableResult func tapOnAddButton(file: String = #file, line: UInt = #line) -> MessageTestsPage {
+    @discardableResult func tapOnAddButton(file: String = #file, line: UInt = #line) -> MessageDetailPage {
         
         testCase.expect(exists: addButton)
         addButton.tap()
-        return self
+        
+        let messageDetailPage = MessageDetailPage(testCase: testCase)
+        return messageDetailPage
     }
-    @discardableResult func tapOnBackButton(file: String = #file, line: UInt = #line) -> MessageTestsPage {
+    @discardableResult func tapOnBackButton(file: String = #file, line: UInt = #line) -> MThreadsDetailPage {
         
         testCase.expect(exists: backButton)
         backButton.tap()
@@ -38,13 +40,13 @@ struct MessageTestsPage: TestPage {
     }
     
     
-    @discardableResult func messageCellExists(file: String = #file, line: UInt = #line) -> MessageTestsPage {
+    @discardableResult func messageCellExists(file: String = #file, line: UInt = #line) -> MThreadsDetailPage {
         
         testCase.expect(exists: getCell(index: 0), file: file, line: line)
         return self
     }
     
-    @discardableResult func messageThreadTitleExists(with string: String, file: String = #file, line: UInt = #line) -> MessageTestsPage {
+    @discardableResult func messageThreadTitleExists(with string: String, file: String = #file, line: UInt = #line) -> MThreadsDetailPage {
         
         testCase.expect(exists: app.cells.staticTexts[string])
         return self
