@@ -8,6 +8,14 @@
 
 //List of Bugs
 
-//Cannot Create a New Thread / New thread doesn't appear when entered because data Task doesn't resume after createMessageThread function in Message Thread Controller.
+//Problem with Do-Catch statement in MessageThreadController.
+
+//No Data Task Resume in createMessageThread func in MessageThreadController.
+
+//Problem with messages container decode attempt in MessageThread
+
+//In createMessage function, no return to previous view in MessageDetailViewController
+
+//Spelling mistake in Segue in MessageThreadDetailTableViewController
 
 

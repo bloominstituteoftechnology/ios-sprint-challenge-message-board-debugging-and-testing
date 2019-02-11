@@ -20,14 +20,8 @@ class MessageThreadControllerTests: XCTestCase {
         
         MTC.createMessageThread(with: myTestThread) {
             
-            //I expect that the message threads array will NOT be empty
-            XCTAssertFalse(MTC.messageThreads.isEmpty)
-            
-            //I expect that the title of the most recently added thread will match the thread I just created
-            XCTAssertEqual(MTC.messageThreads.last?.title, myTestThread)
-            
-            //I expect that the messages in the most recently created thread will be an empty array as my new thread doesn't yet have any messages.
-            XCTAssertEqual(MTC.messageThreads.last?.messages, [])
+           //I expect a thread of the same title to exist
+           XCTAssertEqual(MTC.messageThreads.last?.title, myTestThread)
         }
         
     } //End of function.

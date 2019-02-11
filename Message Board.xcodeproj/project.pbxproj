@@ -25,8 +25,8 @@
 		4C26ECD922109E3800D95C0E /* MessageThreadControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECD822109E3800D95C0E /* MessageThreadControllerTests.swift */; };
 		4C26ECDB22109E9B00D95C0E /* MessageDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECDA22109E9B00D95C0E /* MessageDetailTests.swift */; };
 		4C26ECDD22109EA400D95C0E /* MessageThreadDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECDC22109EA400D95C0E /* MessageThreadDetailTests.swift */; };
+		4C26ECDF2211139200D95C0E /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26ECDE2211139200D95C0E /* TestPage.swift */; };
 		4C9611AA21BAFAC0008A5C25 /* ThreadInputTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */; };
-		4C9611AC21BAFB2B008A5C25 /* MyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9611AB21BAFB2B008A5C25 /* MyTest.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,8 +70,8 @@
 		4C26ECD822109E3800D95C0E /* MessageThreadControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadControllerTests.swift; sourceTree = "<group>"; };
 		4C26ECDA22109E9B00D95C0E /* MessageDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailTests.swift; sourceTree = "<group>"; };
 		4C26ECDC22109EA400D95C0E /* MessageThreadDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTests.swift; sourceTree = "<group>"; };
+		4C26ECDE2211139200D95C0E /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		4C9611A921BAFAC0008A5C25 /* ThreadInputTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadInputTest.swift; sourceTree = "<group>"; };
-		4C9611AB21BAFB2B008A5C25 /* MyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTest.swift; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
-				4C9611AB21BAFB2B008A5C25 /* MyTest.swift */,
+				4C26ECDE2211139200D95C0E /* TestPage.swift */,
 			);
 			path = "Message BoardUITests";
 			sourceTree = "<group>";
@@ -364,8 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C26ECDF2211139200D95C0E /* TestPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
-				4C9611AC21BAFB2B008A5C25 /* MyTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
