@@ -24,15 +24,19 @@ class Message_BoardUITests: XCTestCase {
     }
     
     
-        func testSegueProblem() {
+    
+    func testNewAttempt() {
+        let app = XCUIApplication()
+
+        let createthreadfieldTextField = XCUIApplication().tables/*@START_MENU_TOKEN@*/.textFields["createthreadfield"]/*[[".textFields[\"Create a new thread:\"]",".textFields[\"createthreadfield\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        createthreadfieldTextField.tap()
+        createthreadfieldTextField.typeText("New Testing Thread")
+
         
-            let emptyListTable = XCUIApplication().tables["Empty list"]
-            emptyListTable/*@START_MENU_TOKEN@*/.textFields["Create a new thread:"]/*[[".textFields[\"Create a new thread:\"]",".textFields[\"createthreadfield\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
-            emptyListTable.tap()
+        XCTAssertEqual(app.tables.cells["AccThreadCell"].label , "New Testing Thread")
         
-            let cellCount = emptyListTable.cells.count
-            
-            XCTAssert(cellCount > 0)
+        
+        
     }
     
 }

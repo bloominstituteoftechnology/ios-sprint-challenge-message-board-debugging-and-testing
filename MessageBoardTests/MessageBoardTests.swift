@@ -9,7 +9,7 @@
 import XCTest
 @testable import Message_Board
 
-class MessageThreadControllerTests: XCTestCase {
+class MessageBoardTests: XCTestCase {
 
     func testNewThreadCreation() {
         //This should test createMessageThread function in Message Thread Controller.
@@ -25,4 +25,12 @@ class MessageThreadControllerTests: XCTestCase {
         }
         
     } //End of function.
+    
+    
+    func testNewMessageCreation() {
+        
+        let MTD = MessageThreadDetailTableViewController()
+        
+        
+    }
 }
