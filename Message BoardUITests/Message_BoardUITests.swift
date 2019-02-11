@@ -23,4 +23,20 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    
+    
+    func testNewAttempt() {
+        let app = XCUIApplication()
+
+        let createthreadfieldTextField = XCUIApplication().tables/*@START_MENU_TOKEN@*/.textFields["createthreadfield"]/*[[".textFields[\"Create a new thread:\"]",".textFields[\"createthreadfield\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        createthreadfieldTextField.tap()
+        createthreadfieldTextField.typeText("New Testing Thread")
+
+        
+        XCTAssertEqual(app.tables.cells["AccThreadCell"].label , "New Testing Thread")
+        
+        
+        
+    }
+    
 }
