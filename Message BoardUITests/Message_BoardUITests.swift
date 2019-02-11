@@ -59,6 +59,10 @@ class Message_BoardUITests: XCTestCase {
         XCTAssert(cell(with: testString).exists)
     }
     
+    func testBackToMain() {
+        
+    }
+    
     func testDelete() {
         
         let testString = "Test String"
@@ -141,6 +145,24 @@ class Message_BoardUITests: XCTestCase {
         
         // Verify 'name' and 'message' appear in cell on Detail Table View Controller
         
+    }
+    
+    func testBackToThread() {
+        
+        let testString = "Test String"
+        createLabel.tap()
+        createLabel.typeText(testString)
+        createLabel.typeText("\n")
+        cell(with: testString).tap()
+        
+        // tap add button
+        app.navigationBars[testString].buttons["Add"].tap()
+        
+        // tap back button (it's the name of the thread)
+        app.navigationBars["New Message"].buttons[testString].tap()
+        
+        // verify the title is the name of the thread
+        XCTAssert(app.navigationBars[testString].exists)
     }
     
 }

@@ -7,6 +7,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = messageThread?.title
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,6 +24,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
+
 
         let message = messageThread?.messages[indexPath.row]
         
@@ -44,6 +46,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
     
     // MARK: - Properties
+
 
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?

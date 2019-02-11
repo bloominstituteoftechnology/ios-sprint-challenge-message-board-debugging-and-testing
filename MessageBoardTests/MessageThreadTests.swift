@@ -15,20 +15,32 @@ class MessageThreadTests: XCTestCase {
         > to Firebase
 */
     
-    var mTTVC = MessageThreadsTableViewController()
+    var controller: MessageThreadController!
+    
+    override func setUp() {
+        controller = MessageThreadController()
+    }
     
     // MARK: - Tests for Current Bugs
     
     // App doesn't create new threads
     func testCreateNewThread() {
-    
-        let controller = MessageThreadController()
-        XCTAssertTrue(controller.messageThreads != [])
+
+        // input
+        XCTAssertTrue(controller.messageThreads == [])
+        
+        // function
+        //controller.createLocalMessageThread(with: "Test Message Thread", completion: {} )
+        controller.createMessageThread(with: "Test Message Thread", completion: {} )
+        
+        // expectation
+        XCTAssertTrue(!controller.messageThreads.isEmpty)
     }
     
 
     // App's 'send' button doesn't work
     func testSendNewMessage() {
+        
         
     }
     
@@ -36,6 +48,14 @@ class MessageThreadTests: XCTestCase {
     
     // Make sure app's new thread passes over to the Thread Detail Table View Controller
     func testViewThread() {
+        
+    }
+    
+    func testDelete() {
+        
+    }
+    
+    func testEdit() {
         
     }
     
