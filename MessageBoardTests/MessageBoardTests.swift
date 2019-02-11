@@ -29,8 +29,16 @@ class MessageBoardTests: XCTestCase {
     
     func testNewMessageCreation() {
         
-        let MTD = MessageThreadDetailTableViewController()
+        let MTC = MessageThreadController()
+        
+        let myTestMessage = "Hello Message"
+        let myTestSender = "Test Sender"
+        guard let myTestThread = MessageThreadController().messageThreads.last else { return }
         
         
+        MTC.createMessage(in: myTestThread, withText: myTestMessage, sender: myTestSender, completion: { } )
+        
+        XCTAssertEqual(MTC.messageThreads.last?.messages.first?.sender, myTestSender)
+
     }
 }
