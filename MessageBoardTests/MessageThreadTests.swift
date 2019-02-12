@@ -16,12 +16,21 @@ class MessageThreadTests: XCTestCase {
 */
     
     var controller: MessageThreadController!
+    var messageThread: MessageThread!
     
     override func setUp() {
         controller = MessageThreadController()
+        messageThread = MessageThread(title: "Test Message Thread")
     }
     
     // MARK: - Tests for Current Bugs
+    
+    // App doesn't fetch messages
+    func testFetchMessages() {
+        controller.fetchMessageThreads {
+            XCTAssert(self.controller.messageThreads.count > 0)
+        }
+    }
     
     // App doesn't create new threads
     func testCreateNewThread() {
@@ -40,16 +49,16 @@ class MessageThreadTests: XCTestCase {
 
     // App's 'send' button doesn't work
     func testSendNewMessage() {
+        let numberOfMessages = controller.messageThreads.count
         
+        controller.createMessageThread(with: "Test Message Thread", completion: {} )
+        controller.createMessage(in: messageThread, withText: "Testing new message", sender: "Anonymous", completion: {} )
+        
+        XCTAssertTrue(controller.messageThreads.count >= numberOfMessages)
         
     }
     
     // MARK: - Tests for Potential Bugs
-    
-    // Make sure app's new thread passes over to the Thread Detail Table View Controller
-    func testViewThread() {
-        
-    }
     
     func testDelete() {
         

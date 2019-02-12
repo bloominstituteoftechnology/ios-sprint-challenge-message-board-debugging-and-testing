@@ -20,8 +20,6 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    
-    
     // MARK: - Message Threads Table View Controller Tests
     
     var createLabel: XCUIElement {
@@ -72,8 +70,6 @@ class Message_BoardUITests: XCTestCase {
         
         //cell(with: testString)
     }
-    
-    
     
     // MARK: - Message Thread Detail Table View Controller Tests
     

@@ -35,6 +35,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
+    
+    // MARK: - Bug 2 Fixed Misspelling of "AddMessage"
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddMessage" { // fixed misspelling

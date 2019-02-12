@@ -66,7 +66,8 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }.resume() // missing resume
+        }.resume()
+        // MARK: - Bug 1 Missing resume
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {

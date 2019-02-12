@@ -36,7 +36,9 @@ class MessageThread: Codable, Equatable {
 //        let message = try container.decodeIfPresent(Message.self, forKey: .messages)
 //        messagesArray.append(message!)
         
-        // original
+        
+        // MARK: - Bug 3 Decoding from an array to a dictionary
+        
         let messageDictionary = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:]
         let messages = messageDictionary.map({ $0.value })
         
