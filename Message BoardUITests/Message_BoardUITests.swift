@@ -53,6 +53,8 @@ class Message_BoardUITests: XCTestCase {
         messageTextView.typeText("This is for a UI Test")
         nextButton.tap()
         XCTAssertTrue(cellAt(0).exists)
+        backButton.tap()
+        XCTAssertTrue(cellAt(0).exists)
         
     }
     
