@@ -27,7 +27,7 @@ class MessageThreadsTableViewController: UITableViewController {
 
         guard let threadTitle = threadTitleTextField.text else { return }
         
-        threadTitleTextField.text = ""
+//        threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
