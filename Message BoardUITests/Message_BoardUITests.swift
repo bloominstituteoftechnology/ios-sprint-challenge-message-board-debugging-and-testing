@@ -19,24 +19,30 @@ class Message_BoardUITests: XCTestCase {
         
         app = XCUIApplication()
         
-        app.launchArguments = ["UITesting"]
+       // app.launchArguments = ["UITesting"]
         app.launch()
     }
     
     func testThreadCellCreatedAfterHittingEnterWithStringInTextField() {
         
-
-        
-        
+        threadTextField.tap()
+        threadTextField.typeText("New Thread\n")
+        XCTAssertTrue(cellAt(0).exists)
         
     }
     
     // MARK: - Private Functions
     
-    
+    private func cellAt(_ index: Int) -> XCUIElement {
+        let cell = app.cells.element(boundBy: index)
+        return cell
+    }
     
     // MARK: - Variables
     
+    private var threadTextField: XCUIElement {
+        return app.textFields["MessageThreadTVC.TextField"]
+    }
     
     var app: XCUIApplication!
 }
