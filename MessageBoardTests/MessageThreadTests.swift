@@ -45,6 +45,8 @@ class MessageThreadTests: XCTestCase {
             let messageThreads = self.messageThreadController.messageThreads
             guard let messageThread = messageThreads.first else { return }
             
+            print("\(messageThread.title)")
+            
             self.messageThreadController.createMessage(in: messageThread, withText: "Is this message here?", sender: "Moses", completion: {
                 let messages = messageThread.messages
                 XCTAssertGreaterThan(messages.count, 0)
