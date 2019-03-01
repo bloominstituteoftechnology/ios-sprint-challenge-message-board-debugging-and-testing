@@ -42,7 +42,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        // messageThread is not found in detail view, "AddMessage" identifier is misspelled
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController

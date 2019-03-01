@@ -21,6 +21,10 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        
+        navigationController?.popViewController(animated: true)
+        
+        // was not popping to previous view controller
     }
 
     // MARK: - Properties
