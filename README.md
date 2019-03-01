@@ -26,4 +26,4 @@ The requirements for this project are as follows:
 
 1. Find the bugs in the project. **Take note of them** then write unit tests that will fail until you fix them.
 2. Once you have written the unit tests, fix the bugs.
-3. Write UI tests for the project using the `TestPage` pattern. Test the functionality of the app such as creating threads, creating messages, etc. You are welcome to use a code snippet of the `expect` methods if you wish.
+3. Write UI tests for the project using computed properties and methods to make it easier to write (and read) what the UI test is doing. Test the functionality of the app such as creating threads, creating messages, etc. You are welcome to use a code snippet of the `expect` methods if you wish.
