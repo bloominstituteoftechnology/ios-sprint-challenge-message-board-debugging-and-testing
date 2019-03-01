@@ -19,7 +19,7 @@ class Message_BoardUITests: XCTestCase {
         
         app = XCUIApplication()
         
-       // app.launchArguments = ["UITesting"]
+        app.launchArguments = ["UITesting"]
         app.launch()
     }
     
@@ -41,7 +41,20 @@ class Message_BoardUITests: XCTestCase {
         
     }
     
-    
+    func testMessageExistsAfterTappingSendMessageButton() {
+        
+        threadTextField.tap()
+        threadTextField.typeText("New Thread\n")
+        cellAt(0).tap()
+        nextButton.tap()
+        messageTextField.tap()
+        messageTextField.typeText("Moses")
+        messageTextView.tap()
+        messageTextView.typeText("This is for a UI Test")
+        nextButton.tap()
+        XCTAssertTrue(cellAt(0).exists)
+        
+    }
     
     // MARK: - Private Functions
     
@@ -58,6 +71,18 @@ class Message_BoardUITests: XCTestCase {
     
     private var backButton: XCUIElement {
         return app.navigationBars.buttons.element(boundBy: 0)
+    }
+    
+    private var messageTextView: XCUIElement {
+        return app.textViews["MessageDetailVC.TextView"]
+    }
+    
+    private var messageTextField: XCUIElement {
+        return app.textFields["MessageDetailVC.TextField"]
+    }
+    
+    private var nextButton: XCUIElement {
+        return app.navigationBars.buttons.element(boundBy: 1)
     }
     
     var app: XCUIApplication!
