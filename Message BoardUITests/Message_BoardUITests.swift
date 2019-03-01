@@ -17,10 +17,26 @@ class Message_BoardUITests: XCTestCase {
         
         continueAfterFailure = false
         
-        let app = XCUIApplication()
+        app = XCUIApplication()
         
         app.launchArguments = ["UITesting"]
         app.launch()
     }
     
+    func testThreadCellCreatedAfterHittingEnterWithStringInTextField() {
+        
+
+        
+        
+        
+    }
+    
+    // MARK: - Private Functions
+    
+    
+    
+    // MARK: - Variables
+    
+    
+    var app: XCUIApplication!
 }

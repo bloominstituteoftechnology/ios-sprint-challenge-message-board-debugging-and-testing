@@ -73,6 +73,7 @@ class MessageThreadController {
             completion()
             
         }
+        // new thread not created because datatask is never resumed. Creating UI tests
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
