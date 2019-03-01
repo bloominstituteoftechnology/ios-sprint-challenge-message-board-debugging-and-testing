@@ -31,6 +31,18 @@ class Message_BoardUITests: XCTestCase {
         
     }
     
+    func testThreadCellStillExistsAfterTappingCellAndBack() {
+        
+        threadTextField.tap()
+        threadTextField.typeText("New Thread\n")
+        cellAt(0).tap()
+        backButton.tap()
+        XCTAssertTrue(cellAt(0).exists)
+        
+    }
+    
+    
+    
     // MARK: - Private Functions
     
     private func cellAt(_ index: Int) -> XCUIElement {
@@ -42,6 +54,10 @@ class Message_BoardUITests: XCTestCase {
     
     private var threadTextField: XCUIElement {
         return app.textFields["MessageThreadTVC.TextField"]
+    }
+    
+    private var backButton: XCUIElement {
+        return app.navigationBars.buttons.element(boundBy: 0)
     }
     
     var app: XCUIApplication!
