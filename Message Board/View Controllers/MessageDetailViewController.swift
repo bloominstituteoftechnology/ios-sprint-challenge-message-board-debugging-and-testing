@@ -21,6 +21,8 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        navigationController?.popViewController(animated: true) // MARK: - Bug 5 (After tapping the send button, it would not go back to the previous table view controller. Corrected this by "popping")
+        
     }
 
     // MARK: - Properties
