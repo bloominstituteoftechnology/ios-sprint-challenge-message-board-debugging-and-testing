@@ -39,8 +39,8 @@ class MessageThread: Codable, Equatable {
         let sender: String
         let timestamp: Date
         
-        init(text: String, sender: String, timestamp: Date = Date()) {
-            self.messageText = text
+        init(messageText: String, sender: String, timestamp: Date = Date()) {
+            self.messageText = messageText
             self.sender = sender
             self.timestamp = timestamp
         }
