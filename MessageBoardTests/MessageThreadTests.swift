@@ -49,18 +49,20 @@ class MessageThreadTests: XCTestCase {
         
         messageThreadController.uiTesting = true
         
-        let thread = messageThreadController.messageThreads[1]
+        testCreateThread()
+        
+        let thread = messageThreadController.messageThreads[0]
         
         let senderName = "Steven"
         let messageText = "Did I pass?"
         
-        let countBefore = messageThreadController.messageThreads[1].messages.count
+        let countBefore = messageThreadController.messageThreads[0].messages.count
         
         messageThreadController.createMessage(in: thread, withText: messageText, sender: senderName) {
             print("yay")
         }
         
-        XCTAssertEqual(countBefore + 1, messageThreadController.messageThreads[1].messages.count)
+        XCTAssertEqual(countBefore + 1, messageThreadController.messageThreads[0].messages.count)
       
     }
     
