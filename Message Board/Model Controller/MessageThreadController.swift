@@ -19,6 +19,7 @@ class MessageThreadController {
             fetchLocalMessageThreads(completion: completion)
             return
         }
+        print(requestURL)
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
@@ -29,9 +30,11 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messages = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                for(_, value) in messages{
+                    self.messageThreads.append(value)
+                }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")

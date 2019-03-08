@@ -13,9 +13,16 @@ class MessageThreadsTableViewController: UITableViewController, UITextFieldDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         threadTitleTextField.delegate = self
+        retrieveMessages {
+            print("Loaded messages")
+        }
+    }
+    
+    func retrieveMessages(completion: @escaping () -> Void){
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                completion()
             }
         }
     }
