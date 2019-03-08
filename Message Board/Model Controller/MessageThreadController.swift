@@ -75,8 +75,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+            }.resume() // BUG: DataTask not resumed
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -115,6 +114,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://lambda-message-board-sprint-8.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }

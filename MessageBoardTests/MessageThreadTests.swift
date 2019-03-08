@@ -11,5 +11,22 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testFetchMessageThreadsFromServer() {
+        let controller = MessageThreadController()
+        controller.fetchMessageThreads {
+            XCTAssertFalse(controller.messageThreads.isEmpty)
+        }
+    }
     
+    func testCreateNewMessageThreadAndSendToServer() {
+        let controller = MessageThreadController()
+        var initialMessageThreadCount = 0
+        controller.fetchMessageThreads {
+            initialMessageThreadCount = controller.messageThreads.count
+        }
+        controller.createMessageThread(with: "Unit Test") { }
+        controller.fetchMessageThreads {
+            XCTAssertTrue(controller.messageThreads.count > initialMessageThreadCount)
+        }
+    }
 }
