@@ -105,7 +105,7 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
+            //messageThread.messages.append(message)
             completion()
             
         }.resume()
