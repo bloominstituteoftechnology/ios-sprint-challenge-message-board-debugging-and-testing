@@ -19,7 +19,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tableView.reloadData()
+        tableView.reloadData()
+        view.setNeedsLayout()
     }
     
     // MARK: - UITableViewDataSource
@@ -36,17 +37,27 @@ class MessageThreadDetailTableViewController: UITableViewController {
         cell.textLabel?.text = message?.messageText
         cell.detailTextLabel?.text = message?.sender
         
+        cell.accessibilityIdentifier = "\(indexPath.row)"
+        
         return cell
     }
+    
 
-    // MARK: - Navigation
+    // MARK:- Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+        
+        guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+        
+        destinationVC.messageThreadController = messageThreadController
+        destinationVC.messageThread = messageThread
+        
+        switch segue.identifier {
+        case "ShowMessage":
+            guard let index = tableView.indexPathForSelectedRow?.row else { return }
+            destinationVC.message = messageThread?.messages[index]
+        default:
+            destinationVC.message = nil
         }
     }
     

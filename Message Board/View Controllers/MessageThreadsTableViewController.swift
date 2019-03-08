@@ -20,7 +20,8 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Actions
+    
+    // MARK:- Actions
     
     @IBAction func createThread(_ sender: Any) {
         threadTitleTextField.resignFirstResponder()
@@ -46,6 +47,7 @@ class MessageThreadsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
+        cell.accessibilityIdentifier = "\(indexPath.row)"
 
         return cell
     }
