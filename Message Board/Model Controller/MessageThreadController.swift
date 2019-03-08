@@ -15,6 +15,7 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+        
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
