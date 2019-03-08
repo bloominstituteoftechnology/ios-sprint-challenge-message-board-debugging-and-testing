@@ -9,8 +9,6 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-    
-    
         
     override func setUp() {
         super.setUp()
@@ -19,7 +17,7 @@ class Message_BoardUITests: XCTestCase {
         
         continueAfterFailure = false
         
-        let app = XCUIApplication()
+        app = XCUIApplication()
         
         app.launchArguments = ["UITesting"]
         app.launch()
@@ -27,6 +25,27 @@ class Message_BoardUITests: XCTestCase {
     
     func testMessageThreadTVCTextField() {
         
+        threadTextField.tap()
+        threadTextField.typeText("New Thread\n")
+        XCTAssertTrue(cellAt(0).exists)
+        
+        
+        
     }
+    
+    // MARK: - Private functions
+    
+    private func cellAt(_ index: Int) -> XCUIElement {
+        let cell = app.cells.element(boundBy: index)
+        return cell
+    }
+    
+    // MARK: - Properties
+    
+    private var threadTextField: XCUIElement {
+        return app.textFields["MessageThreadTVC.textField"]
+    }
+    
+    var app: XCUIApplication!
     
 }
