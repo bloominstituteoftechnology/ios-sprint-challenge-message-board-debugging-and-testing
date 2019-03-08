@@ -14,13 +14,16 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
+        
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
@@ -29,9 +32,11 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
+
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let decodedDict = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                self.messageThreads = decodedDict.map({ $0.value })
+                
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -71,8 +76,8 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+            // A new thread is not created because resume() method isn't called
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +116,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://lambda-message-board-56b6c.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
