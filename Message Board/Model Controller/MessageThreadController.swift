@@ -80,7 +80,7 @@ class MessageThreadController {
         }.resume()
     }
     
-    func createMessage(in messageThread: MessageThread, withMessageText messageText: String, sender: String, completion: @escaping () -> Void) {
+    func createMessage(in messageThread: MessageThread, withText messageText: String, sender: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {

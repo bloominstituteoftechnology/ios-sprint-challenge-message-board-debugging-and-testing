@@ -18,7 +18,7 @@ class MessageDetailViewController: UIViewController {
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
         
-        messageThreadController?.createMessage(in: messageThread, withMessageText: messageText, sender: sender, completion: {
+        messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: sender, completion: {
             print("Message created!")
         })
 

@@ -27,4 +27,5 @@ class MessageThreadTests: XCTestCase {
             XCTAssertGreaterThan(messageThreads.count, 0)
         }
     }
+    
 }
