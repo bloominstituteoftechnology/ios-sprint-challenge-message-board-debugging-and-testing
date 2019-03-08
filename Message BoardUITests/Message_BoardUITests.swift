@@ -28,16 +28,26 @@ class Message_BoardUITests: XCTestCase {
         threadTextField.tap()
         threadTextField.typeText("New Thread\n")
         XCTAssertTrue(cellAt(0).exists)
-        
-        
-        
     }
     
-    // MARK: - Private functions
+    func testMessageThreadTVCPersistsBetweenViews() {
+        
+        threadTextField.tap()
+        threadTextField.typeText("New Thread\n")
+        cellAt(0).tap()
+        backButton.tap()
+        XCTAssertTrue(cellAt(0).exists)
+    }
+    
+    // MARK: - Private
     
     private func cellAt(_ index: Int) -> XCUIElement {
-        let cell = app.cells.element(boundBy: index)
-        return cell
+        
+        return app.textFields["MessageThreadTVC.textField"]
+    }
+    
+    private var backButton: XCUIElement {
+        return app.navigationBars.element(boundBy: 0)
     }
     
     // MARK: - Properties
