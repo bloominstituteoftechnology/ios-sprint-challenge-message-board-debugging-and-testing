@@ -11,5 +11,20 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    //MARK: - Properties
+    var messageThreadController: MessageThreadController!
     
+    override func setUp() {
+        messageThreadController = MessageThreadController()
+        super.setUp()
+    }
+    
+    func testCreatingMessageThread() {
+        
+        messageThreadController.createMessageThread(with: "Test Thread") {
+            
+            let messageThreads = self.messageThreadController.messageThreads
+            XCTAssertGreaterThan(messageThreads.count, 0)
+        }
+    }
 }
