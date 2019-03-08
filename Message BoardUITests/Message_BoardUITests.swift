@@ -13,23 +13,26 @@ class Message_BoardUITests: XCTestCase {
     //MARK: - Properties
     var app: XCUIApplication!
     
-    private var nextButton: XCUIElement {
+    var backButton: XCUIElement {
         return app.navigationBars.buttons.element(boundBy: 1)
     }
     
-    private var threadTextField: XCUIElement {
+    var threadTextField: XCUIElement {
         return app.textFields["MessageThreadTVC.TextField"]
     }
     
-    //MARK: - Private Func
-    private func cellAt(_ index: Int) -> XCUIElement {
-        let cell = app.cells.element(boundBy: index)
-        return cell
+    var messageTextField: XCUIElement {
+        return app.textFields["MessageDetailVC.TextField"]
     }
-        
+    
+    var messageTextView: XCUIElement {
+        return app.textViews["MessageDetailVC.TextView"]
+    }
+    
+    
     override func setUp() {
         super.setUp()
-
+        
         // KEEP THIS SETUP FUNCTION EXACTLY AS IS.
         
         continueAfterFailure = false
@@ -40,12 +43,28 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    func testThreadCellCreatedAfterHittingEnterWithStringInTextField() {
+    //MARK: - Private Func
+    private func cellAt(_ index: Int) -> XCUIElement {
+        let cell = app.cells.element(boundBy: index)
+        return cell
+    }
         
+    func testThreadCellCreatedAfterHittingEnterWithStringInTextField() {
         threadTextField.tap()
-        threadTextField.typeText("New Thread")
+        threadTextField.typeText("New Thread\n")
         XCTAssertTrue(cellAt(0).exists)
         
     }
+    
+    func testThreadCellStillExistsAfterTappingCellAndBack() {
+        threadTextField.tap()
+        threadTextField.typeText("New Thread\n")
+        cellAt(0).tap()
+        backButton.tap()
+        XCTAssertTrue(cellAt(0).exists)
+        
+    }
+    
+
     
 }
