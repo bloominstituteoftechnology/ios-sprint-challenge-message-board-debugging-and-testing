@@ -14,12 +14,16 @@ class MessageDetailViewController: UIViewController {
     
     @IBAction func sendMessage(_ sender: Any) {
         
-        guard let senderName = senderNameTextField.text,
+        guard let sender = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
         
-        messageThreadController?.createMessage(in: messageThread, withMessageText: messageText, sender: senderName, completion: {
+        messageThreadController?.createMessage(in: messageThread, withMessageText: messageText, sender: sender, completion: {
             print("Message created!")
+            
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
 
