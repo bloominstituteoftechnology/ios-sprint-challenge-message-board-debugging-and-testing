@@ -41,4 +41,25 @@ class MessageThreadTests: XCTestCase {
             })
         }
     }
+    
+    func testFetchingMessageThreadsFromServer() {
+        
+        messageThreadController.createMessageThread(with: "Test Thread") {
+            
+            let messageThreads = self.messageThreadController.messageThreads
+            guard let messageThread = messageThreads.first else { return }
+            
+            print("\(messageThread.title)")
+            
+            self.messageThreadController.createMessage(in: messageThread, withText: "Does this work now", sender: "FC", completion: {
+                let messages = messageThread.messages
+                XCTAssertGreaterThan(messages.count, 0)
+            })
+        }
+        
+        messageThreadController.fetchMessageThreads {
+            let messageThreads = self.messageThreadController.messageThreads
+            XCTAssertGreaterThan(messageThreads.count, 0)
+        }
+    }
 }
