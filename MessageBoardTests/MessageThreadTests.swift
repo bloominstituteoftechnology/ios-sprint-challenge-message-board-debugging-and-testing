@@ -28,4 +28,17 @@ class MessageThreadTests: XCTestCase {
         }
     }
     
+    func testCreatingMessage() {
+        
+        messageThreadController.createMessageThread(with: "Test Thread") {
+            
+            let messageThreads = self.messageThreadController.messageThreads
+            guard let messageThread = messageThreads.first else { return }
+            
+            self.messageThreadController.createMessage(in: messageThread, withText: "Does this work now", sender: "FC", completion: {
+                let messages = messageThread.messages
+                XCTAssertGreaterThan(messages.count, 0)
+            })
+        }
+    }
 }
