@@ -9,7 +9,9 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-        
+    
+    var app: XCUIApplication!
+    
     override func setUp() {
         super.setUp()
 
@@ -17,10 +19,22 @@ class Message_BoardUITests: XCTestCase {
         
         continueAfterFailure = false
         
-        let app = XCUIApplication()
+        app = XCUIApplication()
         
         app.launchArguments = ["UITesting"]
         app.launch()
+    }
+    
+    func testInitialState() {
+        XCTAssertTrue(app.tables.cells.count > 0)
+    }
+    
+    func testTapOnMessageThreadAndTapBack() {
+        let cellCount = app.tables.cells["MessageThreadsTableViewController.ThreadCell"].cells.count
+        for index in 0..<cellCount {
+            app.tables.cells["MessageThreadsTableViewController.ThreadCell"].cells.element(boundBy: index).tap()
+            app.navigationBars.buttons["λ Message Board"].tap()
+        }
     }
     
 }
