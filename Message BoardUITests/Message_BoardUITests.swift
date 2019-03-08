@@ -38,10 +38,10 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testCreateNewThread() {
-        let newThreadTextField = app.tables.textFields["MessageThreadsTableViewController.CreateNewThread"]
+        let newThreadTextField = app.textFields["MessageThreadsTableViewController.CreateNewThread"]
         newThreadTextField.tap()
         newThreadTextField.typeText("Test New Thread")
-        newThreadTextField.tap()
+        app.keyboards.buttons["Return"].tap()
         XCTAssertTrue(app.tables.cells["Test New Thread"].exists)
     }
     
@@ -52,12 +52,12 @@ class Message_BoardUITests: XCTestCase {
         nameField.tap()
         nameField.typeText("UI Tester")
         
-        let messageField = app.textFields["MessageDetailViewController.MessageTextField"]
+        let messageField = app.textViews["MessageDetailViewController.MessageTextField"]
         messageField.tap()
         messageField.typeText("This is a test message.")
         
         app.navigationBars.buttons["Send"].tap()
-        
+        XCTAssertTrue(app.tables.staticTexts["This is a test message."].exists)
         
     }
 }
