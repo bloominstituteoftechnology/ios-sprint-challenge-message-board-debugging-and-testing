@@ -11,7 +11,7 @@ import Foundation
 class MessageThread: Codable, Equatable {
 
     let title: String
-    var messages: [MessageThread.Message]
+    var messages: [MessageThread.Message] = []
     let identifier: String
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
