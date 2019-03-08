@@ -27,7 +27,6 @@ class MessageDetailViewController: UIViewController {
     }
 
     // MARK: - Properties
-    
     var messageThreadController: MessageThreadController?
     // BUG: MessageThread unitialized
     var messageThread: MessageThread?
