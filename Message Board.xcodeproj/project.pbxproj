@@ -22,6 +22,7 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		BB5C975A2232E36400C5A876 /* TestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5C97592232E36400C5A876 /* TestCaseExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		BB5C97592232E36400C5A876 /* TestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
+				BB5C97592232E36400C5A876 /* TestCaseExtension.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 			);
 			path = "Message BoardUITests";
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
+				BB5C975A2232E36400C5A876 /* TestCaseExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 7M33TUA2Z8;
 				INFOPLIST_FILE = "$(SRCROOT)/Message Board/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -529,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 7M33TUA2Z8;
 				INFOPLIST_FILE = "$(SRCROOT)/Message Board/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
