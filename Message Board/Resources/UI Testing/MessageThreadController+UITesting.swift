@@ -31,11 +31,11 @@ extension MessageThreadController {
         completion()
     }
     
-    func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+    func createLocalMessage(in messageThread: MessageThread, withText messageText: String, sender: String, completion: @escaping () -> Void) {
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
-        let message = MessageThread.Message(text: text, sender: sender)
+        let message = MessageThread.Message(messageText: messageText, sender: sender)
         messageThreads[index].messages.append(message)
         
         completion()

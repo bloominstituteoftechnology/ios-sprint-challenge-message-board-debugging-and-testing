@@ -72,7 +72,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withMessageText messageText: String, sender: String, completion: @escaping () -> Void) {
@@ -88,7 +88,9 @@ class MessageThreadController {
         let message = MessageThread.Message(messageText: messageText, sender: sender)
         messageThreads[index].messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+//                let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
