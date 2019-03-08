@@ -9,33 +9,59 @@
 import XCTest
 @testable import Message_Board
 
+
 class MessageThreadTests: XCTestCase {
     
-    var messageThreadController: MessageThreadController?
+    let messageThreadController = MessageThreadController()
     
-    func testCreateThread() {
+    var tableView: UITableView?
+    
+    func testFetchThreads() {
         
-        messageThreadController?.fetchMessageThreads(completion: {
-            print("Fetched")
-        })
+        messageThreadController.uiTesting = true
         
-        let countBefore = messageThreadController?.messageThreads.count
+        messageThreadController.fetchMessageThreads {
+            print("fetched")
+        }
         
-        let threadTitle = "Unit Test 2"
-        
-        messageThreadController?.createMessageThread(with: threadTitle, completion: {
-            print("All if well")
-        })
-        
-        XCTAssertEqual(countBefore! + 1, messageThreadController?.messageThreads.count)
-        
+        XCTAssertNotNil(messageThreadController.messageThreads.count)
+
     }
     
     
+    func testCreateThread() {
+        
+        messageThreadController.uiTesting = true
+        
+        let threadTitle = "Unit Test Thread"
+        
+        let countBefore = messageThreadController.messageThreads.count
+        
+        messageThreadController.createMessageThread(with: threadTitle) {
+            print("New message Thread")
+        }
+        
+        XCTAssertEqual(countBefore + 1, messageThreadController.messageThreads.count)
+        
+    }
+    
     func testCreateMessage() {
         
+        messageThreadController.uiTesting = true
         
+        let thread = messageThreadController.messageThreads[1]
         
+        let senderName = "Steven"
+        let messageText = "Did I pass?"
+        
+        let countBefore = messageThreadController.messageThreads[1].messages.count
+        
+        messageThreadController.createMessage(in: thread, withText: messageText, sender: senderName) {
+            print("yay")
+        }
+        
+        XCTAssertEqual(countBefore + 1, messageThreadController.messageThreads[1].messages.count)
+      
     }
     
 }

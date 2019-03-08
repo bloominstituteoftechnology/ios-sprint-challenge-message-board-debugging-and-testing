@@ -9,14 +9,15 @@
 import Foundation
 
 class MessageThreadController {
-    
+   
+    var uiTesting: Bool = false
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         
-        if isUITesting {
+        if uiTesting {
             fetchLocalMessageThreads(completion: completion)
             return
         }
@@ -47,7 +48,7 @@ class MessageThreadController {
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
+        if uiTesting {
             createLocalMessageThread(with: title, completion: completion)
             return
         }
@@ -81,7 +82,7 @@ class MessageThreadController {
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
+        if uiTesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
             return
         }
