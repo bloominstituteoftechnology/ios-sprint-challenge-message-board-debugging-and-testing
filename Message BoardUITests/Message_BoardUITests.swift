@@ -20,11 +20,11 @@ class Message_BoardUITests: XCTestCase {
         return app.navigationBars.buttons.element(boundBy: 1)
     }
 
-    private var messageTextView: XCUIElement {
+    private var detailMessageTextView: XCUIElement {
         return app.textViews["MessageViewController.TextView"]
     }
     
-    private var messageTextField: XCUIElement {
+    private var detailMessageTextField: XCUIElement {
         return app.textFields["MessageViewController.TextField"]
     }
     
@@ -56,6 +56,21 @@ class Message_BoardUITests: XCTestCase {
         messageThreadTextField.tap()
         messageThreadTextField.typeText("Testing Thread\n")
         XCTAssertTrue(cellAt(0).exists)
-     
+    }
+    
+    func testCreateThreadAndMessageCheckForExistingTextAfterSending() {
+        
+        messageThreadTextField.tap()
+        messageThreadTextField.typeText("Testing Thread\n")
+        cellAt(0).tap()
+        nextButton.tap()
+        detailMessageTextField.tap()
+        detailMessageTextField.typeText("So Cool!")
+        detailMessageTextView.tap()
+        detailMessageTextView.typeText("Awesome, it works!")
+        nextButton.tap()
+        XCTAssertTrue(cellAt(0).exists)
+        backButton.tap()
+        XCTAssertTrue(cellAt(0).exists)
     }
 }
