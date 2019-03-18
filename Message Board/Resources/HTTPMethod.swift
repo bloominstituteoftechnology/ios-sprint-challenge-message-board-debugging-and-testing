@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Seem unnecessary... 
 enum HTTPMethod: String {
     case get = "GET"
     case put = "PUT"
