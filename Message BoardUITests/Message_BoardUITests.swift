@@ -55,35 +55,15 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-
-    func testRecordCreated01() {
-        let tablesQuery = app.tables
-        tablesQuery.textFields["Create a new thread:"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Record"]/*[[".cells.matching(identifier: \"MessageThreadsTableViewController.MessageThreadCell\").staticTexts[\"Record\"]",".staticTexts[\"Record\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let recordNavigationBar = app.navigationBars["Record"]
-        recordNavigationBar.buttons["Add"].tap()
-        app/*@START_MENU_TOKEN@*/.textFields["MessageDetailViewController.SenderNameTextField"]/*[[".textFields[\"Enter your name:\"]",".textFields[\"MessageDetailViewController.SenderNameTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let textView = app.otherElements.containing(.navigationBar, identifier:"New Message").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
-        textView.tap()
-        textView.tap()
-        app.navigationBars["New Message"].buttons["Send"].tap()
-        recordNavigationBar.buttons["λ Message Board"].tap()
-    }
-
-    func testRecordCreated() {
-        
-    }
-    
     
     func testCreateThread() {
         createNewThread.tap()
         XCTAssert(createNewThread.exists)
         createNewThread.typeText("testCreateThread()\n")
         XCTAssert(messageThreadCell.exists)
-        messageThreadCell.tap()
-        XCTAssertFalse(messageCell.exists)
+        let testCell = app.staticTexts["A New Thread"]
+        XCTAssertTrue(testCell.exists)
+        testCell.tap()
         XCTAssert(messageAddButton.exists)
         messageAddButton.tap()
         messageSender.tap()
@@ -95,7 +75,4 @@ class Message_BoardUITests: XCTestCase {
         XCTAssert(messageSendButton.exists)
         messageSendButton.tap()
     }
-    
-    
-    
 }
