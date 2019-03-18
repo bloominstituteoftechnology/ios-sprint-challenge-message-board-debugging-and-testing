@@ -56,7 +56,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
 
-    func testRecordCreated() {
+    func testRecordCreated01() {
         let tablesQuery = app.tables
         tablesQuery.textFields["Create a new thread:"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Record"]/*[[".cells.matching(identifier: \"MessageThreadsTableViewController.MessageThreadCell\").staticTexts[\"Record\"]",".staticTexts[\"Record\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -72,14 +72,18 @@ class Message_BoardUITests: XCTestCase {
         recordNavigationBar.buttons["λ Message Board"].tap()
     }
 
+    func testRecordCreated() {
+        
+    }
     
     
     func testCreateThread() {
         createNewThread.tap()
         XCTAssert(createNewThread.exists)
         createNewThread.typeText("testCreateThread()\n")
-        messageThreadCell.tap()
         XCTAssert(messageThreadCell.exists)
+        messageThreadCell.tap()
+        XCTAssertFalse(messageCell.exists)
         XCTAssert(messageAddButton.exists)
         messageAddButton.tap()
         messageSender.tap()

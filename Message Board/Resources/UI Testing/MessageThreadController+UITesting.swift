@@ -14,27 +14,22 @@ extension MessageThreadController {
         
         do {
             let mockData = try Data(contentsOf: mockDataURL)
-            
             self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: mockData).values)
-            
         } catch {
             NSLog("Error decoding mock data: \(error)")
         }
-        
         completion()
     }
     
     func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
         let thread = MessageThread(title: title)
         messageThreads.append(thread)
-        
         completion()
     }
     
     func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
-        
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         

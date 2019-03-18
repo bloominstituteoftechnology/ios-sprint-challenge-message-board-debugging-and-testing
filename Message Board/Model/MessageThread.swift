@@ -41,6 +41,15 @@ class MessageThread: Codable, Equatable {
         let sender: String
         let timestamp: Date
         
+        // Mark: Bug 06
+        // messageText didn't match the mockJSON, added CodingKeys for decoding
+        // could have changed "messageText" to "text"
+        enum CodingKeys: String, CodingKey {
+            case messageText = "text"
+            case sender
+            case timestamp
+        }
+        
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text
             self.sender = sender
