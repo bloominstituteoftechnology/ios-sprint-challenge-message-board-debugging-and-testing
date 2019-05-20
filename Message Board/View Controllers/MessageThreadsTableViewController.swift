@@ -20,6 +20,13 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title?.accessibilityLabel = "MessageThreadTVCTitle"
+        navigationItem.titleView?.accessibilityIdentifier = "MessageThreadTVCTitle"
+       
+    }
+    
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
