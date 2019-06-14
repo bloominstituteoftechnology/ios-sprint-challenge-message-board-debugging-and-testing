@@ -16,19 +16,17 @@ class MessageThreadTests: XCTestCase {
 	}
     
 	func testTestDecodingThread() {
-		let data = try! Data(contentsOf: Bundle.main.url(forResource: "MockMessages", withExtension: "json")!)
-
-		var messageThread = [MessageThread]()
-		let jsonDecoder = JSONDecoder()
-		do {
-			let testDict = try jsonDecoder.decode([String: MessageThread].self, from: data)
-			messageThread = Array(testDict.values).sorted { $0.title < $1.title }
-		} catch {
-			XCTFail("Failed decoding json: \(error)")
+		let semaphore = DispatchSemaphore(value: 0)
+		let controller = MessageThreadController()
+		controller.fetchMessageThreads {
+			semaphore.signal()
 		}
+		semaphore.wait()
 
-		XCTAssert(messageThread.count == 2)
-		XCTAssert(messageThread.first?.title == "A New Thread")
+		let messageThreads = controller.messageThreads.sorted { $0.title < $1.title }
+
+		XCTAssert(messageThreads.count == 2)
+		XCTAssert(messageThreads.first?.title == "A New Thread")
 	}
 
 	func testCreateMessageThread() {
