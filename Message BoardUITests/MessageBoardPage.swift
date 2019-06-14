@@ -45,7 +45,21 @@ struct MessageBoardPage: TestPage {
         return app.textViews.element(boundBy: 0)
     }
     
-    // MARK: - Actoins
+     // MARK: - Actoins
+    
+    @discardableResult func tapOnCell(for index: Int, file: String = #file, line: UInt = #line) -> MessageBoardPage {
+        let cell = tableViewCell(for: index)
+        testCase.expect(exists: cell, file: file, line: line)
+        cell.tap()
+        return self
+    }
+    
+    @discardableResult func tapOnBarButton(file: String = #file, line: UInt = #line) -> MessageBoardPage {
+        let barButton = navigationBarButton
+        testCase.expect(exists: barButton, file: file, line: line)
+        barButton.tap()
+        return self
+    }
     
     @discardableResult func typeName(with name: String, file: String = #file, line: UInt = #line) -> MessageBoardPage {
         nameTextField.tap()
@@ -56,6 +70,17 @@ struct MessageBoardPage: TestPage {
     @discardableResult func typeMessage(with message: String, file: String = #file, line: UInt = #line) -> MessageBoardPage {
         messageTextField.tap()
         messageTextField.typeText(message)
+        return self
+    }
+    
+    //Verificaitons
+    
+    @discardableResult func verifyMessageExists(for index: Int, file: String = #file, line: UInt = #line) -> MessageBoardPage {
+        let thread = tableViewCell(for: index)
+        testCase.expect(exists: thread, file: file, line: line)
+        thread.tap()
+        let firstMessage = tableViewCell(for: 0)
+        testCase.expect(exists: firstMessage)
         return self
     }
     
