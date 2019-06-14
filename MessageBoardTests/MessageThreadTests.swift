@@ -12,10 +12,41 @@ import XCTest
 class MessageThreadTests: XCTestCase {
 
 	override func setUp() {
-		Message_Board.unitTestingMockData = true
+		Message_Board.unitTestingMockData = false
 	}
-    
+
+
+	// MARK: - NoNet
+
+	func testCreateMessageThreadNoNet() {
+		Message_Board.unitTestingMockData = true
+
+		let controller = MessageThreadController()
+		let startCount = controller.messageThreads.count
+
+		controller.createMessageThread(with: "Test Thread") {}
+		XCTAssertTrue(controller.messageThreads.count == startCount + 1)
+		XCTAssertTrue(controller.messageThreads.last?.title == "Test Thread")
+	}
+
+	func testMessageCreateNoNet() {
+		Message_Board.unitTestingMockData = true
+
+		let controller = MessageThreadController()
+		controller.createMessageThread(with: "Test Thread", completion: {})
+		let thread = controller.messageThreads.first!
+
+		XCTAssertTrue(thread.messages.count == 0)
+		controller.createMessage(in: thread, withText: "Test Message", sender: "It's a me a Mario", completion: {})
+		XCTAssertTrue(thread.messages.count == 1)
+
+		XCTAssertTrue(thread.messages.first?.text == "Test Message")
+		XCTAssertTrue(thread.messages.first?.sender == "It's a me a Mario")
+	}
+
 	func testTestDecodingThread() {
+		Message_Board.unitTestingMockData = true
+
 		let semaphore = DispatchSemaphore(value: 0)
 		let controller = MessageThreadController()
 		controller.fetchMessageThreads {
@@ -29,14 +60,6 @@ class MessageThreadTests: XCTestCase {
 		XCTAssert(messageThreads.first?.title == "A New Thread")
 	}
 
-	func testCreateMessageThread() {
-		let controller = MessageThreadController()
-		let startCount = controller.messageThreads.count
-
-		controller.createMessageThread(with: "Test Thread") {}
-		XCTAssertTrue(controller.messageThreads.count == startCount + 1)
-		XCTAssertTrue(controller.messageThreads.last?.title == "Test Thread")
-	}
 
 	func testThreadsEquatable() {
 		let aMessage = MessageThread.Message(text: "Test Message", sender: "Test Sender")
@@ -48,18 +71,5 @@ class MessageThreadTests: XCTestCase {
 		XCTAssertEqual(messageThread, copyThread)
 		XCTAssertEqual(messageThread, messageThread)
 		XCTAssertNotEqual(messageThread, differentThread)
-	}
-
-	func testMessageCreate() {
-		let controller = MessageThreadController()
-		controller.createMessageThread(with: "Test Thread", completion: {})
-		let thread = controller.messageThreads.first!
-
-		XCTAssertTrue(thread.messages.count == 0)
-		controller.createMessage(in: thread, withText: "Test Message", sender: "It's a me a Mario", completion: {})
-		XCTAssertTrue(thread.messages.count == 1)
-
-		XCTAssertTrue(thread.messages.first?.text == "Test Message")
-		XCTAssertTrue(thread.messages.first?.sender == "It's a me a Mario")
 	}
 }
