@@ -8,8 +8,8 @@
 
 import Foundation
 
-public var unitTesting: Bool = false
+public var unitTestingMockData: Bool = false
 
 var isUITesting: Bool {
-    return CommandLine.arguments.contains("UITesting") || unitTesting
+    return CommandLine.arguments.contains("UITesting") || unitTestingMockData
 }

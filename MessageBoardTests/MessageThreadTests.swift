@@ -12,7 +12,7 @@ import XCTest
 class MessageThreadTests: XCTestCase {
 
 	override func setUp() {
-		Message_Board.unitTesting = true
+		Message_Board.unitTestingMockData = true
 	}
     
 	func testTestDecodingThread() {
