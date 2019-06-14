@@ -20,6 +20,12 @@ class MessageThreadTests: XCTestCase {
         messageThreadController = MessageThreadController()
     }
 
-    
+    func testCreateThread() {
+        let threadTitle = "Test"
+        messageThreadController.createMessageThread(with: threadTitle) {
+            XCTAssertFalse(self.messageThreadController.messageThreads.isEmpty)
+            XCTAssertEqual(self.messageThreadController.messageThreads[0].title, threadTitle)
+        }
+    }
     
 }
