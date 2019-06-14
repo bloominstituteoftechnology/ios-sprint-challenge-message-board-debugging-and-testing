@@ -28,4 +28,10 @@ class MessageThreadTests: XCTestCase {
         }
     }
     
+    func testThreadDecodingThreads() {
+        messageThreadController.fetchMessageThreads {
+            XCTAssertFalse(self.messageThreadController.messageThreads.isEmpty)
+        }
+    }
+    
 }
