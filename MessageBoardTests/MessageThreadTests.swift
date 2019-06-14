@@ -34,8 +34,7 @@ class MessageThreadTests: XCTestCase {
 		let startCount = controller.messageThreads.count
 
 		let semaphore = DispatchSemaphore(value: 0)
-		controller.createMessageThread(with: "Test Thread") {
-			print("created message thread")
+		controller.createMessageThread(with: "zzzTest Thread") {
 			semaphore.signal()
 		}
 		semaphore.wait()

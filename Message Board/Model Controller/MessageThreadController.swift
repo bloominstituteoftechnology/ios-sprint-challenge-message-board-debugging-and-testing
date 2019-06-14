@@ -32,7 +32,7 @@ class MessageThreadController {
             
             do {
 				let firebaseDict = try JSONDecoder().decode([String: MessageThread].self, from: data)
-				self.messageThreads = Array(firebaseDict.values)
+				self.messageThreads = Array(firebaseDict.values).sorted { $0.title < $1.title }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
