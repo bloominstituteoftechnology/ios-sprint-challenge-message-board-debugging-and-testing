@@ -11,5 +11,15 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    var messageThreads: [MessageThread]!
+    var messageThreadController: MessageThreadController!
+    
+    
+    override func setUp() {
+        messageThreads = []
+        messageThreadController = MessageThreadController()
+    }
+
+    
     
 }
