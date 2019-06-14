@@ -9,7 +9,7 @@
 import XCTest
 @testable import Message_Board
 
-class MessageBoardPage: TestPage {
+struct MessageBoardPage: TestPage {
     var testCase: XCTestCase
 
     // MARK: - Elements
@@ -44,5 +44,19 @@ class MessageBoardPage: TestPage {
     var messageTextField: XCUIElement {
         return app.textViews.element(boundBy: 0)
     }
-
+    
+    // MARK: - Actoins
+    
+    @discardableResult func typeName(with name: String, file: String = #file, line: UInt = #line) -> MessageBoardPage {
+        nameTextField.tap()
+        nameTextField.typeText(name)
+        return self
+    }
+    
+    @discardableResult func typeMessage(with message: String, file: String = #file, line: UInt = #line) -> MessageBoardPage {
+        messageTextField.tap()
+        messageTextField.typeText(message)
+        return self
+    }
+    
 }
