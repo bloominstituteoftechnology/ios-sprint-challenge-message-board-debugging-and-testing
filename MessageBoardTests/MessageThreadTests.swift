@@ -15,6 +15,64 @@ class MessageThreadTests: XCTestCase {
 		Message_Board.unitTestingMockData = false
 	}
 
+	// MARK: - Net
+
+	func waitForFetchThreads(on controller: MessageThreadController) {
+		precondition(Message_Board.isUITesting == false, "Turn off UITesting flag")
+		let semaphore = DispatchSemaphore(value: 0)
+		controller.fetchMessageThreads {
+			semaphore.signal()
+		}
+		semaphore.wait()
+	}
+
+	func testCreateMessageThread() {
+		let controller = MessageThreadController()
+
+		waitForFetchThreads(on: controller)
+
+		let startCount = controller.messageThreads.count
+
+		let semaphore = DispatchSemaphore(value: 0)
+		controller.createMessageThread(with: "Test Thread") {
+			print("created message thread")
+			semaphore.signal()
+		}
+		semaphore.wait()
+
+		waitForFetchThreads(on: controller)
+		XCTAssertTrue(controller.messageThreads.count > startCount, "count: \(controller.messageThreads.count) startCount: \(startCount)")
+	}
+
+	/** if this fails *twice* in a row, then it's an issue (this will fail if there
+	are no threads on the server. other tests create threads, so if you run tests
+	again, it should pass if it's working) */
+	func testFetchThreads() {
+		let controller = MessageThreadController()
+		let startCount = controller.messageThreads.count
+
+		waitForFetchThreads(on: controller)
+		XCTAssertTrue(controller.messageThreads.count > startCount)
+	}
+
+	func testCreateMessage() {
+		let controller = MessageThreadController()
+		waitForFetchThreads(on: controller)
+
+		guard let thread = controller.messageThreads.last else { XCTFail("No message threads - test again"); return }
+		let startCount = thread.messages.count
+		let semaphore = DispatchSemaphore(value: 0)
+		controller.createMessage(in: thread, withText: "Unit Test Message", sender: "Xcode") {
+			semaphore.signal()
+		}
+		semaphore.wait()
+
+		XCTAssertTrue(thread.messages.count > startCount)
+		waitForFetchThreads(on: controller)
+		XCTAssertTrue(thread.messages.count > startCount)
+		XCTAssertTrue(thread.messages.last?.text == "Unit Test Message")
+	}
+
 
 	// MARK: - NoNet
 
