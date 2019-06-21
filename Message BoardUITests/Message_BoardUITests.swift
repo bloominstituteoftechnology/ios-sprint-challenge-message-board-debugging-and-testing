@@ -9,7 +9,9 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-        
+    
+    let app = XCUIApplication()
+    
     override func setUp() {
         super.setUp()
 
@@ -24,17 +26,20 @@ class Message_BoardUITests: XCTestCase {
     }
     
     // MARK: - UI Testing: Datatask was not started
-    func testUIMessageThreadsCreated() {
+    func testUIMessageThreadCreated() {
         // Test the cell text is the thread title
+        
+        
         
     }
     
     // MARK: - UI Testing: Fetched messages not decoded before saving
     func testUIFetchingMessages() {
         // Test that the cell text is the fetched message title
+
     }
     
-    // Mark: -UI Testing: Test the Add thread 
+    // Mark: -UI Testing: Test the Add thread
         
     
 }
