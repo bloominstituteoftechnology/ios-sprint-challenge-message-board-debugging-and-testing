@@ -57,7 +57,6 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(navNewMessage.exists)
 		XCTAssertTrue(createMessageNameTextField.exists)
 		XCTAssertTrue(createMessageBodyTextField.exists)
-		
 		XCTAssertTrue(createMessageSendButton.exists)
 		XCTAssertTrue(createMessageBackButton.exists)
 	}
