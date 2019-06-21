@@ -31,8 +31,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                let messageDictionaries = try JSONDecoder().decode([String: MessageThread].self, from: data)
-                let messageThreads = Array(messageDictionaries.values)
+                let messageDictionaries = try JSONDecoder().decode([String: MessageThread].self, from: data) // need to pull the dictionary from the firebase
+                let messageThreads = messageDictionaries.map { $0.value } // need to take the dictionary data and put it into the array
                 self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
@@ -40,7 +40,7 @@ class MessageThreadController {
             }
             
             completion()
-        }.resume()
+            }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -92,7 +92,7 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.put.rawValue // HTTPMethod should be put, not post
+        request.httpMethod = HTTPMethod.post.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
@@ -113,6 +113,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board-48615.firebaseio.com/")!
+    static let baseURL = URL(string: "https://lambda-message-board-48615.firebaseio.com/")! // need to add personal firebase
     var messageThreads: [MessageThread] = []
 }
