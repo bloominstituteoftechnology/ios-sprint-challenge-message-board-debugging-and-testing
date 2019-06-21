@@ -15,9 +15,7 @@ class MessageThreadTests: XCTestCase {
         messageThreadController = MessageThreadController()
     }
 
- 
-
-
+    // Creates a new thread and tests if the messageThread count has increased
     func testCreateMessageThread() {
         let expectation = self.expectation(description: "Creating")
         messageThreadController.createMessageThread(with: "Test Thread") {
@@ -29,6 +27,7 @@ class MessageThreadTests: XCTestCase {
         XCTAssertFalse(messageThreadController.messageThreads.count == 0)
     }
 
+    //Creates a new thread, then creates a new message and tests if the message count on that thread has increased
     func testCreateMessageWithinMessageThread() {
         var expectation = self.expectation(description: "Creating Thread")
         messageThreadController.createMessageThread(with: "Test Thread") {
@@ -36,9 +35,11 @@ class MessageThreadTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5, handler: nil)
+
         XCTAssertTrue(messageThreadController.messageThreads.count > 0)
         XCTAssertFalse(messageThreadController.messageThreads.count == 0)
         expectation = self.expectation(description: "Creating Thread")
+
         guard let thread = messageThreadController.messageThreads.first else { return }
         self.messageThreadController.createMessage(in: thread, withText: "Test Message", sender: "Test Name", completion: {
             expectation.fulfill()
@@ -48,19 +49,17 @@ class MessageThreadTests: XCTestCase {
         XCTAssertTrue(thread.messages.count > 0)
         XCTAssertFalse(thread.messages.count == 0)
     }
+
+    // Fetches messageThreads from server and checks to see if the messageThread count increased.  ONLY PASSES IF THERES A MESSAGE ON THE SERVER
     func testFetchMessageThread() {
-        messageThreadController.createMessageThread(with: "Test Thread") {
-        }
-
-        usleep(600000)
-        XCTAssertTrue(messageThreadController.messageThreads.count > 0)
-        XCTAssertFalse(messageThreadController.messageThreads.count == 0)
+        let expectation = self.expectation(description: "Fetching from server")
         messageThreadController.fetchMessageThreads {
+            expectation.fulfill()
         }
 
-        usleep(500000)
-        XCTAssertTrue(messageThreadController.messageThreads.count > 0)
-        XCTAssertFalse(messageThreadController.messageThreads.count == 0)
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(messageThreadController.messageThreads.count > 0, "Maybe no messageThread on server")
+        XCTAssertFalse(messageThreadController.messageThreads.count == 0, "Thread count is equal to 0")
 }
     var messageThreadController: MessageThreadController!
 }
