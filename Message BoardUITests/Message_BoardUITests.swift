@@ -23,4 +23,18 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    // MARK: - UI Testing: Datatask was not started
+    func testUIMessageThreadsCreated() {
+        // Test the cell text is the thread title
+        
+    }
+    
+    // MARK: - UI Testing: Fetched messages not decoded before saving
+    func testUIFetchingMessages() {
+        // Test that the cell text is the fetched message title
+    }
+    
+    // Mark: -UI Testing: Test the Add thread 
+        
+    
 }

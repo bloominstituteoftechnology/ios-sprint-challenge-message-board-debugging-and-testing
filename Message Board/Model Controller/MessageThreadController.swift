@@ -31,7 +31,10 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // TODO: - Fetched messages not decoded before saving
+                let fetchedMessagesDict = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                // Only want the values, not the keys
+                self.messageThreads = fetchedMessagesDict.map({$0.value})
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -71,8 +74,9 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+           
+        // TODO: - Debugging Error: Datatask was not started
+        } .resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
