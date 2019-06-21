@@ -21,6 +21,8 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        
+        navigationController?.popViewController(animated: true) // MARK: - Bug 4? Don't know if this is a bug but I added a popViewController to go back to the table view after I hit send.
     }
 
     // MARK: - Properties
