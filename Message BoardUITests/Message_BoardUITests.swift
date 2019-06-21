@@ -27,7 +27,7 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(createThreadTextField.exists)
 		createThreadTextField.tap()
 
-		for key in appKeysWithTest9 {
+		for key in appKeysWithTest7 {
 			XCTAssertTrue(key.exists)
 			key.tap()
 		}
@@ -35,10 +35,9 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(returnKey.exists)
 		returnKey.tap()
 		
-		XCUIApplication().tables/*@START_MENU_TOKEN@*/.staticTexts["test 7"]/*[[".cells.staticTexts[\"test 7\"]",".staticTexts[\"test 7\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-
-		
+		XCTAssertTrue(cellTest7.exists)
 	}
+	
 	
 	var app: XCUIApplication {
 		return XCUIApplication()
@@ -48,8 +47,12 @@ class Message_BoardUITests: XCTestCase {
 		return app.tables.textFields["Create a new thread:"]
 	}
 	
-	var appKeysWithTest9: [XCUIElement] {
+	var appKeysWithTest7: [XCUIElement] {
 		return [app.keys["t"], app.keys["e"], app.keys["s"], app.keys["t"], app.keys["space"] ,app.keys["more"], app.keys["7"]]
+	}
+	
+	var cellTest7: XCUIElement {
+		return app.tables.staticTexts["test 7"]
 	}
 	
 	var returnKey: XCUIElement {
