@@ -25,7 +25,11 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        // TODO: - Messages is an array but needs to be a dictionary.
+        // This was uncovered when segue was corrected.
+       // let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        // Should use compact map so that threads without messages will be mapped correctly
+        let messages = try container.decodeIfPresent([String : Message].self, forKey: .messages)?.compactMap({$0.value}) ?? []
         
         self.title = title
         self.identifier = identifier
@@ -38,6 +42,7 @@ class MessageThread: Codable, Equatable {
         let messageText: String
         let sender: String
         let timestamp: Date
+        
         
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text

@@ -21,6 +21,9 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        
+        // TODO: - Need a return to message thread
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties

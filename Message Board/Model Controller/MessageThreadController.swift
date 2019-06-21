@@ -32,6 +32,7 @@ class MessageThreadController {
             
             do {
                 // TODO: - Fetched messages not decoded before saving
+                //let messageThreads = try JSONDecoder().decode([String : MessageThread].self, from: data)
                 let fetchedMessagesDict = try JSONDecoder().decode([String : MessageThread].self, from: data)
                 // Only want the values, not the keys
                 self.messageThreads = fetchedMessagesDict.map({$0.value})

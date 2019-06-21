@@ -12,7 +12,7 @@ import XCTest
 class MessageThreadTests: XCTestCase {
     
     // Connect the MessageThreadsTableViewController() to our unit tests
-    var messageThreadsTable = MessageThreadsTableViewController()
+    var messageDetailThreadsTable = MessageThreadDetailTableViewController()
     var messageThreadsController = MessageThreadController()
     override func setUp() {
         
@@ -33,6 +33,20 @@ class MessageThreadTests: XCTestCase {
             let fetchedMessageThreads = self.messageThreadsController.messageThreads
             XCTAssertTrue(fetchedMessageThreads.count > 0)
         }
+    }
+    
+    // TODO: - Unit Testing: New message added to thread
+    func testReturnFromMessageDetail() {
+        // Check that message is added to thread
+        let fetchedThread = self.messageThreadsController.messageThreads
+        // Get the thread
+        guard let messageThread = fetchedThread.first else { return }
+        // Get the message for the thread
+        let message = messageThread.messages
+        XCTAssertTrue(message.count > 0)
         
     }
+    
+    
+    
 }
