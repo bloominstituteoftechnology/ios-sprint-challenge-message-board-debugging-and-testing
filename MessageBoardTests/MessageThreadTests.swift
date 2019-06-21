@@ -35,4 +35,16 @@ class MessageThreadTests: XCTestCase {
             })
         }
     }
+    
+    func testFetchMessage() {
+        messageThreadController?.createMessageThread(with: "Test Fetching") {
+            let messageThread = self.messageThreadController?.messageThreads
+            guard let firstMessage = messageThread?.first else { return }
+            
+            self.messageThreadController?.createMessage(in: firstMessage, withText: "Test 1", sender: "Test Name", completion: {
+                let messages = firstMessage.messages
+                XCTAssertTrue(messages.count > 0)
+            })
+        }
+    }
 }
