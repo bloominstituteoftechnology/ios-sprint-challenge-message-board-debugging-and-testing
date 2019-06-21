@@ -43,17 +43,21 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(cellTest7.exists)
 	}
 	
-	func test_navigateToTest7() {
+	func test_navigatoToTest7() {
 		test_createNewthread()
 		cellTest7.tap()
 		XCTAssertTrue(navTest7.exists)
 	}
 	
+	func test_navigatoCreateMessage() {
+		test_navigatoToTest7()
+		XCTAssertTrue(addMessageButton.exists)
+		addMessageButton.tap()
+		XCTAssertTrue(navNewMessage.exists)
+	}
+	
 	func test_createMessage() {
-		test_navigateToTest7()
-		
-		navTest7.buttons["Add"].tap()
-		
+		test_navigatoCreateMessage()
 		
 		
 	}
@@ -82,6 +86,13 @@ class Message_BoardUITests: XCTestCase {
 	
 	var navTest7: XCUIElement {
 		return app.navigationBars["test 7"]
+	}
+	var addMessageButton: XCUIElement {
+		return navTest7.buttons["Add"]
+	}
+	
+	var navNewMessage: XCUIElement {
+		return app.navigationBars["New Message"]
 	}
 	
 	
