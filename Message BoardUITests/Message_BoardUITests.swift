@@ -68,22 +68,16 @@ class Message_BoardUITests: XCTestCase {
 		createMessageNameTextField.tap()
 		test_KeyboardWithTest7()
 		returnKey.tap()
-		XCUIApplication().textViews["NewMessage.TextView"].tap()
+		
+		createMessageBodyTextField.tap()
 		app.buttons["shift"].tap()
-		
-		
-//		createMessageBodyTextField.doubleTap()
 		test_KeyboardWithTest7()
 		
 		createMessageSendButton.tap()
 		createMessageBackButton.tap()
 		
 		XCTAssertTrue(cellTest7.exists)
-		
-		
 	}
-	
-	
 	
 	var app: XCUIApplication {
 		return XCUIApplication()
