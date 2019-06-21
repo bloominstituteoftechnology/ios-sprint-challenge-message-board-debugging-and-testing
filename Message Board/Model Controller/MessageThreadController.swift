@@ -72,7 +72,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }// need to resume data task
+        }.resume() // need to resume data task
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -90,7 +90,7 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue // HTTPMethod should be put, not post
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
