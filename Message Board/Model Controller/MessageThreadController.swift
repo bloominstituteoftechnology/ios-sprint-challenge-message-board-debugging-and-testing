@@ -83,12 +83,12 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("message").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
@@ -105,12 +105,13 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
+
+            messageThread.messages.append(message)
             completion()
             
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://journal-a2ee6.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messageboard-96f4e.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
