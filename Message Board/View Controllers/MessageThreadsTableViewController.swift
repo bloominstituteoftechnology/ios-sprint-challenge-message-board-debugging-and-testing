@@ -59,6 +59,7 @@ class MessageThreadsTableViewController: UITableViewController {
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+            
         }
     }
     

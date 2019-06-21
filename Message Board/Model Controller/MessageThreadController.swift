@@ -11,34 +11,36 @@ import Foundation
 class MessageThreadController {
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
-        
+
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
-        
+
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
         }
-        
+
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
-            
+
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
                 completion()
                 return
             }
-            
+
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
+
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageThreadsDictionary = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                let messageThreads = messageThreadsDictionary.map({ $0.value })
+                self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
-            
+
             completion()
-        }.resume()
+            }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -72,7 +74,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +113,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messagethread-7bba0.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
