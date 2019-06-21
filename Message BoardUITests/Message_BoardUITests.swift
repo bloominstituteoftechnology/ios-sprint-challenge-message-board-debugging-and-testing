@@ -24,7 +24,7 @@ class Message_BoardUITests: XCTestCase {
     }
 	
 	
-	func test_KeyboardWithTest7() {
+	func keyboardWithTest7() {
 		
 		for key in appKeysWithTest7 {
 			XCTAssertTrue(key.exists)
@@ -36,7 +36,7 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(createThreadTextField.exists)
 		createThreadTextField.tap()
 		
-		test_KeyboardWithTest7()
+		keyboardWithTest7()
 		
 		XCTAssertTrue(returnKey.exists)
 		returnKey.tap()
@@ -65,12 +65,12 @@ class Message_BoardUITests: XCTestCase {
 		test_navigatoCreateMessage()
 		
 		createMessageNameTextField.tap()
-		test_KeyboardWithTest7()
+		keyboardWithTest7()
 		returnKey.tap()
 		
 		createMessageBodyTextField.tap()
 		app.buttons["shift"].tap()
-		test_KeyboardWithTest7()
+		keyboardWithTest7()
 		
 		createMessageSendButton.tap()
 		createMessageBackButton.tap()
