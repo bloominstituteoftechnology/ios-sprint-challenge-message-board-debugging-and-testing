@@ -18,7 +18,7 @@ struct MessageThreadPage: TestPage {
         return app.tables.element(boundBy: 0).cells.element(boundBy: index)
     }
     
-    var textField: XCUIElement {
+    var threadTitleTextField: XCUIElement {
         return app.textFields["MessageThreadsTableViewController.TextField"]
     }
     
@@ -32,9 +32,9 @@ struct MessageThreadPage: TestPage {
     }
     
     @discardableResult func createThread(title: String, file: String = #file, line: UInt = #line) -> MessageThreadPage {
-        testCase.expect(exists: textField, file: file, line: line)
-        textField.tap()
-        textField.typeText(title)
+        testCase.expect(exists: threadTitleTextField, file: file, line: line)
+        threadTitleTextField.tap()
+        threadTitleTextField.typeText(title)
         app.keyboards.buttons["Return"].tap()
         return self
     }

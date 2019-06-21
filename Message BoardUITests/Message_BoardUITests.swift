@@ -26,7 +26,7 @@ class Message_BoardUITests: XCTestCase {
     func testCreatingThreads() {
         MessageThreadPage(testCase: self)
             .createThread(title: "Test with UITesting")
-            .tapOnCell(at: 0)
+            .tapOnCell(at: 2)
         MessagesPage(testCase: self)
             .tapAddButton()
         DetailMessagePage(testCase: self)
