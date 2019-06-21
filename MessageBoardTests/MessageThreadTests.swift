@@ -28,7 +28,6 @@ class MessageThreadTests: XCTestCase {
 	
 	func test_createMessage() {
 		let thread1Message1 = MessageThread(title: "one")
-		
 		XCTAssertNoThrow(messageThreadController.createMessage(in: thread1Message1, withText: "111", sender: thread1) {})
 	}
 	
