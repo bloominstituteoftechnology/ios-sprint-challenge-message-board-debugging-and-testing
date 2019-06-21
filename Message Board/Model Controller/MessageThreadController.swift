@@ -31,6 +31,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
+                // MARK: - Bug 2. Needs to be in a Dictionary in order for the JSON to be decoded.
+                
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
             } catch {
                 self.messageThreads = []
@@ -72,7 +74,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }  // MARK: - Bug 1. No resume( data task was stopped and needs to be resumed.
+        }.resume()  // MARK: - Bug 1. No resume( data task was stopped and needs to be resumed.
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {

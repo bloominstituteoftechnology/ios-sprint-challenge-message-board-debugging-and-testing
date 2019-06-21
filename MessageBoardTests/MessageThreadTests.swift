@@ -23,4 +23,16 @@ class MessageThreadTests: XCTestCase {
             XCTAssert(messageThreads.count > 0, "Test message Created.")
         }
     }
+    
+    func testCreateMessageFromSelectedMessage() {
+        messageThreadController?.createMessageThread(with: "Unit Test Thread") {
+            let messageThreads = self.messageThreadController?.messageThreads
+            guard let message = messageThreads?.first else { return }
+            
+            self.messageThreadController?.createMessage(in: message, withText: "Test Inside create message", sender: "Hayden", completion: {
+                let messages = message.messages
+                XCTAssertTrue(messages.count > 0)
+            })
+        }
+    }
 }
