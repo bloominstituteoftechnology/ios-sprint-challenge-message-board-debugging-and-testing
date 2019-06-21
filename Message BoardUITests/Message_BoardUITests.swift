@@ -30,7 +30,7 @@ class Message_BoardUITests: XCTestCase {
         newThreadBar.tap()
         newThreadBar.typeText("Test #1")
         let enterButton = app.keyboards.buttons["Return"]
-        enterButton.tap()
+                        enterButton.tap()
         XCTAssert(app.tables.cells.staticTexts["Test #1"].exists)
     }
     
@@ -58,11 +58,12 @@ class Message_BoardUITests: XCTestCase {
         let nameField = app.textFields["Enter your name:"]
         nameField.tap()
         nameField.typeText("Message Test #1")
-        let messageTextView = app.staticTexts["MessageTextView"]
+        let messageTextView = app.textViews.element(boundBy: 0)
         messageTextView.tap()
         messageTextView.typeText("Testing")
-        let saveButton = app.buttons["Save"]
+        let saveButton = app.buttons["Send"]
         saveButton.tap()
+        XCTAssert(app.tables.cells.staticTexts["Test #3"].exists)
     }
     
     func testTapMessage() {
@@ -78,12 +79,15 @@ class Message_BoardUITests: XCTestCase {
         let nameField = app.textFields["Enter your name:"]
         nameField.tap()
         nameField.typeText("Message Test #2")
-        let messageTextView = app.staticTexts["MessageTextView"]
+        let messageTextView = app.textViews.element(boundBy: 0)
         messageTextView.tap()
         messageTextView.typeText("Testing")
-        let saveButton = app.buttons["Save"]
+        let saveButton = app.buttons["Send"]
         saveButton.tap()
-        let selectedMessageCell = app.tables.cells.staticTexts["Message Test #2"]
-        selectedMessageCell.tap()
+        let messageCell = app.tables.cells.staticTexts["Test #4"]
+        messageCell.tap()
+        XCTAssert(app.navigationBars["Test #4"].exists)
+        XCTAssert(app.staticTexts["Message Test #2"].exists)
+        XCTAssert(app.staticTexts["Testing"].exists)
     }
 }
