@@ -41,7 +41,7 @@ extension MessageThreadController {
         completion()
     }
     
-    var mockDataURL: URL {
+    var mockDataURL: URL { // need to double check
         return Bundle.main.url(forResource: "MockMessages", withExtension: "json")!
     }
 }
