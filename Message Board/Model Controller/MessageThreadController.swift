@@ -31,7 +31,10 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // ... also a dictionary 
+                let messageThreadsDictionary = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                let messageThreads = messageThreadsDictionary.map({ $0.value })
+                self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -72,7 +75,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        } .resume() // didn't .resume ... 
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +114,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://journal-48ed0.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }

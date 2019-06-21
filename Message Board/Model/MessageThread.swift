@@ -25,8 +25,9 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
-        
+        let messagesDictionary = try container.decodeIfPresent([String: MessageThread.Message].self, forKey: .messages) ?? [:] // this should be a dictionary
+        // .map the dictionary 
+        let messages = messagesDictionary.map { $0.value }
         self.title = title
         self.identifier = identifier
         self.messages = messages
@@ -35,12 +36,12 @@ class MessageThread: Codable, Equatable {
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
+        let text: String // this should be text
         let sender: String
         let timestamp: Date
         
         init(text: String, sender: String, timestamp: Date = Date()) {
-            self.messageText = text
+            self.text  = text // also should be test
             self.sender = sender
             self.timestamp = timestamp
         }
