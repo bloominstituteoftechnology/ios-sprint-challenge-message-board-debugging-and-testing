@@ -25,8 +25,6 @@ class Message_BoardUITests: XCTestCase {
 	
 	
 	func test_KeyboardWithTest7() {
-		XCTAssertTrue(createThreadTextField.exists)
-		createThreadTextField.tap()
 		
 		for key in appKeysWithTest7 {
 			XCTAssertTrue(key.exists)
@@ -35,6 +33,9 @@ class Message_BoardUITests: XCTestCase {
 	}
 	
 	func test_createNewthread() {
+		XCTAssertTrue(createThreadTextField.exists)
+		createThreadTextField.tap()
+		
 		test_KeyboardWithTest7()
 		
 		XCTAssertTrue(returnKey.exists)
@@ -54,10 +55,16 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(addMessageButton.exists)
 		addMessageButton.tap()
 		XCTAssertTrue(navNewMessage.exists)
+		XCTAssertTrue(createMessageTextField.exists)
 	}
 	
 	func test_createMessage() {
 		test_navigatoCreateMessage()
+		
+		createMessageTextField.tap()
+		
+		test_KeyboardWithTest7()
+		
 		
 		
 	}
@@ -95,5 +102,8 @@ class Message_BoardUITests: XCTestCase {
 		return app.navigationBars["New Message"]
 	}
 	
+	var createMessageTextField: XCUIElement {
+		return app.textFields["Enter your name:"]
+	}
 	
 }
