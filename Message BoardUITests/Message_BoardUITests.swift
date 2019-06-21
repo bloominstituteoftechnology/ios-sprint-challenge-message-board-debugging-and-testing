@@ -55,17 +55,24 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(addMessageButton.exists)
 		addMessageButton.tap()
 		XCTAssertTrue(navNewMessage.exists)
-		XCTAssertTrue(createMessageTextField.exists)
+		XCTAssertTrue(createMessageNameTextField.exists)
+		XCTAssertTrue(createMessageBodyTextField.exists)
 	}
 	
 	func test_createMessage() {
 		test_navigatoCreateMessage()
 		
-		createMessageTextField.tap()
-		
+		createMessageNameTextField.tap()
 		test_KeyboardWithTest7()
+		returnKey.tap()
+		XCUIApplication().textViews["NewMessage.TextView"].tap()
+		app/*@START_MENU_TOKEN@*/.buttons["shift"]/*[[".keyboards.buttons[\"shift\"]",".buttons[\"shift\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 		
 		
+//		createMessageBodyTextField.doubleTap()
+		test_KeyboardWithTest7()
+		XCUIApplication().navigationBars["New Message"].buttons["Send"].tap()
+
 		
 	}
 	
@@ -102,8 +109,11 @@ class Message_BoardUITests: XCTestCase {
 		return app.navigationBars["New Message"]
 	}
 	
-	var createMessageTextField: XCUIElement {
+	var createMessageNameTextField: XCUIElement {
 		return app.textFields["Enter your name:"]
 	}
 	
+	var createMessageBodyTextField: XCUIElement {
+		return app.textViews["NewMessage.TextView"]
+	}
 }
