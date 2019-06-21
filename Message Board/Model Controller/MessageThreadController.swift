@@ -19,7 +19,10 @@ class MessageThreadController {
             fetchLocalMessageThreads(completion: completion)
             return
         }
-        
+		
+		
+		// MARK: Error fetching data from firebase
+		
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
@@ -32,7 +35,8 @@ class MessageThreadController {
             
             do {
 				/// MARK - ERROR DECODING JSON
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+				let  messageThreadsDecoded = try JSONDecoder().decode([String: MessageThread].self, from: data)
+				self.messageThreads = Array(messageThreadsDecoded.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -63,6 +67,8 @@ class MessageThreadController {
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
         }
+		
+		// MARK: messages not being sent to firebase
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             

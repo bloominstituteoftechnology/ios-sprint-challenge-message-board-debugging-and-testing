@@ -14,9 +14,7 @@ class MessageThreadsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         messageThreadController.fetchMessageThreads {
-			
             DispatchQueue.main.async {
-				print("The count is >>>>> ", self.messageThreadController.messageThreads.count)
                 self.tableView.reloadData()
             }
         }

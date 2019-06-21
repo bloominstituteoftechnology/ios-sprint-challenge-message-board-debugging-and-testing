@@ -17,7 +17,11 @@ class MessageDetailViewController: UIViewController {
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
-        
+		
+		
+		//MARK: Create Message Not sending messages
+		
+		
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
