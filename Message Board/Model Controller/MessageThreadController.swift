@@ -33,7 +33,7 @@ class MessageThreadController {
             do {
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
             } catch {
-                self.messageThreads = []
+//                self.messageThreads = [] this line of code will set the messageThreads array to be empty
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
