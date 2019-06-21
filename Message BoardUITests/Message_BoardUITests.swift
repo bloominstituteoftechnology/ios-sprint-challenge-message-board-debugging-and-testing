@@ -23,14 +23,19 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 	
-	func test_createNewthread() {
+	
+	func test_KeyboardWithTest7() {
 		XCTAssertTrue(createThreadTextField.exists)
 		createThreadTextField.tap()
-
+		
 		for key in appKeysWithTest7 {
 			XCTAssertTrue(key.exists)
 			key.tap()
 		}
+	}
+	
+	func test_createNewthread() {
+		test_KeyboardWithTest7()
 		
 		XCTAssertTrue(returnKey.exists)
 		returnKey.tap()
