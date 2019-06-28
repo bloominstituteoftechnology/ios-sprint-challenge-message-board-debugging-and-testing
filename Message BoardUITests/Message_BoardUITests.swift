@@ -22,5 +22,27 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+
+    func testCreatingThread() {
+        let app = XCUIApplication()
+        let threadTextField = app.textFields["Create a new thread:"]
+        threadTextField.tap()
+        threadTextField.typeText("Testing Another Thread\n")
+        let cell = app.tables.cells.staticTexts["Testing Another Thread"]
+        XCTAssertEqual(cell.label, "Testing Another Thread")
+
+    }
+    
+//    func testLoadingThreads() {
+//        let app = XCUIApplication()
+//
+//        let fetchedThreadsExpectation = expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
+//
+//        fetchedThreadsExpectation.expectationDescription = "Threads should have been fetched and displayed on the table view."
+//
+//        waitForExpectations(timeout: 4)
+//    }
+    
+    
     
 }

@@ -14,7 +14,6 @@ class MessageThreadTests: XCTestCase {
     func testCreatingThread() {
         let controller = MessageThreadsTableViewController()
         controller.threadTitleTextField.text = "Creating Test Thread"
-        XCTAssertEqual()
     }
     
 }
