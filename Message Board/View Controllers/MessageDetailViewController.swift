@@ -19,8 +19,9 @@ class MessageDetailViewController: UIViewController {
             let messageThread = messageThread else { return } //  fails guard bc messageThread = nil
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            print("Message created!")
+            print("Message created!")  // error 3: after sending message, doesn't pop back to root
         })
+        navigationController?.popToRootViewController(animated: true)
     }
 
     // MARK: - Properties
