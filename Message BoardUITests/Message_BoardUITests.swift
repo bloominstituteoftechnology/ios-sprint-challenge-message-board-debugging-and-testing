@@ -33,15 +33,18 @@ class Message_BoardUITests: XCTestCase {
 
     }
     
-//    func testLoadingThreads() {
-//        let app = XCUIApplication()
-//
-//        let fetchedThreadsExpectation = expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: app.tables.cells, handler: nil)
-//
-//        fetchedThreadsExpectation.expectationDescription = "Threads should have been fetched and displayed on the table view."
-//
-//        waitForExpectations(timeout: 4)
-//    }
+    func testSelectingMessageThread() {
+        
+        
+        let app = XCUIApplication()
+        
+        testCreatingThread()
+    
+        app.tables.staticTexts["Testing Another Thread"].tap()
+        XCTAssert(app.navigationBars.staticTexts["Testing Another Thread"].exists)
+        
+        
+    }
     
     
     
