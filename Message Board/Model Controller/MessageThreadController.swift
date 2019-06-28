@@ -29,9 +29,9 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
+            //BUG: [MessageThread].self. It should be [String:MessageThread].self because its json database, also we have to get the values out of the dictionary that will be returned to us.
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = try JSONDecoder().decode([String:MessageThread].self, from: data).compactMap { $0.value }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -71,8 +71,8 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+            //BUG: Missing .resume()
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +111,7 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+//    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://mrf-message-board.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
