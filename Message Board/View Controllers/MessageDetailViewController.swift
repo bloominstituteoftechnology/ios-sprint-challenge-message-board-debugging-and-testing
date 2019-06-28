@@ -22,6 +22,8 @@ class MessageDetailViewController: UIViewController {
                 print("Message created!")
             })
         }
+        // MARK: - Bug 5 Added pop back to previous VC after creating a message.
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
