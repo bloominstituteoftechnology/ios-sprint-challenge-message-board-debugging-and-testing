@@ -16,7 +16,7 @@ class MessageDetailViewController: UIViewController {
         
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
-            let messageThread = messageThread else { return } // this 3rd statement seems to be failing guard bc messageThread = nil
+            let messageThread = messageThread else { return } //  fails guard bc messageThread = nil
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
