@@ -58,6 +58,7 @@ class MessageThreadController {
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
+            // am i missing a completion?
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
         }
@@ -73,7 +74,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }  // where's the resume() ?
+        }.resume()  // where's the resume() ?
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
