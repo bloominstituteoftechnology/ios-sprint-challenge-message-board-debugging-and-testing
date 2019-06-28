@@ -30,10 +30,10 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
-            do {  // is it required to have an INSTANCE of JSONDecoder: jsonDecoder?
+            do {  // is it required to have an INSTANCE of JSONDecoder: jsonDecoder? self needed? I think so, but check.
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
             } catch {
-                self.messageThreads = []
+                self.messageThreads = []  // this will occur w no messages, but we don't want to print the error below if that's the case. fix with if self.messageThreads != nil { self.... = [] } else { NSLog... }
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
@@ -119,3 +119,4 @@ class MessageThreadController {
     static let baseURL = URL(string: "https://message-board-2ef1c.firebaseio.com/")!
     var messageThreads: [MessageThread] = []  // seems redundant to instantiate w [], since you already do this in the catch in the network call fetchMethodThreads()
 }
+
