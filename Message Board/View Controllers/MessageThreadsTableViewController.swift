@@ -23,11 +23,11 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
-        threadTitleTextField.resignFirstResponder()
+        threadTitleTextField.resignFirstResponder() // what is this??
 
         guard let threadTitle = threadTitleTextField.text else { return }
         
-        threadTitleTextField.text = ""
+        threadTitleTextField.text = ""   // WTF? this is too early, this has to come AFTER otherwise we'll be creating a MessageThread with a blank!
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
