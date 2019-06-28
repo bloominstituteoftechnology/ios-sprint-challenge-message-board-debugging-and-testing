@@ -51,6 +51,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
     
     // MARK: - Properties
+    
+    // did we get a messageThread sent from MTTVC?
 
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
