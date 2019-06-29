@@ -10,12 +10,12 @@ import Foundation
 
 class MessageThread: Codable, Equatable {   //can get away with just Decodable, no?
     
-    enum CodingKeys: String, CodingKey {
-        // We want the decoder to look for a different key than the name of our properties
-        case title
-        case identifier
-        case messages          //birthYear = "birth_year"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        // We want the decoder to look for a different key than the name of our properties
+//        case title
+//        case identifier
+//        case messages          //birthYear = "birth_year"
+//    }
 
     let title: String
     var messages: [MessageThread.Message]  // why can't this just be 'Message'?
