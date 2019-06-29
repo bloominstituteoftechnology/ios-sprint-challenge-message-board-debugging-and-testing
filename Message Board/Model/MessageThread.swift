@@ -9,6 +9,13 @@
 import Foundation
 
 class MessageThread: Codable, Equatable {   //can get away with just Decodable, no?
+    
+    enum CodingKeys: String, CodingKey {
+        // We want the decoder to look for a different key than the name of our properties
+        case title
+        case identifier
+        case messages          //birthYear = "birth_year"
+    }
 
     let title: String
     var messages: [MessageThread.Message]  // why can't this just be 'Message'?
@@ -22,12 +29,12 @@ class MessageThread: Codable, Equatable {   //can get away with just Decodable, 
     }
 
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)  // CodingKeys aren't even there, why is it calling them??
         
         // i dont think ordering matters
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []  // never used a statement like this, so decodeIfPresent might be good, ?? [] is nil coalesce format?
+        let messages = try container.decodeIfPresent([String : Message].self, forKey: .messages)?.compactMap { $0.value} ?? []  // never used a statement like this, so decodeIfPresent might be good, ?? [] is nil coalesce format?
         
         self.title = title
         self.identifier = identifier

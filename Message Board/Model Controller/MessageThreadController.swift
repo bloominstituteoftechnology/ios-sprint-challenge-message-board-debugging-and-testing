@@ -30,8 +30,8 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
-            do {  // is it required to have an INSTANCE of JSONDecoder: jsonDecoder? self needed? I think so, but check.
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+            do {
+                self.messageThreads = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 if self.counter == 0 {
                     
