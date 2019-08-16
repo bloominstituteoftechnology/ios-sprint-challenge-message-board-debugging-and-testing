@@ -9,7 +9,7 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-        
+    
     override func setUp() {
         super.setUp()
 
@@ -21,6 +21,56 @@ class Message_BoardUITests: XCTestCase {
         
         app.launchArguments = ["UITesting"]
         app.launch()
+    }
+    
+    func testIfThreadsWereFetched(){
+        let app = XCUIApplication()
+        XCTAssert(app.tables.cells.count > 0)
+    }
+    
+    func testExistingCells(){
+        let app = XCUIApplication()
+        XCTAssert(app.tables.cells.element.exists)
+    }
+    
+    func testCreatingMessageThread(){
+        let app = XCUIApplication()
+        let cell = app.tables.staticTexts["Testing again"]
+        XCTAssertEqual(cell.label, "Testing again")
+    }
+    
+    func testNavigationBarChangeFromCell(){
+        let app = XCUIApplication()
+        let title = app.navigationBars["λ Message Board"]
+        XCTAssert(title.waitForExistence(timeout: 4))
+        
+        let cell = app.tables.staticTexts["Testing again"]
+        cell.tap()
+        
+        let newTitle = app.navigationBars["Testing again"]
+        XCTAssert(newTitle.waitForExistence(timeout: 3))
+        app.navigationBars["Testing again"].buttons["Add"].tap()
+        let textField = app.textFields.containing(.textField, identifier: "MessageDetailViewController.nameTextField")
+        XCTAssertNotNil(textField)
+    }
+    
+    func testAddMessageBarButtonPressed(){
+        let app = XCUIApplication()
+        let title = app.navigationBars["λ Message Board"]
+        XCTAssert(title.waitForExistence(timeout: 4))
+        
+        let cell = app.tables.staticTexts["Testing again"]
+        cell.tap()
+       
+        let newTitle = app.navigationBars["Testing again"]
+        XCTAssert(newTitle.waitForExistence(timeout: 4))
+
+        app.navigationBars["Testing again"].buttons["Add"].tap()
+        
+        let textField = app.textFields.containing(.textField, identifier: "MessageDetailViewController.nameTextField")
+        let textView = app.textViews.containing(.textView, identifier: "MessageDetailViewController.textView")
+        XCTAssertNotNil(textField)
+        XCTAssertNotNil(textView)
     }
     
 }
