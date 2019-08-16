@@ -22,8 +22,8 @@ class MessageDetailViewController: UIViewController {
             print("Message created!")
         })
     }
-
-    // MARK: - Properties
+    
+    
     
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
