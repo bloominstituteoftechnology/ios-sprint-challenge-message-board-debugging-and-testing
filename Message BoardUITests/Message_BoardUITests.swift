@@ -50,7 +50,7 @@ class Message_BoardUITests: XCTestCase {
         let newTitle = app.navigationBars["Testing again"]
         XCTAssert(newTitle.waitForExistence(timeout: 3))
         app.navigationBars["Testing again"].buttons["Add"].tap()
-        let textField = app.textFields.containing(.textField, identifier: "MessageDetailViewController.EnterYourNameTextField")
+        let textField = app.textFields.containing(.textField, identifier: "MessageDetailViewController.nameTextField")
         XCTAssertNotNil(textField)
     }
     
@@ -67,8 +67,8 @@ class Message_BoardUITests: XCTestCase {
 
         app.navigationBars["Testing again"].buttons["Add"].tap()
         
-        let textField = app.textFields.containing(.textField, identifier: "MessageDetailViewController.EnterYourNameTextField")
-        let textView = app.textViews.containing(.textView, identifier: "MessageDetailViewController.TextView")
+        let textField = app.textFields.containing(.textField, identifier: "MessageDetailViewController.nameTextField")
+        let textView = app.textViews.containing(.textView, identifier: "MessageDetailViewController.textView")
         XCTAssertNotNil(textField)
         XCTAssertNotNil(textView)
     }
