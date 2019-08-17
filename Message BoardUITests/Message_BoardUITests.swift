@@ -22,5 +22,11 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    // Add a test to fetch messages
+    func testFetchingMessageThreads() {
+        //
+    }
+    
+    // Add test to create a thread
     
 }
