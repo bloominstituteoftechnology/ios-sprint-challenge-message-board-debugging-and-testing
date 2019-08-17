@@ -25,8 +25,14 @@ class Message_BoardUITests: XCTestCase {
     
     func testHasAMessage() {
         let app = XCUIApplication()
-        
-        
+        XCTAssert(app.tables.cells.count > 0)
     }
+    
+    
+    func testCreateANewMessageThread() {
+                
+    }
+    
+    
     
 }

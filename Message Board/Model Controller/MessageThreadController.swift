@@ -32,7 +32,9 @@ class MessageThreadController {
             
             do {
                 let messageThreadDictionaries = try JSONDecoder().decode([String : MessageThread].self, from: data)
-                print(messageThreadDictionaries)
+                for (i, j) in messageThreadDictionaries {
+                    print("\((i, j)) \n")
+                }
                 let messagesArray = Array(messageThreadDictionaries.values)
                 self.messageThreads = messagesArray
                 completion()
