@@ -71,6 +71,7 @@ class MessageThreadTests: XCTestCase {
                 print("Error encoding JSON: \(error)")
             }
         }
+        
         XCTAssertTrue(controller.messageThreads.last?.title == title)
     }
 }
