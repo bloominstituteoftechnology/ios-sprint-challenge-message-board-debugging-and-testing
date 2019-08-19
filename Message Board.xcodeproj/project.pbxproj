@@ -21,6 +21,9 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
+		6FEFB49B230B4EBC0094509F /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEFB49A230B4EBC0094509F /* MockDataLoader.swift */; };
+		6FEFB49D230B4EE90094509F /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEFB49C230B4EE90094509F /* NetworkDataLoader.swift */; };
+		6FEFB49F230B50550094509F /* URLSession + NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEFB49E230B50540094509F /* URLSession + NetworkDataLoader.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		6FEFB49A230B4EBC0094509F /* MockDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
+		6FEFB49C230B4EE90094509F /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
+		6FEFB49E230B50540094509F /* URLSession + NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession + NetworkDataLoader.swift"; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -153,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				4612B5DB211AB6C500E7FF73 /* MessageThreadController.swift */,
+				6FEFB49E230B50540094509F /* URLSession + NetworkDataLoader.swift */,
+				6FEFB49C230B4EE90094509F /* NetworkDataLoader.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */,
+				6FEFB49A230B4EBC0094509F /* MockDataLoader.swift */,
 				9D9B6B00214B7A66006381F7 /* Info.plist */,
 			);
 			path = MessageBoardTests;
@@ -334,10 +343,12 @@
 				4612B5DA211AB66600E7FF73 /* MessageThread.swift in Sources */,
 				4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */,
 				46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */,
+				6FEFB49D230B4EE90094509F /* NetworkDataLoader.swift in Sources */,
 				4629C7DE214B925E00E7FF73 /* IsUITesting.swift in Sources */,
 				46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */,
 				46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */,
 				4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */,
+				6FEFB49F230B50550094509F /* URLSession + NetworkDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FEFB49B230B4EBC0094509F /* MockDataLoader.swift in Sources */,
 				9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

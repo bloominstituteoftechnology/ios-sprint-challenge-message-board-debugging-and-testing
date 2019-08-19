@@ -20,7 +20,9 @@ class MessageThreadController {
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+//        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        
+        networkLoader.loadData(from: requestURL) { (data, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
@@ -40,7 +42,7 @@ class MessageThreadController {
             }
             
             completion()
-        }.resume()
+        }
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -63,18 +65,17 @@ class MessageThreadController {
             NSLog("Error encoding thread to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+       networkLoader.loadData(from: request) { (data, error) in
+        
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
                 return
             }
-            
             self.messageThreads.append(thread)
             completion()
-            
-        }.resume()
+        }
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -100,19 +101,24 @@ class MessageThreadController {
             NSLog("Error encoding message to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        
+        networkLoader.loadData(from: request) { (data, error) in
+        
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
                 return
             }
-            
             completion()
-            
-        }.resume()
+        }
     }
     
     static let baseURL = URL(string: "https://lambda-message-board-74ae1.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
+    var networkLoader: NetworkDataLoader
+    
+    init(networkLoader: NetworkDataLoader = URLSession.shared) {
+        self.networkLoader = networkLoader
+    }
 }

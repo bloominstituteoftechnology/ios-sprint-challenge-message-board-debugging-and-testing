@@ -93,11 +93,11 @@ class Message_BoardUITests: XCTestCase {
         senderName.typeText("Kat")
         
         messageText.tap()
-        messageText.typeText("This is a test.")
+        messageText.typeText("This is another test.")
         
         app.navigationBars.buttons["Send"].tap()
         
-        let message = app.tables.staticTexts["This is a test."]
+        let message = app.tables.staticTexts["This is another test."]
         XCTAssertTrue(message.exists)
     }
     
