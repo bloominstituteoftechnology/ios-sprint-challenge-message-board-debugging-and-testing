@@ -33,8 +33,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
         let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
-        cell.detailTextLabel?.text = message?.sender
+        cell.textLabel?.text = message?.sender
+        cell.detailTextLabel?.text = message?.messageText // inverted 
         
         return cell
     }

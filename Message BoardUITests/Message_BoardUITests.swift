@@ -79,7 +79,7 @@ class Message_BoardUITests: XCTestCase {
         app.navigationBars["New Message"].buttons["Send"].tap()
         app.navigationBars.buttons["testThread"].tap()
         XCTAssert(app.tables.staticTexts["Person"].exists)
-    
+   
 }
   
 }
