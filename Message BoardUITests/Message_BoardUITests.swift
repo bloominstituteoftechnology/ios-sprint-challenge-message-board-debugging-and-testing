@@ -10,6 +10,21 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+    private var createThread: XCUIElement {
+        let app = XCUIApplication()
+        return app.tables.textFields["Create a new thread:"]
+    }
+    
+    private var senderName: XCUIElement {
+        let app = XCUIApplication()
+        return app.textFields["MessageDetailViewController.nameTextField"]
+    }
+    
+    private var messageText: XCUIElement {
+        let app = XCUIApplication()
+        return app.textViews["MessageDetailViewController.textView"]
+    }
+    
     override func setUp() {
         super.setUp()
 
@@ -54,23 +69,36 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertNotNil(textField)
     }
     
-    func testAddMessageBarButtonPressed(){
+    func testCreatingThread() {
         let app = XCUIApplication()
-        let title = app.navigationBars["λ Message Board"]
-        XCTAssert(title.waitForExistence(timeout: 4))
+        createThread.tap()
+        createThread.typeText("Another Test")
+        app.keyboards.buttons["Return"].tap()
+        XCTAssertTrue(app.tables.staticTexts["Another Test"].exists)
+    }
+    
+    func testCreatingMessage() {
+        let app = XCUIApplication()
+        createThread.tap()
+        createThread.typeText("Another Test")
+        app.keyboards.buttons["Return"].tap()
         
-        let cell = app.tables.staticTexts["Testing again"]
-        cell.tap()
-       
-        let newTitle = app.navigationBars["Testing again"]
-        XCTAssert(newTitle.waitForExistence(timeout: 4))
-
-        app.navigationBars["Testing again"].buttons["Add"].tap()
+        let thread = app.tables.staticTexts["Another Test"]
+        XCTAssertTrue(thread.exists)
         
-        let textField = app.textFields.containing(.textField, identifier: "MessageDetailViewController.nameTextField")
-        let textView = app.textViews.containing(.textView, identifier: "MessageDetailViewController.textView")
-        XCTAssertNotNil(textField)
-        XCTAssertNotNil(textView)
+        thread.tap()
+        app.navigationBars.buttons["Add"].tap()
+        
+        senderName.tap()
+        senderName.typeText("Kat")
+        
+        messageText.tap()
+        messageText.typeText("This is a test.")
+        
+        app.navigationBars.buttons["Send"].tap()
+        
+        let message = app.tables.staticTexts["This is a test."]
+        XCTAssertTrue(message.exists)
     }
     
 }

@@ -21,7 +21,7 @@ class MessageThreadTests: XCTestCase {
         let text = "text"
         let sender = "sender"
         let createdMessage = MessageThread.Message(text: text, sender: sender)
-        XCTAssertNotNil(createdMessage)
+        XCTAssertTrue(createdMessage.text == text)
     }
     
     func testFetchingMessageThread() {
