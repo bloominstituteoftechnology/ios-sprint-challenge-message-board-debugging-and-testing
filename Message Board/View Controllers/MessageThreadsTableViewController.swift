@@ -8,19 +8,30 @@
 
 import UIKit
 
-class MessageThreadsTableViewController: UITableViewController {
+class MessageThreadsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        threadTitleTextField.delegate = self
+        retrieveMessages {
+            print("Loaded messages")
+        }
+    }
+    
+    func retrieveMessages(completion: @escaping () -> Void){
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                completion()
             }
         }
     }
     
-    // MARK: - Actions
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        createThread(textField)
+        return true
+    }
     
     @IBAction func createThread(_ sender: Any) {
         threadTitleTextField.resignFirstResponder()
@@ -36,12 +47,12 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
+    
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageThreadController.messageThreads.count
     }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
