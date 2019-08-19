@@ -33,7 +33,7 @@ class MessageThreadController {
             do {
 //                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data) //issue here
                 let messageThreadDictionaries = try JSONDecoder().decode([String: MessageThread].self, from: data)
-                print(messageThreadDictionaries)
+//                print(messageThreadDictionaries)
                 self.messageThreads = Array(messageThreadDictionaries.values)
             } catch {
                 self.messageThreads = []
