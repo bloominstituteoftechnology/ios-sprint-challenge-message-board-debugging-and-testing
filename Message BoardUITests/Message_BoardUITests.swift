@@ -9,7 +9,9 @@
 import XCTest
 
 class Message_BoardUITests: XCTestCase {
-        
+    
+    var app: XCUIApplication!
+    
     override func setUp() {
         super.setUp()
 
@@ -17,7 +19,7 @@ class Message_BoardUITests: XCTestCase {
         
         continueAfterFailure = false
         
-        let app = XCUIApplication()
+        app = XCUIApplication()
         
         app.launchArguments = ["UITesting"]
         app.launch()
