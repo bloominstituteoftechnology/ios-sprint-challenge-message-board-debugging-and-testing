@@ -23,4 +23,21 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    private var app: XCUIApplication {
+        return XCUIApplication()
+    }
+    
+    private var createTextField: XCUIElement {
+        return app.tables.textFields["Create a new thread:"]
+    }
+    
+    private var enterNameField: XCUIElement {
+        return app.textFields["MessageDetailViewController.NameTextField"]
+    }
+    
+    
+    private var messageTextView: XCUIElement {
+        return app.textViews["MessageDetailViewController.MessageTextVIew"]
+    }
+    
 }
