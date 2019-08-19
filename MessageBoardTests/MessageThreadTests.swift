@@ -11,5 +11,13 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    
+    func testFetchMessages() {
+        let messageBoard = MessageThreadController()
+        messageBoard.fetchMessageThreads {
+            if messageBoard.messageThreads.isEmpty {
+                XCTFail("message thread empty")
+            }
+        }
+//        XCTAssertNotNil(messageBoard.messageThreads.isEmpty)
+    }
 }
