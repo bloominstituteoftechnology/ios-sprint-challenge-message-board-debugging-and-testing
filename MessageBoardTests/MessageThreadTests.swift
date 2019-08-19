@@ -19,5 +19,13 @@ class MessageThreadTests: XCTestCase {
             }
         }
 //        XCTAssertNotNil(messageBoard.messageThreads.isEmpty)
+    }  //test does not work as expected
+    
+    func testCreateThread() {
+        let messageBoard = MessageThreadController()
+        
+        messageBoard.createMessageThread(with: "1") {
+            XCTAssertTrue(messageBoard.messageThreads[0].title == "1")
+        }
     }
 }
