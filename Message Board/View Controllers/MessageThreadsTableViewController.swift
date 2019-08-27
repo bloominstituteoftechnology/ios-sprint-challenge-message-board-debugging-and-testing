@@ -16,6 +16,8 @@ class MessageThreadsTableViewController: UITableViewController, UITextFieldDeleg
         retrieveMessages {
             print("Loaded messages")
         }
+        self.tableView.accessibilityIdentifier = "MainTableView"
+        self.threadTitleTextField.accessibilityIdentifier = "MainTextField"
     }
     
     func retrieveMessages(completion: @escaping () -> Void){

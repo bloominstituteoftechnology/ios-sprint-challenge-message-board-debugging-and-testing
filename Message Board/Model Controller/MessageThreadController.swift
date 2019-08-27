@@ -10,6 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
+    var uuid : String?
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -34,6 +35,7 @@ class MessageThreadController {
                 let messages = try JSONDecoder().decode([String : MessageThread].self, from: data)
                 for(_, value) in messages{
                     self.messageThreads.append(value)
+                    self.removeDuplicates()
                 }
             } catch {
                 self.messageThreads = []
@@ -42,6 +44,22 @@ class MessageThreadController {
             
             completion()
         }.resume()
+    }
+    
+    func removeDuplicates(){
+        var idArray : [String] = []
+        var newArray : [MessageThread] = []
+        for index in messageThreads{
+            if newArray.contains(index){
+                continue
+            }else{
+                if(!idArray.contains(index.identifier)){
+                    newArray.append(index)
+                    idArray.append(index.identifier)
+                }
+            }
+        }
+        messageThreads = newArray
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -89,7 +107,8 @@ class MessageThreadController {
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
-        messageThreads[index].messages.append(message)
+        self.uuid = UUID().uuidString
+        messageThreads[index].messages[self.uuid!] = message
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -114,6 +133,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://message-board-dbf35.firebaseio.com/")!
+    static let baseURL = URL(string: "https://sprint8-eeac0.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }

@@ -11,8 +11,10 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     var messageThreadsTableVC : MessageThreadsTableViewController?
+    var messageThreadsDetailVC : MessageThreadDetailTableViewController?
     override func setUp() {
         messageThreadsTableVC = MessageThreadsTableViewController()
+        messageThreadsDetailVC = MessageThreadDetailTableViewController()
     }
     
     func testRetreivingMessages(){
@@ -21,21 +23,5 @@ class MessageThreadTests: XCTestCase {
         }
     }
     
-    func testPostingMessage(){
-        let testCount = messageThreadsTableVC!.tableView.numberOfRows(inSection: 0)
-        while(messageThreadsTableVC!.isViewLoaded == false){
-            messageThreadsTableVC!.threadTitleTextField.text = "Test Text"
-            messageThreadsTableVC!.createThread(messageThreadsTableVC!.threadTitleTextField)
-            XCTAssertGreaterThan(self.messageThreadsTableVC!.tableView.numberOfRows(inSection: 0), testCount)
-        }
-    }
     
-    func testTypingMessage(){
-        let testString = "Testing the ability to write in the text field"
-        while messageThreadsTableVC!.isViewLoaded == true{
-            messageThreadsTableVC!.threadTitleTextField.text = testString
-            XCTAssertEqual(messageThreadsTableVC!.threadTitleTextField.text, testString)
-            break
-        }
-    }
 }
