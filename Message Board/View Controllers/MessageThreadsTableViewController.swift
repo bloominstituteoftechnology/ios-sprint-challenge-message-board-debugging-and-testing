@@ -14,7 +14,7 @@ class MessageThreadsTableViewController: UITableViewController, UITextFieldDeleg
         super.viewWillAppear(animated)
         threadTitleTextField.delegate = self
         retrieveMessages {
-            print("Loaded messages")
+            self.tableView.reloadData()
         }
         self.tableView.accessibilityIdentifier = "MainTableView"
         self.threadTitleTextField.accessibilityIdentifier = "MainTextField"
@@ -23,7 +23,6 @@ class MessageThreadsTableViewController: UITableViewController, UITextFieldDeleg
     func retrieveMessages(completion: @escaping () -> Void){
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
-                self.tableView.reloadData()
                 completion()
             }
         }

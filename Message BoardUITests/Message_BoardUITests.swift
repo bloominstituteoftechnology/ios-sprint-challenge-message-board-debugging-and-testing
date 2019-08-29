@@ -45,10 +45,14 @@ class Message_BoardUITests: XCTestCase {
     
     func testNavigatingIntoMessage(){
         let tableView = app.tables.containing(.table, identifier: "MainTableView")
-        messageThreadsTableVC?.retrieveMessages {
-            tableView.cells.element(boundBy: 0).tap()
-            XCTAssert(self.app.navigationBars["\(self.messageThreadsTableVC!.messageThreadController.messageThreads[0].title )"].exists)
-        }        
+        let textField = app.otherElements.textFields["MainTextField"]
+        textField.tap()
+        textField.typeText("Testing adding new")
+        app.buttons["Return"].tap()
+        self.messageThreadsTableVC!.messageThreadController.messageThreads.append(MessageThread(title: "Testing adding new"))
+        tableView.cells.element(boundBy: 0).tap()
+        let title = self.messageThreadsTableVC!.messageThreadController.messageThreads[0].title
+        XCTAssert(self.app.navigationBars["\(title )"].exists)
     }
     
     
