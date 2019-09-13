@@ -22,5 +22,16 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+
+//	var cell: XCUIElement {
+//		let tableViewCell = app.tableRows.cells.element
+//		XCTAssertTrue(tableViewCell.exists)
+//		return tableViewCell
+//	}
+
+//	func testCanTapTableViewCell() {
+//		cell.tap()
+//
+//	}
     
 }

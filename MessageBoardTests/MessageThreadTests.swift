@@ -12,16 +12,23 @@ import XCTest
 class MessageThreadTests: XCTestCase {
 
 	var app: XCUIApplication!
-    var threadTableView = MessageThreadsTableViewController()
-	var threadController = MessageThreadController()
+    let threadTableView = MessageThreadsTableViewController()
+
 
 
 	func testMessageThreadsAreBeingAppendedToArray() {
-		threadController.createMessageThread(with: "Testing With Unit Tests") {
-			DispatchQueue.main.async {
-				self.threadTableView.tableView.reloadData()
-			}
+		let threadController = MessageThreadController()
+		XCTAssertTrue(threadController.messageThreads.count == 0)
+		let didFinish = expectation(description: "didFinish")
+		threadController.createLocalMessageThread(with: "Testing With Unit Tests") {
+			didFinish.fulfill()
 		}
-		XCTAssertTrue(threadController.messageThreads.count >= 0)
+		wait(for: [didFinish], timeout: 5)
+		XCTAssertTrue(threadController.messageThreads.count > 0)
+	}
+
+	func testFetchingMessageThreads() {
+		let threadController = MessageThreadController()
+		
 	}
 }
