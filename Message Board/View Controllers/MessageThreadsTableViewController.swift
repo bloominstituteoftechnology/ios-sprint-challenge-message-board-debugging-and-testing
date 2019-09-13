@@ -10,6 +10,11 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		tableView.accessibilityIdentifier = "MessageThreadsTableViewController.tableView"
+	}
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -53,9 +58,8 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMessageThread" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
+        if let destinationVC = segue.destination as? MessageThreadDetailTableViewController,
+			let indexPath = tableView.indexPathForSelectedRow {
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
