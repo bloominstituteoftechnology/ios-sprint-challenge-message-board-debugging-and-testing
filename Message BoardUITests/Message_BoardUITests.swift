@@ -96,16 +96,20 @@ class Message_BoardUITests: XCTestCase {
         
         let message = messageCell1.staticTexts["MessageThreadDetailTableViewController.MessageCell.messageLabel"].label
         let name = messageCell1.staticTexts["MessageThreadDetailTableViewController.MessageCell.nameLabel"].label
+        
+        print(name)
 
 
         messageCell1.tap()
         
 
-        //XCTAssertTrue(app.navigationBars["Message"].exists)
-        //XCTAssertTrue(app.navigationBars["Message"].isHittable)
+        XCTAssertTrue(app.navigationBars["Message"].exists)
+        XCTAssertTrue(app.navigationBars["Message"].isHittable)
+        
+        sleep(1)
 
-        XCTAssertEqual(name, nameTextField.label)
-        XCTAssertEqual(message, messageTextView.label)
+        XCTAssertEqual(name, nameTextField.value as! String)
+        XCTAssertEqual(message, messageTextView.value as! String)
     }
     
 }
