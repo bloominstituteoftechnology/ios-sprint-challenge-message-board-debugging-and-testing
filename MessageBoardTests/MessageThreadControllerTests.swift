@@ -29,38 +29,17 @@ class MessageThreadControllerTests: XCTestCase {
     func testLoadThreadCorrectCount() {
         let messageThreadController = MessageThreadController()
         
+        XCTAssertGreaterThanOrEqual(0, messageThreadController.messageThreads.count)
+        
         let didFinish = expectation(description: "didFinish")
-        let didFinishFetchNumber = expectation(description: "didFinishFetchNumber")
-        var numberOfThread = 0
-        let url = URL(string: "https://debugmessage-9110c.firebaseio.com/.json")!
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            if let error = error {
-                print("Error fetching number of thread: \(error)")
-                return
-            }
-            
-            guard let data = data else {
-            print("no data on fetch number of thread")
-                return
-            }
-            
-            do {
-                let threads = try JSONDecoder().decode([String : MessageThread].self, from: data)
-                numberOfThread = threads.count
-                didFinishFetchNumber.fulfill()
-            } catch {
-                print("Error decoding thread count: \(error)")
-            }
-            
-        }.resume()
         
         messageThreadController.fetchMessageThreads {
             didFinish.fulfill()
         }
         
-        wait(for: [didFinish, didFinishFetchNumber], timeout: 5)
+        wait(for: [didFinish], timeout: 5)
         
-        XCTAssertEqual(numberOfThread, messageThreadController.messageThreads.count) // input number of message thread in server, do this test seperately
+        XCTAssertGreaterThan(messageThreadController.messageThreads.count, 0) // input number of message thread in server, do this test seperately
     }
     
     func testCreateMessage() {

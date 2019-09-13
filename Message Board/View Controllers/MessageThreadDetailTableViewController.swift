@@ -50,6 +50,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
+    }
     
     // MARK: - Properties
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -57,3 +58,4 @@ class MessageThreadDetailTableViewController: UITableViewController {
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
 }
+
