@@ -10,6 +10,11 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		tableView.tableFooterView = UIView()
+	}
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -34,6 +39,7 @@ class MessageThreadsTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+		print(messageThreadController.messageThreads.count)
     }
     
     // MARK: - UITableViewDataSource

@@ -160,11 +160,11 @@
 		4643602D211ABC0900E7FF73 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4629C7E1214B9D8C00E7FF73 /* UI Testing */,
 				46436029211AB90900E7FF73 /* HTTPMethod.swift */,
 				4612B5C7211AB41100E7FF73 /* AppDelegate.swift */,
 				4612B5CE211AB41300E7FF73 /* Assets.xcassets */,
 				4612B5D3211AB41300E7FF73 /* Info.plist */,
+				4629C7E1214B9D8C00E7FF73 /* UI Testing */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
