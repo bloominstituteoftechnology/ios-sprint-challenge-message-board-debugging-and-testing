@@ -23,15 +23,15 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 
-//	var cell: XCUIElement {
-//		let tableViewCell = app.tableRows.cells.element
-//		XCTAssertTrue(tableViewCell.exists)
-//		return tableViewCell
-//	}
+	var cell: XCUIElement {
+		let tableViewCell = app.tables.element.cells.firstMatch
+		XCTAssertTrue(tableViewCell.exists)
+		return tableViewCell
+	}
 
-//	func testCanTapTableViewCell() {
-//		cell.tap()
-//
-//	}
+	func testCanTapTableViewCell() {
+		cell.tap()
+		XCTAssertTrue(cell.isHittable)
+	}
     
 }

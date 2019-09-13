@@ -15,6 +15,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
         title = messageThread?.title
 		tableView.tableFooterView = UIView()
+		tableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
