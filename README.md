@@ -43,3 +43,29 @@ The requirements for this project are as follows:
     3. Navigating between screens
     4. Showing the correct information
 5. You are welcome to use a code snippet of the `expect` methods if you wish.
+
+    ```swift
+    // Test asynchronous logic using an expectation
+    func testExpectation() {
+        let didFinish = expectation(description: "didFinish")
+        var name = ""
+        let url = URL(string: "https://apple.com")!
+
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            didFinish.fulfill()
+            name = "Dave"
+        }.resume()
+
+        wait(for: [didFinish], timeout: 5) // blocking sync wait
+
+        // Assertion only happens after the time out, or web request completes
+        XCTAssertEqual("Dave", name)
+    }
+    ```
+
+## Stretch Goals
+1. Create a custom message cell with message bubbles or backgrounds
+2. Write a release note (ReleaseNotes.md) that describes the fixes for users to post on the App Store
+        1. Write in a way that your Grandma or a 5-year old could understand
+3. Make the app remember who you are when posting messages (streamline the experience)
+4. Tweak the UI experience so that it feels more at home on iOS (e.g.: Dark mode with iOS13)
