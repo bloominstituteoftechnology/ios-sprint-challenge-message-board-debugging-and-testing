@@ -10,6 +10,11 @@ import UIKit
 
 class MessageDetailViewController: UIViewController {
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		loadViewIfNeeded()
+	}
+
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: UIBarButtonItem) {
