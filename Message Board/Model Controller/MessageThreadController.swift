@@ -73,9 +73,10 @@ class MessageThreadController {
             }
             
             self.messageThreads.append(thread)
+            print(self.messageThreads.count)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
