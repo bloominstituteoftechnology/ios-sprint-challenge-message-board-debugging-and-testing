@@ -113,9 +113,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="BoB-4p-ZG3" kind="show" identifier="ShowMessageDetail" trigger="accessoryAction" id="BF3-xj-nun"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -126,7 +123,7 @@
                     <navigationItem key="navigationItem" title="Title" id="tHA-qF-qbA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MRR-1o-pkW">
                             <connections>
-                                <segue destination="BoB-4p-ZG3" kind="show" identifier="AddMessage" id="3TZ-Xl-1f4"/>
+                                <segue destination="BoB-4p-ZG3" kind="show" identifier="AddMessage" id="X8U-la-g7g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -208,7 +205,4 @@
             <point key="canvasLocation" x="-38" y="231"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="BF3-xj-nun"/>
-    </inferredMetricsTieBreakers>
 </document>

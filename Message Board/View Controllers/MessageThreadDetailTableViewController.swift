@@ -40,14 +40,13 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tap on \(indexPath.row)")
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("tap on \(indexPath.row)")
+//    }
 
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
@@ -61,6 +60,22 @@ class MessageThreadDetailTableViewController: UITableViewController {
             destinationVC.message = messageThread?.messages[indexPath.row]
         }
     }
+
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "AddMesage" {
+//            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+//
+//            destinationVC.messageThreadController = messageThreadController
+//            destinationVC.messageThread = messageThread
+//        }
+//        if segue.identifier == "ShowMessageDetail" {
+//            guard let destinationVC = segue.destination as? MessageDetailViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
+//
+//            destinationVC.messageThreadController = messageThreadController
+//            destinationVC.messageThread = messageThread
+//            destinationVC.message = messageThread?.messages[indexPath.row]
+//        }
+//    }
     
     // MARK: - Properties
     @IBOutlet weak var addButton: UIBarButtonItem!

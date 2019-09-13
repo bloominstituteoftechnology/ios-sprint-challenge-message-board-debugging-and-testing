@@ -101,11 +101,11 @@ class Message_BoardUITests: XCTestCase {
         messageCell1.tap()
         
 
-        //XCTAssertTrue(app.navigationBars[message].exists)
-        //XCTAssertTrue(app.navigationBars[message].isHittable)
+        //XCTAssertTrue(app.navigationBars["Message"].exists)
+        //XCTAssertTrue(app.navigationBars["Message"].isHittable)
 
-        //XCTAssertEqual(name, nameTextField.label)
-        //XCTAssertEqual(message, messageTextView.label)
+        XCTAssertEqual(name, nameTextField.label)
+        XCTAssertEqual(message, messageTextView.label)
     }
     
 }

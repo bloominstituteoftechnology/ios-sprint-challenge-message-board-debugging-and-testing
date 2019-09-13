@@ -12,6 +12,11 @@ class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
+    
     @IBAction func sendMessage(_ sender: Any) {
         
         guard let senderName = senderNameTextField.text,
@@ -22,12 +27,23 @@ class MessageDetailViewController: UIViewController {
             print("Message created!")
         })
     }
+    
+    func updateViews() {
+        guard let message = message, isViewLoaded else { return }
+        senderNameTextField.text = message.sender
+        messageTextView.text = message.messageText
+        title = "Message"
+    }
 
     // MARK: - Properties
     
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
-    var message: MessageThread.Message?
+    var message: MessageThread.Message? {
+        didSet {
+            updateViews()
+        }
+    }
 
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
