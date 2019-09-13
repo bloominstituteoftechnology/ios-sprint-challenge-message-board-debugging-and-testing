@@ -52,13 +52,13 @@ class MessageThreadDetailTableViewController: UITableViewController {
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
-        if segue.identifier == "ShowMessageDetail" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
-            destinationVC.message = messageThread?.messages[indexPath.row]
-        }
+//        if segue.identifier == "ShowMessageDetail" {
+//            guard let destinationVC = segue.destination as? MessageDetailViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
+//            
+//            destinationVC.messageThreadController = messageThreadController
+//            destinationVC.messageThread = messageThread
+//            destinationVC.message = messageThread?.messages[indexPath.row]
+//        }
     }
 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

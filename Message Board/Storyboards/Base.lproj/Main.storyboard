@@ -83,7 +83,7 @@
         <scene sceneID="AGx-wy-cw2">
             <objects>
                 <tableViewController id="haD-iA-YGa" customClass="MessageThreadDetailTableViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="wX5-Cr-z14">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="wX5-Cr-z14">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -113,9 +113,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="BoB-4p-ZG3" kind="show" identifier="ShowMessageDetail" id="TII-WB-ttV"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -210,7 +207,4 @@
             <point key="canvasLocation" x="-38" y="231"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="TII-WB-ttV"/>
-    </inferredMetricsTieBreakers>
 </document>
