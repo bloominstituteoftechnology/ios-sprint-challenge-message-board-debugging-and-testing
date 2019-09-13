@@ -9,23 +9,20 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		loadViewIfNeeded()
-	}
+	
 
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: UIBarButtonItem) {
-
-		print("test")
 
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
 
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+			DispatchQueue.main.async {
+				self.navigationController?.popViewController(animated: true)
+			}
             print("Message created!")
         })
     }

@@ -36,7 +36,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         cell.textLabel?.text = message?.messageText
         cell.detailTextLabel?.text = message?.sender
-        
+		cell.detailTextLabel?.textColor = textColors.randomElement()
         return cell
     }
 
@@ -56,4 +56,5 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
+	var textColors: [UIColor] = [.systemBlue, .systemTeal, .systemPink, .systemGreen, .systemOrange, .systemPurple, .systemYellow]
 }
