@@ -53,6 +53,12 @@ class Message_BoardUITests: XCTestCase {
         return tableView
     }
     
+    var sendButton: XCUIElement {
+        let button = app.buttons["MessageDetailViewController.sendButton"]
+        XCTAssertTrue(button.exists)
+        return button
+    }
+    
     func testTitleCorrectlyDisplay() {
         XCTAssertTrue(app.navigationBars["λ Message Board"].exists)
         XCTAssertTrue(app.navigationBars["λ Message Board"].isHittable)
@@ -82,34 +88,35 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual("", messageTextView.label)
     }
     
-    func testTapOnCellGoFromThreadDetailToMessageDetail() {
+    
+    func testSendingNewMessage() {
         let cell1 = messageBoardTableView.cells.firstMatch
         let title = cell1.staticTexts.firstMatch.label
         cell1.tap()
         XCTAssertTrue(app.navigationBars[title].exists)
         XCTAssertTrue(app.navigationBars[title].isHittable)
         
-        let messageCell1 = messageTableView.cells.firstMatch
+        addButton.tap()
         
-        XCTAssertTrue(messageCell1.isEnabled)
+        XCTAssertTrue(app.navigationBars["New Message"].exists)
+        XCTAssertTrue(app.navigationBars["New Message"].isHittable)
+        
+        XCTAssertEqual("", nameTextField.label)
+        XCTAssertEqual("", messageTextView.label)
+        nameTextField.tap()
+        nameTextField.typeText("bradley")
+        messageTextView.tap()
+        messageTextView.typeText("this is UI testing message")
+        sendButton.tap()
+        
+        XCTAssertTrue(app.navigationBars[title].exists)
+        XCTAssertTrue(app.navigationBars[title].isHittable)
+        
+       XCTAssertTrue(messageTableView.cells.staticTexts["bradley"].exists)
         
         
-        let message = messageCell1.staticTexts["MessageThreadDetailTableViewController.MessageCell.messageLabel"].label
-        let name = messageCell1.staticTexts["MessageThreadDetailTableViewController.MessageCell.nameLabel"].label
         
-        print(name)
-
-
-        messageCell1.tap()
         
-
-        XCTAssertTrue(app.navigationBars["Message"].exists)
-        XCTAssertTrue(app.navigationBars["Message"].isHittable)
-        
-        sleep(1)
-
-        XCTAssertEqual(name, nameTextField.value as! String)
-        XCTAssertEqual(message, messageTextView.value as! String)
     }
     
 }

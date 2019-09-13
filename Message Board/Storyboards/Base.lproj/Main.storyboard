@@ -181,6 +181,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="messageTextView" destination="tpX-xP-KsX" id="HrS-Wg-5Le"/>
+                        <outlet property="sendButton" destination="eC1-90-vuB" id="tmK-bn-xyg"/>
                         <outlet property="senderNameTextField" destination="NEl-Se-Sz1" id="zK1-A7-yoD"/>
                     </connections>
                 </viewController>
