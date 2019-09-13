@@ -14,7 +14,7 @@ class MessageThreadControllerTests: XCTestCase {
     func testCreateThreadIncreaseThreadCount() {
         let messageThreadController = MessageThreadController()
         
-        XCTAssertEqual(0, messageThreadController.messageThreads.count)
+        let originalCount = messageThreadController.messageThreads.count
         
         let didFinish = expectation(description: "didFinish")
         
@@ -23,7 +23,7 @@ class MessageThreadControllerTests: XCTestCase {
         }
         wait(for: [didFinish], timeout: 5)
         
-        XCTAssertEqual(1, messageThreadController.messageThreads.count)
+        XCTAssertEqual(originalCount + 1, messageThreadController.messageThreads.count)
     }
     
     func testLoadThreadCorrectCount() {
@@ -37,7 +37,7 @@ class MessageThreadControllerTests: XCTestCase {
         
         wait(for: [didFinish], timeout: 5)
         
-        XCTAssertEqual(1, messageThreadController.messageThreads.count)
+        XCTAssertEqual(4, messageThreadController.messageThreads.count) // input number of message thread in server, do this test seperately
     }
     
     func testCreateMessage() {
@@ -52,15 +52,15 @@ class MessageThreadControllerTests: XCTestCase {
         }
         
         wait(for: [didFinish], timeout: 5)
+        let originalCount = messageThreadController.messageThreads[0].messages.count
         
-        XCTAssertEqual(1, messageThreadController.messageThreads.count)
         
         messageThreadController.createMessage(in: messageThreadController.messageThreads[0], withText: "new message test", sender: "brad") {
             didCreateMessage.fulfill()
         }
         wait(for: [didCreateMessage], timeout: 5)
         
-        XCTAssertEqual(1, messageThreadController.messageThreads.count)
+        XCTAssertEqual(originalCount + 1, messageThreadController.messageThreads[0].messages.count)
     }
     
     

@@ -14,6 +14,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = messageThread?.title
+        addButton.accessibilityIdentifier = "MessageThreadDetailTableViewController.addButton"
+        tableView.accessibilityIdentifier = "MessageThreadDetailTableViewController.tableView"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tap on \(indexPath.row)")
+    }
 
     // MARK: - Navigation
 
@@ -48,10 +53,18 @@ class MessageThreadDetailTableViewController: UITableViewController {
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
+        if segue.identifier == "ShowMessageDetail" {
+            guard let destinationVC = segue.destination as? MessageDetailViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            destinationVC.messageThreadController = messageThreadController
+            destinationVC.messageThread = messageThread
+            destinationVC.message = messageThread?.messages[indexPath.row]
+        }
     }
     
     // MARK: - Properties
-
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
 }

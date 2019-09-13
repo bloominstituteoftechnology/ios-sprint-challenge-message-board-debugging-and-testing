@@ -40,7 +40,6 @@ class MessageThread: Codable, Equatable {
         
         self.title = title
         self.identifier = identifier
-        //self.messages = messages
     }
     
     func encode(to encoder: Encoder) throws {
