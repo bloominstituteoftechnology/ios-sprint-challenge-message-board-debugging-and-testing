@@ -18,7 +18,7 @@ class MessageThreadControllerTests: XCTestCase {
         
         let didFinish = expectation(description: "didFinish")
         
-        messageThreadController.createLocalMessageThread(with: "UItest") {
+        messageThreadController.createMessageThread(with: "UItest") {
             didFinish.fulfill()
         }
         wait(for: [didFinish], timeout: 5)
@@ -31,13 +31,17 @@ class MessageThreadControllerTests: XCTestCase {
         
         let didFinish = expectation(description: "didFinish")
         
-        messageThreadController.fetchLocalMessageThreads {
+        messageThreadController.fetchMessageThreads {
             didFinish.fulfill()
         }
         
         wait(for: [didFinish], timeout: 5)
         
-        XCTAssertEqual(2, messageThreadController.messageThreads.count)
+        XCTAssertEqual(1, messageThreadController.messageThreads.count)
+    }
+    
+    func testCreateMessage() {
+        
     }
     
     
