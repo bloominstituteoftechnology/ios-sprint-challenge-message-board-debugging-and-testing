@@ -12,5 +12,11 @@
 
 	_Solution_: I decoded as a dictionary and extracted the values only, then set those values inside the messageThreads array. Unit test was done to make sure the array is getting values.
 
+3. Bug: Save button when trying to create a message does not work at all. It doesn't even print `"Message Created"`
+
+	_Problem_: 
+
+	_Solution_:
+
 
 
