@@ -14,8 +14,10 @@ extension MessageThreadController {
         
         do {
             let mockData = try Data(contentsOf: mockDataURL)
-            
-            self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: mockData).values)
+			
+			let jsonDecoder = JSONDecoder()
+			jsonDecoder.dateDecodingStrategy = .deferredToDate
+            self.messageThreads = Array(try jsonDecoder.decode([String: MessageThread].self, from: mockData).values)
             
         } catch {
             NSLog("Error decoding mock data: \(error)")
