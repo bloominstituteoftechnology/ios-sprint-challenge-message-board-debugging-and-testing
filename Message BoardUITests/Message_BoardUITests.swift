@@ -14,13 +14,32 @@ class Message_BoardUITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+
+        // KEEP THIS SETUP FUNCTION EXACTLY AS IS.
         
         continueAfterFailure = false
+        
         app = XCUIApplication()
         
-        // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    func tableView(id: String) -> XCUIElement {
+        let tableView = app.tables[id]
+        XCTAssertTrue(app.tables[id].exists)
+        return tableView
+    }
+    
+    func testThreadCellLabel() {
+  XCTAssertTrue(tableView(id: "ThreadTableView").cells.firstMatch.exists)
+        
+    }
+    
+    func testMessageCellLabel() {
+    tableView(id: "ThreadTableView").cells.firstMatch.tap()
+    XCTAssertTrue(tableView(id: "MessageTableView").cells.firstMatch.exists)
+    }
+    
     
 }
