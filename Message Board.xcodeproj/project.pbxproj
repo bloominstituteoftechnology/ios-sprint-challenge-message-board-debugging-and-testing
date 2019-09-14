@@ -36,6 +36,7 @@
 		B5CA2561232C24A4001F889C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436029211AB90900E7FF73 /* HTTPMethod.swift */; };
 		B5CA256C232C789B001F889C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CA256B232C789B001F889C /* LoginVC.swift */; };
 		B5CA256F232C78BA001F889C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CA256E232C78BA001F889C /* Extensions.swift */; };
+		B5CA2571232C91A1001F889C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CA2570232C91A1001F889C /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
 		B5CA256B232C789B001F889C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		B5CA256E232C78BA001F889C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B5CA2570232C91A1001F889C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				4612B5C7211AB41100E7FF73 /* AppDelegate.swift */,
 				4612B5CE211AB41300E7FF73 /* Assets.xcassets */,
 				4612B5D3211AB41300E7FF73 /* Info.plist */,
+				B5CA2570232C91A1001F889C /* UserSettings.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4629C7E0214B961800E7FF73 /* MessageThreadController+UITesting.swift in Sources */,
+				B5CA2571232C91A1001F889C /* UserSettings.swift in Sources */,
 				4612B5DC211AB6C500E7FF73 /* MessageThreadController.swift in Sources */,
 				4612B5DA211AB66600E7FF73 /* MessageThread.swift in Sources */,
 				4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */,

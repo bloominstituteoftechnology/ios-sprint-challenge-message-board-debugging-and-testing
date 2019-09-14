@@ -25,6 +25,7 @@ class LoginVC: UIViewController {
 		super.viewDidLoad()
 		
 		usernameTextField.becomeFirstResponder()
+		usernameTextField.text = UserSettings.shared.username
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,7 +39,7 @@ class LoginVC: UIViewController {
 	@IBAction func loginBtnTapped(_ sender: Any) {
 		guard let username = usernameTextField.optionalText, username.count >= 2 else { return }
 		
-		messageThreadController.username = username
+		UserSettings.shared.username = username
 		
 		performSegue(withIdentifier: "MessageThreadsTableViewControllerSegue", sender: nil)
 	}

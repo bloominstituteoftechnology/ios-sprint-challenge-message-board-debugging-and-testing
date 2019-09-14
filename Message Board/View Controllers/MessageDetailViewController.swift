@@ -14,7 +14,7 @@ class MessageDetailViewController: UIViewController {
 		super.viewDidLoad()
 		
 		senderNameTextField.isEnabled = false
-		senderNameTextField.text = messageThreadController.username
+		senderNameTextField.text = UserSettings.shared.username
 	}
 
     // MARK: - Actions

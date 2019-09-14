@@ -116,5 +116,4 @@ class MessageThreadController {
     static let baseURL = URL(string: "https://showcase-this.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 	var currentThread: MessageThread?
-	var username = ""
 }
