@@ -11,6 +11,8 @@ import XCTest
 class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
+	let titleOne = "Testing again"
+	let titleTwo = "A New Thread"
     
     override func setUp() {
         super.setUp()
@@ -24,13 +26,13 @@ class Message_BoardUITests: XCTestCase {
     }
 
 	var threadTableView: XCUIElement {
-		let table = app.tables["messageThreadstableviewcontroller.tableview"]
+		let table = app.tables["MessageThreadTableViewController.tableView"]
 		XCTAssertTrue(table.exists)
 		return table
 	}
 
 	var messageTableView: XCUIElement {
-		let table = app.tables["messageThreaddetailtableviewcontroller.tableview"]
+		let table = app.tables["MessageThreadDetailTableViewController.tableView"]
 		XCTAssertTrue(table.exists)
 		return table
 	}
@@ -48,10 +50,21 @@ class Message_BoardUITests: XCTestCase {
 
 	func testCanTapTableViewCell() {
 		cell.tap()
-		XCTAssertTrue(cell.isHittable)
-		let addButton = app.buttons["Add"]
+		let addButton = app.navigationBars.buttons["Add"]
 		XCTAssertTrue(addButton.exists)
 		XCTAssertTrue(addButton.isEnabled)
+		addButton.tap()
 	}
-    
+
+	func testSendButtonPopsViewController() {
+		cell.tap()
+		let addButton = app.navigationBars.buttons["Add"]
+		addButton.tap()
+		app.textFields.element.tap()
+		app.textFields.element.typeText("I'm not really typing this!")
+		app.navigationBars.buttons["Send"].tap()
+		XCTAssertTrue(addButton.exists)
+	}
+
+
 }

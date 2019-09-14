@@ -13,7 +13,7 @@ class MessageThreadsTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.tableFooterView = UIView()
-		tableView.accessibilityIdentifier = "messageThreadstableviewcontroller.tableview"
+		tableView.accessibilityIdentifier = "MessageThreadTableViewController.tableView"
 	}
 
     override func viewWillAppear(_ animated: Bool) {

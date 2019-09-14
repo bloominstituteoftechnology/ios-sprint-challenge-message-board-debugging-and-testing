@@ -12,7 +12,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		tableView.accessibilityIdentifier = "messageThreaddetailtableviewcontroller.tableview"
+		tableView.accessibilityIdentifier = "MessageThreadDetailTableViewController.tableView"
         title = messageThread?.title
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
