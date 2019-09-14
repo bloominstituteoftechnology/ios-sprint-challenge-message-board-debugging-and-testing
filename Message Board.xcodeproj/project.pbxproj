@@ -34,6 +34,8 @@
 		B5CA255F232C24A4001F889C /* MessageThreadController+UITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629C7DF214B961800E7FF73 /* MessageThreadController+UITesting.swift */; };
 		B5CA2560232C24A4001F889C /* IsUITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629C7DD214B925E00E7FF73 /* IsUITesting.swift */; };
 		B5CA2561232C24A4001F889C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436029211AB90900E7FF73 /* HTTPMethod.swift */; };
+		B5CA256C232C789B001F889C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CA256B232C789B001F889C /* LoginVC.swift */; };
+		B5CA256F232C78BA001F889C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CA256E232C78BA001F889C /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		B5CA256B232C789B001F889C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		B5CA256E232C78BA001F889C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
+				B5CA256D232C78AB001F889C /* Helpers */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
@@ -193,6 +198,7 @@
 		46436031211ABC3900E7FF73 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5CA256B232C789B001F889C /* LoginVC.swift */,
 				4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */,
 				46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */,
 				46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */,
@@ -207,6 +213,14 @@
 				9D9B6B00214B7A66006381F7 /* Info.plist */,
 			);
 			path = MessageBoardTests;
+			sourceTree = "<group>";
+		};
+		B5CA256D232C78AB001F889C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B5CA256E232C78BA001F889C /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,10 +358,12 @@
 				4612B5DC211AB6C500E7FF73 /* MessageThreadController.swift in Sources */,
 				4612B5DA211AB66600E7FF73 /* MessageThread.swift in Sources */,
 				4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */,
+				B5CA256C232C789B001F889C /* LoginVC.swift in Sources */,
 				46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */,
 				4629C7DE214B925E00E7FF73 /* IsUITesting.swift in Sources */,
 				46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */,
 				46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */,
+				B5CA256F232C78BA001F889C /* Extensions.swift in Sources */,
 				4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
