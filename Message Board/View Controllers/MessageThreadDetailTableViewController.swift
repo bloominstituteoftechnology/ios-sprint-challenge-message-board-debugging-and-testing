@@ -31,13 +31,14 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
-        let message = messageThread?.messages[indexPath.row]
-        
-        cell.textLabel?.text = message?.text
-        cell.detailTextLabel?.text = message?.sender
-		cell.detailTextLabel?.textColor = textColors.randomElement()
+		let message = messageThread?.messages.sorted(by: { $0.timestamp > $1.timestamp }) [indexPath.row]
+		guard let date = message?.timestamp,
+			let sender = message?.sender else { return UITableViewCell() }
+		cell.textLabel?.text = message?.text
+		cell.detailTextLabel?.text =  "\(sender) \(dateFormatter.string(from: date))"
+		cell.detailTextLabel?.textColor = textColors.randomElement() 
         return cell
     }
 
@@ -57,4 +58,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
 	var textColors: [UIColor] = [.systemBlue, .systemTeal, .systemPink, .systemGreen, .systemOrange, .systemPurple, .systemYellow]
+	var dateFormatter: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .short
+		return formatter
+	}()
 }

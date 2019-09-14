@@ -32,7 +32,6 @@ class MessageThreadController {
             
             do {
 				let jsonDecoder = JSONDecoder()
-				jsonDecoder.dateDecodingStrategy = .secondsSince1970
 				let threads = try jsonDecoder.decode([String: MessageThread].self, from: data)
 				self.messageThreads = Array(threads.values)
             } catch {
@@ -115,5 +114,5 @@ class MessageThreadController {
     }
     
     static let baseURL = URL(string: "https://journal-797ea.firebaseio.com/messagethread")!
-    var messageThreads: [MessageThread] = []
+	var messageThreads: [MessageThread] = []
 }

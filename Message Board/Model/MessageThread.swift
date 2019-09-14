@@ -12,24 +12,28 @@ class MessageThread: Codable, Equatable {
 
     let title: String
     var messages: [MessageThread.Message]
+	let dateCreated: Date
     let identifier: String
 	
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+	init(title: String, dateCreated: Date = Date(), messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
+		self.dateCreated = dateCreated
     }
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let title = try container.decode(String.self, forKey: .title)
+		let date = try container.decode(Date.self, forKey: .dateCreated)
         let identifier = try container.decode(String.self, forKey: .identifier)
 		let messageDict = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
 		self.messages = Array(messageDict.values)
         
         self.title = title
+		self.dateCreated = date
         self.identifier = identifier
     }
 
