@@ -193,7 +193,7 @@
                                 <rect key="frame" x="41.333333333333343" y="248.66666666666663" width="331.33333333333326" height="409"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaQ-U5-Kli">
-                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="273.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="304"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="λ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htu-OU-PP9">
                                                 <rect key="frame" x="34.999999999999993" y="-32" width="105.66666666666666" height="239"/>
@@ -202,7 +202,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20u-bi-rxK">
-                                                <rect key="frame" x="99.3333333333333" y="20.333333333333343" width="198.66666666666663" height="273.66666666666663"/>
+                                                <rect key="frame" x="99.3333333333333" y="22.666666666666657" width="198.66666666666663" height="304"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="80"/>
                                                 <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -220,25 +220,14 @@
                                             <constraint firstItem="htu-OU-PP9" firstAttribute="height" secondItem="aaQ-U5-Kli" secondAttribute="height" id="smb-i0-esf"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qee-iP-xdA">
-                                        <rect key="frame" x="0.0" y="293.33333333333337" width="331.33333333333331" height="65.333333333333314"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7JB-Jv-tDS">
-                                                <rect key="frame" x="0.0" y="17.666666666666629" width="331.33333333333331" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="7JB-Jv-tDS" firstAttribute="centerX" secondItem="Qee-iP-xdA" secondAttribute="centerX" id="0ia-a6-tG2"/>
-                                            <constraint firstItem="7JB-Jv-tDS" firstAttribute="width" secondItem="Qee-iP-xdA" secondAttribute="width" id="JTb-ze-kDD"/>
-                                            <constraint firstItem="7JB-Jv-tDS" firstAttribute="centerY" secondItem="Qee-iP-xdA" secondAttribute="centerY" id="zFb-8D-Scd"/>
-                                        </constraints>
-                                    </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7JB-Jv-tDS">
+                                        <rect key="frame" x="0.0" y="324" width="331.33333333333331" height="31.333333333333314"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNC-Vz-TNn">
-                                        <rect key="frame" x="0.0" y="378.66666666666674" width="331.33333333333331" height="30.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="375.33333333333337" width="331.33333333333331" height="33.666666666666686"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="loginBtnTapped:" destination="uv0-tm-Mqw" eventType="touchUpInside" id="IrT-am-f4g"/>
