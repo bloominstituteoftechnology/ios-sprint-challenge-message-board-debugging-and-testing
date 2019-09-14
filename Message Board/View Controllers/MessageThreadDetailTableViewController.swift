@@ -52,6 +52,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
+			destinationVC.delegate = self
         }
     }
     
@@ -59,7 +60,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
-	var textColors: [UIColor] = [.systemBlue, .systemTeal, .systemPink, .systemGreen, .systemOrange, .systemPurple, .systemYellow]
+	var textColors: [UIColor] = [.systemBlue, .systemTeal, .systemPink, .systemOrange, .systemPurple, .systemYellow]
 
 	var dateFormatter: DateFormatter = {
 		let formatter = DateFormatter()
@@ -75,5 +76,11 @@ class MessageThreadDetailTableViewController: UITableViewController {
 		let alert = UIAlertController(title: "Message sent on: \(dateFormatter.string(from: date))", message: nil, preferredStyle: .actionSheet)
 		alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
 		present(alert, animated: true, completion: nil)
+	}
+}
+
+extension MessageThreadDetailTableViewController: MessageDetailViewControllerDelegate {
+	func didFinishSendingMessage() {
+		tableView.reloadData()
 	}
 }
