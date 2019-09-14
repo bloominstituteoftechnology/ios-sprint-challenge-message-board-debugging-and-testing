@@ -66,5 +66,11 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(addButton.exists)
 	}
 
-
+	func testTextFieldCreatesNewThreadByTappingEnter() {
+		XCTAssertTrue(threadTableView.cells.count == 2)
+		app.textFields.element.tap()
+		app.textFields.element.typeText("This is not me, I swear!")
+		app.buttons["return"].tap()
+		XCTAssertTrue(threadTableView.cells.count == 3)
+	}
 }
