@@ -14,7 +14,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 		
 		tableView.accessibilityIdentifier = "MessageThreadDetailTableViewController.tableView"
-        title = messageThread?.title
+        title = messageThreadController.currentThread?.title
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,13 +26,13 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageThread?.messages.count ?? 0
+        return messageThreadController.currentThread?.messages.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
-        let message = messageThread?.messages[indexPath.row]
+        let message = messageThreadController.currentThread?.messages[indexPath.row]
         
         cell.textLabel?.text = message?.text
         cell.detailTextLabel?.text = message?.sender
@@ -46,12 +46,10 @@ class MessageThreadDetailTableViewController: UITableViewController {
 		if let destinationVC = segue.destination as? MessageDetailViewController {
             
             destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
         }
     }
     
     // MARK: - Properties
-
-    var messageThread: MessageThread?
-    var messageThreadController: MessageThreadController?
+	
+    var messageThreadController: MessageThreadController!
 }

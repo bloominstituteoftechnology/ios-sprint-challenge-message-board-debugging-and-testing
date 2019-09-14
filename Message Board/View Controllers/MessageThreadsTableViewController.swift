@@ -36,6 +36,7 @@ class MessageThreadsTableViewController: UITableViewController {
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
+				print("Thread created.")
                 self.tableView.reloadData()
             }
         }
@@ -54,21 +55,23 @@ class MessageThreadsTableViewController: UITableViewController {
 
         return cell
     }
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		messageThreadController.currentThread = messageThreadController.messageThreads[indexPath.row]
+	}
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? MessageThreadDetailTableViewController,
-			let indexPath = tableView.indexPathForSelectedRow {
+        if let destinationVC = segue.destination as? MessageThreadDetailTableViewController {
             
             destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         }
     }
     
     // MARK: - Properties
     
-    let messageThreadController = MessageThreadController()
+	var messageThreadController: MessageThreadController!
     
     @IBOutlet weak var threadTitleTextField: UITextField!
 }
