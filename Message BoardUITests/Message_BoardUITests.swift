@@ -13,6 +13,12 @@ class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
 	
+	var usernameTextField: XCUIElement {
+		let textField = app.textFields.element
+		XCTAssertTrue(textField.exists)
+		return textField
+	}
+	
 	var threadTableView: XCUIElement {
 		let tableView = app.tables["MessageThreadsTableViewController.tableView"]
 		XCTAssertTrue(tableView.exists)
@@ -36,23 +42,44 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 	
+	func loginProcedure() {
+		let loginBtn = app.buttons["Login"]
+		usernameTextField.tap()
+		usernameTextField.typeText("TestUser")
+		app.tap()
+		loginBtn.tap()
+	}
+	
+	func testvalidUsernameOpensToThreads() {
+		let loginBtn = app.buttons["Login"]
+		
+		usernameTextField.typeText("Hi")
+		app.tap()
+		loginBtn.tap()
+		XCTAssertTrue(loginBtn.exists)
+		
+		loginProcedure()
+		XCTAssertFalse(loginBtn.exists)
+	}
+	
 	func testThreadCellOpensThread() {
+		loginProcedure()
 		let cell = threadTableView.cells.firstMatch
 		
 		XCTAssertTrue(cell.exists)
 		XCTAssertEqual("A New Thread", cell.staticTexts.element.label)
 		cell.tap()
-		XCTAssertFalse(cell.exists)
+		XCTAssertFalse(cell.isHittable)
 	}
 	
 	func testMessageCellOpensMessage() {
+		loginProcedure()
 		let cell = threadTableView.cells.firstMatch
 		cell.tap()
 		
 		let messageCell = messageTableView.cells.firstMatch
 		
 		XCTAssertTrue(messageCell.exists)
-		XCTAssertEqual("Checking to make sure this works.", messageCell.staticTexts.firstMatch.label)
 		
 		let addBtn = app.navigationBars.buttons["Add"]
 		addBtn.tap()
@@ -60,23 +87,23 @@ class Message_BoardUITests: XCTestCase {
 	}
 	
 	func testNewMessageCreated() {
+		loginProcedure()
 		let cell = threadTableView.cells.firstMatch
 		cell.tap()
 		
 		let addBtn = app.navigationBars.buttons["Add"]
 		addBtn.tap()
 		
-		let sender = "Testing test"
+		let username = usernameTextField.value as! String
+		XCTAssertFalse(username.isEmpty)
+		
 		let message = "This is a test"
-		let textField = app.textFields.element
 		let textView = app.textViews.element
 		
-		textField.tap()
-		textField.typeText(sender)
 		textView.tap()
 		textView.typeText(message)
+		app.tap()
 		
-		XCTAssertEqual(sender, textField.value as? String)
 		XCTAssertEqual(message, textView.value as? String)
 		
 		let sendBtn = app.navigationBars.buttons["Send"]
