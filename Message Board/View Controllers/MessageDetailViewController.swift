@@ -16,6 +16,11 @@ class MessageDetailViewController: UIViewController {
 		senderNameTextField.isEnabled = false
 		senderNameTextField.text = UserSettings.shared.username
 	}
+	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		view.endEditing(true)
+	}
 
     // MARK: - Actions
     
@@ -35,9 +40,32 @@ class MessageDetailViewController: UIViewController {
     }
 
     // MARK: - Properties
-    
+	
+	let textViewPlaceholder = "Enter message"
     var messageThreadController: MessageThreadController!
 
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
+}
+
+extension MessageDetailViewController: UITextViewDelegate {
+	private func setupTextView() {
+		messageTextView.delegate = self
+		messageTextView.text = textViewPlaceholder
+		messageTextView.textColor = UIColor.lightGray
+	}
+	
+	func textViewDidBeginEditing(_ textView: UITextView) {
+		if textView.textColor == UIColor.lightGray {
+			textView.text = nil
+			textView.textColor = UIColor.black
+		}
+	}
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		if textView.text.isEmpty {
+			textView.text = textViewPlaceholder
+			textView.textColor = UIColor.lightGray
+		}
+	}
 }

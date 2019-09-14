@@ -34,10 +34,15 @@ class LoginVC: UIViewController {
 		}
 	}
 	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		view.endEditing(true)
+	}
+	
 	//MARK: - IBActions
 	
 	@IBAction func loginBtnTapped(_ sender: Any) {
-		guard let username = usernameTextField.optionalText, username.count >= 2 else { return }
+		guard let username = usernameTextField.optionalText, username.count > 2 else { return }
 		
 		UserSettings.shared.username = username
 		
