@@ -31,7 +31,9 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-				let threads = try JSONDecoder().decode([String: MessageThread].self, from: data)
+				let jsonDecoder = JSONDecoder()
+				jsonDecoder.dateDecodingStrategy = .secondsSince1970
+				let threads = try jsonDecoder.decode([String: MessageThread].self, from: data)
 				self.messageThreads = Array(threads.values)
             } catch {
                 self.messageThreads = []
@@ -112,6 +114,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://journal-797ea.firebaseio.com/journal")!
+    static let baseURL = URL(string: "https://journal-797ea.firebaseio.com/messagethread")!
     var messageThreads: [MessageThread] = []
 }

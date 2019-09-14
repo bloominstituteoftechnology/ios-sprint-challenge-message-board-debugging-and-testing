@@ -30,4 +30,6 @@
 	_Solution_: Added popViewController in Dispatch main 
 
 
+6. **Bug**: MessageThread model (line 39) - Should be `text` - not `messageText`
 
+	_Solution_: Corrected the spelling - refactored

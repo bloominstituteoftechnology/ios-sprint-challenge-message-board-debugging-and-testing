@@ -23,15 +23,35 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 
+	var threadTableView: XCUIElement {
+		let table = app.tables["messageThreadstableviewcontroller.tableview"]
+		XCTAssertTrue(table.exists)
+		return table
+	}
+
+	var messageTableView: XCUIElement {
+		let table = app.tables["messageThreaddetailtableviewcontroller.tableview"]
+		XCTAssertTrue(table.exists)
+		return table
+	}
+
 	var cell: XCUIElement {
-		let tableViewCell = app.tables.element.cells.firstMatch
-		XCTAssertTrue(tableViewCell.exists)
-		return tableViewCell
+		let tableCell = threadTableView.cells.firstMatch
+		XCTAssertTrue(tableCell.exists)
+		return tableCell
+	}
+
+	func testTappingOnCellSeguesToMessageTableView() {
+		XCTAssertTrue(cell.isHittable)
+		cell.tap()
 	}
 
 	func testCanTapTableViewCell() {
 		cell.tap()
 		XCTAssertTrue(cell.isHittable)
+		let addButton = app.buttons["Add"]
+		XCTAssertTrue(addButton.exists)
+		XCTAssertTrue(addButton.isEnabled)
 	}
     
 }

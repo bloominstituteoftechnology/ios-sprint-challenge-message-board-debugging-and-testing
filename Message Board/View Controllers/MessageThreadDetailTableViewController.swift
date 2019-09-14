@@ -12,7 +12,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		tableView.accessibilityIdentifier = "messageThreaddetailtableviewcontroller.tableview"
         title = messageThread?.title
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
@@ -35,7 +35,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
         let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
+        cell.textLabel?.text = message?.text
         cell.detailTextLabel?.text = message?.sender
 		cell.detailTextLabel?.textColor = textColors.randomElement()
         return cell
@@ -45,8 +45,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddMessage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController,
-				let messageThread = messageThread else { return }
+            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
