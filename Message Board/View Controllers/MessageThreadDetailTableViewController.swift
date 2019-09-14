@@ -32,12 +32,14 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-
+		let longPressRecognizer = UILongPressGestureRecognizer()
+		longPressRecognizer.minimumPressDuration = 0.5
+		longPressRecognizer.addTarget(self, action: #selector(longPress))
+		cell.addGestureRecognizer(longPressRecognizer)
 		let message = messageThread?.messages.sorted(by: { $0.timestamp > $1.timestamp }) [indexPath.row]
-		guard let date = message?.timestamp,
-			let sender = message?.sender else { return UITableViewCell() }
+		guard let sender = message?.sender else { return UITableViewCell() }
 		cell.textLabel?.text = message?.text
-		cell.detailTextLabel?.text =  "\(sender) \(dateFormatter.string(from: date))"
+		cell.detailTextLabel?.text =  sender
 		cell.detailTextLabel?.textColor = textColors.randomElement() 
         return cell
     }
@@ -58,9 +60,20 @@ class MessageThreadDetailTableViewController: UITableViewController {
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
 	var textColors: [UIColor] = [.systemBlue, .systemTeal, .systemPink, .systemGreen, .systemOrange, .systemPurple, .systemYellow]
+
 	var dateFormatter: DateFormatter = {
 		let formatter = DateFormatter()
-		formatter.dateStyle = .short
+		formatter.dateStyle = .long
+		formatter.timeStyle = .short
 		return formatter
 	}()
+
+	@objc func longPress() {
+		let indexPath = tableView.indexPathForSelectedRow
+		let message = messageThread?.messages[indexPath?.row ?? 0]
+		guard let date = message?.timestamp else { return }
+		let alert = UIAlertController(title: "Message sent on: \(dateFormatter.string(from: date))", message: nil, preferredStyle: .actionSheet)
+		alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+		present(alert, animated: true, completion: nil)
+	}
 }
