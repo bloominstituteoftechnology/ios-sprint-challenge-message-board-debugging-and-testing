@@ -11,6 +11,11 @@ import UIKit
 class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        sendButton.accessibilityIdentifier = "MessageDetailViewController.sendButton"
+    }
     
     @IBAction func sendMessage(_ sender: Any) {
         
@@ -20,9 +25,12 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
+            
         })
     }
-
     // MARK: - Properties
     
     var messageThreadController: MessageThreadController?
@@ -30,4 +38,5 @@ class MessageDetailViewController: UIViewController {
 
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var sendButton: UIBarButtonItem!
 }
