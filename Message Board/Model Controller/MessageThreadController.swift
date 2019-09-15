@@ -46,15 +46,15 @@ class MessageThreadController {
             }.resume()
     }
     
-    func createMessageThread(with title: String, completion: @escaping () -> Void) {
+    func createMessageThread(with thread: MessageThread, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            createLocalMessageThread(with: title, completion: completion)
+          createLocalMessageThread(with: thread, completion: completion)
             return
         }
         
-        let thread = MessageThread(title: title)
+        //let thread = MessageThread(title: title)
         
         let requestURL = baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -86,7 +86,7 @@ class MessageThreadController {
         }
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
-        let message = MessageThread.Message(text: text, sender: sender)
+        let message = MessageThread.Message(messageText: text, sender: sender)
         messageThreads[index].messages.append(message)
         
         let requestURL = baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")

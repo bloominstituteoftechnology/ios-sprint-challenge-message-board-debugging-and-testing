@@ -36,12 +36,12 @@ class MessageThread: Codable, Equatable {
     
     struct Message: Codable, Equatable {
         
-        let text: String
+        let messageText: String
         let sender: String
         let timestamp: Date
         
-        init(text: String, sender: String, timestamp: Date = Date()) {
-            self.text = text
+        init(messageText: String, sender: String, timestamp: Date = Date()) {
+            self.messageText = messageText
             self.sender = sender
             self.timestamp = timestamp
         }

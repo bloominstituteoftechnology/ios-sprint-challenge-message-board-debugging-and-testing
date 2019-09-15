@@ -14,13 +14,9 @@ class Message_BoardUITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-
-        // KEEP THIS SETUP FUNCTION EXACTLY AS IS.
-        
+        // KEEP THIS SETUP FUNCTION EXACTLY AS IS
         continueAfterFailure = false
-        
         app = XCUIApplication()
-        
         app.launchArguments = ["UITesting"]
         app.launch()
     }
@@ -32,14 +28,51 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testThreadCellLabel() {
-  XCTAssertTrue(tableView(id: "ThreadTableView").cells.firstMatch.exists)
-        
+        XCTAssertTrue(tableView(id: "ThreadTableView").cells.firstMatch.exists)
     }
     
     func testMessageCellLabel() {
-    tableView(id: "ThreadTableView").cells.firstMatch.tap()
-    XCTAssertTrue(tableView(id: "MessageTableView").cells.firstMatch.exists)
+        tableView(id: "ThreadTableView").cells.firstMatch.tap()
+        XCTAssertTrue(tableView(id: "MessageTableView").cells.firstMatch.exists)
+    }
+    
+    func testMessageTableViewTitleIsSameAsThreadTitle() {
+        tableView(id: "ThreadTableView").cells.staticTexts["Testing again"].tap()
+        XCTAssertTrue(app.navigationBars.staticTexts["Testing again"].exists)
+    }
+    
+    func testNaviagtionToMessageTableView() {
+        app.cells.firstMatch.tap()
+        XCTAssertTrue(app.buttons.element(boundBy: 1).exists)
+        XCTAssertTrue(tableView(id: "MessageTableView").exists)
+    }
+    
+    func testNavigationFromMessageTableViewToThreadTableView() {
+        app.cells.firstMatch.tap()
+        XCTAssertTrue(app.buttons.element(boundBy: 0).exists)
+        app.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(tableView(id: "ThreadTableView").exists)
+    }
+    
+    func testMessageTextInCellLabel() {
+        tableView(id: "ThreadTableView").cells.staticTexts["Testing again"].tap()
+        XCTAssertTrue(app.cells.staticTexts["It’s working!"].exists)
     }
     
     
+    func testMessage() {
+        app.cells.firstMatch.tap()
+        app.navigationBars.buttons.element(boundBy: 1).tap()
+        let textfield = app.textFields.element
+        let textView = app.textViews.element
+        textfield.tap()
+        textfield.typeText("TestTitle")
+        textView.tap()
+        textView.typeText("Test")
+        app.tap()
+        XCTAssertEqual("Test", textView.value as? String)
+        app.navigationBars.buttons.element(boundBy: 1).tap()
+       XCTAssertTrue(app.cells.staticTexts["Test"].exists)
+    }
 }
+

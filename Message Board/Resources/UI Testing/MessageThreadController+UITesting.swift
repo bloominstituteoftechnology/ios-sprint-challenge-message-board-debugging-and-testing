@@ -25,8 +25,8 @@ extension MessageThreadController {
         completion()
     }
     
-    func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
-        let thread = MessageThread(title: title)
+    func createLocalMessageThread(with thread: MessageThread, completion: @escaping () -> Void) {
+      //  let thread = MessageThread(title: title)
         messageThreads.append(thread)
         
         completion()
@@ -36,7 +36,7 @@ extension MessageThreadController {
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
-        let message = MessageThread.Message(text: text, sender: sender)
+        let message = MessageThread.Message(messageText: text, sender: sender)
         messageThreads[index].messages.append(message)
         
         completion()
