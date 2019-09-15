@@ -9,6 +9,7 @@
             }
         },
         "title" : "A New Thread"
+		"dateCreated": 5.58544390219155E8
     },
     "02EDAC95-7DAC-4144-91EB-64357F8A5DDC" : {
         "identifier": "02EDAC95-7DAC-4144-91EB-64357F8A5DDC",
@@ -20,5 +21,6 @@
             }
         },
         "title": "Testing again"
+		"dateCreated": 5.58544390219155E8
     }
 }
