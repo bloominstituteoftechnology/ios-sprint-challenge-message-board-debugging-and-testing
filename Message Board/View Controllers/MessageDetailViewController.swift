@@ -10,6 +10,21 @@ import UIKit
 
 class MessageDetailViewController: UIViewController {
 
+    
+    // MARK: - Properties
+    
+    var messageThreadController: MessageThreadController?
+    var messageThread: MessageThread?
+    
+    @IBOutlet weak var senderNameTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -20,14 +35,9 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
-
-    // MARK: - Properties
-    
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
 }
