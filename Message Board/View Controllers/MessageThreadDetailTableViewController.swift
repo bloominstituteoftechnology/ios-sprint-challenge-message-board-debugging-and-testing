@@ -12,8 +12,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = messageThread?.title
+		
+		tableView.accessibilityIdentifier = "MessageThreadDetailTableViewController.tableView"
+        title = messageThreadController.currentThread?.title
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,15 +26,15 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageThread?.messages.count ?? 0
+        return messageThreadController.currentThread?.messages.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
-        let message = messageThread?.messages[indexPath.row]
+        let message = messageThreadController.currentThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
+        cell.textLabel?.text = message?.text
         cell.detailTextLabel?.text = message?.sender
         
         return cell
@@ -42,16 +43,13 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+		if let destinationVC = segue.destination as? MessageDetailViewController {
             
             destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
         }
     }
     
     // MARK: - Properties
-
-    var messageThread: MessageThread?
-    var messageThreadController: MessageThreadController?
+	
+    var messageThreadController: MessageThreadController!
 }
