@@ -14,6 +14,6 @@
 #in decoder need to decode [String:MessageThread.Message]
 
 5. Threads dont automatically populate the tableview when created
-#call fetch messageThreads in closure of create message.
+#append the thread to the threads array in the func
 
 
