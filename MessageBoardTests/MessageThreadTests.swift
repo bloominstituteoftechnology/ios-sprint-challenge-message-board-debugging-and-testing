@@ -16,8 +16,7 @@ class MessageThreadTests: XCTestCase {
     //Test for Bugs 1 and 2 in Bugs.md
     func testCreateThread() {
         let didFinish = expectation(description: "didFinish")
-        let thread = MessageThread(title: "Tesddy")
-        messageThreadController.createMessageThread(with: thread) {
+        messageThreadController.createMessageThread(with: "Test") {
             messageThreadController.fetchMessageThreads {
                 didFinish.fulfill()
             }

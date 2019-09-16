@@ -25,8 +25,8 @@ extension MessageThreadController {
         completion()
     }
     
-    func createLocalMessageThread(with thread: MessageThread, completion: @escaping () -> Void) {
-      //  let thread = MessageThread(title: title)
+    func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
+        let thread = MessageThread(title: title)
         messageThreads.append(thread)
         
         completion()

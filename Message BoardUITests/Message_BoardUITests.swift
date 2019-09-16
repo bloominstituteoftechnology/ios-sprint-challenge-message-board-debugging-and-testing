@@ -77,7 +77,11 @@ class Message_BoardUITests: XCTestCase {
     
     //Test for bug 5 in Bugs.MD
     func testThreadDisplaysInLabel() {
-        
+        let textField = app.textFields.element
+        textField.tap()
+        textField.typeText("TestThread")
+        app.keyboards.buttons["Return"].tap()
+        XCTAssertTrue(app.cells.staticTexts["TestThread"].exists)
     }
 }
 

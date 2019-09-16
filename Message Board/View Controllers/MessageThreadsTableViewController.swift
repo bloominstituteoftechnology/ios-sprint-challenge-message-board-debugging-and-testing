@@ -34,12 +34,9 @@ class MessageThreadsTableViewController: UITableViewController {
         guard let threadTitle = threadTitleTextField.text else { return }
         
         threadTitleTextField.text = ""
-        let thread = MessageThread(title: threadTitle)
-        messageThreadController.createMessageThread(with: thread) {
-            self.messageThreadController.fetchMessageThreads {
+        messageThreadController.createMessageThread(with: threadTitle) {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                }
             }
         }
     }
