@@ -37,7 +37,7 @@ class MessageThreadTests: XCTestCase {
 		
 		wait(for: [didFinish], timeout: 5)
 		
-		XCTAssertNotNil(messageThreadController.messageThreads)
+		XCTAssertNotNil(messageThreadController.messageThreads.first?.identifier)
 	}
 	
 	func testThreadEncoding() {
@@ -49,7 +49,7 @@ class MessageThreadTests: XCTestCase {
 		}
 		wait(for: [threadDidFinish], timeout: 5)
 		
-		XCTAssertNotNil(messageThreadController.messageThreads)
+		XCTAssertEqual(messageThreadController.messageThreads.count, 1)
 		
 		let thread = messageThreadController.messageThreads[0]
 		messageThreadController.createMessage(in: thread, withText: "I wrote stuff here", sender: "TestUser") {
@@ -57,7 +57,7 @@ class MessageThreadTests: XCTestCase {
 		}
 		wait(for: [messageDidFinish], timeout: 5)
 		
-		XCTAssertNotNil(messageThreadController.messageThreads.first?.messages)
+		XCTAssertEqual(messageThreadController.messageThreads.first?.messages.count, 1)
 	}
 	
 }
