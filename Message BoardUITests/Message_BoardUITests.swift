@@ -42,20 +42,18 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 	
-	func loginProcedure() {
+	func loginProcedure(username: String = "TestUser") {
 		let loginBtn = app.buttons["Login"]
 		usernameTextField.tap()
-		usernameTextField.typeText("TestUser")
+		usernameTextField.typeText(username)
 		app.tap()
 		loginBtn.tap()
 	}
 	
-	func testvalidUsernameOpensToThreads() {
+	func testValidUsernameOpensToThreads() {
 		let loginBtn = app.buttons["Login"]
 		
-		usernameTextField.typeText("Hi")
-		app.tap()
-		loginBtn.tap()
+		loginProcedure(username: "Ls")
 		XCTAssertTrue(loginBtn.exists)
 		
 		loginProcedure()
@@ -69,7 +67,7 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(cell.exists)
 		XCTAssertEqual("A New Thread", cell.staticTexts.element.label)
 		cell.tap()
-		XCTAssertFalse(cell.isHittable)
+		XCTAssertFalse(cell.waitForExistence(timeout: 2))
 	}
 	
 	func testMessageCellOpensMessage() {
@@ -83,7 +81,7 @@ class Message_BoardUITests: XCTestCase {
 		
 		let addBtn = app.navigationBars.buttons["Add"]
 		addBtn.tap()
-		XCTAssertFalse(messageCell.exists)
+		XCTAssertFalse(messageCell.waitForExistence(timeout: 2))
 	}
 	
 	func testNewMessageCreated() {
@@ -110,6 +108,6 @@ class Message_BoardUITests: XCTestCase {
 		XCTAssertTrue(sendBtn.exists)
 		sendBtn.tap()
 		
-		XCTAssertTrue(addBtn.isHittable)
+		XCTAssertTrue(app.navigationBars["A New Thread"].waitForExistence(timeout: 2))
 	}
 }

@@ -11,8 +11,14 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
 	
+	var messageThreadController: MessageThreadController!
+	
 	let newMessage = MessageThread.Message(text: "iHop", sender: "Dave", timestamp: Date())
 	let newThread = MessageThread(title: "Where to eat", messages: [MessageThread.Message(text: "iHop", sender: "Dave", timestamp: Date())], identifier: "12345")
+	
+	override func setUp() {
+		messageThreadController = MessageThreadController()
+	}
 	
 	func testNewThread() {
 		XCTAssertEqual("iHop", newThread.messages[0].text)
@@ -22,19 +28,36 @@ class MessageThreadTests: XCTestCase {
 		XCTAssertEqual("iHop", newMessage.text)
 	}
 	
-	func testFetchingData() {
+	func testJsonDecoding() {
 		let didFinish = expectation(description: "didFinish")
-		let messageThreadController = MessageThreadController()
-		var isFulfilled = false
 		
 		messageThreadController.fetchMessageThreads {
 			didFinish.fulfill()
-			isFulfilled = true
 		}
 		
-		wait(for: [didFinish], timeout: 5) // sync wait
+		wait(for: [didFinish], timeout: 5)
 		
-		XCTAssertTrue(isFulfilled)
+		XCTAssertNotNil(messageThreadController.messageThreads)
+	}
+	
+	func testThreadEncoding() {
+		let threadDidFinish = expectation(description: "didFinish")
+		let messageDidFinish = expectation(description: "didFinish")
+		
+		messageThreadController.createMessageThread(with: "Test Thread") {
+			threadDidFinish.fulfill()
+		}
+		wait(for: [threadDidFinish], timeout: 5)
+		
+		XCTAssertNotNil(messageThreadController.messageThreads)
+		
+		let thread = messageThreadController.messageThreads[0]
+		messageThreadController.createMessage(in: thread, withText: "I wrote stuff here", sender: "TestUser") {
+			messageDidFinish.fulfill()
+		}
+		wait(for: [messageDidFinish], timeout: 5)
+		
+		XCTAssertNotNil(messageThreadController.messageThreads.first?.messages)
 	}
 	
 }
