@@ -74,5 +74,10 @@ class Message_BoardUITests: XCTestCase {
         app.navigationBars.buttons.element(boundBy: 1).tap()
        XCTAssertTrue(app.cells.staticTexts["Test"].exists)
     }
+    
+    //Test for bug 5 in Bugs.MD
+    func testThreadDisplaysInLabel() {
+        
+    }
 }
 

@@ -35,7 +35,6 @@ class MessageThread: Codable, Equatable {
 
     
     struct Message: Codable, Equatable {
-        
         let messageText: String
         let sender: String
         let timestamp: Date
