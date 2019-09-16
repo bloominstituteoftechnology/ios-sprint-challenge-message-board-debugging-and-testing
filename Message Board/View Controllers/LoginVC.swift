@@ -29,7 +29,7 @@ class LoginVC: UIViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let threadsVC = segue.destination.childViewControllers.first as? MessageThreadsTableViewController {
+		if let threadsVC = segue.destination.children.first as? MessageThreadsTableViewController {
 			threadsVC.messageThreadController = messageThreadController
 		}
 	}
