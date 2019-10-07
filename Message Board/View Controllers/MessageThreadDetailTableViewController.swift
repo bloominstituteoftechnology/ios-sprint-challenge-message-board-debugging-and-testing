@@ -33,7 +33,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
         let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
+        cell.textLabel?.text = message?.text
         cell.detailTextLabel?.text = message?.sender
         
         return cell
@@ -42,11 +42,12 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
+            print("Pause")
         }
     }
     
