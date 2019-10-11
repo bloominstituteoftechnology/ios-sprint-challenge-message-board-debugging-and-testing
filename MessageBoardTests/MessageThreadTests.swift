@@ -35,6 +35,10 @@ class MessageThreadTests: XCTestCase {
             
             let thread = MessageThread(title: title)
             
+            if thread.title == "" {
+                return
+            }
+            
             let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
             var request = URLRequest(url: requestURL)
             request.httpMethod = HTTPMethod.put.rawValue
@@ -64,6 +68,50 @@ class MessageThreadTests: XCTestCase {
         }
     }
     
-    
-    
+   func testIfThreadTitleIsEmpty() {
+          
+          let baseURL = URL(string: "https://message-board-sprint-challenge.firebaseio.com/")!
+          var messageThreads: [MessageThread] = []
+          var testRun = 0
+          func createMessageThread(with title: String, completion: @escaping () -> Void) {
+              
+              let thread = MessageThread(title: title)
+              
+              if thread.title == "" {
+                  print("Alert user they need to add a title")
+                  completion()
+                  return
+              }
+              
+              testRun += 1
+              let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+              var request = URLRequest(url: requestURL)
+              request.httpMethod = HTTPMethod.put.rawValue
+              
+              do {
+                  request.httpBody = try JSONEncoder().encode(thread)
+              } catch {
+                  NSLog("Error encoding thread to JSON: \(error)")
+              }
+              
+              URLSession.shared.dataTask(with: request) { (data, _, error) in
+                  
+                  if let error = error {
+                      NSLog("Error with message thread creation data task: \(error)")
+                      
+                      completion()
+                      return
+                  }
+                  
+                  messageThreads.append(thread)
+                  completion()
+                  
+              }.resume()
+          }
+          
+          createMessageThread(with: "") {
+              XCTAssertFalse(testRun == 1)
+          }
+      }
 }
+
