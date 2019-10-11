@@ -26,9 +26,24 @@ Bug List
         UI Test [ ], Unit Test [ ]
         Fails [ ], Recode [ ] , Passes [ ]
         git Commit [ ]
+        
+    3. Problem Description
+    
+    Data is gettign to FB but not decoding properly.
+    
+    2019-10-11 12:12:53.114374-0400 Message Board[74744:1715308] Error decoding message threads from JSON data: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil))
+
+    Possible solutions:
+    
+    1. Check model and decode setup to handle real data from FB
+    2. >> Changed Decode line to: JSONDecoder().decode([String : MessageThread].self, from: data).map({$0.value}) to make it a dictionary vs an array.
 
 
-3. Problem Description:
+
+    4. Probelm Description
+        Added MT, clicked on it in TV, clicked back, list empty, got added to FBs
+
+4. Problem Description:
 
 "Save" button does nothing on "New Message" View 
 
