@@ -13,6 +13,12 @@ class MessageThread: Codable, Equatable {
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
+    
+    enum MessageThreadCodingKeys: String, CodingKey {
+        case title
+        case messages
+        case identifier
+    }
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
@@ -21,15 +27,28 @@ class MessageThread: Codable, Equatable {
     }
 
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let title = try container.decode(String.self, forKey: .title)
-        let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
-        
-        self.title = title
-        self.identifier = identifier
-        self.messages = messages
+        var messagesArray : [Message] = []
+        do{
+            let container = try decoder.container(keyedBy: MessageThreadCodingKeys.self)
+            
+            let title = try container.decode(String.self, forKey: .title)
+            let identifier = try container.decode(String.self, forKey: .identifier)
+            if container.contains(.messages) {
+                var messagesContianer = try container.nestedUnkeyedContainer(forKey: .messages)
+                while !messagesContianer.isAtEnd {
+                    let message = try messagesContianer.decode(Message.self)
+                    messagesArray.append(message)
+                }
+            }
+//                messagesArray = try messagesContianer.decodeIfPresent([String : Message].self)?.compactMap ({ $0.value }) ?? []
+            
+            self.title = title
+            self.identifier = identifier
+            self.messages = messagesArray
+        } catch {
+            NSLog("Error: \(error)")
+            throw(error)
+        }
     }
 
     
