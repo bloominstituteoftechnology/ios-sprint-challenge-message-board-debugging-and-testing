@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3267032E2350DB6C00CB1BCC /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = Bugs.md; path = "Message Board/Resources/Bugs.md"; sourceTree = SOURCE_ROOT; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		4643602D211ABC0900E7FF73 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3267032E2350DB6C00CB1BCC /* Bugs.md */,
 				4629C7E1214B9D8C00E7FF73 /* UI Testing */,
 				46436029211AB90900E7FF73 /* HTTPMethod.swift */,
 				4612B5C7211AB41100E7FF73 /* AppDelegate.swift */,
