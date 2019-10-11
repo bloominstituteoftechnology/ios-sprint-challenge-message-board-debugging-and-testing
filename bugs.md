@@ -5,5 +5,5 @@
 
 3. MessageThreadDetailTableViewController - Misspelled "AddMessage" string in segue
 
-4. 
+4. MessageThread - Decoded messages as a array when it is a dictionary
 
