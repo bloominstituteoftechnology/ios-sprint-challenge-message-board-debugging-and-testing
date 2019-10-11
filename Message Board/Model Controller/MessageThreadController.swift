@@ -41,6 +41,9 @@ class MessageThreadController {
             do {
                 let messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data)
                 for value in messageThreads.values {
+                    if self.messageThreads.contains(value) {
+                        continue
+                    }
                     self.messageThreads.append(value)
                 }
                 //self.messageThreads = messageThreads.values

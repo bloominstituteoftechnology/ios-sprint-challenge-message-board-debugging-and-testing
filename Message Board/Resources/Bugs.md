@@ -10,3 +10,6 @@ Bug nothing happens when clicking "Send" in MessageDetailView
 
 Bug decoding JSON when fetching all message threads
  - error stated trying to decode [ ] but found dictionary instead.
+
+Bug tableView Reloading entries more than once.
+    -Added continue to skip appending if array contains value
