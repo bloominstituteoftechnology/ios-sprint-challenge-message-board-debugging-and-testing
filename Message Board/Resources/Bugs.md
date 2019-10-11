@@ -7,3 +7,6 @@ Bug when creating message thread
 
 Bug nothing happens when clicking "Send" in MessageDetailView
     - 
+
+Bug decoding JSON when fetching all message threads
+ - error stated trying to decode [ ] but found dictionary instead.
