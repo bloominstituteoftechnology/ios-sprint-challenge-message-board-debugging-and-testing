@@ -9,16 +9,21 @@
 import UIKit
 
 class MessageThreadDetailTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+
+    var messageThread: MessageThread?
+    var messageThreadController: MessageThreadController?
+    
+    // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = messageThread?.title
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tableView.reloadData()
     }
     
@@ -33,7 +38,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
         let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
+        cell.textLabel?.text = message?.text
         cell.detailTextLabel?.text = message?.sender
         
         return cell
@@ -42,16 +47,11 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
     }
-    
-    // MARK: - Properties
-
-    var messageThread: MessageThread?
-    var messageThreadController: MessageThreadController?
 }
