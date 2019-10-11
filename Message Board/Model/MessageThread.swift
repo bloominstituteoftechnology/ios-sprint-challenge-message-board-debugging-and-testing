@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct MessageThreads: Codable {
+    let threads: [MessageThread]
+}
+
 class MessageThread: Codable, Equatable {
 
     let title: String
@@ -25,19 +29,29 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messagesLayer1 = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
+        var decodedMessages: [MessageThread.Message] = []
+        for value in messagesLayer1.values {
+            decodedMessages.append(value)
+        }
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages
+        self.messages = decodedMessages
     }
 
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
         let sender: String
+        let messageText: String
         let timestamp: Date
+        
+        enum CodingKeys: String, CodingKey {
+            case sender
+            case messageText = "text"
+            case timestamp
+        }
         
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text
