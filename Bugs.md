@@ -42,16 +42,23 @@ Bug List
 
     4. Probelm Description
         Added MT, clicked on it in TV, clicked back, list empty, got added to FBs
+        
+        Possible solution:
+        
+        fixing decode fixed this.
+        
 
-4. Problem Description:
+    5. Problem Description:
 
-"Save" button does nothing on "New Message" View 
+    "Save" button does nothing on "New Message" View 
+        MessageThread not being injected
 
-Possible Resolution(s):
+    Possible Resolution(s):
 
-1. Fix the IBAction
-2. Trace through code to see what's happening
+    1. Fix the IBAction
+    2. Trace through code to see what's happening
+    3. >> Added: navigationController?.popViewController(animated: true) to end of save 
 
-UI Test [ ], Unit Test [ ]
-Fails [ ], Recode [ ] , Passes [ ]
-git Commit [ ]
+    UI Test [ ], Unit Test [ ]
+    Fails [ ], Recode [ ] , Passes [ ]
+    git Commit [ ]
