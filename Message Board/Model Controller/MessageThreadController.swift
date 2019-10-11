@@ -34,6 +34,9 @@ class MessageThreadController {
             
             do {
                 self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data).values)
+                for thread in self.messageThreads {
+                    thread.messages.sort(by: { $0.timestamp > $1.timestamp })
+                }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -53,7 +56,10 @@ class MessageThreadController {
         
         let thread = MessageThread(title: title)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL
+                    .appendingPathComponent(thread.identifier)
+                    .appendingPathExtension("json")
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
@@ -73,7 +79,6 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
         }.resume()
     }
     
@@ -90,7 +95,11 @@ class MessageThreadController {
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.insert(message, at: 0)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL
+                    .appendingPathComponent(messageThread.identifier)
+                    .appendingPathComponent("messages")
+                    .appendingPathExtension("json")
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
@@ -107,7 +116,6 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
             completion()
         }.resume()
     }
