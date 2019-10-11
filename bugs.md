@@ -7,3 +7,4 @@
 
 4. MessageThread - Decoded messages as a array when it is a dictionary
 
+5. MessageThreadDetailTableViewController - Messages are added to the bottom of the table view instead of the top
