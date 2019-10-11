@@ -10,10 +10,18 @@ import Foundation
 
 class MessageThreadController {
     
+    // MARK: - Properties
+
+    static let baseURL = URL(string: "https://message-board-sprint-challenge.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
+    
+    //MARK: - Fetch Message Threads Method
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
-        
+//        guard let path = Bundle.main.path(forResource: "MockMessages", ofType: "json") else { return }
+//        let fileURL = URL(fileURLWithPath: path)
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
@@ -31,7 +39,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -40,6 +49,8 @@ class MessageThreadController {
             completion()
         }.resume()
     }
+    
+    //MARK: - Create Message Thread Method
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         
@@ -72,8 +83,10 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
+    
+    //MARK: - Create Message Method
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
@@ -110,7 +123,4 @@ class MessageThreadController {
             
         }.resume()
     }
-    
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
 }
