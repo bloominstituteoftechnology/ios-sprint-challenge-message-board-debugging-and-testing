@@ -6,7 +6,7 @@ Bug when creating message thread
 - URLSession did not have a .resume()
 
 Bug nothing happens when clicking "Send" in MessageDetailView
-    - 
+    - Segue was causing the gaurd to exit early when MessageThread was nil becuase identifier was spelled wrong
 
 Bug decoding JSON when fetching all message threads
  - error stated trying to decode [ ] but found dictionary instead.
