@@ -13,3 +13,6 @@ Bug decoding JSON when fetching all message threads
 
 Bug tableView Reloading entries more than once.
     -Added continue to skip appending if array contains value
+    
+Bug Segue identifier in MessageThreadDetailVC "AddMesage" spelled wrong
+    - copied correct identifier and passed it in
