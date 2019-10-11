@@ -9,22 +9,50 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    
+    let messageThreadController = MessageThreadController()
+    
+    @IBOutlet weak var threadTitleTextField: UITextField!
+    
+    
+    // MARK: - View LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        threadTitleTextField.delegate = self
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        messageThreadController.fetchMessageThreads {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+//        messageThreadController.fetchMessageThreads {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
     }
+    
     
     // MARK: - Actions
     
-    @IBAction func createThread(_ sender: Any) {
-        threadTitleTextField.resignFirstResponder()
-
+//    @IBAction func createThread(_ sender: Any) {
+//        threadTitleTextField.resignFirstResponder()
+//
+//        guard let threadTitle = threadTitleTextField.text else { return }
+//
+//        threadTitleTextField.text = ""
+//
+//        messageThreadController.createMessageThread(with: threadTitle) {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
+    
+    @IBAction func createThread(_ sender: UITextField) {
+        
         guard let threadTitle = threadTitleTextField.text else { return }
         
         threadTitleTextField.text = ""
@@ -35,6 +63,7 @@ class MessageThreadsTableViewController: UITableViewController {
             }
         }
     }
+    
     
     // MARK: - UITableViewDataSource
     
@@ -61,10 +90,10 @@ class MessageThreadsTableViewController: UITableViewController {
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         }
     }
-    
-    // MARK: - Properties
-    
-    let messageThreadController = MessageThreadController()
-    
-    @IBOutlet weak var threadTitleTextField: UITextField!
+
+}
+extension MessageThreadsTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        threadTitleTextField.resignFirstResponder()
+    }
 }
