@@ -7,7 +7,7 @@
 //
 
 import XCTest
-
+@testable import Message_Board
 class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
@@ -22,5 +22,4 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
-    
 }

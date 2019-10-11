@@ -12,7 +12,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = messageThread?.title
     }
     

@@ -25,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		050294672350EDE000758146 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4612B5C3211AB41100E7FF73;
+			remoteInfo = "Message Board";
+		};
 		4629C7EB214BA09600E7FF73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
@@ -42,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0502945D2350D5CB00758146 /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = Bugs.md; path = "Message BoardUITests/Bugs.md"; sourceTree = SOURCE_ROOT; };
+		050294622350EDE000758146 /* Message BoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Message BoardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +75,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0502945F2350EDE000758146 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4612B5C1211AB41100E7FF73 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,6 +122,7 @@
 				4612B5C4211AB41100E7FF73 /* Message Board.app */,
 				9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */,
 				4629C7E6214BA09600E7FF73 /* Message BoardUITests.xctest */,
+				050294622350EDE000758146 /* Message BoardTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +135,7 @@
 				46436031211ABC3900E7FF73 /* View Controllers */,
 				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602D211ABC0900E7FF73 /* Resources */,
+				0502945D2350D5CB00758146 /* Bugs.md */,
 			);
 			path = "Message Board";
 			sourceTree = "<group>";
@@ -200,6 +218,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		050294612350EDE000758146 /* Message BoardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 050294692350EDE000758146 /* Build configuration list for PBXNativeTarget "Message BoardTests" */;
+			buildPhases = (
+				0502945E2350EDE000758146 /* Sources */,
+				0502945F2350EDE000758146 /* Frameworks */,
+				050294602350EDE000758146 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				050294682350EDE000758146 /* PBXTargetDependency */,
+			);
+			name = "Message BoardTests";
+			productName = "Message BoardTests";
+			productReference = 050294622350EDE000758146 /* Message BoardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4612B5C3211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4612B5D6211AB41300E7FF73 /* Build configuration list for PBXNativeTarget "Message Board" */;
@@ -259,10 +295,14 @@
 		4612B5BC211AB41100E7FF73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
+					050294612350EDE000758146 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 4612B5C3211AB41100E7FF73;
+					};
 					4612B5C3211AB41100E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -292,11 +332,19 @@
 				4612B5C3211AB41100E7FF73 /* Message Board */,
 				9D9B6AFB214B7A66006381F7 /* MessageBoardTests */,
 				4629C7E5214BA09600E7FF73 /* Message BoardUITests */,
+				050294612350EDE000758146 /* Message BoardTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		050294602350EDE000758146 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4612B5C2211AB41100E7FF73 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +373,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0502945E2350EDE000758146 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4612B5C0211AB41100E7FF73 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +415,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		050294682350EDE000758146 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
+			targetProxy = 050294672350EDE000758146 /* PBXContainerItemProxy */;
+		};
 		4629C7EC214BA09600E7FF73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
@@ -392,6 +452,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0502946A2350EDE000758146 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Message BoardTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MarcJacques.Message-BoardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
+			};
+			name = Debug;
+		};
+		0502946B2350EDE000758146 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Message BoardTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MarcJacques.Message-BoardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
+			};
+			name = Release;
+		};
 		4612B5D4211AB41300E7FF73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -621,6 +724,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		050294692350EDE000758146 /* Build configuration list for PBXNativeTarget "Message BoardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0502946A2350EDE000758146 /* Debug */,
+				0502946B2350EDE000758146 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4612B5BF211AB41100E7FF73 /* Build configuration list for PBXProject "Message Board" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
