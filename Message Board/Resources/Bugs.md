@@ -1,8 +1,5 @@
 #  Bugs
 
-- Added base url
-static let baseURL = URL(string: "https://sprintchallenge-week10.firebaseio.com/")!
-
 - Missing coding keys in model
 enum CodingKeys: String, CodingKey {
     case title

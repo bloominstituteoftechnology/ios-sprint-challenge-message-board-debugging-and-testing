@@ -11,5 +11,11 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    // MARK: - Helper Properties
     
+    var messageThreadController = MessageThreadController()
+    
+    func testFetchThreads() {
+        XCTAssertEqual("https://sprintchallenge-week10.firebaseio.com/", "\(messageThreadController.baseURL)")
+    }
 }
