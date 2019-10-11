@@ -6,6 +6,7 @@ Bug List
         Possible Resolution(s):
         
         Handle an empty DB properly
+        OR let it fail silently....moving on
         
         UI Test [ ], Unit Test [ ]
         Fails [ ], Recode [ ] , Passes [ ]
@@ -18,10 +19,24 @@ Bug List
     
         Possible Resolution(s):
         
-        1. have the table update itself
-        2. make sure data is being added to the list (Unit tests on model/controller)
+        1. X  have the table update itself
+        2. >> make sure data is being added to the list (Unit tests on model/controller)
+        3. >> Add .resume() to data task adding Message board to FB
         
         UI Test [ ], Unit Test [ ]
         Fails [ ], Recode [ ] , Passes [ ]
         git Commit [ ]
 
+
+3. Problem Description:
+
+"Save" button does nothing on "New Message" View 
+
+Possible Resolution(s):
+
+1. Fix the IBAction
+2. Trace through code to see what's happening
+
+UI Test [ ], Unit Test [ ]
+Fails [ ], Recode [ ] , Passes [ ]
+git Commit [ ]
