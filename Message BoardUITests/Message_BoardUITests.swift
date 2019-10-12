@@ -31,13 +31,17 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual(app.navigationBars.firstMatch.identifier, "New Message")
     }
     
-    func testSendMessage() {
+    func testCreateMessage() {
         app.tables.firstMatch.cells.firstMatch.tap()
         app.navigationBars.firstMatch.buttons["MessageThreadDetailTableViewController.addButton"].tap()
         XCTAssertEqual(app.navigationBars.firstMatch.identifier, "New Message")
-//        app.textFields["MessageDetailViewController.nameTextField"].tap()
-//        app.textFields["MessageDetailViewController.nameTextField"].typeText("Testing text field")
-//        app.textViews["MessageThreadDetailTableViewController.messageTextView"].tap()
-//        app.textViews["MessageThreadDetailTableViewController.messageTextView"].typeText("Testing text view")
+        
+        app.textFields.element.tap()
+        app.textFields.element.typeText("Testing text field")
+        
+        app.navigationBars.firstMatch.buttons["MessageThreadDetailTableViewController.sendButton"].tap()
+        
+        let cell = app.tables.firstMatch.cells.element(boundBy: 1)
+        XCTAssertEqual(cell.staticTexts.element.label, "Testing text field")
     }
 }

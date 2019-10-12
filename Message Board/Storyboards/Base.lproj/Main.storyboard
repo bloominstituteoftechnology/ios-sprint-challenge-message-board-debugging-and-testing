@@ -133,7 +133,7 @@
         <!--New Message-->
         <scene sceneID="usB-8K-2MY">
             <objects>
-                <viewController id="BoB-4p-ZG3" customClass="MessageDetailViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageDetailStoryboardID" id="BoB-4p-ZG3" customClass="MessageDetailViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hj8-j0-bJt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,6 +175,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="messageTextView" destination="tpX-xP-KsX" id="HrS-Wg-5Le"/>
+                        <outlet property="sendButton" destination="eC1-90-vuB" id="weR-Ik-bDe"/>
                         <outlet property="senderNameTextField" destination="NEl-Se-Sz1" id="zK1-A7-yoD"/>
                     </connections>
                 </viewController>

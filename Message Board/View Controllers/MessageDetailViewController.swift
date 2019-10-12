@@ -18,6 +18,11 @@ class MessageDetailViewController: UIViewController {
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var sendButton: UIBarButtonItem!
+    
+    
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -33,5 +38,10 @@ class MessageDetailViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sendButton.accessibilityIdentifier = "MessageThreadDetailTableViewController.sendButton"
     }
 }
