@@ -9,4 +9,4 @@
     json Decoders 
     
 ## BUG # 3 
-added .resume to 
+    added .resume to func createMessageThread in model controller
