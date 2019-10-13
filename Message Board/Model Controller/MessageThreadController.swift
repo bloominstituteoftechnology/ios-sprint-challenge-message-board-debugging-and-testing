@@ -33,7 +33,7 @@ class MessageThreadController {
             do {
                 let jsonDecoder = JSONDecoder()
                 self.messageThreads = try jsonDecoder.decode([MessageThread].self, from: data)
-                jsonDecoder.dataDecodingStrategy = .deferredToData
+                jsonDecoder.dateDecodingStrategy = .deferredToDate
                 self.messageThreads = Array(try jsonDecoder.decode([String:MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
