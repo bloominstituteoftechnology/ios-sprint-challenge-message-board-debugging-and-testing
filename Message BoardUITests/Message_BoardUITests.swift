@@ -10,8 +10,10 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
-    var app: XCUIApplication!
+     // MARK: - Helper Properties
     
+    var app: XCUIApplication!
+        
     override func setUp() {
         super.setUp()
         
@@ -23,4 +25,23 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testAddMessageButtonTapped() {
+        app.tables.firstMatch.cells.firstMatch.tap()
+        app.navigationBars.firstMatch.buttons["MessageThreadDetailTableViewController.addButton"].tap()
+        XCTAssertEqual(app.navigationBars.firstMatch.identifier, "New Message")
+    }
+    
+    func testCreateMessage() {
+        app.tables.firstMatch.cells.firstMatch.tap()
+        app.navigationBars.firstMatch.buttons["MessageThreadDetailTableViewController.addButton"].tap()
+        XCTAssertEqual(app.navigationBars.firstMatch.identifier, "New Message")
+        
+        app.textFields.element.tap()
+        app.textFields.element.typeText("Testing text field")
+        
+        app.navigationBars.firstMatch.buttons["MessageThreadDetailTableViewController.sendButton"].tap()
+        
+        let cell = app.tables.firstMatch.cells.element(boundBy: 1)
+        XCTAssertEqual(cell.staticTexts.element.label, "Testing text field")
+    }
 }

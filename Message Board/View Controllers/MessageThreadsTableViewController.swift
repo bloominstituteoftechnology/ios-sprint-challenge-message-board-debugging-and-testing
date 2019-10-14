@@ -9,7 +9,15 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
-
+    
+    // MARK: - Properties
+    
+    let messageThreadController = MessageThreadController()
+    
+    @IBOutlet weak var threadTitleTextField: UITextField!
+    
+    // MARK: - Methods
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -26,8 +34,6 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.resignFirstResponder()
 
         guard let threadTitle = threadTitleTextField.text else { return }
-        
-        threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
@@ -61,10 +67,4 @@ class MessageThreadsTableViewController: UITableViewController {
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         }
     }
-    
-    // MARK: - Properties
-    
-    let messageThreadController = MessageThreadController()
-    
-    @IBOutlet weak var threadTitleTextField: UITextField!
 }
