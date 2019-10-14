@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Message_Board
 
 class Message_BoardUITests: XCTestCase {
     
@@ -23,4 +24,8 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func test() {
+        
+        
+    }
 }
