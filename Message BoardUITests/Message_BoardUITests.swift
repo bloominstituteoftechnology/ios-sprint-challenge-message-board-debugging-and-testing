@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import Message_Board
 
 class Message_BoardUITests: XCTestCase {
     
@@ -51,5 +50,9 @@ class Message_BoardUITests: XCTestCase {
         nameTextField.typeText("Jordan")
         let sendButton = app.navigationBars["New Message"].buttons["Send"]
         sendButton.tap()
+        let messageThreadTable = app.tables.matching(identifier: "MessageThreadDetailTableViewController")
+        let messageCell = messageThreadTable.cells.staticTexts["Jordan"]
+        
+        XCTAssertEqual(messageCell.label, "Jordan")
     }
 }
