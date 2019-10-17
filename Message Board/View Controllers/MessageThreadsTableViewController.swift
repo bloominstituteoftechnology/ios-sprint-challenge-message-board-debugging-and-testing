@@ -20,6 +20,11 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.accessibilityIdentifier = "MessageThreadsTableViewController"
+    }
+    
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
@@ -44,7 +49,7 @@ class MessageThreadsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
-        
+        cell.accessibilityIdentifier = "MessageThreadCell\(indexPath.row)"
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
 
         return cell
