@@ -14,13 +14,16 @@ class MessageDetailViewController: UIViewController {
     
     @IBAction func sendMessage(_ sender: Any) {
         
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
-        
-        messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            print("Message created!")
-        })
+        guard let senderName = senderNameTextField.text, !senderName.isEmpty,
+            let messageText = messageTextView.text, !messageText.isEmpty else { return }
+            // Message is coming up nil.
+        if let messageThread = messageThread {
+            messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+                print("Message created!")
+            })
+        }
+        // MARK: - Bug 5 Added pop back to previous VC after creating a message.
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
