@@ -10,6 +10,21 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
+    func testCreateThreadMessage() {
+        let controller = MessageThreadController()
+        XCTAssert(controller.messageThreads.count == 0)
+        controller.createMessageThread(with: "Test", completion: {
+            XCTAssert(controller.messageThreads.count == 1)
+        })
+    }
     
-    
+    func testFetchDataFromFirebase() {
+        // Firebase has been already populated
+        
+        let controller = MessageThreadController()
+        XCTAssert(controller.messageThreads.count == 0)
+        controller.fetchMessageThreads {
+             XCTAssert(controller.messageThreads.count > 0)
+        }
+    }
 }
