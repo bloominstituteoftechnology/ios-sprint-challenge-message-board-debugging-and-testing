@@ -43,4 +43,16 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual(title0, title0a)
     }
     
+    func testCreatingThread() {
+        
+        app.textFields["Create a new thread:"].tap()
+        
+        app.keys["a"].tap()
+        app.buttons["Return"].tap()
+        
+        app.tables.staticTexts["a"].tap()
+        let title = app.navigationBars.staticTexts.firstMatch.label
+        XCTAssertEqual(title, "a")
+    }
+    
 }
