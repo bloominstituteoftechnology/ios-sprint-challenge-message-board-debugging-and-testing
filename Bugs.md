@@ -2,7 +2,7 @@
 
 ## Bugs
 
-### Messages won't load
+### Theads don't load
 
 * When starting the app, message threads are not properly pulled from the server.
 * The console output has the message "Expected to decode Array<Any> but found a dictionary instead."
@@ -20,9 +20,23 @@
 
 ### Can't create new message boards
 
-* Entering a new thread name and pressing return does not create a new thread
+* Entering a new thread name and pressing return does not create a new thread.
 
 #### Fix
 
-* Resume create thread data task
+* Resume create thread data task.
+
+### Messages don't send
+
+* Pressing the send button on the New Message screen does not send a message.
+
+#### Proposed Fix
+
+* Creating a Unit Test to test the createMessage function does succeed however, so it is likely a UI issue.
+* Setting a breakpoint on sendMessage function in the message detail view controller shows that the messageThread is not being set properly, so it is likely not being passed from the parent view controller.
+
+#### Fix
+
+* A typo in segue identification was fixed.
+* The view controller was also made to pop to provide user feedback.
 
