@@ -23,4 +23,24 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testChangingThreads() {
+        
+        let table = app.tables
+        
+        table.staticTexts["A New Thread"].tap()
+        let title0 = app.navigationBars.staticTexts.firstMatch.label
+        
+        app.navigationBars.buttons["λ Message Board"].tap()
+        table.staticTexts["Testing again"].tap()
+        let title1 = app.navigationBars.staticTexts.firstMatch.label
+        
+        XCTAssertNotEqual(title0, title1)
+        
+        app.navigationBars.buttons["λ Message Board"].tap()
+        table.staticTexts["A New Thread"].tap()
+        let title0a = app.navigationBars.staticTexts.firstMatch.label
+        
+        XCTAssertEqual(title0, title0a)
+    }
+    
 }
