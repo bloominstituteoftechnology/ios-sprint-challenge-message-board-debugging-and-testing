@@ -22,7 +22,7 @@ class MessageDetailViewController: UIViewController {
             print("Message created!")
         })
         
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
