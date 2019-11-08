@@ -23,15 +23,25 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    func testTextField() {
+    func testAddNewMessage() {
+        testFunc()
         
-        mBTextField.tap()
+        nameTextField.tap()
+        nameTextField.typeText("Jerry")
+        app.buttons["return"].tap()
+        
+        newMessageTextView.tap()
+        newMessageTextView.typeText("Howdy")
+        app.buttons["return"].tap()
+        
+        app.buttons["Send"].tap()
         
     }
     
-    func testAddNewMessage() {
-                
-        
+    func testFunc() {
+        mBTextField.tap()
+        mBTextField.typeText("hello, world")
+        app.buttons["return"].tap()
     }
     
     func testExpectation() {
@@ -55,10 +65,16 @@ class Message_BoardUITests: XCTestCase {
         return identifiers
     }
     
-    func testFunc() {
-        app.textFields.element.tap()
-        app.textFields.element.typeText("hello, world")
-        app.buttons["return"].tap()
+    private var nameTextField: XCUIElement {
+        return app.textFields["nameTextField"]
+    }
+    
+    private var newMessageTextView: XCUIElement {
+        return app.textViews["newMessageTextView"]
+    }
+    
+    private var sendButton: XCUIElement {
+        return app.buttons["send"]
     }
     
     private var mBTextField: XCUIElement {

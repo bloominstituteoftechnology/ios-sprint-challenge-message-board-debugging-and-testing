@@ -1,6 +1,6 @@
 #  Message Board Bugs
 
-1- Textfield not responding: 
+1- Textfield not responding:  
 
 2- Error decoding message threads:
 
