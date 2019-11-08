@@ -29,9 +29,12 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
+
+			print(String(data: data, encoding: .utf8))
+
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageThreadsDict = try JSONDecoder().decode([String: MessageThread].self, from: data)
+				self.messageThreads = messageThreadsDict.map({ $0.value })
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")

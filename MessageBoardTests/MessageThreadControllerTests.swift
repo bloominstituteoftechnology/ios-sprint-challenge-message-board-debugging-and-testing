@@ -7,27 +7,40 @@
 //
 
 import XCTest
+@testable import Message_Board
 
 class MessageThreadControllerTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+   func testCreateThreadIncreaseThreadCount() {
+	   let messageThreadController = MessageThreadController()
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+	   XCTAssertEqual(0, messageThreadController.messageThreads.count)
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+	   let didFinish = expectation(description: "didFinish")
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+	   messageThreadController.createMessageThread(with: "UItest") {
+		   didFinish.fulfill()
+	   }
+	   wait(for: [didFinish], timeout: 5)
 
+	   XCTAssertEqual(1, messageThreadController.messageThreads.count)
+   }
+
+   func testLoadThreadCorrectCount() {
+	   let messageThreadController = MessageThreadController()
+
+	   let didFinish = expectation(description: "didFinish")
+
+	   messageThreadController.fetchMessageThreads {
+		   didFinish.fulfill()
+	   }
+
+	   wait(for: [didFinish], timeout: 5)
+
+	   XCTAssertEqual(1, messageThreadController.messageThreads.count)
+   }
+
+	func testCreateMessage() {
+		
+	}
 }
