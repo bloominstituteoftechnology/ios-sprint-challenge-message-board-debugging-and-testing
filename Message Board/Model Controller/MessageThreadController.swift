@@ -31,14 +31,16 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageDictionaries = try JSONDecoder().decode([String: MessageThread].self, from: data) // need to pull the dictionary from the firebase
+                let messageThreads = messageDictionaries.map { $0.value } // need to take the dictionary data and put it into the array
+                self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
             completion()
-        }.resume()
+            }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -72,7 +74,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume() // need to resume data task
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -83,7 +85,7 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -111,6 +113,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://lambda-message-board-48615.firebaseio.com/")! // need to add personal firebase
     var messageThreads: [MessageThread] = []
 }
