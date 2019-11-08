@@ -64,7 +64,7 @@ class MessageThreadTests: XCTestCase {
         wait(for: [messagePromise], timeout: 5)
     }
     
-    func testSegue() {
+    func testNumberOfRows() {
         
         mTTableVC.tableView.reloadData()
         
