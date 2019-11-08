@@ -11,9 +11,8 @@ import XCTest
 class Message_BoardUITests: XCTestCase {
     
     //MARK: Properties
-    private var app: XCUIApplication {
-        return XCUIApplication()
-    }
+    var app = XCUIApplication()
+
     
     private var appDescription: String {
         return app.debugDescription
@@ -34,14 +33,16 @@ class Message_BoardUITests: XCTestCase {
     
     
     //MARK: SetUp Function
-    override func setUp() {
-        super.setUp()
-        
-        continueAfterFailure = false
-        // NOTE: Keep this setup as is for UI Testing
-        app.launchArguments = ["UITesting"]
-        app.launch()
-    }
+   override func setUp() {
+           super.setUp()
+           
+           continueAfterFailure = false
+           app = XCUIApplication()
+           
+           // NOTE: Keep this setup as is for UI Testing
+           app.launchArguments = ["UITesting"]
+           app.launch()
+       }
     
     //MARK: UITests
     func testAddingNewThread() {
@@ -74,4 +75,32 @@ class Message_BoardUITests: XCTestCase {
         
     }
     
+    func testAddingNewMessage() {
+        
+        newThreadTextField.tap()
+        newThreadTextField.typeText("New People")
+        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let messageBoardTV = app.tables
+      
+        messageBoardTV.staticTexts["New People"].tap()
+        
+        let addButton = app.navigationBars["New People"].buttons["Add"]
+            addButton.tap()
+        
+        let nameTextField = app.textFields["Enter your name:"]
+            nameTextField.tap()
+        nameTextField.typeText("Anna")
+        
+      
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.tap()
+        app/*@START_MENU_TOKEN@*/.keys["G"]/*[[".keyboards.keys[\"G\"]",".keys[\"G\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+     
+        let sendButton = app.navigationBars["New Message"].buttons["Send"]
+            sendButton.tap()
+        
+        XCTAssertNotNil(app.navigationBars["New People"])
+        XCTAssertNotNil(app.textFields["Anna"])
+        
+    }
 }
