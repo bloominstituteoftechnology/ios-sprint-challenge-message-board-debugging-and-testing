@@ -18,3 +18,11 @@
 * Doing the same fix above to the messages caused the error `keyNotFound(CodingKeys(stringValue: "messageText", intValue: nil)`
 * These extra issues will be ignored for now until a database with a consistent API can be accessed.
 
+### Can't create new message boards
+
+* Entering a new thread name and pressing return does not create a new thread
+
+#### Fix
+
+* Resume create thread data task
+

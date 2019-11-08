@@ -27,4 +27,18 @@ class MessageThreadTests: XCTestCase {
         wait(for: [promise], timeout: 5)
     }
     
+    func testMakeNewThread() {
+        
+        let messageThreadController = MessageThreadController()
+                
+        let promise = expectation(description: "Data fetched")
+        
+        messageThreadController.createMessageThread(with: "Test") {
+            XCTAssertNotNil(messageThreadController.messageThreads.first(where: { $0.title == "Test" }) )
+            promise.fulfill()
+        }
+        
+        wait(for: [promise], timeout: 5)
+    }
+    
 }
