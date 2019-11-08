@@ -181,8 +181,8 @@
 		46436031211ABC3900E7FF73 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */,
 				46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */,
+				4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */,
 				46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */,
 			);
 			path = "View Controllers";

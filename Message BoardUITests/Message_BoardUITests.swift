@@ -15,6 +15,24 @@ class Message_BoardUITests: XCTestCase {
         return XCUIApplication()
     }
     
+    private var appDescription: String {
+        return app.debugDescription
+    }
+    
+    private var newThreadTextField: XCUIElement {
+        return app.tables.textFields["CreateNewThreadTextField"]
+    }
+    
+    private func threadString(thread: String) -> XCUIElement {
+        return app.keys[thread]
+    }
+    
+    private func threadCell(for thread: String) -> XCUIElementQuery {
+        return app.tables.matching(identifier: thread)
+    }
+    
+    
+    
     //MARK: SetUp Function
     override func setUp() {
         super.setUp()
@@ -28,27 +46,31 @@ class Message_BoardUITests: XCTestCase {
     //MARK: UITests
     func testAddingNewThread() {
         
-       
-        
-    }
-    
-    func testAddingNewMessage() {
-        
-    }
-    
-    func testSendButton() {
-        
-        let app = XCUIApplication()
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["New People"]/*[[".cells.staticTexts[\"New People\"]",".staticTexts[\"New People\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["New People"].buttons["Add"].tap()
-        app.textFields["Enter your name:"].tap()
+        newThreadTextField.tap()
+        newThreadTextField.typeText("New Thread")
         app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        //Assert that it saved the new message Anna
+        XCTAssertNotNil(app.tables["New thread"])
         
     }
     
-    func testBackToTaleVCButton() {
+    
+    func testBackToTableVCButton() {
+        
+        newThreadTextField.tap()
+        newThreadTextField.typeText("Second Thread")
+        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+        let newThreadCell = app.tables.staticTexts["Second Thread"]
+        newThreadCell.tap()
+        
+        app.navigationBars["Second Thread"].buttons["λ Message Board"].tap()
+        
+        XCTAssertNotNil(app.tables.staticTexts["λ Message Board"])
+    }
+    
+    func testHowAccessibilityLooks() {
+        print(appDescription)
         
     }
     
