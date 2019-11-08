@@ -33,6 +33,9 @@ class MessageThreadController {
             do {
                 let messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data)
                 for thread in messageThreads.values {
+                    if self.messageThreads.contains(thread) {
+                        continue
+                    }
                     self.messageThreads.append(thread)
                 }
             } catch {
@@ -71,7 +74,7 @@ class MessageThreadController {
                 completion()
                 return
             }
-                        
+            
             self.messageThreads.append(thread)
             completion()
             
