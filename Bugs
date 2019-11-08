@@ -1,0 +1,18 @@
+BUGS
+
+1. Decoding Error : 2019-11-08 07:23:16.411592-1000 Message Board[29409:2075480] Error decoding message threads from JSON data: valueNotFound(Swift.UnkeyedDecodingContainer, Swift.DecodingError.Context(codingPath: [], debugDescription: "Cannot get unkeyed decoding container -- found null value instead.", underlyingError: nil))
+FIXED
+-Had to refactor decoder in model and controller
+
+2. Bug where app would not let you add a new thread.
+FIXED
+-Had to refactor create message  thread func in controller
+
+3. Bug when looking at details of thread and going back to main board another thread is there that is the same as the first one. It is replicating itself.
+FIXED
+
+4. Bug when trying to add a message to a thread. Would not send.
+FIXED
+-Also added feature where you pop back to root VC.
+-Had to fix a segue misspelling 
+
