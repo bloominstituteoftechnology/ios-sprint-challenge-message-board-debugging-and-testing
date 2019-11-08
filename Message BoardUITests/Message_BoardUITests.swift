@@ -26,7 +26,9 @@ class Message_BoardUITests: XCTestCase {
     }
     
     //MARK: UITests
-    func testSearchingNewThread() {
+    func testAddingNewThread() {
+        
+       
         
     }
     
@@ -34,7 +36,15 @@ class Message_BoardUITests: XCTestCase {
         
     }
     
-    func testSaveButton() {
+    func testSendButton() {
+        
+        let app = XCUIApplication()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["New People"]/*[[".cells.staticTexts[\"New People\"]",".staticTexts[\"New People\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["New People"].buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        //Assert that it saved the new message Anna
         
     }
     
