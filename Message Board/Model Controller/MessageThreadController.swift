@@ -14,12 +14,6 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            fetchLocalMessageThreads(completion: completion)
-            return
-        }
-        
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
@@ -31,7 +25,11 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({ $0.value })
+                // MARK: - Bug 1. Needs to be in a Dictionary in order for the JSON to be decoded.
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.dateDecodingStrategy = .deferredToDate
+                self.messageThreads = Array(try jsonDecoder.decode([String: MessageThread].self, from: data).values)
+//                let messagesDictionary = try jsonDecoder.decode([String: MessageThread].self, from: data)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -73,7 +71,7 @@ class MessageThreadController {
             print(self.messageThreads)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -112,6 +110,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://message-board-sprint.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
