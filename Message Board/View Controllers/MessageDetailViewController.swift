@@ -9,6 +9,12 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        if let user = messageThreadController?.user {
+            senderNameTextField.text = user
+        }
+    }
 
     // MARK: - Actions
     

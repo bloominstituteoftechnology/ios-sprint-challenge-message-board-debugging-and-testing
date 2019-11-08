@@ -77,6 +77,8 @@ class MessageThreadController {
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
+        self.user = sender
+        
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
@@ -114,4 +116,6 @@ class MessageThreadController {
     //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
     static let baseURL = URL(string: "https://lambda-message-board-f2dc9.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
+    
+    var user: String?
 }
