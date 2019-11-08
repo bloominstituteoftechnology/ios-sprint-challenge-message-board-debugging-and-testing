@@ -11,5 +11,20 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testFetchThreads() {
+        
+        let messageThreadController = MessageThreadController()
+        
+        XCTAssertEqual(messageThreadController.messageThreads, [])
+        
+        let promise = expectation(description: "Data fetched")
+        
+        messageThreadController.fetchMessageThreads {
+            XCTAssertNotEqual(messageThreadController.messageThreads, [])
+            promise.fulfill()
+        }
+        
+        wait(for: [promise], timeout: 5)
+    }
     
 }
