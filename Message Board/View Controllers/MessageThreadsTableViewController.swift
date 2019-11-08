@@ -9,7 +9,7 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -23,17 +23,25 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Methods
     
     func createThread() {
-
+        
         guard let threadTitle = threadTitleTextField.text else { return }
         
         threadTitleTextField.text = ""
+        threadTitleTextField.resignFirstResponder()
+        
+        for i in messageThreadController.messageThreads.indices {
+            if messageThreadController.messageThreads[i].title == threadTitle {
+                print("Duplicate thread")
+                return
+            }
+        }
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-        threadTitleTextField.resignFirstResponder()
+        
     }
     
     // MARK: - UITableViewDataSource
@@ -41,17 +49,17 @@ class MessageThreadsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageThreadController.messageThreads.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
-
+        
         return cell
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
