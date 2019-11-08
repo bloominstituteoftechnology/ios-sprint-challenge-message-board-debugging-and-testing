@@ -20,10 +20,9 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Actions
+    // MARK: - Methods
     
-    @IBAction func createThread(_ sender: Any) {
-        threadTitleTextField.resignFirstResponder()
+    func createThread() {
 
         guard let threadTitle = threadTitleTextField.text else { return }
         
@@ -34,6 +33,7 @@ class MessageThreadsTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        threadTitleTextField.resignFirstResponder()
     }
     
     // MARK: - UITableViewDataSource
@@ -67,4 +67,18 @@ class MessageThreadsTableViewController: UITableViewController {
     let messageThreadController = MessageThreadController()
     
     @IBOutlet weak var threadTitleTextField: UITextField!
+}
+
+extension MessageThreadsTableViewController: UITextFieldDelegate {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        threadTitleTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        createThread()
+        print("Return pressed")
+        return true
+    }
 }

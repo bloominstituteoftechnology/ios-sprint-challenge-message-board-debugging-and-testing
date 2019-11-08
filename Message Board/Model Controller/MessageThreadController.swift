@@ -54,11 +54,13 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
+
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            return 
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -71,8 +73,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -90,7 +91,7 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
@@ -98,7 +99,7 @@ class MessageThreadController {
             NSLog("Error encoding message to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
