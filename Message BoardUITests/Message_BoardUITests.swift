@@ -30,7 +30,8 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testAddNewMessage() {
-        let identifiers = segues(ofViewController: )
+                
+        
     }
     
     func testExpectation() {
@@ -49,6 +50,16 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual("Dave", name)
     }
     
+    func segues(ofViewController viewController: UIViewController) -> [String] {
+        let identifiers = (viewController.value(forKey: "storyboardSegueTemplates") as? [AnyObject])?.compactMap({ $0.value(forKey: "identifier") as? String }) ?? []
+        return identifiers
+    }
+    
+    func testFunc() {
+        app.textFields.element.tap()
+        app.textFields.element.typeText("hello, world")
+        app.buttons["return"].tap()
+    }
     
     private var mBTextField: XCUIElement {
         return app.textFields["newThreadTextField"]
