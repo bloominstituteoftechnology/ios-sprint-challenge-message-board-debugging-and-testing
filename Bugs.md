@@ -11,3 +11,10 @@
 
 * The message board should be fetched as a dictionary with the ID as the key and the message thread as the value.
 
+#### Fix
+
+* Changing the decode type from `[MessageThread]` to `[String: MessageThread]` and mapping the values fixed the first issue.
+* This did however cause the same issue to happen with messages (as opposed to threads) when loading from the provided API.
+* Doing the same fix above to the messages caused the error `keyNotFound(CodingKeys(stringValue: "messageText", intValue: nil)`
+* These extra issues will be ignored for now until a database with a consistent API can be accessed.
+
