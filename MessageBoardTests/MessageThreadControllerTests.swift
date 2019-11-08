@@ -41,6 +41,25 @@ class MessageThreadControllerTests: XCTestCase {
    }
 
 	func testCreateMessage() {
-		
+		let messageThreadController = MessageThreadController()
+
+		let didFinish = expectation(description: "didFinish")
+
+		let didCreateMessage = expectation(description: "didCreateMessage")
+
+		messageThreadController.fetchMessageThreads {
+			didFinish.fulfill()
+		}
+
+		wait(for: [didFinish], timeout: 5)
+
+		XCTAssertEqual(1, messageThreadController.messageThreads.count)
+
+		messageThreadController.createMessage(in: messageThreadController.messageThreads[0], withText: "new message test", sender: "brad") {
+			didCreateMessage.fulfill()
+		}
+		wait(for: [didCreateMessage], timeout: 5)
+
+		XCTAssertEqual(1, messageThreadController.messageThreads.count)
 	}
 }

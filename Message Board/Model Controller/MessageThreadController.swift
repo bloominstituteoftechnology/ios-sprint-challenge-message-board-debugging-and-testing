@@ -73,6 +73,7 @@ class MessageThreadController {
             }
             
             self.messageThreads.append(thread)
+			print(self.messageThreads.count)
             completion()
             
 		}.resume()
