@@ -2,7 +2,7 @@
 
 ## Bugs
 
-### Theads don't load
+### Threads don't load
 
 * When starting the app, message threads are not properly pulled from the server.
 * The console output has the message "Expected to decode Array<Any> but found a dictionary instead."
@@ -39,4 +39,13 @@
 
 * A typo in segue identification was fixed.
 * The view controller was also made to pop to provide user feedback.
+
+### Messages don't load
+
+* Fetching message boards no longer works once messages have been sent.
+* Similar to the first bug, console output gives message "Expected to decode Array<Any> but found a dictionary instead."
+
+#### Fix
+
+* Similar to the first bug, decoding messages as a dictionary with String keys fixed the issue.
 
