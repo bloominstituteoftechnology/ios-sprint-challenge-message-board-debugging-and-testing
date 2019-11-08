@@ -78,6 +78,7 @@ class MessageThreadController {
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         self.user = sender
+        userDefaults.set(user, forKey: UserDefaultsKeys.userName.rawValue)
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
@@ -118,4 +119,15 @@ class MessageThreadController {
     var messageThreads: [MessageThread] = []
     
     var user: String?
+    let userDefaults = UserDefaults.standard
+    
+    enum UserDefaultsKeys: String {
+        case userName
+    }
+    
+    init() {
+        if let userName = userDefaults.string(forKey: UserDefaultsKeys.userName.rawValue) {
+            user = userName
+        }
+    }
 }
