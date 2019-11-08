@@ -31,7 +31,7 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({ $0.value })
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -72,10 +72,13 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+        
+        self.user = sender
+        userDefaults.set(user, forKey: UserDefaultsKeys.userName.rawValue)
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
@@ -111,6 +114,20 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://lambda-message-board-f2dc9.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
+    
+    var user: String?
+    let userDefaults = UserDefaults.standard
+    
+    enum UserDefaultsKeys: String {
+        case userName
+    }
+    
+    init() {
+        if let userName = userDefaults.string(forKey: UserDefaultsKeys.userName.rawValue) {
+            user = userName
+        }
+    }
 }

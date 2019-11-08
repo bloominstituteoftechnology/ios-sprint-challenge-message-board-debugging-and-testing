@@ -9,6 +9,12 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        if let user = messageThreadController?.user {
+            senderNameTextField.text = user
+        }
+    }
 
     // MARK: - Actions
     
@@ -21,6 +27,7 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
