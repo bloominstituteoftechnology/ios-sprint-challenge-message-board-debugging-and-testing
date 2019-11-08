@@ -23,4 +23,36 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testAddNewMessageBoardTextField() {
+        let myTable = app.tables.matching(identifier: "MessageThreadsTableViewController")
+        let newThreadTextField = myTable.textFields["Create a new thread:"]
+        newThreadTextField.tap()
+        newThreadTextField.typeText("New Thread")
+        newThreadTextField.typeText("\n")
+        let newCell = myTable.cells.staticTexts["New Thread"]
+        XCTAssert(newCell.label == "New Thread")
+        
+        
+    }
+    
+    func testAddNewMessageButton() {
+        let myTable = app.tables.matching(identifier: "MessageThreadsTableViewController")
+        let newThreadTextField = myTable.textFields["Create a new thread:"]
+        newThreadTextField.tap()
+        newThreadTextField.typeText("New Thread")
+        newThreadTextField.typeText("\n")
+        let newCell = myTable.cells.staticTexts["New Thread"]
+        newCell.tap()
+        let newMessageButton = app.navigationBars["New Thread"].buttons["Add"]
+        newMessageButton.tap()
+        let nameTextField = app.textFields["Enter your name:"]
+        nameTextField.tap()
+        nameTextField.typeText("Jordan")
+        let sendButton = app.navigationBars["New Message"].buttons["Send"]
+        sendButton.tap()
+        let messageThreadTable = app.tables.matching(identifier: "MessageThreadDetailTableViewController")
+        let messageCell = messageThreadTable.cells.staticTexts["Jordan"]
+        
+        XCTAssertEqual(messageCell.label, "Jordan")
+    }
 }
