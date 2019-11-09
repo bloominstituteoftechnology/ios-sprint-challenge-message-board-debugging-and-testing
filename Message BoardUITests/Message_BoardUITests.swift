@@ -7,41 +7,30 @@
 //
 
 import XCTest
-@testable import Message_Board
 
 class Message_BoardUITests: XCTestCase {
     
-    var app: XCUIApplication!
+    private var app: XCUIApplication {
+        return XCUIApplication()
+    }
     
-    let messageThreadController = MessageThreadController()
+    private var newThreadTextField: XCUIElement {
+        return app.textFields["createNewThread"]
+    }
     
     override func setUp() {
         super.setUp()
         
         continueAfterFailure = false
-        app = XCUIApplication()
         
         // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
         app.launch()
     }
     
-    func tableView(id: String) -> XCUIElement {
-        let tableView = app.tables[id]
-        XCTAssertTrue(app.tables[id].exists)
-        return tableView
-    }
-    
     func testCreateMessageThread() {
-        
-        let searchTextField = app.textFields["CreateThread"]
-        let testThreadText = "UI Test Thread 1"
-        searchTextField.tap()
-        searchTextField.typeText(testThreadText)
-        
-        messageThreadController.createLocalMessageThread(with: testThreadText) {
-            print("UI Testing thread creation succeeded!")
-        }
+        let threadTableView = app.tables.firstMatch
+        XCTAssertTrue(threadTableView.exists)
     }
     
 }

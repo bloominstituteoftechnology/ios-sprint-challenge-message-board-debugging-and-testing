@@ -20,7 +20,7 @@ class MessageThreadTests: XCTestCase {
                 didFinish.fulfill()
             }
         }
-        wait(for: [didFinish], timeout: 20)
+        wait(for: [didFinish], timeout: 30)
         XCTAssertNotNil(messageThreadController.messageThreads)
     }
     
@@ -30,7 +30,7 @@ class MessageThreadTests: XCTestCase {
             messageThreads = self.messageThreadController.messageThreads
         }
         
-        XCTAssertNotNil(messageThreads)
+        XCTAssertFalse(messageThreads.isEmpty)
     }
     
 }
