@@ -11,10 +11,10 @@ import Foundation
 class MessageThread: Codable, Equatable {
 
     let title: String
-    var messages: [MessageThread.Message]
+    var messages: [Message]
     let identifier: String
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+    init(title: String, messages: [Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
@@ -35,12 +35,12 @@ class MessageThread: Codable, Equatable {
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
+        let text: String
         let sender: String
         let timestamp: Date
         
         init(text: String, sender: String, timestamp: Date = Date()) {
-            self.messageText = text
+            self.text = text
             self.sender = sender
             self.timestamp = timestamp
         }
