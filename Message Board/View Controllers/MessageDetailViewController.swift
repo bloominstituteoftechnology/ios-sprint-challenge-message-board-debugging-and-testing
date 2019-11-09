@@ -9,25 +9,31 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
-
-    // MARK: - Actions
     
+    // MARK: - Actions
     @IBAction func sendMessage(_ sender: Any) {
         
+        print("button pressed")
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
         })
+        
+        // MARK: Pop navigation controller so it goes back to previous VC
+        self.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
-    
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
-
+    
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
+    
 }
