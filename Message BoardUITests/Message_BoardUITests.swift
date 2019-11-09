@@ -24,17 +24,25 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testAddNewMessage() {
-        testFunc()
+
+        XCTAssertTrue(tappedCell.exists)
+        tappedCell.tap()
         
+        XCTAssertTrue(addButton.exists)
+        addButton.tap()
+        
+        XCTAssertTrue(nameTextField.exists)
         nameTextField.tap()
         nameTextField.typeText("Jerry")
         app.buttons["return"].tap()
         
+        XCTAssertTrue(newMessageTextView.exists)
         newMessageTextView.tap()
         newMessageTextView.typeText("Howdy")
         app.buttons["return"].tap()
         
-        app.buttons["Send"].tap()
+        XCTAssertTrue(sendButton.exists)
+        sendButton.tap()
         
     }
     
@@ -71,6 +79,10 @@ class Message_BoardUITests: XCTestCase {
     
     private var newMessageTextView: XCUIElement {
         return app.textViews["newMessageTextView"]
+    }
+    
+    private var tappedCell: XCUIElement {
+        return app.cells["messageThreadCell"]
     }
     
     private var sendButton: XCUIElement {
