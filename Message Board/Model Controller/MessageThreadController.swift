@@ -15,7 +15,7 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
+        if !isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
         }
@@ -31,7 +31,9 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // MARK: Bug 2 - decoding error
+                let messageDictionary = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                self.messageThreads = Array(messageDictionary.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")

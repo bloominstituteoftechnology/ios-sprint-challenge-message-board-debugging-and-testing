@@ -23,4 +23,14 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    
+    // Bug 2 UI test
+    func testThreadsLoadedOnStart() {
+        let predicate = NSPredicate(format: "count > 0")
+        let fetchedThreadsExpectation = expectation(for: predicate, evaluatedWith: app.tables.cells)
+        fetchedThreadsExpectation.expectationDescription = "Threads should have been loaded at start"
+        
+        waitForExpectations(timeout: 5)
+        
+    }
 }
