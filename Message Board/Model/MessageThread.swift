@@ -10,33 +10,33 @@ import Foundation
 
 class MessageThread: Codable, Equatable {
 
-    let name: String
+    let title: String
     var messages: [MessageThread.Message]
-    let value: String
+    let identifier: String
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
-        self.name = title
+        self.title = title
         self.messages = messages
-        self.value = identifier
+        self.identifier = identifier
     }
     
-//    enum MessageThreadKeys: CodingKey {
-//        case title
-//        case identifier
-//        case messages
-//    }
-//
-//    required init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
-//
-//        let title = try container.decode(String.self, forKey: .title)
-//        let identifier = try container.decode(String.self, forKey: .identifier)
-//        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
-//
-//        self.title = title
-//        self.identifier = identifier
-//        self.messages = messages
-//    }
+    enum MessageThreadKeys: CodingKey {
+        case title
+        case identifier
+        case messages
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
+
+        let title = try container.decode(String.self, forKey: .title)
+        let identifier = try container.decode(String.self, forKey: .identifier)
+        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+
+        self.title = title
+        self.identifier = identifier
+        self.messages = messages
+    }
 
     
     struct Message: Codable, Equatable {
@@ -53,8 +53,8 @@ class MessageThread: Codable, Equatable {
     }
     
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
-        return lhs.name == rhs.name &&
-            lhs.value == rhs.value &&
+        return lhs.title == rhs.title &&
+            lhs.identifier == rhs.identifier &&
             lhs.messages == rhs.messages
     }
 }
