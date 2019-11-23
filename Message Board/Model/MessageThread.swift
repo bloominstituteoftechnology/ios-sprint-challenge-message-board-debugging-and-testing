@@ -12,31 +12,31 @@ class MessageThread: Codable, Equatable {
 
     let name: String
     var messages: [MessageThread.Message]
-    let identifier: String
+    let value: String
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.name = title
         self.messages = messages
-        self.identifier = identifier
+        self.value = identifier
     }
     
-    enum MessageThreadKeys: CodingKey {
-        case name
-        case identifier
-        case messages
-    }
-
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
-        
-        let title = try container.decode(String.self, forKey: .name)
-        let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
-        
-        self.name = title
-        self.identifier = identifier
-        self.messages = messages
-    }
+//    enum MessageThreadKeys: CodingKey {
+//        case title
+//        case identifier
+//        case messages
+//    }
+//
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
+//
+//        let title = try container.decode(String.self, forKey: .title)
+//        let identifier = try container.decode(String.self, forKey: .identifier)
+//        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+//
+//        self.title = title
+//        self.identifier = identifier
+//        self.messages = messages
+//    }
 
     
     struct Message: Codable, Equatable {
@@ -54,7 +54,7 @@ class MessageThread: Codable, Equatable {
     
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
         return lhs.name == rhs.name &&
-            lhs.identifier == rhs.identifier &&
+            lhs.value == rhs.value &&
             lhs.messages == rhs.messages
     }
 }
