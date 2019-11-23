@@ -24,3 +24,8 @@ Bug 4: Error decoding message threads from JSON data: typeMismatch(Swift.String,
 Bug 5: Error decoding message threads from JSON data: keyNotFound(MessageCodingKeys(stringValue: "text", intValue: nil), Swift.DecodingError.Context(codingPath: [_JSONKey(stringValue: "3733287F-EC0F-4968-B6FB-4E7885BC8FD5", intValue: nil), CodingKeys(stringValue: "messages", intValue: nil), _JSONKey(stringValue: "-LtBG8vdVaquO-gMDJxK", intValue: nil)], debugDescription: "No value associated with key MessageCodingKeys(stringValue: \"text\", intValue: nil) (\"text\").", underlyingError: nil))
 
 ---> needed to change to personal firebase database in order to decode actual objects from source, as there was none in the URL that came with project.
+
+
+Bug 6: Nothing happens when clicking save while creating a new message in a thread in app. 
+
+---> First step: Need to implement custom encoder for Message Thread and Messages data models... Second: Determine if an instance of MessageThread is being passed to the message detail screen - it's not: The segue identifier had a typo originally set as "addMesage", fixed typo.

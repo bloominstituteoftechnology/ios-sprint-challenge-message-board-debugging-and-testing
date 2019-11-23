@@ -13,6 +13,12 @@ class MessageThread: Codable, Equatable {
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
+    
+    enum ThreadCodingKeys: String, CodingKey {
+        case title
+        case messages
+        case identifier
+    }
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
@@ -21,7 +27,7 @@ class MessageThread: Codable, Equatable {
     }
     
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: ThreadCodingKeys.self)
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
@@ -37,6 +43,16 @@ class MessageThread: Codable, Equatable {
         self.identifier = identifier
         self.messages = messageArray
         
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: ThreadCodingKeys.self)
+        
+        try container.encode(title, forKey: .title)
+        try container.encode(messages, forKey: .messages)
+        try container.encode(identifier, forKey: .identifier)
+    
     }
 
     
