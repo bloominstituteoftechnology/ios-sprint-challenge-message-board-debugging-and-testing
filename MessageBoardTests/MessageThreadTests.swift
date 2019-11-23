@@ -15,7 +15,6 @@ class MessageThreadTests: XCTestCase {
     let messageThreadsTableViewController = MessageThreadsTableViewController()
     
     func testMessageThreadsExistOnLoad() {
-        messageThreadsTableViewController.tableView.reloadData()
         XCTAssertNotNil(messageThreadController.messageThreads)
     }
     
