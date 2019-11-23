@@ -18,3 +18,12 @@ Check the keys are accurate. Check that the data task is being called
 
 Solution:
 Needed to call .resume() on the dataTask
+
+3. Sending messages does not work and screen is not being dismissed
+
+Potential solutions:
+Check that the segues between controllers are correct. Check that dismiss() is being called after sending. Check that a network call is being made to post the message
+
+Solution:
+Corrected spelling error in the prepare method 
+Popped the view controller off the navigation stack
