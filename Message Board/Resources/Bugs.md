@@ -28,4 +28,8 @@ Bug 5: Error decoding message threads from JSON data: keyNotFound(MessageCodingK
 
 Bug 6: Nothing happens when clicking save while creating a new message in a thread in app. 
 
----> First step: Need to implement custom encoder for Message Thread and Messages data models... Second: Determine if an instance of MessageThread is being passed to the message detail screen - it's not: The segue identifier had a typo originally set as "addMesage", fixed typo.
+---> First step: Need to implement custom encoder for Message Thread and Messages data models... Second: Determine if an instance of MessageThread is being passed to the message detail screen - it's not: The segue identifier had a typo originally set as "addMesage", fixed typo. Working, but not popping to the thread view after creation
+
+Bug 7: Not popping view controller after sending a new message in the message thread
+
+---> Added pop navigation controller in main dispatch queue in the closure for creating a new message in thread
