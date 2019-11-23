@@ -25,17 +25,24 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testSendMessageButton() {
-        
+
         let app = XCUIApplication()
-        app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["Testing"].tap()
-        app.navigationBars["Testing"].buttons["Add"].tap()
-        app.textFields["Enter your name:"].tap()
-        
-        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
-        textView.tap()
-        textView.tap()
+        app.tables.staticTexts["A New Thread"].tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+
+        let nameTextField = app.textFields["nameTextField"]
+        nameTextField.tap()
+        nameTextField.typeText("Help")
+
+        let messageTextView = app.textViews["messageTextView"]
+        messageTextView.tap()
+        messageTextView.typeText("Me")
+
         app.navigationBars["New Message"].buttons["Send"].tap()
         
+        let helpCell = app.tables.cells.staticTexts["Help"]
+        
+        XCTAssertTrue(helpCell.exists)
     }
     
 }

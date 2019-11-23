@@ -18,4 +18,14 @@ class MessageThreadTests: XCTestCase {
         wait(for: [didCallCompletion], timeout: 0.5)
     }
     
+    func testMessageThreadDecoding() throws {
+        let mockDataURL = Bundle.main.url(forResource: "MockMessages", withExtension: "json")!
+        
+        let mockData = try Data(contentsOf: mockDataURL)
+        
+        let messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: mockData)
+        
+        XCTAssertNotNil(messageThreads)
+    }
+    
 }
