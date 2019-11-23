@@ -10,6 +10,12 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    
+    func testCreateANewThreadCallsCompletion() {
+        let didCallCompletion = expectation(description: "didComplete")
+        MessageThreadController().createMessageThread(with: "Testing") {
+            didCallCompletion.fulfill()
+        }
+        wait(for: [didCallCompletion], timeout: 0.5)
+    }
     
 }
