@@ -9,6 +9,20 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        updateViews()
+//    }
+//
+//    private func updateViews() {
+//        if let messageThread = messageThread {
+//
+//        } else {
+//            // creating a new message thread
+//
+//        }
+//    }
 
     // MARK: - Actions
     

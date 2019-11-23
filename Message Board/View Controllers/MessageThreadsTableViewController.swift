@@ -10,16 +10,19 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
     }
     
+ 
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
@@ -60,6 +63,9 @@ class MessageThreadsTableViewController: UITableViewController {
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         }
+//        else if segue.identifier == "AddNewThread" {
+//            guard let addNewThreadVC = segue.destination as? NewMessageThreadViewController else { return }
+//        }
     }
     
     // MARK: - Properties
