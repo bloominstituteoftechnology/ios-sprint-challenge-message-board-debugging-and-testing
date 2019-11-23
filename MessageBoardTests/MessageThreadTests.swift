@@ -11,5 +11,17 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testCreateNewThread() {    // Bug 1 unit test
+        let messageThreadController = MessageThreadController()
+        
+        let expectation = XCTestExpectation(description: "New message thread should have been created")
+        let beforeCount = messageThreadController.messageThreads.count
+        messageThreadController.createMessageThread(with: "Unit Test Thread") {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(messageThreadController.messageThreads.count, beforeCount + 1)
+    }
     
 }
