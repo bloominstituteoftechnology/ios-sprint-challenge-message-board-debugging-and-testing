@@ -10,24 +10,30 @@ import Foundation
 
 class MessageThread: Codable, Equatable {
 
-    let title: String
+    let name: String
     var messages: [MessageThread.Message]
     let identifier: String
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
-        self.title = title
+        self.name = title
         self.messages = messages
         self.identifier = identifier
     }
+    
+    enum MessageThreadKeys: CodingKey {
+        case name
+        case identifier
+        case messages
+    }
 
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
         
-        let title = try container.decode(String.self, forKey: .title)
+        let title = try container.decode(String.self, forKey: .name)
         let identifier = try container.decode(String.self, forKey: .identifier)
         let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
         
-        self.title = title
+        self.name = title
         self.identifier = identifier
         self.messages = messages
     }
@@ -47,7 +53,7 @@ class MessageThread: Codable, Equatable {
     }
     
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
-        return lhs.title == rhs.title &&
+        return lhs.name == rhs.name &&
             lhs.identifier == rhs.identifier &&
             lhs.messages == rhs.messages
     }
