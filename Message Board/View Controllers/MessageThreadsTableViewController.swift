@@ -19,24 +19,6 @@ class MessageThreadsTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-        
-    }
-    
- 
-    // MARK: - Actions
-    
-    @IBAction func createThread(_ sender: Any) {
-        threadTitleTextField.resignFirstResponder()
-
-        guard let threadTitle = threadTitleTextField.text else { return }
-        
-        threadTitleTextField.text = ""
-        
-        messageThreadController.createMessageThread(with: threadTitle) {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
     }
     
     // MARK: - UITableViewDataSource
@@ -73,7 +55,6 @@ class MessageThreadsTableViewController: UITableViewController {
     
     let messageThreadController = MessageThreadController()
     
-    @IBOutlet weak var threadTitleTextField: UITextField!
 }
 
 extension MessageThreadsTableViewController: NewThreadDelegate {

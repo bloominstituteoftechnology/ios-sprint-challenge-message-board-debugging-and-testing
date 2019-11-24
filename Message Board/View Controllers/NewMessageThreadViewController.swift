@@ -33,8 +33,12 @@ class NewMessageThreadViewController: UIViewController {
         messageThreadController.createMessageThread(with: threadTitle) {
             
             DispatchQueue.main.async {
-                self.delegate?.newThreadSaved()
-                self.navigationController?.popViewController(animated: true)
+                let alert = UIAlertController(title: "Message Thread Created", message: "You have created a new thread. You can post a new message from the thread detail page.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    self.navigationController?.popViewController(animated: true)
+                    self.delegate?.newThreadSaved()
+                }))
+                self.present(alert, animated: true)
             }
         }
     }

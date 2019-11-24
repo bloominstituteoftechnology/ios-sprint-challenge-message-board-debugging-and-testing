@@ -35,8 +35,11 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             
             DispatchQueue.main.async {
-                print("Message created!")
-                self.navigationController?.popViewController(animated: true)
+                let alert = UIAlertController(title: "Message Created!", message: "Your message has been posted to the thread. Stay tuned for a repsonse.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true)
             }
         })
     }
