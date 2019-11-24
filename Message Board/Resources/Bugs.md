@@ -39,7 +39,10 @@ Bug 8: There is no way to start a new message thread
 
 ---> Add bar button item to the MessageThreadsTableViewController and implement the create messageThread method in MessageThreadController
 --> this is a loaded one, come back to it.. need to make a new VC for adding a thread and then implement functionality
+---> implement fix for adding a new thread. Set messages array to optional in the data model.
 
 Bug 9: MessageThreadsTableView is loading duplicates of the thread every time the table view is reloaded.
 
 ---> probably calling the fetch method in a view will appear.... it is, so need to implement a fix. Change to view did load and then add a property observer to refetch the data only if the upstream data is set/changed
+
+Bug 10: 

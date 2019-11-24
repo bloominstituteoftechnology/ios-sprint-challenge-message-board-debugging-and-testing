@@ -70,7 +70,7 @@
                     <navigationItem key="navigationItem" title="λ Message Board" id="fwz-kK-dIC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RS4-Mb-EAY">
                             <connections>
-                                <segue destination="BoB-4p-ZG3" kind="show" identifier="AddNewThread" id="whn-Nl-wQc"/>
+                                <segue destination="aeJ-UM-Wif" kind="show" identifier="AddNewThread" id="iqn-07-yoI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -81,6 +81,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n71-x9-bes" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="708" y="231"/>
+        </scene>
+        <!--New Message Thread View Controller-->
+        <scene sceneID="K9e-0E-pNp">
+            <objects>
+                <viewController id="aeJ-UM-Wif" customClass="NewMessageThreadViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7yg-G4-Hdw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-uM-Bok">
+                                <rect key="frame" x="12" y="108" width="351" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title for Message Thread" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SeY-G1-bvs">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="tZx-kp-QF0" firstAttribute="trailing" secondItem="5ch-uM-Bok" secondAttribute="trailing" constant="12" id="8W0-B4-F4t"/>
+                            <constraint firstItem="5ch-uM-Bok" firstAttribute="top" secondItem="tZx-kp-QF0" secondAttribute="top" constant="12" id="9Lt-yw-Ph5"/>
+                            <constraint firstItem="5ch-uM-Bok" firstAttribute="leading" secondItem="tZx-kp-QF0" secondAttribute="leading" constant="12" id="cuM-tv-cNr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tZx-kp-QF0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fNg-7m-kun">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XGX-vX-4Wy">
+                            <connections>
+                                <action selector="saveNewThreadTapped:" destination="aeJ-UM-Wif" id="d9J-o7-R0a"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="threadTitleTextField" destination="SeY-G1-bvs" id="7cj-D6-Wll"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kA-Iv-Q1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1275" y="-522"/>
         </scene>
         <!--Title-->
         <scene sceneID="AGx-wy-cw2">
@@ -202,7 +244,4 @@
             <point key="canvasLocation" x="-38" y="231"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="3TZ-Xl-1f4"/>
-    </inferredMetricsTieBreakers>
 </document>

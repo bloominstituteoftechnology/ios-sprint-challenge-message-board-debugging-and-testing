@@ -62,10 +62,12 @@ class MessageThreadsTableViewController: UITableViewController {
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+        } else if segue.identifier == "AddNewThread" {
+            guard let addNewThreadVC = segue.destination as? NewMessageThreadViewController else { return }
+            
+            addNewThreadVC.delegate = self
+            addNewThreadVC.messageThreadController = messageThreadController
         }
-//        else if segue.identifier == "AddNewThread" {
-//            guard let addNewThreadVC = segue.destination as? NewMessageThreadViewController else { return }
-//        }
     }
     
     // MARK: - Properties
@@ -73,4 +75,12 @@ class MessageThreadsTableViewController: UITableViewController {
     let messageThreadController = MessageThreadController()
     
     @IBOutlet weak var threadTitleTextField: UITextField!
+}
+
+extension MessageThreadsTableViewController: NewThreadDelegate {
+    func newThreadSaved() {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+        }
+    }
 }

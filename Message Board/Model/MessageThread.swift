@@ -11,7 +11,7 @@ import Foundation
 class MessageThread: Codable, Equatable {
 
     let title: String
-    var messages: [MessageThread.Message]
+    var messages: [MessageThread.Message?]
     let identifier: String
     
     enum ThreadCodingKeys: String, CodingKey {
@@ -31,12 +31,14 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decode([String : Message].self, forKey: .messages)
+        let messages = try container.decodeIfPresent([String : Message].self, forKey: .messages)
         
         var messageArray: [MessageThread.Message] = []
         
-        for message in messages {
-            messageArray.append(message.value)
+        if let messages = messages {
+            for message in messages {
+                messageArray.append(message.value)
+            }
         }
         
         self.title = title
