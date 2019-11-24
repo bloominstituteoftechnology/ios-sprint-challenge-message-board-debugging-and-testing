@@ -94,7 +94,7 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpMethod = HTTPMethod.post.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(message)

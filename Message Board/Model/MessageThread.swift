@@ -41,6 +41,10 @@ class MessageThread: Codable, Equatable {
             }
         }
         
+        messageArray.sort {
+            $0.timestamp < $1.timestamp
+        }
+        
         self.title = title
         self.identifier = identifier
         self.messages = messageArray
@@ -52,7 +56,7 @@ class MessageThread: Codable, Equatable {
         var container = encoder.container(keyedBy: ThreadCodingKeys.self)
         
         try container.encode(title, forKey: .title)
-        try container.encode(messages, forKey: .messages)
+        try container.encode([messages], forKey: .messages)
         try container.encode(identifier, forKey: .identifier)
     
     }
@@ -74,6 +78,7 @@ class MessageThread: Codable, Equatable {
             case sender
             case timestamp
         }
+        
 
         init(from decoder: Decoder) throws {
 
@@ -84,7 +89,6 @@ class MessageThread: Codable, Equatable {
             let time = try container.decode(Double.self, forKey: .timestamp)
             
             self.messageText = text
-
             self.timestamp = Date(timeIntervalSince1970: time)
 
         }
@@ -95,7 +99,9 @@ class MessageThread: Codable, Equatable {
             
             try container.encode(messageText, forKey: .text)
             try container.encode(sender, forKey: .sender)
-            try container.encode(timestamp, forKey: .timestamp)
+            
+            let timeSince1970 = timestamp.timeIntervalSince1970
+            try container.encode(timeSince1970, forKey: .timestamp)
         }
         
         

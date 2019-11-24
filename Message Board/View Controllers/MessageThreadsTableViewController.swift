@@ -59,12 +59,11 @@ class MessageThreadsTableViewController: UITableViewController {
         if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
-            
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         } else if segue.identifier == "AddNewThread" {
             guard let addNewThreadVC = segue.destination as? NewMessageThreadViewController else { return }
-            
+            addNewThreadVC.title = "Create A New Thread"
             addNewThreadVC.delegate = self
             addNewThreadVC.messageThreadController = messageThreadController
         }

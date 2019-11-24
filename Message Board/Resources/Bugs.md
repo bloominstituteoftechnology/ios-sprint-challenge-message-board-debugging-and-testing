@@ -45,4 +45,19 @@ Bug 9: MessageThreadsTableView is loading duplicates of the thread every time th
 
 ---> probably calling the fetch method in a view will appear.... it is, so need to implement a fix. Change to view did load and then add a property observer to refetch the data only if the upstream data is set/changed
 
-Bug 10: 
+Bug 10: When starting new thread, timestamp is erronousely encoded as a String, but attempting to be decoded as double. 
+
+---> Need to encode the timestamp as a type of Double
+
+Bug 11: Main Thread Checker: UI API called on a background thread: -[UIViewController navigationController]
+PID: 32895, TID: 1738260, Thread name: (none), Queue name: NSOperationQueue
+
+---> need to call pop navigation controller on main queue
+
+Bug 12: Previous messages are getting erased upstream when posting a new message to database
+
+---> creating a message on thread was set to "put" instead of "post". Was erasing the thread with put, but post allows firebase to set a custom identifier for the message which allows for the thread to continue to grow with each message
+
+Bug 13: _JSONKey(stringValue: "timestamp", intValue: nil)], debugDescription: "Expected to decode Dictionary<String, Any> but found a number instead.", underlyingError: nil)) /// Unable to correctly decode data from messages pushed to database
+
+---> This error was occuring because the "put" method was being used instead of "post" when adding a new message to the thread. When this happened, the specific message would have no associated UUID on the server side, causing it to fail to decode the data from server, when it was looking for a UUID for a message when decoding.

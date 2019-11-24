@@ -31,8 +31,11 @@ class NewMessageThreadViewController: UIViewController {
         guard let threadTitle = threadTitleTextField.text, !threadTitle.isEmpty, let messageThreadController = messageThreadController else { return }
         
         messageThreadController.createMessageThread(with: threadTitle) {
-            self.delegate?.newThreadSaved()
-            self.navigationController?.popViewController(animated: true)
+            
+            DispatchQueue.main.async {
+                self.delegate?.newThreadSaved()
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
