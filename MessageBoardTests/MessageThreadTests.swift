@@ -36,4 +36,22 @@ class MessageThreadTests: XCTestCase {
         let firstThread = messageThreadController.messageThreads.first
         XCTAssertGreaterThan(firstThread?.messages.count ?? 0, 0)
     }
+    
+    // Bug 5 unit test
+    func testEncodeMessage() {
+        let messageThreadController = MessageThreadController()
+
+        let expectation = XCTestExpectation(description: "Encoding message failed")
+        messageThreadController.fetchMessageThreads {
+            let thread = messageThreadController.messageThreads.first
+            let messagesInThread = thread?.messages.count
+            messageThreadController.createMessage(in: thread!, withText: "Unit test message", sender: "Unit Test") {
+                XCTAssertEqual(thread!.messages.count, messagesInThread! + 1)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 5)
+        let encoder = JSONEncoder()
+        XCTAssertNoThrow(try encoder.encode(messageThreadController.messageThreads.first!.messages.last!))
+    }
 }

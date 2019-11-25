@@ -79,6 +79,14 @@ class MessageThread: Codable, Equatable {
             self.sender = sender
             self.timestamp = timestamp
         }
+        
+        // MARK: Bug 5 - error encoding Messages
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: MessageKeys.self)
+            try container.encode(messageText, forKey: .messageText)
+            try container.encode(sender, forKey: .sender)
+            try container.encode(timestamp, forKey: .timestamp)
+        }
     }
     
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {

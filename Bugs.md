@@ -22,3 +22,8 @@ Lots of changes in `MessageThread.swift` to make decoding messages actually work
 
 ## 4. Not sending messages
 Typo in segue identifier in `MessageThreadDetailTableViewController.swift`
+
+## 5. Encoding messages incorrectly
+Sample data uses `text` but app was encoding as `messageText`
+
+Added an encoding method to `Message`
