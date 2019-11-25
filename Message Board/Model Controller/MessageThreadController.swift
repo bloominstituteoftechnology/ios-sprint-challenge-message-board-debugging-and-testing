@@ -55,12 +55,15 @@ class MessageThreadController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
+        // MARK: Bug - Missing return on do/catch block
         do {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            return
         }
         
+        // MARK: Bug - URLSession missing .resume()
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
@@ -72,7 +75,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -110,7 +113,7 @@ class MessageThreadController {
             
         }.resume()
     }
-    
+    // MARK: Bug - Updated firebase url
     static let baseURL = URL(string: "https://lsmessageboard.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
