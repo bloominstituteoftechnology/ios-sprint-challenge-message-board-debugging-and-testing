@@ -17,6 +17,15 @@ Swift.DecodingError.Context(codingPath: [], debugDescription: "Cannot get unkeye
 **4th Bug**
 Error decoding message threads from JSON data: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil)) - **FIXED on MessageThreadController fetchMessageThreads function, changed the decoder to Dictionary type instead of Array**
 
+**5th Bug**
+Messages are not sending after creating new thread - **FIXED - Typo on MessageThreadDetailTableViewController prepareForSegue func (segue identifier)**
+
+**I created this bug**
+Didn't change the type to Dictionaries on messages in MessageThread. - **FIXED - It is now decoding after closing app**
+
+**6th Bug**
+Screen doesn't change after hitting Send button, messages do save - **FIXED - Send button now pops view controller to take us back to tableView**
+
 
 
 
