@@ -21,6 +21,10 @@ class MessageThread: Codable, Equatable {
     }
     
     enum MessageThreadKeys: CodingKey {
+        case identifier
+    }
+    
+    enum MessageThreadObjectKeys: CodingKey {
         case title
         case identifier
         case messages
@@ -29,9 +33,11 @@ class MessageThread: Codable, Equatable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: MessageThreadKeys.self)
 
-        let title = try container.decode(String.self, forKey: .title)
-        let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let objectContainer = try container.nestedContainer(keyedBy: MessageThreadObjectKeys.self, forKey: .identifier)
+        
+        let title = try objectContainer.decode(String.self, forKey: .title)
+        let identifier = try objectContainer.decode(String.self, forKey: .identifier)
+        let messages = try objectContainer.decodeIfPresent([Message].self, forKey: .messages) ?? []
 
         self.title = title
         self.identifier = identifier
