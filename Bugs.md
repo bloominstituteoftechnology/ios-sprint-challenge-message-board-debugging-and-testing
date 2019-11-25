@@ -18,4 +18,7 @@ self.messageThreads = Array(messageDictionary.values)
 ```
 
 ## 3. Error decoding messages
-Lots of changes in MessageThread.swift to make decoding messages actually work.
+Lots of changes in `MessageThread.swift` to make decoding messages actually work.
+
+## 4. Not sending messages
+Typo in segue identifier in `MessageThreadDetailTableViewController.swift`

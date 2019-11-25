@@ -33,4 +33,23 @@ class Message_BoardUITests: XCTestCase {
         waitForExpectations(timeout: 5)
         
     }
+    
+    // Bug 4 UI test
+    func testCreateNewMessage() {
+        
+        let app = XCUIApplication()
+        app.tables.cells.firstMatch.tap()
+        app.navigationBars.buttons["Add"].tap()
+        let txtName = app.textFields["NewMessageSender"]
+        txtName.tap()
+        txtName.typeText("Joel")
+               
+        let txtvMessageBody = app.textViews["NewMessageBody"]
+        txtvMessageBody.tap()
+        txtvMessageBody.typeText("This is a UI Test message.")
+        
+        let newMessageNavigationBar = app.navigationBars["New Message"]
+        newMessageNavigationBar.buttons["Send"].tap()
+        XCTAssertGreaterThan(app.tables.cells.count, 1)
+    }
 }

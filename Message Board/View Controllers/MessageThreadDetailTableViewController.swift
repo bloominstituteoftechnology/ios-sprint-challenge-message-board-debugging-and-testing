@@ -41,8 +41,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
+    // MARK: Bug 4 - typo in segue identifier. Changed from AddMesage to AddMessage
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
