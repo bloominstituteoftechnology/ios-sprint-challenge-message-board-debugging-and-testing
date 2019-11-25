@@ -14,7 +14,7 @@ class MessageThread: Codable, Equatable {
     var messages: [MessageThread.Message]
     let identifier: String
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+    init(title: String, messages: [MessageThread.Message] = [],identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
