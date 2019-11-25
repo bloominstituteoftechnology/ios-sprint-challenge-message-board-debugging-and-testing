@@ -17,4 +17,5 @@ let messageDictionary = try JSONDecoder().decode([String : MessageThread].self, 
 self.messageThreads = Array(messageDictionary.values)
 ```
 
-
+## 3. Error decoding messages
+Lots of changes in MessageThread.swift to make decoding messages actually work.

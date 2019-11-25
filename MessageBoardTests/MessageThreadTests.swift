@@ -24,4 +24,16 @@ class MessageThreadTests: XCTestCase {
         XCTAssertEqual(messageThreadController.messageThreads.count, beforeCount + 1)
     }
     
+    func testDecodeMessages() {     // Bug 3 unit test
+        let messageThreadController = MessageThreadController()
+        
+        let expectation = XCTestExpectation(description: "Decoding messages failed")
+        messageThreadController.fetchLocalMessageThreads {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+        let firstThread = messageThreadController.messageThreads.first
+        XCTAssertGreaterThan(firstThread?.messages.count ?? 0, 0)
+    }
 }

@@ -19,13 +19,37 @@ class MessageThread: Codable, Equatable {
         self.messages = messages
         self.identifier = identifier
     }
+    
+    // MARK: Bug 3 - error decoding messages
+    // Bug 3, change 1: added coding keys
+    enum MessageThreadKeys: String, CodingKey {
+        case title
+        case messages
+        case identifier
+    }
+    
+    enum MessageKeys: String, CodingKey {
+        case messageText = "text"
+        case sender
+        case timestamp
+    }
+
 
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Bug 3, change 2: changed CodingKeys.self to MessageThreadKeys.self
+        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        // Bug 3, change 3: removed next line
+//        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        
+        let messagesDictionary: [String : Message] = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:]
+        
+        var messages: [Message] = []
+        if messagesDictionary.count > 0 {
+            messages = Array(messagesDictionary.values)
+        }
         
         self.title = title
         self.identifier = identifier
@@ -41,6 +65,17 @@ class MessageThread: Codable, Equatable {
         
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text
+            self.sender = sender
+            self.timestamp = timestamp
+        }
+        
+        // Bug 3, change 3: added decoding initializer
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: MessageKeys.self)
+            let messageText = try container.decode(String.self, forKey: .messageText)
+            let sender = try container.decode(String.self, forKey: .sender)
+            let timestamp = try container.decode(Date.self, forKey: .timestamp)
+            self.messageText = messageText
             self.sender = sender
             self.timestamp = timestamp
         }
