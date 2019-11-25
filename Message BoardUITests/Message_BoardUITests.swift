@@ -23,4 +23,14 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testOpenMessageThread() {
+        XCTAssert(app.tables.cells["MessageThreadCell"].exists)
+        
+        app.tables.cells.element(boundBy: 1).tap()
+        
+        XCTAssert(app.tables.cells["MessageCell"].exists)
+    }
+    
+    
+    
 }

@@ -33,6 +33,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="MessageThreadCell"/>
                                 <connections>
                                     <segue destination="haD-iA-YGa" kind="show" identifier="ViewMessageThread" id="pxs-pL-1M3"/>
                                 </connections>
@@ -129,6 +130,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="MessageCell"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
