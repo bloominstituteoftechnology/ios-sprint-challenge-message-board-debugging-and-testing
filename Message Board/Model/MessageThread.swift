@@ -26,11 +26,9 @@ class MessageThread: Codable, Equatable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let threadContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .identifier)
-        
-        let title = try threadContainer.decode(String.self, forKey: .title)
-        let identifier = try threadContainer.decode(String.self, forKey: .identifier)
-        let messages = try threadContainer.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let title = try container.decode(String.self, forKey: .title)
+        let identifier = try container.decode(String.self, forKey: .identifier)
+        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
         
         self.title = title
         self.identifier = identifier
