@@ -10,35 +10,28 @@ import Foundation
 
 class MessageThread: Codable, Equatable {
 
+    // Properties that describe the messageThread.
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
 
+    // Initializer to be called on later when creating a message.
     init(title: String, messages: [MessageThread.Message] = [],identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
     }
-    
-    enum MessageThreadKeys: CodingKey {
-        case identifier
-    }
-    
-    enum MessageThreadObjectKeys: CodingKey {
-        case title
-        case identifier
-        case messages
-    }
 
+    // Used to manually decode the messageThread object.
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
-
-        let objectContainer = try container.nestedContainer(keyedBy: MessageThreadObjectKeys.self, forKey: .identifier)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let title = try objectContainer.decode(String.self, forKey: .title)
-        let identifier = try objectContainer.decode(String.self, forKey: .identifier)
-        let messages = try objectContainer.decodeIfPresent([Message].self, forKey: .messages) ?? []
-
+        let threadContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .identifier)
+        
+        let title = try threadContainer.decode(String.self, forKey: .title)
+        let identifier = try threadContainer.decode(String.self, forKey: .identifier)
+        let messages = try threadContainer.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        
         self.title = title
         self.identifier = identifier
         self.messages = messages
