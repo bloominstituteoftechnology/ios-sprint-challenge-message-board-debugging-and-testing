@@ -28,11 +28,11 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messagesDic = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages
+        self.messages = Array(messagesDic.values)
     }
 
     
