@@ -30,11 +30,14 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-
-        let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
-        cell.detailTextLabel?.text = message?.sender
+        if let message = messageThread?.messages[indexPath.row] {
+            cell.textLabel?.text = message.messageText
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE, MMM d @ h:mm a"
+            let timestamp = dateFormatter.string(from: message.timestamp)
+            cell.detailTextLabel?.text = "\(message.sender) - \(timestamp)"
+        }
         
         return cell
     }
@@ -42,9 +45,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
+            destinationVC.title = "Post a New Message"
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }

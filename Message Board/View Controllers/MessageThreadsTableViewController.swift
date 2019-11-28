@@ -10,26 +10,11 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         messageThreadController.fetchMessageThreads {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func createThread(_ sender: Any) {
-        threadTitleTextField.resignFirstResponder()
-
-        guard let threadTitle = threadTitleTextField.text else { return }
-        
-        threadTitleTextField.text = ""
-        
-        messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -56,9 +41,13 @@ class MessageThreadsTableViewController: UITableViewController {
         if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
-            
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+        } else if segue.identifier == "AddNewThread" {
+            guard let addNewThreadVC = segue.destination as? NewMessageThreadViewController else { return }
+            addNewThreadVC.title = "Create A New Thread"
+            addNewThreadVC.delegate = self
+            addNewThreadVC.messageThreadController = messageThreadController
         }
     }
     
@@ -66,5 +55,12 @@ class MessageThreadsTableViewController: UITableViewController {
     
     let messageThreadController = MessageThreadController()
     
-    @IBOutlet weak var threadTitleTextField: UITextField!
+}
+
+extension MessageThreadsTableViewController: NewThreadDelegate {
+    func newThreadSaved() {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+        }
+    }
 }
