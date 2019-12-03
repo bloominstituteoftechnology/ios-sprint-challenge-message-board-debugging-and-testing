@@ -48,6 +48,16 @@
                ReferencedContainer = "container:Message Board.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "37F447282396C31400697EF4"
+               BuildableName = "Message BoardTests.xctest"
+               BlueprintName = "Message BoardTests"
+               ReferencedContainer = "container:Message Board.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
