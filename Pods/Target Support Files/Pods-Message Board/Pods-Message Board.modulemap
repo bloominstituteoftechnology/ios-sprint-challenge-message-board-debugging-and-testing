@@ -1,0 +1,6 @@
+framework module Pods_Message_Board {
+  umbrella header "Pods-Message Board-umbrella.h"
+
+  export *
+  module * { export * }
+}

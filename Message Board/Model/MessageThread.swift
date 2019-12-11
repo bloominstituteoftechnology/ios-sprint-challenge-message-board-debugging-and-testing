@@ -10,26 +10,29 @@ import Foundation
 
 class MessageThread: Codable, Equatable {
 
+    // Properties that describe the messageThread.
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+    // Initializer to be called on later when creating a message.
+    init(title: String, messages: [MessageThread.Message] = [],identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
     }
 
+    // Used to manually decode the messageThread object.
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messagesDic = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages
+        self.messages = Array(messagesDic.values)
     }
 
     

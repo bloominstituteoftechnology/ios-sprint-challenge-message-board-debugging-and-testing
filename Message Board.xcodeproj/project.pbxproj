@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		127A1764BE2D0AFD1551A11E /* Pods_Message_Board_Message_BoardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F73FE70313D1219DEDB7C6 /* Pods_Message_Board_Message_BoardUITests.framework */; };
+		372D958C2388CFFF0042733C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 372D958B2388CFFF0042733C /* GoogleService-Info.plist */; };
+		37F4472C2396C31400697EF4 /* Message_BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F4472B2396C31400697EF4 /* Message_BoardTests.swift */; };
 		4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612B5C7211AB41100E7FF73 /* AppDelegate.swift */; };
 		4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CB211AB41200E7FF73 /* Main.storyboard */; };
 		4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CE211AB41300E7FF73 /* Assets.xcassets */; };
@@ -21,18 +24,18 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
-		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		820911B9FC74DAD8DE24D307 /* Pods_Message_Board.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8078F816C8DEEA40EAE4B263 /* Pods_Message_Board.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4629C7EB214BA09600E7FF73 /* PBXContainerItemProxy */ = {
+		37F4472E2396C31400697EF4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4612B5C3211AB41100E7FF73;
 			remoteInfo = "Message Board";
 		};
-		9D9B6B01214B7A66006381F7 /* PBXContainerItemProxy */ = {
+		4629C7EB214BA09600E7FF73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
 			proxyType = 1;
@@ -42,6 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E6F103D2BA9FF53226AD0C5 /* Pods-Message Board-Message BoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board-Message BoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		30F73FE70313D1219DEDB7C6 /* Pods_Message_Board_Message_BoardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Message_Board_Message_BoardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		372D958B2388CFFF0042733C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		37F447292396C31400697EF4 /* Message BoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Message BoardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37F4472B2396C31400697EF4 /* Message_BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message_BoardTests.swift; sourceTree = "<group>"; };
+		37F4472D2396C31400697EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,16 +69,25 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
-		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		60A4F345B9CB881CEF032B79 /* Pods-Message Board.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board.release.xcconfig"; path = "Target Support Files/Pods-Message Board/Pods-Message Board.release.xcconfig"; sourceTree = "<group>"; };
+		8078F816C8DEEA40EAE4B263 /* Pods_Message_Board.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Message_Board.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5F5892D15723440DECF12CC /* Pods-Message Board-Message BoardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board-Message BoardUITests.release.xcconfig"; path = "Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BF6CFB892AA73C9360B254C9 /* Pods-Message Board.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board.debug.xcconfig"; path = "Target Support Files/Pods-Message Board/Pods-Message Board.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37F447262396C31400697EF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4612B5C1211AB41100E7FF73 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				820911B9FC74DAD8DE24D307 /* Pods_Message_Board.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,26 +95,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9D9B6AF9214B7A66006381F7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				127A1764BE2D0AFD1551A11E /* Pods_Message_Board_Message_BoardUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37F4472A2396C31400697EF4 /* Message BoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				37F4472B2396C31400697EF4 /* Message_BoardTests.swift */,
+				37F4472D2396C31400697EF4 /* Info.plist */,
+			);
+			path = "Message BoardTests";
+			sourceTree = "<group>";
+		};
 		4612B5BB211AB41100E7FF73 = {
 			isa = PBXGroup;
 			children = (
 				4612B5C6211AB41100E7FF73 /* Message Board */,
-				9D9B6AFD214B7A66006381F7 /* MessageBoardTests */,
 				4629C7E7214BA09600E7FF73 /* Message BoardUITests */,
+				372D958B2388CFFF0042733C /* GoogleService-Info.plist */,
+				37F4472A2396C31400697EF4 /* Message BoardTests */,
 				4612B5C5211AB41100E7FF73 /* Products */,
+				D35856FA2BAD3BDCDF956485 /* Pods */,
+				4DAD21F5F633103CF6E622A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				4612B5C4211AB41100E7FF73 /* Message Board.app */,
-				9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */,
 				4629C7E6214BA09600E7FF73 /* Message BoardUITests.xctest */,
+				37F447292396C31400697EF4 /* Message BoardTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,25 +212,56 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		9D9B6AFD214B7A66006381F7 /* MessageBoardTests */ = {
+		4DAD21F5F633103CF6E622A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */,
-				9D9B6B00214B7A66006381F7 /* Info.plist */,
+				8078F816C8DEEA40EAE4B263 /* Pods_Message_Board.framework */,
+				30F73FE70313D1219DEDB7C6 /* Pods_Message_Board_Message_BoardUITests.framework */,
 			);
-			path = MessageBoardTests;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D35856FA2BAD3BDCDF956485 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF6CFB892AA73C9360B254C9 /* Pods-Message Board.debug.xcconfig */,
+				60A4F345B9CB881CEF032B79 /* Pods-Message Board.release.xcconfig */,
+				1E6F103D2BA9FF53226AD0C5 /* Pods-Message Board-Message BoardUITests.debug.xcconfig */,
+				A5F5892D15723440DECF12CC /* Pods-Message Board-Message BoardUITests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		37F447282396C31400697EF4 /* Message BoardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37F447302396C31400697EF4 /* Build configuration list for PBXNativeTarget "Message BoardTests" */;
+			buildPhases = (
+				37F447252396C31400697EF4 /* Sources */,
+				37F447262396C31400697EF4 /* Frameworks */,
+				37F447272396C31400697EF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37F4472F2396C31400697EF4 /* PBXTargetDependency */,
+			);
+			name = "Message BoardTests";
+			productName = "Message BoardTests";
+			productReference = 37F447292396C31400697EF4 /* Message BoardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4612B5C3211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4612B5D6211AB41300E7FF73 /* Build configuration list for PBXNativeTarget "Message Board" */;
 			buildPhases = (
+				E65615A900C4F54CE2C4186D /* [CP] Check Pods Manifest.lock */,
 				4612B5C0211AB41100E7FF73 /* Sources */,
 				4612B5C1211AB41100E7FF73 /* Frameworks */,
 				4612B5C2211AB41100E7FF73 /* Resources */,
+				D76077D12C14C2F8882CFA82 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,9 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4629C7ED214BA09600E7FF73 /* Build configuration list for PBXNativeTarget "Message BoardUITests" */;
 			buildPhases = (
+				4992D3A3C69380E8AA817438 /* [CP] Check Pods Manifest.lock */,
 				4629C7E2214BA09600E7FF73 /* Sources */,
 				4629C7E3214BA09600E7FF73 /* Frameworks */,
 				4629C7E4214BA09600E7FF73 /* Resources */,
+				C3FA4E328D7DAD1B2CB127FA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,43 +292,27 @@
 			productReference = 4629C7E6214BA09600E7FF73 /* Message BoardUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		9D9B6AFB214B7A66006381F7 /* MessageBoardTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9D9B6B05214B7A66006381F7 /* Build configuration list for PBXNativeTarget "MessageBoardTests" */;
-			buildPhases = (
-				9D9B6AF8214B7A66006381F7 /* Sources */,
-				9D9B6AF9214B7A66006381F7 /* Frameworks */,
-				9D9B6AFA214B7A66006381F7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9D9B6B02214B7A66006381F7 /* PBXTargetDependency */,
-			);
-			name = MessageBoardTests;
-			productName = MessageBoardTests;
-			productReference = 9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4612B5BC211AB41100E7FF73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
+					37F447282396C31400697EF4 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 4612B5C3211AB41100E7FF73;
+					};
 					4612B5C3211AB41100E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 					};
 					4629C7E5214BA09600E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 4612B5C3211AB41100E7FF73;
-					};
-					9D9B6AFB214B7A66006381F7 = {
-						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 4612B5C3211AB41100E7FF73;
 					};
 				};
@@ -290,13 +331,20 @@
 			projectRoot = "";
 			targets = (
 				4612B5C3211AB41100E7FF73 /* Message Board */,
-				9D9B6AFB214B7A66006381F7 /* MessageBoardTests */,
 				4629C7E5214BA09600E7FF73 /* Message BoardUITests */,
+				37F447282396C31400697EF4 /* Message BoardTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		37F447272396C31400697EF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4612B5C2211AB41100E7FF73 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,6 +353,7 @@
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,
 				4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */,
+				372D958C2388CFFF0042733C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,16 +364,98 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D9B6AFA214B7A66006381F7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4992D3A3C69380E8AA817438 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Message Board-Message BoardUITests-checkManifestLockResult.txt",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		C3FA4E328D7DAD1B2CB127FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D76077D12C14C2F8882CFA82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Message Board/Pods-Message Board-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Message Board/Pods-Message Board-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Message Board/Pods-Message Board-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E65615A900C4F54CE2C4186D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Message Board-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		37F447252396C31400697EF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37F4472C2396C31400697EF4 /* Message_BoardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4612B5C0211AB41100E7FF73 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -349,26 +480,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D9B6AF8214B7A66006381F7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		37F4472F2396C31400697EF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
+			targetProxy = 37F4472E2396C31400697EF4 /* PBXContainerItemProxy */;
+		};
 		4629C7EC214BA09600E7FF73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
 			targetProxy = 4629C7EB214BA09600E7FF73 /* PBXContainerItemProxy */;
-		};
-		9D9B6B02214B7A66006381F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
-			targetProxy = 9D9B6B01214B7A66006381F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -392,6 +515,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		37F447312396C31400697EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Message BoardTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BobbyKeffury.Message-BoardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
+			};
+			name = Debug;
+		};
+		37F447322396C31400697EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Message BoardTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BobbyKeffury.Message-BoardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
+			};
+			name = Release;
+		};
 		4612B5D4211AB41300E7FF73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -443,6 +609,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "${PODS_ROOT}/Firebase/CoreOnly/Sources";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -508,6 +675,7 @@
 		};
 		4612B5D7211AB41300E7FF73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF6CFB892AA73C9360B254C9 /* Pods-Message Board.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -519,13 +687,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		4612B5D8211AB41300E7FF73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60A4F345B9CB881CEF032B79 /* Pods-Message Board.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -537,13 +706,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		4629C7EE214BA09600E7FF73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E6F103D2BA9FF53226AD0C5 /* Pods-Message Board-Message BoardUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
@@ -554,7 +724,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-BoardUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Message Board";
 			};
@@ -562,6 +732,7 @@
 		};
 		4629C7EF214BA09600E7FF73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5F5892D15723440DECF12CC /* Pods-Message Board-Message BoardUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
@@ -572,55 +743,24 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-BoardUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Message Board";
-			};
-			name = Release;
-		};
-		9D9B6B03214B7A66006381F7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = MessageBoardTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.MessageBoardTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
-			};
-			name = Debug;
-		};
-		9D9B6B04214B7A66006381F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = MessageBoardTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.MessageBoardTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		37F447302396C31400697EF4 /* Build configuration list for PBXNativeTarget "Message BoardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37F447312396C31400697EF4 /* Debug */,
+				37F447322396C31400697EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4612B5BF211AB41100E7FF73 /* Build configuration list for PBXProject "Message Board" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -644,15 +784,6 @@
 			buildConfigurations = (
 				4629C7EE214BA09600E7FF73 /* Debug */,
 				4629C7EF214BA09600E7FF73 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9D9B6B05214B7A66006381F7 /* Build configuration list for PBXNativeTarget "MessageBoardTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9D9B6B03214B7A66006381F7 /* Debug */,
-				9D9B6B04214B7A66006381F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
