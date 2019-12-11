@@ -12,6 +12,11 @@ import XCTest
 class Message_BoardTests: XCTestCase {
 
     func testFetchThreads() {
+        let controller = MessageThreadController()
+        
+        controller.fetchMessageThreads {
+            XCTAssert(!controller.messageThreads.isEmpty)
+        }
         
     }
     
