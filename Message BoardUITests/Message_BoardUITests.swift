@@ -28,7 +28,7 @@ class Message_BoardUITests: XCTestCase {
         
         let app = XCUIApplication()
 
-        let helloThread = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Hello"]/*[[".cells.staticTexts[\"Hello\"]",".staticTexts[\"Hello\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let helloThread = app.tables.staticTexts["Hello"]
         let newMessageButton = app.navigationBars["Hello"].buttons["Add"]
         let nameTextField = XCUIApplication().textFields["Enter your name:"]
         
