@@ -21,6 +21,8 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+		// Bug 5: Message thread pops back to the message board after tapping add button
+		self.navigationController?.popToRootViewController(animated: true)
     }
 
     // MARK: - Properties
