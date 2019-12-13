@@ -23,28 +23,57 @@ class MessageThread: Codable, Equatable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let title = try container.decode(String.self, forKey: .title)
-        let identifier = try container.decode(String.self, forKey: .identifier)
+        do {
+            self.identifier = try container.decode(String.self, forKey: .identifier)
+        } catch {
+            self.identifier = UUID().uuidString
+        }
+        
+        
+        
+        
+        
+        
+        do {
+            self.title = try container.decode(String.self, forKey: .title)
+            
+        } catch {
+            self.title = "No Title"
+        }
         
         var messages: [MessageThread.Message] = []
         
-        let messagesContainer = try container.nestedContainer(keyedBy: GenericCodingKeys.self, forKey: .messages)
-        
-        for key in messagesContainer.allKeys {
-            let messageContainer = try messagesContainer.nestedContainer(keyedBy: MessageThreadCodingKeys.self, forKey: key)
+        do {
             
-            let sender = try messageContainer.decode(String.self, forKey: .sender)
-            let messageText = try messageContainer.decode(String.self, forKey: .messageText)
-            let timestamp = try messageContainer.decode(Date.self, forKey: .timestamp)
+            let messagesContainer = try container.nestedContainer(keyedBy: GenericCodingKeys.self, forKey: .messages)
             
-            let message = Message(text: messageText, sender: sender, timestamp: timestamp)
+            for key in messagesContainer.allKeys {
+                let messageContainer = try messagesContainer.nestedContainer(keyedBy: MessageThreadCodingKeys.self, forKey: key)
+                
+                let sender = try messageContainer.decode(String.self, forKey: .sender)
+                let messageText = try messageContainer.decode(String.self, forKey: .messageText)
+                let timestamp = try messageContainer.decode(Date.self, forKey: .timestamp)
+                
+                let message = Message(text: messageText, sender: sender, timestamp: timestamp)
+                
+                messages.append(message)
+            }
             
-            messages.append(message)
+//            self.title = title
+//            self.identifier = identifier
+            self.messages = messages
+            
+            
+            
+            
+        } catch {
+//            self.title = title
+//            self.identifier = identifier
+            self.messages = []
         }
         
-        self.title = title
-        self.identifier = identifier
-        self.messages = messages
+        
+        
     }
     
     enum MessageThreadCodingKeys: String, CodingKey {
