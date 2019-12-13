@@ -10,6 +10,10 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
+    var messageThreadController: MessageThreadController!
     
+    override func setUp() {
+        self.messageThreadController = MessageThreadController()
+    }
     
 }
