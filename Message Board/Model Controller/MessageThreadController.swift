@@ -32,11 +32,11 @@ class MessageThreadController {
             
             do {
 				let messageDictionaries = try JSONDecoder().decode([String: MessageThread].self, from: data)
-				// JSON is finding dictionaries instead of an array
-				let messageThreads = messageDictionaries.map { $0.value }
-				// The array can be created here
+				let messageThreads = Array(messageDictionaries.values)
+				// Array created here
 				self.messageThreads = messageThreads
             } catch {
+				self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
