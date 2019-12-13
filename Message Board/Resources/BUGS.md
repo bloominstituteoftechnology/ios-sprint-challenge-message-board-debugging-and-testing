@@ -9,3 +9,4 @@
     - logic works; must be a UI bug
     - was not popping to previous VC
 - [ ] threads not showing on threadsTableVC
+    - messages were not decoding correctly; similar problem as with message threads

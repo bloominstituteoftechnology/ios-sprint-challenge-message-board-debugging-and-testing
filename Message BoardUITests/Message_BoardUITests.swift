@@ -23,6 +23,10 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testThreadTableShowsThreads() {
+        
+    }
+    
     func testCreateMessage() {
         let newThreadTextField = app.tables["Empty list"]
             .textFields["Create a new thread:"]
