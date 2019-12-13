@@ -19,6 +19,8 @@ class MessageThreadsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        threadTitleTextField.accessibilityIdentifier = "MessageThreadTVC.CreateThread"
+        
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -52,6 +54,7 @@ class MessageThreadsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
+        
         
         return cell
     }

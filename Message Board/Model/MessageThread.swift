@@ -56,7 +56,3 @@ class MessageThread: Codable, Equatable {
             lhs.messages == rhs.messages
     }
 }
-
-struct allMessageThreads: Codable {
-    let threads: [MessageThread]
-}
