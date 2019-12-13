@@ -10,6 +10,11 @@ import Foundation
 
 class MessageThreadController {
     
+    
+    static let baseURL = URL(string: "https://message-board-sprint-852f3.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
+    
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -31,7 +36,13 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                for thread in messageThreads.values {
+                    if self.messageThreads.contains(thread) {
+                        continue
+                    }
+                    self.messageThreads.append(thread)
+                }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -61,7 +72,7 @@ class MessageThreadController {
             NSLog("Error encoding thread to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
@@ -73,6 +84,7 @@ class MessageThreadController {
             completion()
             
         }
+        dataTask.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -110,7 +122,5 @@ class MessageThreadController {
             
         }.resume()
     }
-    
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
+
 }

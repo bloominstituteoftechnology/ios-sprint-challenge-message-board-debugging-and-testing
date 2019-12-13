@@ -23,4 +23,16 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreateNewMessageThread() {
+        let threadTextField = app.tables.textFields["MessageThreadTVC.CreateThread"]
+      
+        let testThread = "Message Thread!"
+        let testThreadCell = app.tables.cells.staticTexts[testThread]
+        
+        threadTextField.tap()
+        threadTextField.typeText(testThread)
+        app.keyboards.buttons["return"].tap()
+        XCTAssertTrue(testThreadCell.exists)
+    }
+    
 }
