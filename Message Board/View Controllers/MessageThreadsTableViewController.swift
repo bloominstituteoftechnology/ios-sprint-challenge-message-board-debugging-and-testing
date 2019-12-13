@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageThreadsTableViewController: UITableViewController {
+class MessageThreadsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -20,9 +20,20 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidLoad() {
+       super.viewDidLoad()
+       threadTitleTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        createThread()
+        textField.resignFirstResponder()
+        return true
+    }
+    
     // MARK: - Actions
     
-    @IBAction func createThread(_ sender: Any) {
+     func createThread() {
         threadTitleTextField.resignFirstResponder()
 
         guard let threadTitle = threadTitleTextField.text else { return }
