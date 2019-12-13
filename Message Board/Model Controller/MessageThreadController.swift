@@ -71,10 +71,10 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+			
+		}.resume()
     }
-    // FIRST BUG: Added own firebase URL and resumed data task
+    // FIRST BUG: Added own firebase URL and resumed data task on line 76
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
