@@ -20,8 +20,7 @@ class MessageThreadController {
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
-            
+        networkLoader.loadData(from: requestURL) { (data, error) in
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
                 completion()
@@ -31,14 +30,17 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+//                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageThreadsDictionary = try JSONDecoder().decode([String:MessageThread].self, from: data)
+                let messageThreads = messageThreadsDictionary.map { $0.value }
+                self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
             completion()
-        }.resume()
+        }
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -61,8 +63,8 @@ class MessageThreadController {
             NSLog("Error encoding thread to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
+        //URLSession.shared.dataTask(with: request) { (data, _, error) in
+        networkLoader.loadData(from: request) { (data, error) in
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
@@ -98,8 +100,9 @@ class MessageThreadController {
             NSLog("Error encoding message to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
+      //  URLSession.shared.dataTask(with: request) { (data, _, error) in
+          networkLoader.loadData(from: request) { (data, error) in
+
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
@@ -108,9 +111,14 @@ class MessageThreadController {
             
             completion()
             
-        }.resume()
+        }
     }
     
     static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
+    var networkLoader: NetworkDataLoader
+    
+    init(networkLoader: NetworkDataLoader = URLSession.shared) {
+        self.networkLoader = networkLoader
+    }
 }

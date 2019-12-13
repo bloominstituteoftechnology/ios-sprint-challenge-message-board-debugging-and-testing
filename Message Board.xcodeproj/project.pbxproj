@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CD97EDD23A3FE1C00AFAD08 /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97EDC23A3FE1C00AFAD08 /* NetworkDataLoader.swift */; };
+		1CD97EDF23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97EDE23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift */; };
 		4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612B5C7211AB41100E7FF73 /* AppDelegate.swift */; };
 		4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CB211AB41200E7FF73 /* Main.storyboard */; };
 		4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CE211AB41300E7FF73 /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CD97EDC23A3FE1C00AFAD08 /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
+		1CD97EDE23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession + NetworkDataLoader.swift"; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				4612B5DB211AB6C500E7FF73 /* MessageThreadController.swift */,
+				1CD97EDC23A3FE1C00AFAD08 /* NetworkDataLoader.swift */,
+				1CD97EDE23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -334,10 +340,12 @@
 				4612B5DA211AB66600E7FF73 /* MessageThread.swift in Sources */,
 				4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */,
 				46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */,
+				1CD97EDD23A3FE1C00AFAD08 /* NetworkDataLoader.swift in Sources */,
 				4629C7DE214B925E00E7FF73 /* IsUITesting.swift in Sources */,
 				46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */,
 				46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */,
 				4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */,
+				1CD97EDF23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
