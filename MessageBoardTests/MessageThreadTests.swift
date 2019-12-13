@@ -30,16 +30,11 @@ class MessageThreadTests: XCTestCase {
     
     func testFetchFromServer() {
         let threadTitle = createThreadWithRandomTitle()
-        let threadFetchDidFinish = expectation(
-            description: "Finished fetching threads.")
         
         // reset local thread array to fetch fresh from server
         threadController = MessageThreadController()
         
-        threadController.fetchMessageThreads {
-            threadFetchDidFinish.fulfill()
-        }
-        wait(for: [threadFetchDidFinish], timeout: 5)
+        fetchThreadsFromServer()
         
         XCTAssertTrue(threadController.messageThreads.contains {
             $0.title == threadTitle
@@ -47,28 +42,14 @@ class MessageThreadTests: XCTestCase {
     }
     
     func testCreateMessage() {
-        let threadTitle = createThreadWithRandomTitle()
-        let thread = threadController.messageThreads.first {
-            $0.title == threadTitle
-        }!
+        let thread = createThread()
         let name = "name \(UUID().uuidString)"
-        let message = "message \(UUID().uuidString)"
+        let messageText = "message \(UUID().uuidString)"
         
-        XCTAssertNotNil(thread)
-        
-        let messageCreationDidFinish = expectation(description: "Finished creating message \"\(message)\" from sender \"\(name)\".")
-        
-        threadController.createMessage(
-            in: thread,
-            withText: message,
-            sender: name)
-        {
-            messageCreationDidFinish.fulfill()
-        }
-        wait(for: [messageCreationDidFinish], timeout: 5)
+        createMessage(inThread: thread, withText: messageText, fromSender: name)
         
         XCTAssertTrue(thread.messages.contains() {
-            $0.messageText == message
+            $0.messageText == messageText && $0.sender == name
         })
     }
     
@@ -87,5 +68,32 @@ class MessageThreadTests: XCTestCase {
         return threadTitle
     }
     
+    func createThread() -> MessageThread {
+        let threadTitle = createThreadWithRandomTitle()
+        return threadController.messageThreads.first {
+            $0.title == threadTitle
+        }!
+    }
     
+    func createMessage(inThread thread: MessageThread, withText messageText: String, fromSender name: String) {
+        let messageCreationDidFinish = expectation(description: "Finished creating message \"\(messageText)\" from sender \"\(name)\".")
+        
+        threadController.createMessage(
+            in: thread,
+            withText: messageText,
+            sender: name)
+        {
+            messageCreationDidFinish.fulfill()
+        }
+        wait(for: [messageCreationDidFinish], timeout: 5)
+    }
+    
+    func fetchThreadsFromServer() {
+        let threadFetchDidFinish = expectation(
+            description: "Finished fetching threads.")
+        threadController.fetchMessageThreads {
+            threadFetchDidFinish.fulfill()
+        }
+        wait(for: [threadFetchDidFinish], timeout: 5)
+    }
 }

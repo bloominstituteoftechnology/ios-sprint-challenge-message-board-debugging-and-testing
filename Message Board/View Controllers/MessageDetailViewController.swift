@@ -24,8 +24,8 @@ class MessageDetailViewController: UIViewController {
     
     @IBAction func sendMessage(_ sender: Any) {
         
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
+        guard let senderName = senderNameTextField.text, !senderName.isEmpty,
+            let messageText = messageTextView.text, !messageText.isEmpty,
             let messageThread = messageThread,
             let messageThreadDetailTVC = messageThreadDetailTVC
             else { return }
