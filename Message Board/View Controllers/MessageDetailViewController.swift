@@ -9,6 +9,18 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var messageThreadController: MessageThreadController?
+    var messageThread: MessageThread?
+
+    @IBOutlet weak var senderNameTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
+    
+    override func viewDidLoad() {
+        senderNameTextField.accessibilityIdentifier = "NameField"
+    }
 
     // MARK: - Actions
     
@@ -21,13 +33,9 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        
+        navigationController?.popViewController(animated: true)
     }
 
-    // MARK: - Properties
     
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
 }
