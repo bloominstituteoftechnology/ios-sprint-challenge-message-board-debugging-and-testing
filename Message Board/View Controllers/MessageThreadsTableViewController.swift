@@ -9,13 +9,21 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    
+    let messageThreadController = MessageThreadController()
+    
+    @IBOutlet weak var threadTitleTextField: UITextField!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        messageThreadController.fetchMessageThreads {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        threadTitleTextField.text = "HI!"
+        if messageThreadController.messageThreads.isEmpty {
+            messageThreadController.fetchMessageThreads {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -62,9 +70,5 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Properties
     
-    let messageThreadController = MessageThreadController()
-    
-    @IBOutlet weak var threadTitleTextField: UITextField!
 }

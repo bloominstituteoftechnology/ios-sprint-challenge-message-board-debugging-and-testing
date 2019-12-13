@@ -26,12 +26,32 @@
 - Fixed as expected.
 
 ## Messages are duplicated every time the view gets loaded
+- This can probably be fixed by making sure the view controller's lifecycle methods are set up properly.
+- Wrapped fetch in "if threads.isEmpty" 
 
+## Create new thread doesn't work
+- Make sure functionality is complete in ThreadsVC
+- VC Functinality seems fine, moving on to model controller
+- Added .resume() to URLSession for creating a thread this fixed it
 
+## Messages aren't being displayed
+- Make sure message is passed to the second table view
+- There were no messages. This is working now.
 
+## Send button not working
+- check send button functionality
+- segue identifier was wrong
 
+## detail doesn't dismiss when messege gets sent
+- add code to do this
+- fixed
 
+## Messages don't get saved to the server
+- Check controller code for this.
+- encoded the thread instead of the message
+- got rid of wrong path component
 
+## Messages get saved, but don't display now
+- Probably wrong format for encoding
+- fixed it by adding a uuidString to the front of each one.
 
-## Both cells open to the same thread.
-- Make sure the right thread is being passed in
