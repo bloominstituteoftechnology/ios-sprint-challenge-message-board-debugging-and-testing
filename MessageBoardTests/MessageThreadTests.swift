@@ -46,14 +46,39 @@ class MessageThreadTests: XCTestCase {
         })
     }
     
+    func testCreateMessage() {
+        let threadTitle = createThreadWithRandomTitle()
+        let thread = threadController.messageThreads.first {
+            $0.title == threadTitle
+        }!
+        let name = "name \(UUID().uuidString)"
+        let message = "message \(UUID().uuidString)"
+        
+        XCTAssertNotNil(thread)
+        
+        let messageCreationDidFinish = expectation(description: "Finished creating message \"\(message)\" from sender \"\(name)\".")
+        
+        threadController.createMessage(
+            in: thread,
+            withText: message,
+            sender: name)
+        {
+            messageCreationDidFinish.fulfill()
+        }
+        wait(for: [messageCreationDidFinish], timeout: 5)
+        
+        XCTAssertTrue(thread.messages.contains() {
+            $0.messageText == message
+        })
+    }
+    
     // MARK: - Helper Methods
     
     func createThreadWithRandomTitle() -> String {
-        let nonID = UUID().uuidString
-        let threadTitle = "new thread title \(nonID)"
+        let threadTitle = "new thread title \(UUID().uuidString)"
         
         let threadCreationDidFinish = expectation(
-            description: "Finished creating thread with title \(threadTitle)")
+            description: "Finished creating thread with title \"\(threadTitle)\"")
         
         threadController.createMessageThread(with: threadTitle) {
             threadCreationDidFinish.fulfill()
@@ -61,4 +86,6 @@ class MessageThreadTests: XCTestCase {
         wait(for: [threadCreationDidFinish], timeout: 5)
         return threadTitle
     }
+    
+    
 }
