@@ -164,9 +164,9 @@
                         <viewLayoutGuide key="safeArea" id="Uch-WW-3au"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Message" id="cEt-mi-t96">
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="eC1-90-vuB">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="GbQ-Gf-gfb">
                             <connections>
-                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="VQR-G2-cJy"/>
+                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="Uy5-uJ-Be7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
