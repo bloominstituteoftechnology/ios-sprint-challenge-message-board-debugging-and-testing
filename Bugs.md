@@ -55,3 +55,11 @@
 - Probably wrong format for encoding
 - fixed it by adding a uuidString to the front of each one.
 
+# Release Notes
+
+We fixed a lot of bugs for this release. The most notable ones:
+
+- You can now download and upload Messages & Threads
+- When you save a post, you can see the thread 
+- You can actually save new messages!
+- Threads no longer get duplicated when you come back to the threads page 
