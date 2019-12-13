@@ -22,7 +22,7 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a new thread:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72q-hR-yhN">
                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
-                                    <accessibility key="accessibilityConfiguration">
+                                    <accessibility key="accessibilityConfiguration" identifier="MessageThreadViewControler.threadTitleTextField">
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -166,7 +166,7 @@
                     <navigationItem key="navigationItem" title="New Message" id="cEt-mi-t96">
                         <barButtonItem key="rightBarButtonItem" title="Send" id="eC1-90-vuB">
                             <connections>
-                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="k5g-wb-Dsb"/>
+                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="VQR-G2-cJy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

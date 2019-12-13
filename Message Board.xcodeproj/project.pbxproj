@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CD97EDD23A3FE1C00AFAD08 /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97EDC23A3FE1C00AFAD08 /* NetworkDataLoader.swift */; };
 		1CD97EDF23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97EDE23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift */; };
+		1CD97EE123A4024700AFAD08 /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97EE023A4024700AFAD08 /* MockDataLoader.swift */; };
 		4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612B5C7211AB41100E7FF73 /* AppDelegate.swift */; };
 		4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CB211AB41200E7FF73 /* Main.storyboard */; };
 		4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CE211AB41300E7FF73 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		1CD97EDC23A3FE1C00AFAD08 /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
 		1CD97EDE23A3FE4300AFAD08 /* URLSession + NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession + NetworkDataLoader.swift"; sourceTree = "<group>"; };
+		1CD97EE023A4024700AFAD08 /* MockDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */,
+				1CD97EE023A4024700AFAD08 /* MockDataLoader.swift */,
 				9D9B6B00214B7A66006381F7 /* Info.plist */,
 			);
 			path = MessageBoardTests;
@@ -361,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD97EE123A4024700AFAD08 /* MockDataLoader.swift in Sources */,
 				9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
