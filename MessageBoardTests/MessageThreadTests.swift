@@ -23,4 +23,7 @@ class MessageThreadTests: XCTestCase {
         
     }
     
+    func testAddingMessageToThread() {
+        
+    }
 }
