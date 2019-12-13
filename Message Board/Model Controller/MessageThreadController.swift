@@ -33,7 +33,8 @@ class MessageThreadController {
             do {
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
             } catch {
-                self.messageThreads = []
+				// Bug 3: line 37 will set the messageThread to an empty array and shouldn't be here, so I commented it out.
+//                self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
@@ -71,7 +72,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-			
+
 		}.resume()
     }
     // FIRST BUG: Added own firebase URL and resumed data task on line 76
@@ -83,13 +84,15 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
+
+
         request.httpMethod = HTTPMethod.post.rawValue
         
         do {
