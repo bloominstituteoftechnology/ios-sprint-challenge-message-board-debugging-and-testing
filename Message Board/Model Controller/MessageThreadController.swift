@@ -74,7 +74,7 @@ class MessageThreadController {
             
         }
     }
-    
+    // FIRST BUG: Added own firebase URL and resumed data task
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
@@ -111,6 +111,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://message-board-b8a9c.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
