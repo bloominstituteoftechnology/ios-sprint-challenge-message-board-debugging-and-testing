@@ -23,4 +23,32 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreateMessage() {
+        let newThreadTextField = app.tables["Empty list"]
+            .textFields["Create a new thread:"]
+        let newThreadTitle = "New thread title"
+        newThreadTextField.tap()
+        newThreadTextField.typeText(newThreadTitle)
+        app.keyboards.buttons["Return"].tap()
+        
+        app.tables.staticTexts[newThreadTitle].tap()
+        app.navigationBars[newThreadTitle].buttons["Add"].tap()
+        
+        let nameTextField = app.textFields["messageDetail.nameTextField"]
+        let senderName = "jonbash"
+        nameTextField.tap()
+        nameTextField.typeText(senderName)
+        
+        let messageTextView = app.descendants(matching: .textView).element
+        let messageText = "this is a new message"
+        messageTextView.tap()
+        messageTextView.typeText(messageText)
+        
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        
+        XCTAssertTrue(app.navigationBars[newThreadTitle].exists)
+        XCTAssertTrue(app.tables.cells.staticTexts[messageText].exists)
+        XCTAssertTrue(app.tables.cells.staticTexts[senderName].exists)
+    }
+    
 }

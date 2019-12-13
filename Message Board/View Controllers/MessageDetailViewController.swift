@@ -9,6 +9,16 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    // MARK: - Properties
+    
+    var messageThreadController: MessageThreadController?
+    var messageThread: MessageThread?
+    var messageThreadDetailTVC: MessageThreadDetailTableViewController?
+
+    @IBOutlet weak var senderNameTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
+    
+    // MARK: - View Lifecycle
 
     // MARK: - Actions
     
@@ -16,18 +26,21 @@ class MessageDetailViewController: UIViewController {
         
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+            let messageThread = messageThread,
+            let messageThreadDetailTVC = messageThreadDetailTVC
+            else { return }
         
-        messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+        messageThreadController?.createMessage(
+            in: messageThread,
+            withText: messageText,
+            sender: senderName)
+        {
             print("Message created!")
-        })
+            DispatchQueue.main.async {
+                self.navigationController?.popToViewController(
+                    messageThreadDetailTVC,
+                    animated: true)
+            }
+        }
     }
-
-    // MARK: - Properties
-    
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
 }
