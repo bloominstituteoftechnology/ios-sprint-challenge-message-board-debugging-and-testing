@@ -17,6 +17,10 @@ class MessageDetailViewController: UIViewController {
 
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
+    
+    override func viewDidLoad() {
+        senderNameTextField.accessibilityIdentifier = "NameField"
+    }
 
     // MARK: - Actions
     

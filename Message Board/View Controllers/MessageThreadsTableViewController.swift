@@ -18,7 +18,7 @@ class MessageThreadsTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        threadTitleTextField.text = "HI!"
+        
         if messageThreadController.messageThreads.isEmpty {
             messageThreadController.fetchMessageThreads {
                 DispatchQueue.main.async {
@@ -52,7 +52,7 @@ class MessageThreadsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
-        
+        cell.accessibilityIdentifier = "ThreadCell"
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
 
         return cell
