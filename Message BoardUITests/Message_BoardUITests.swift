@@ -23,4 +23,35 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testRecordCreateMessageOnThread() {
+        
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery.textFields["Create a new thread:"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["iOS 11 test thread 1"]/*[[".cells.staticTexts[\"iOS 11 test thread 1\"]",".staticTexts[\"iOS 11 test thread 1\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["iOS 11 test thread 1"].buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.tap()
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        
+    }
+    
+    // Testing bug 1 and bug 2 and bug 3
+    func testCreateLocalMessageOnThread() {
+        let messageThread = app.tables.cells.firstMatch
+        let messageTableView = app.tables["MessageThreadDetailVC"]
+        let textField = app.textFields.element
+        let textView = app.textViews.element
+        
+        messageThread.tap()
+        app.navigationBars.firstMatch.buttons["Add"].tap()
+        textField.tap()
+        textField.typeText("UI Test Run")
+        textView.tap()
+//        textView.typeText("")
+        app.buttons["Send"].tap()
+        
+        sleep(2)
+        XCTAssertGreaterThan(messageTableView.cells.count, 1)
+    }
 }
