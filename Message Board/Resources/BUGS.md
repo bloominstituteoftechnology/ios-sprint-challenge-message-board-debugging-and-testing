@@ -4,3 +4,4 @@
     - data task was never `resume()`d
 - [ ] after navigating to threadDetailTVC, upon returning to threadsTVC, thread disappears; never returns upon subsequent app launches
     - threads not fetching from server
+    - method was attempting to decode array when dictionary was returned from server

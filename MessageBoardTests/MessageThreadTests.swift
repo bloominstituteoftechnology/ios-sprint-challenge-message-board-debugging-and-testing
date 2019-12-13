@@ -49,8 +49,8 @@ class MessageThreadTests: XCTestCase {
     // MARK: - Helper Methods
     
     func createThreadWithRandomTitle() -> String {
-        let randomNumber = Double.random(in: 0...1000)
-        let threadTitle = "new thread title \(randomNumber)"
+        let nonID = UUID().uuidString
+        let threadTitle = "new thread title \(nonID)"
         
         let threadCreationDidFinish = expectation(
             description: "Finished creating thread with title \(threadTitle)")
