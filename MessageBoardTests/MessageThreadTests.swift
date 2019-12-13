@@ -22,4 +22,14 @@ class MessageThreadTests: XCTestCase {
         XCTAssertNotNil(messageThreadController.messageThreads)
     }
     
+    func testCreateThread() {
+        let waitForThreadCreation = expectation(description: "Wait for thread creation")
+        messageThreadController.createMessageThread(with: "Unit Test iOS 11 Thread Creation 1") {
+            waitForThreadCreation.fulfill()
+        }
+        
+        wait(for: [waitForThreadCreation], timeout: 2)
+        XCTAssertEqual(messageThreadController.messageThreads.count, 1)
+    }
+    
 }

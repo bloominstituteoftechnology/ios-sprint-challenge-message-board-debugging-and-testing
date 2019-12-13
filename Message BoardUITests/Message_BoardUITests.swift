@@ -53,4 +53,5 @@ class Message_BoardUITests: XCTestCase {
         sleep(2)
         XCTAssertTrue(app.tables.cells.count > 1)
     }
+    
 }
