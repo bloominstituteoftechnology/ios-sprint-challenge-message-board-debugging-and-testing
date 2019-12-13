@@ -10,16 +10,25 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    var messageThreadController: MessageThreadController!
+    var threadController: MessageThreadController!
     
     override func setUp() {
-        self.messageThreadController = MessageThreadController()
+        self.threadController = MessageThreadController()
     }
     
     func testCreateThread() {
-        let threadTitle = "This is a new thread's title"
-        messageThreadController.createMessageThread(with: threadTitle) {
-            print("hi")
+        let randomNumber = Double.random(in: 0...1000)
+        let threadTitle = "new thread title \(randomNumber)"
+        
+        let threadCreationDidFinish = expectation(description: "Finished creating thread with title \(threadTitle)")
+        
+        threadController.createMessageThread(with: threadTitle) {
+            threadCreationDidFinish.fulfill()
         }
+        wait(for: [threadCreationDidFinish], timeout: 5)
+        
+        XCTAssertTrue(threadController.messageThreads.contains {
+            $0.title == threadTitle
+        })
     }
 }
