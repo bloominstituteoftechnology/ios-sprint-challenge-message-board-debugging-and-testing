@@ -16,4 +16,10 @@ class MessageThreadTests: XCTestCase {
         self.messageThreadController = MessageThreadController()
     }
     
+    func testCreateThread() {
+        let threadTitle = "This is a new thread's title"
+        messageThreadController.createMessageThread(with: threadTitle) {
+            print("hi")
+        }
+    }
 }
