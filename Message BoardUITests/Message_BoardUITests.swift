@@ -12,8 +12,12 @@ class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
     
-    private var cell: XCUIElement {
-        return app.cells["MessageThreadTVC.CreateNewThread"]
+    private var threadTextField: XCUIElement {
+        return app.tables.textFields["MessageThreadTVC.CreateNewThread"]
+    }
+    
+    private var enter: XCUIElement {
+        return app.keyboards.buttons["return"]
     }
     
     override func setUp() {
@@ -25,6 +29,16 @@ class Message_BoardUITests: XCTestCase {
         // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
         app.launch()
+    }
+    
+    func testCreateNewMessageThread() {
+        threadTextField.tap()
+        threadTextField.typeText("Another Thread")
+        
+        let testThreadCell = app.tables.cells.staticTexts["Another Thread"]
+        enter.tap()
+        XCTAssertTrue(testThreadCell.exists)
+        
     }
     
 }

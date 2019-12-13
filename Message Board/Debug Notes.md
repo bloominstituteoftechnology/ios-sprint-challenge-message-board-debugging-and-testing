@@ -13,4 +13,6 @@ a. Inside the MessageThreadController, we needed to resume the URLSessionDataTas
 
 
 # Bug 3:
-- 
+- Cannot send a message on MessageDetailViewController
+- Segue was mispelled. Also added pop to VC to move back from DetailVC
+
