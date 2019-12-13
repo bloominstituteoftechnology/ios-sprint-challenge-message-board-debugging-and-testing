@@ -12,6 +12,10 @@ class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
     
+    private var cell: XCUIElement {
+        return app.cells["MessageThreadTVC.CreateNewThread"]
+    }
+    
     override func setUp() {
         super.setUp()
         
