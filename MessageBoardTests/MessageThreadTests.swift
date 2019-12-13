@@ -11,5 +11,16 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testAddingThreadToMessageBoard() {
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.createMessageThread(with: "Test") {
+            return
+        }
+        
+        let fetchedThreadMessages = expectation(for: NSPredicate(format: "count > 0"), evaluatedWith: messageThreadController.messageThreads, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        
+    }
     
 }

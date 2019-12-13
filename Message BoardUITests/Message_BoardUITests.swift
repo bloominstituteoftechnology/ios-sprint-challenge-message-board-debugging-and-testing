@@ -23,4 +23,17 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testTableViewCreateThread() {
+        let textField = app.textFields["MessageThreadTableViewController.TextField"]
+        XCTAssert(textField.exists)
+        textField.tap()
+        textField.typeText("Test")
+        app.keyboards.buttons["Return"].tap()
+        
+        let tableRow = app.tables.staticTexts["Test"]
+        XCTAssertTrue(tableRow.exists)
+    }
+    
+    
+    
 }
