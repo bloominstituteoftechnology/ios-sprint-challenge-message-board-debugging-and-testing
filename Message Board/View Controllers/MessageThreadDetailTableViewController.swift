@@ -36,6 +36,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
         cell.textLabel?.text = message?.messageText
         cell.detailTextLabel?.text = message?.sender
         
+        cell.textLabel?.accessibilityIdentifier = "MessageCellMessageTextLabel"
+        cell.detailTextLabel?.accessibilityIdentifier = "MessageCellSenderLabel"
+        
         return cell
     }
 
