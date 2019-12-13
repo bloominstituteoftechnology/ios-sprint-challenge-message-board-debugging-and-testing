@@ -25,11 +25,44 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        
+        var messages: [MessageThread.Message] = []
+        
+        let messagesContainer = try container.nestedContainer(keyedBy: GenericCodingKeys.self, forKey: .messages)
+        
+        for key in messagesContainer.allKeys {
+            let messageContainer = try messagesContainer.nestedContainer(keyedBy: MessageThreadCodingKeys.self, forKey: key)
+            
+            let sender = try messageContainer.decode(String.self, forKey: .sender)
+            let messageText = try messageContainer.decode(String.self, forKey: .messageText)
+            let timestamp = try messageContainer.decode(Date.self, forKey: .timestamp)
+            
+            let message = Message(text: messageText, sender: sender, timestamp: timestamp)
+            
+            messages.append(message)
+        }
         
         self.title = title
         self.identifier = identifier
         self.messages = messages
+    }
+    
+    enum MessageThreadCodingKeys: String, CodingKey {
+        case messageText = "text", sender, timestamp
+    }
+    
+    struct GenericCodingKeys: CodingKey {
+        var stringValue: String
+        var intValue: Int?
+
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+        }
+
+        init?(intValue: Int) {
+            self.intValue = intValue
+            self.stringValue = "\(intValue)"
+        }
     }
 
     
