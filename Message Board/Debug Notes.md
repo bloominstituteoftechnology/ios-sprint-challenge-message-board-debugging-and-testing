@@ -9,6 +9,7 @@ b. In the model controller, needed to fix the "fetchMessageThreads" function as 
 
 # Bug 2:
 - On initial tableviewcontroller, you cannot create a new message thread
+a. Inside the MessageThreadController, we needed to resume the URLSessionDataTask
 
 
 # Bug 3:

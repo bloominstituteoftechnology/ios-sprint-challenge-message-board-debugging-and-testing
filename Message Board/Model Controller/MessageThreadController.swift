@@ -72,7 +72,7 @@ class MessageThreadController {
             NSLog("Error encoding thread to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
@@ -84,6 +84,7 @@ class MessageThreadController {
             completion()
             
         }
+        dataTask.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
