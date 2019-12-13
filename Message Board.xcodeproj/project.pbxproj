@@ -60,6 +60,7 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		9971F3B523A3EEDD00A7E5D5 /* BUGS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = BUGS.md; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -165,6 +166,7 @@
 				4612B5C7211AB41100E7FF73 /* AppDelegate.swift */,
 				4612B5CE211AB41300E7FF73 /* Assets.xcassets */,
 				4612B5D3211AB41300E7FF73 /* Info.plist */,
+				9971F3B523A3EEDD00A7E5D5 /* BUGS.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
