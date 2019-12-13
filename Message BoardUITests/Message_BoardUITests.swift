@@ -39,7 +39,7 @@ class Message_BoardUITests: XCTestCase {
     // Testing bug 1 and bug 2 and bug 3
     func testCreateLocalMessageOnThread() {
         let messageThread = app.tables.cells.firstMatch
-        let messageTableView = app.tables["MessageThreadDetailVC"]
+        
         let textField = app.textFields.element
         let textView = app.textViews.element
         
@@ -48,10 +48,9 @@ class Message_BoardUITests: XCTestCase {
         textField.tap()
         textField.typeText("UI Test Run")
         textView.tap()
-//        textView.typeText("")
         app.buttons["Send"].tap()
         
         sleep(2)
-        XCTAssertGreaterThan(messageTableView.cells.count, 1)
+        XCTAssertTrue(app.tables.cells.count > 1)
     }
 }
