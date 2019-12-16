@@ -23,4 +23,9 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreateMessageThread() {
+        XCUIApplication().tables.textFields["Create a new thread:"].tap()
+        
+    }
+    
 }
