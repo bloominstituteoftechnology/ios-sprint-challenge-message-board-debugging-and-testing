@@ -25,7 +25,11 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+       // let massagesContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .messages)
+        let messagesDictinary = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
+        let  messages = messagesDictinary.map({$0.value})
+//        let massageCont = try massagesContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .messages)
+//        let sender = try massageCont.decode(String.self, forKey: .sender)
         
         self.title = title
         self.identifier = identifier
@@ -39,16 +43,33 @@ class MessageThread: Codable, Equatable {
         let sender: String
         let timestamp: Date
         
+        enum Massage: String, CodingKey {
+            case sender
+            case messageText
+            case timestamp
+        }
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text
             self.sender = sender
             self.timestamp = timestamp
         }
+        
+//        init(from decoder: Decoder) throws {
+//            let container = try decoder.container(keyedBy: Massage.self)
+//
+//            let text = try container.decode(String.self, forKey: .messageText)
+//            let sender = try container.decode(String.self, forKey: .sender)
+//            let timestamp = try container.decode(String.self, forKey: .timestamp)
+//
+//            self.messageText = text
+//            self.sender = sender
+//            self.timestamp = Date()
+//    }
     }
-    
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
         return lhs.title == rhs.title &&
             lhs.identifier == rhs.identifier &&
             lhs.messages == rhs.messages
     }
 }
+
