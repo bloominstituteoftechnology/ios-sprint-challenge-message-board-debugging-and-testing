@@ -42,7 +42,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {  // segue.identifier fails bc AddMesage missing an "s"
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
@@ -51,6 +51,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
     
     // MARK: - Properties
+    
+    // did we get a messageThread sent from MTTVC?
 
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?

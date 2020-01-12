@@ -16,11 +16,12 @@ class MessageDetailViewController: UIViewController {
         
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+            let messageThread = messageThread else { return } //  fails guard bc messageThread = nil
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            print("Message created!")
+            print("Message created!")  // error 3: after sending message, doesn't pop back to root
         })
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties

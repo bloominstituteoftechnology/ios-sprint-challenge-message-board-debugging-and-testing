@@ -23,13 +23,14 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
-        threadTitleTextField.resignFirstResponder()
+        threadTitleTextField.resignFirstResponder() // what is this??
 
         guard let threadTitle = threadTitleTextField.text else { return }
         
-        threadTitleTextField.text = ""
+        threadTitleTextField.text = ""   // WTF? this is too early, this has to come AFTER otherwise we'll be creating a MessageThread with a blank!
         
-        messageThreadController.createMessageThread(with: threadTitle) {
+        // DispatchQueue.main never gets run, is this bc of lack of resume or bc it's enclosed in brackets?
+        messageThreadController.createMessageThread(with: threadTitle) { // where's the completion here? no completion = no data = no running of DispatchQueue
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
