@@ -9,7 +9,17 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
-
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Outlets
+    @IBOutlet weak var threadTitleTextField: UITextField!
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    let messageThreadController = MessageThreadController()
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - View Controller Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -20,12 +30,12 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Actions
-    
     @IBAction func createThread(_ sender: Any) {
         threadTitleTextField.resignFirstResponder()
-
-        guard let threadTitle = threadTitleTextField.text else { return }
+        
+        guard let threadTitle = threadTitleTextField.text, !threadTitle.isEmpty else { return }
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
@@ -36,24 +46,10 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.text = ""
     }
     
-    // MARK: - UITableViewDataSource
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageThreadController.messageThreads.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
-        
-        cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
-
-        return cell
-    }
-    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMessageThread" {
+        if segue.identifier ==  Segues.viewMessageThread {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
@@ -62,9 +58,17 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Properties
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Table View DataSource
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messageThreadController.messageThreads.count
+    }
     
-    let messageThreadController = MessageThreadController()
-    
-    @IBOutlet weak var threadTitleTextField: UITextField!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageThreadCell, for: indexPath)
+        
+        cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
+        
+        return cell
+    }
 }
