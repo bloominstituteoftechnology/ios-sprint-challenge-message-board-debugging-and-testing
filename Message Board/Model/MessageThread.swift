@@ -29,6 +29,7 @@ class MessageThread: Codable, Equatable {
     }
 
     required init(from decoder: Decoder) throws {
+        
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let title = try container.decode(String.self, forKey: .title)
