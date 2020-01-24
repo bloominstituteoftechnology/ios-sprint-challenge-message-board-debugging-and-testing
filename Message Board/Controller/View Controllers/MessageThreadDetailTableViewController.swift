@@ -9,7 +9,14 @@
 import UIKit
 
 class MessageThreadDetailTableViewController: UITableViewController {
-
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    var messageThread: MessageThread?
+    var messageThreadController: MessageThreadController?
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +25,6 @@ class MessageThreadDetailTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tableView.reloadData()
     }
     
@@ -29,29 +35,20 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageCell, for: indexPath) as? MessageCell else { return UITableViewCell() }
         let message = messageThread?.messages[indexPath.row]
-        
-        cell.textLabel?.text = message?.messageText
-        cell.detailTextLabel?.text = message?.sender
-        
+        cell.message = message
         return cell
     }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == Segues.addMessage {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
     }
-    
-    // MARK: - Properties
-
-    var messageThread: MessageThread?
-    var messageThreadController: MessageThreadController?
 }
