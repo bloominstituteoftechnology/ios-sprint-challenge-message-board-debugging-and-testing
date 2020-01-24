@@ -9,10 +9,16 @@
 import Foundation
 
 class MessageThread: Codable, Equatable {
+    
+    enum CodingKeys: String, CodingKey {
+        case title, identifier, messages
+    }
+    
+    enum MessageThreadCodingKeys: String, CodingKey {
+        case messageText = "text", sender, timestamp
+    }
+    
 
-    
-    
-    
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
@@ -22,34 +28,48 @@ class MessageThread: Codable, Equatable {
         self.messages = messages
         self.identifier = identifier
     }
-
+    
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-       
-        let tempMessageDictionary = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
+        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
-        var messages: [Message] = []
-        for message in tempMessageDictionary {
-            messages.append(message.value)
+        var things: [Message] = []
+        
+        for message in messages {
+            things.append(message.value)
         }
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages
+        self.messages = things
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(title, forKey: .title)
+        try container.encode(identifier, forKey: .identifier)
+        var lameMessages: [String: Message] = [:]
+        for message in messages {
+            lameMessages[UUID().uuidString] = message
+        }
+        try container.encode(lameMessages, forKey: .messages)
     }
 
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
+        
+        
+        let text: String
         let sender: String
         let timestamp: Date
         
         init(text: String, sender: String, timestamp: Date = Date()) {
-            self.messageText = text
+            self.text = text
             self.sender = sender
             self.timestamp = timestamp
         }
