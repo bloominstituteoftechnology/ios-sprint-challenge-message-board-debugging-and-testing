@@ -29,11 +29,19 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
-                completion()
+                DispatchQueue.main.async {
+                    completion()
+                }
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                DispatchQueue.main.async {
+                    completion()
+                }
+                return
+            }
             
             do {
                 self.messageThreads = Array(try JSONDecoder().decode([String : MessageThread].self, from: data).values)
@@ -42,7 +50,9 @@ class MessageThreadController {
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
         }.resume()
     }
     
@@ -70,12 +80,16 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                DispatchQueue.main.async {
+                    completion()
+                }
                 return
             }
             
             self.messageThreads.append(thread)
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
             
         }.resume()
     }
@@ -88,7 +102,12 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.index(of: messageThread) else {
+            DispatchQueue.main.async {
+                completion()
+            }
+            return
+        }
         
         let message = MessageThread.Message(text: text, sender: sender)
         let messageThread = messageThreads[index]

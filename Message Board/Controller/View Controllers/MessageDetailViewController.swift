@@ -31,7 +31,9 @@ class MessageDetailViewController: UIViewController {
     @IBAction func sendMessage(_ sender: UIBarButtonItem) {
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+            let messageThread = messageThread,
+            !senderName.isEmpty,
+            !messageText.isEmpty else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")

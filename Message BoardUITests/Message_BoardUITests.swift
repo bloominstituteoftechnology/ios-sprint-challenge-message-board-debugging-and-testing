@@ -24,14 +24,36 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testSendButtonDismissesMessageDetailView() {
-        
-        let app = XCUIApplication()
         app.tables.staticTexts["A New Thread"].tap()
         app.navigationBars["A New Thread"].buttons["Add"].tap()
         let textField = app.textFields["Enter your name:"]
         textField.tap()
         textField.typeText("Chad \n")
+        let textView = app.textViews["MessageTextView"]
+        textView.tap()
+        textView.typeText("Hello Class!\n")
         app.navigationBars["New Message"].buttons["Send"].tap()
         XCTAssert(app.navigationBars["A New Thread"].exists)
+    }
+    
+    func testCreateThread() {
+        let textField = app.tables.textFields["Create a new thread:"]
+        textField.tap()
+        textField.typeText("Students")
+        textField.typeText("\n")
+        XCTAssert(app.tables.staticTexts["Students"].exists)
+    }
+    
+    func testMessageDisplaysInThread() {
+        app.tables.staticTexts["A New Thread"].tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+        let textField = app.textFields["Enter your name:"]
+        textField.tap()
+        textField.typeText("Chad\n")
+        let textView = app.textViews["MessageTextView"]
+        textView.tap()
+        textView.typeText("Hello Class!")
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        XCTAssert(app.tables.staticTexts["Hello Class!"].exists)
     }
 }
