@@ -27,13 +27,13 @@ class MessageThreadsTableViewController: UITableViewController {
 
         guard let threadTitle = threadTitleTextField.text else { return }
         
-        threadTitleTextField.text = ""
-        
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
+        threadTitleTextField.text = ""
     }
     
     // MARK: - UITableViewDataSource

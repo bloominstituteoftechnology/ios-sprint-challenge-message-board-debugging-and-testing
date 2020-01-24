@@ -23,4 +23,15 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testSendButtonDismissesMessageDetailView() {
+        
+        let app = XCUIApplication()
+        app.tables.staticTexts["A New Thread"].tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+        let textField = app.textFields["Enter your name:"]
+        textField.tap()
+        textField.typeText("Chad \n")
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        XCTAssert(app.navigationBars["A New Thread"].exists)
+    }
 }

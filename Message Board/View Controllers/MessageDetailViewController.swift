@@ -9,25 +9,41 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Outlets
+    @IBOutlet weak var senderNameTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    var messageThreadController: MessageThreadController?
+    var messageThread: MessageThread?
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - View Controller Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        senderNameTextField.delegate = self
+    }
 
     // MARK: - Actions
-    
-    @IBAction func sendMessage(_ sender: Any) {
-        
+    @IBAction func sendMessage(_ sender: UIBarButtonItem) {
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            self.navigationController?.popViewController(animated: true)
         })
     }
+}
 
-    // MARK: - Properties
-    
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
+extension MessageDetailViewController: UITextFieldDelegate, UITextViewDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        messageTextView.becomeFirstResponder()
+        return true
+    }
 }
