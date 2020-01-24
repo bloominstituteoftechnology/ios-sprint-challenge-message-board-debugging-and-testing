@@ -10,6 +10,11 @@ import Foundation
 
 class MessageThreadController {
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    static let baseURL = URL(string: "https://messagethread-71b04.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -31,7 +36,7 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = Array(try JSONDecoder().decode([String : MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -72,7 +77,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -86,14 +91,15 @@ class MessageThreadController {
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
-        messageThreads[index].messages.append(message)
+        let messageThread = messageThreads[index]
+        messageThread.messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue
         
         do {
-            request.httpBody = try JSONEncoder().encode(message)
+            request.httpBody = try JSONEncoder().encode(messageThread)
         } catch {
             NSLog("Error encoding message to JSON: \(error)")
         }
@@ -102,15 +108,16 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                DispatchQueue.main.async {
+                    completion()
+                }
                 return
             }
             
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
             
         }.resume()
     }
-    
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
 }
