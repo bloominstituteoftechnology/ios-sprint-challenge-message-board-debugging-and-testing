@@ -8,7 +8,13 @@
 
 import Foundation
 
+
 class MessageThread: Codable, Equatable {
+    
+    //Keys
+    enum CodingKeys: String, CodingKey {
+        case title, messages, identifier
+    }
 
     let title: String
     var messages: [MessageThread.Message]
@@ -25,22 +31,28 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
-        self.title = title
-        self.identifier = identifier
-        self.messages = messages
-    }
+        var messageArray: [Message] = []
+            
+            for message in messages {
+                messageArray.append(message.value)
+            }
+            
+            self.title = title
+            self.identifier = identifier
+            self.messages = messageArray
+        }
 
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
+        let text: String
         let sender: String
         let timestamp: Date
         
         init(text: String, sender: String, timestamp: Date = Date()) {
-            self.messageText = text
+            self.text = text
             self.sender = sender
             self.timestamp = timestamp
         }
@@ -52,3 +64,4 @@ class MessageThread: Codable, Equatable {
             lhs.messages == rhs.messages
     }
 }
+
