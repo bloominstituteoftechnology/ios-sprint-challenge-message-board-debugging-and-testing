@@ -11,5 +11,12 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    
+    func testCreateNewThread() {
+        
+        let messageThreadController = MessageThreadController()
+        let newThread = MessageThread(title: "New One")
+        
+        messageThreadController.messageThreads.append(newThread)
+        XCTAssertTrue(messageThreadController.messageThreads.count == 1)
+    }
 }
