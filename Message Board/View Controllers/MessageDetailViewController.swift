@@ -8,26 +8,36 @@
 
 import UIKit
 
-class MessageDetailViewController: UIViewController {
 
-    // MARK: - Actions
-    
-    @IBAction func sendMessage(_ sender: Any) {
+
+    class MessageDetailViewController: UIViewController {
         
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+        // MARK: - Properties
         
-        messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            print("Message created!")
-        })
+        var messageThreadController: MessageThreadController?
+        var messageThread: MessageThread?
+
+        @IBOutlet weak var senderNameTextField: UITextField!
+        @IBOutlet weak var messageTextView: UITextView!
+        
+        override func viewDidLoad() {
+            senderNameTextField.accessibilityIdentifier = "NameField"
+        }
+
+        // MARK: - Actions
+        
+        @IBAction func sendMessage(_ sender: Any) {
+            
+            guard let senderName = senderNameTextField.text,
+                let messageText = messageTextView.text,
+                let messageThread = messageThread else { return }
+            
+            messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+                print("Message created!")
+            })
+            
+            navigationController?.popViewController(animated: true)
+        }
+
+        
     }
-
-    // MARK: - Properties
-    
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
-}
