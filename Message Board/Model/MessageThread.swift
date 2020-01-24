@@ -10,6 +10,9 @@ import Foundation
 
 class MessageThread: Codable, Equatable {
 
+    
+    
+    
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
@@ -25,7 +28,13 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+       
+        let tempMessageDictionary = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
+        
+        var messages: [Message] = []
+        for message in tempMessageDictionary {
+            messages.append(message.value)
+        }
         
         self.title = title
         self.identifier = identifier
