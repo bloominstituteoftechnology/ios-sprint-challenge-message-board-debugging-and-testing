@@ -20,10 +20,18 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
+		E94AFB1B23E4B95500F53E15 /* Message_BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94AFB1A23E4B95500F53E15 /* Message_BoardTests.swift */; };
 		E9C85C0323E2788400646184 /* Message_BoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C85C0223E2788400646184 /* Message_BoardUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E94AFB1D23E4B95500F53E15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4612B5C3211AB41100E7FF73;
+			remoteInfo = "Message Board";
+		};
 		E9C85C0523E2788400646184 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
@@ -49,10 +57,11 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
-		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
 		E93397F323E0AA30001E1013 /* MessageKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageKit.framework; path = "../ios-guided-project-third-party-libraries-and-dependency-management-starter/MessageBoardStart/Carthage/Build/iOS/MessageKit.framework"; sourceTree = "<group>"; };
 		E93397F723E0AA32001E1013 /* InputBarAccessoryView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputBarAccessoryView.framework; path = "../ios-guided-project-third-party-libraries-and-dependency-management-starter/MessageBoardStart/Carthage/Build/iOS/InputBarAccessoryView.framework"; sourceTree = "<group>"; };
+		E94AFB1823E4B95400F53E15 /* Message BoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Message BoardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E94AFB1A23E4B95500F53E15 /* Message_BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message_BoardTests.swift; sourceTree = "<group>"; };
+		E94AFB1C23E4B95500F53E15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C85C0023E2788400646184 /* Message BoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Message BoardUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C85C0223E2788400646184 /* Message_BoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message_BoardUITests.swift; sourceTree = "<group>"; };
 		E9C85C0423E2788400646184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +69,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		4612B5C1211AB41100E7FF73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E94AFB1523E4B95400F53E15 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				4612B5C6211AB41100E7FF73 /* Message Board */,
-				9D9B6AFD214B7A66006381F7 /* MessageBoardTests */,
 				E9C85C0123E2788400646184 /* Message BoardUITests */,
+				E94AFB1923E4B95500F53E15 /* Message BoardTests */,
 				4612B5C5211AB41100E7FF73 /* Products */,
 				E93397F223E0AA2F001E1013 /* Frameworks */,
 			);
@@ -92,6 +108,7 @@
 			children = (
 				4612B5C4211AB41100E7FF73 /* Message Board.app */,
 				E9C85C0023E2788400646184 /* Message BoardUITests.xctest */,
+				E94AFB1823E4B95400F53E15 /* Message BoardTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,15 +182,6 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		9D9B6AFD214B7A66006381F7 /* MessageBoardTests */ = {
-			isa = PBXGroup;
-			children = (
-				9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */,
-				9D9B6B00214B7A66006381F7 /* Info.plist */,
-			);
-			path = MessageBoardTests;
-			sourceTree = "<group>";
-		};
 		E93397F223E0AA2F001E1013 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +189,15 @@
 				E93397F323E0AA30001E1013 /* MessageKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E94AFB1923E4B95500F53E15 /* Message BoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				E94AFB1A23E4B95500F53E15 /* Message_BoardTests.swift */,
+				E94AFB1C23E4B95500F53E15 /* Info.plist */,
+			);
+			path = "Message BoardTests";
 			sourceTree = "<group>";
 		};
 		E9C85C0123E2788400646184 /* Message BoardUITests */ = {
@@ -211,6 +228,24 @@
 			productName = "Message Board";
 			productReference = 4612B5C4211AB41100E7FF73 /* Message Board.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E94AFB1723E4B95400F53E15 /* Message BoardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E94AFB2123E4B95500F53E15 /* Build configuration list for PBXNativeTarget "Message BoardTests" */;
+			buildPhases = (
+				E94AFB1423E4B95400F53E15 /* Sources */,
+				E94AFB1523E4B95400F53E15 /* Frameworks */,
+				E94AFB1623E4B95400F53E15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E94AFB1E23E4B95500F53E15 /* PBXTargetDependency */,
+			);
+			name = "Message BoardTests";
+			productName = "Message BoardTests";
+			productReference = E94AFB1823E4B95400F53E15 /* Message BoardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E9C85BFF23E2788400646184 /* Message BoardUITests */ = {
 			isa = PBXNativeTarget;
@@ -244,6 +279,10 @@
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1130;
 					};
+					E94AFB1723E4B95400F53E15 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 4612B5C3211AB41100E7FF73;
+					};
 					E9C85BFF23E2788400646184 = {
 						CreatedOnToolsVersion = 11.3;
 						TestTargetID = 4612B5C3211AB41100E7FF73;
@@ -265,6 +304,7 @@
 			targets = (
 				4612B5C3211AB41100E7FF73 /* Message Board */,
 				E9C85BFF23E2788400646184 /* Message BoardUITests */,
+				E94AFB1723E4B95400F53E15 /* Message BoardTests */,
 			);
 		};
 /* End PBXProject section */
@@ -278,6 +318,13 @@
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,
 				4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E94AFB1623E4B95400F53E15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +354,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E94AFB1423E4B95400F53E15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E94AFB1B23E4B95500F53E15 /* Message_BoardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9C85BFC23E2788400646184 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +373,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E94AFB1E23E4B95500F53E15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
+			targetProxy = E94AFB1D23E4B95500F53E15 /* PBXContainerItemProxy */;
+		};
 		E9C85C0623E2788400646184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
@@ -495,6 +555,49 @@
 			};
 			name = Release;
 		};
+		E94AFB1F23E4B95500F53E15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Message BoardTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lambdaschool.Message-BoardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
+			};
+			name = Debug;
+		};
+		E94AFB2023E4B95500F53E15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Message BoardTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lambdaschool.Message-BoardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
+			};
+			name = Release;
+		};
 		E9C85C0823E2788400646184 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -553,6 +656,15 @@
 			buildConfigurations = (
 				4612B5D7211AB41300E7FF73 /* Debug */,
 				4612B5D8211AB41300E7FF73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E94AFB2123E4B95500F53E15 /* Build configuration list for PBXNativeTarget "Message BoardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E94AFB1F23E4B95500F53E15 /* Debug */,
+				E94AFB2023E4B95500F53E15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
