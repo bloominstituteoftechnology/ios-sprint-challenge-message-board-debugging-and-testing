@@ -23,4 +23,18 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreatingMessage() {
+        app.tables.staticTexts["A New Thread"].tap()
+        app.buttons["Add"].tap()
+        
+        app.textFields["Enter your name:"].tap()
+        app.buttons["Send"].tap()
+        
+        XCTAssertEqual(app.navigationBars.staticTexts.firstMatch.label, "A New Thread")
+    }
+    
+    func testInitial() {
+                                        let app = XCUIApplication()
+        XCTAssertTrue(app.tables.cells.count > 0)
+    }
 }
