@@ -30,12 +30,17 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
+            
             do {
-                self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data).values)
+                let jsonDecoder = JSONDecoder()
+                let threads = try jsonDecoder.decode([String: MessageThread].self, from: data)
+                self.messageThreads = Array(threads.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
+            
+            
             
             completion()
         }.resume()
@@ -111,6 +116,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://message-thread.firebaseio.com/Sprint-Challenge")!
+    static let baseURL = URL(string: "https://message-thread.firebaseio.com/Alex")!
     var messageThreads: [MessageThread] = []
 }
