@@ -53,18 +53,6 @@ func testAddNewMessageThread() {
         app.buttons["return"].tap()
     
     }
-//       XCTAssertTrue(nameTextField.exists)
-//       nameTextField.tap()
-//       nameTextField.typeText("Jerry")
-//       app.buttons["return"].tap()
-//
-//       XCTAssertTrue(newMessageTextView.exists)
-//       newMessageTextView.tap()
-//       newMessageTextView.typeText("Howdy")
-//       app.buttons["return"].tap()
-//
-//       XCTAssertTrue(sendButton.exists)
-//       sendButton.tap()
 
    }
     
