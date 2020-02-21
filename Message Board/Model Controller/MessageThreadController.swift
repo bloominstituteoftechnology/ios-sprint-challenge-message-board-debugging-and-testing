@@ -16,6 +16,8 @@ class MessageThreadController {
     static let baseURL = URL(string: "https://messageboardsprint-2f338.firebaseio.com/")!
     // OLD ONE
     //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    
+    /// Array of MessageThreads (displaye on main tableview)
     var messageThreads: [MessageThread] = []
 
     

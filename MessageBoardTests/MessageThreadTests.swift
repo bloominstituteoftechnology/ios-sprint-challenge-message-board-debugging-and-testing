@@ -12,11 +12,18 @@ import XCTest
 class MessageThreadTests: XCTestCase {
     
     /// Didn't want to keep creating a new one
-    private var messageThreadController: MessageThreadController?
+    private var messageThreadController: MessageThreadController!
     
     /// Do this every time a test runs
     override func setUp() {
         messageThreadController = MessageThreadController()
     }
     
+    /// Tests to see if MessageThreads can be created (this isn't putting to server though)
+    func testCreateThread() {
+        messageThreadController?.createMessageThread(with: "Goober", completion: {
+            let allThreads = self.messageThreadController?.messageThreads
+            XCTAssertGreaterThan(allThreads!.count, 0, "testCreateThread failed. Count is 0")
+        })
+    }
 }
