@@ -41,7 +41,7 @@ class MessageThreadController {
             
             do {
                 // Bug 2? expects array gets dictionary instead
-                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({$0.value})
+                self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
