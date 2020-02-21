@@ -68,7 +68,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
-            completion()
+            completion() // Bug 2?
             return
         }
         
@@ -83,7 +83,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }.resume()
+        }.resume() // Bug 1 
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
