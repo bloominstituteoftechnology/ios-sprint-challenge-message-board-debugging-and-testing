@@ -40,7 +40,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // Bug 2? expects array gets dictionary instead
+                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({$0.value})
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -68,7 +69,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
-            completion() // Bug 2?
+            completion() // added this, might not need tho
             return
         }
         
@@ -83,7 +84,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }.resume() // Bug 1 
+        }.resume() // Bug 1
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
