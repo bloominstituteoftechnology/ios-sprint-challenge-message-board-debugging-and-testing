@@ -10,6 +10,15 @@ import Foundation
 
 class MessageThreadController {
     
+    // MARK: - Properties (THESE GO AT THE TOP GOD DAMN IT)
+    
+    // This one is from my firebase now
+    static let baseURL = URL(string: "https://messageboardsprint-2f338.firebaseio.com/")!
+    // OLD ONE
+    //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
+
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -59,6 +68,8 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            completion()
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -68,11 +79,11 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
+            // Success
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -110,10 +121,4 @@ class MessageThreadController {
             
         }.resume()
     }
-    
-    // This one is from my firebase now
-    static let baseURL = URL(string: "https://messageboardsprint-2f338.firebaseio.com/")!
-    // OLD ONE
-    //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
 }
