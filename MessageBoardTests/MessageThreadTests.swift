@@ -11,7 +11,12 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    /// Didn't want to keep creating a new one
+    private var messageThreadController: MessageThreadController?
+    
+    /// Do this every time a test runs
     override func setUp() {
-        
+        messageThreadController = MessageThreadController()
     }
+    
 }

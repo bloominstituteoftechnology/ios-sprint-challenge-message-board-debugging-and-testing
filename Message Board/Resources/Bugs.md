@@ -27,4 +27,8 @@ BUG 2. Threads wouldn't be fetched when app loaded (func fetchMessageThreads(com
     Fix - changed to self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({$0.value})
 
 BUG 3. Messages not being PUT
-    Fix - corrected spelling in -> if segue.identifier == "AddMessage" (putting messages now keeps threads from fetching at start though!)
+Fix - corrected spelling in -> if segue.identifier == "AddMessage" / also added this to MessageThread.swift: let messagesContainer = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
+    var messagesArray = [Message]()
+    for message in messagesContainer {messagesArray.append(message.value)}
+
+BUG 4. Cells keep rearranging when switching screens
