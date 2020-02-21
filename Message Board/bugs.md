@@ -4,16 +4,14 @@
 
 # Logic Bugs
 
-### MessageThreadController.Swift
+### Existing
+#### MessageThreadController.Swift
 * Dummy Data doesn't load during UITesting
     argument is being passed, verified by breakpoint
-    
-* Line 37: Error decoding message threads from JSON data: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil))
 
+#### Unknown file (trace)
 
-
-### Unknown file (trace)
-
+***
 ### Resolved
 #### MessageThreadController.createMessageThread
 * Records aren't being PUT - no error in console 
