@@ -18,9 +18,13 @@ class MessageDetailViewController: UIViewController {
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
         
+        // Function not even being called
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        
+        // View Controller not being dismissed
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
