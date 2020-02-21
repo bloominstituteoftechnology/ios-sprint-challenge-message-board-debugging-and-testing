@@ -50,6 +50,14 @@ class MessageThreadsTableViewController: UITableViewController {
         return cell
     }
     
+    // ADDED DELETE FUNCTION EVEN THOUGH IT DOESN'T DELETE FROM FIREBASE! // JUST FOR GIGGLES!
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            messageThreadController.messageThreads.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -31,7 +31,7 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map() { $0.value }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -55,7 +55,6 @@ class MessageThreadController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
-        // MARK: - BUG // Missing "return" at the end of the do/catch block
         do {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
@@ -63,7 +62,6 @@ class MessageThreadController {
             return
         }
         
-        // MARK: - BUG // Added .resume() at the bottom of this URLSession.
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
@@ -88,7 +86,7 @@ class MessageThreadController {
         
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
-        let message = MessageThread.Message(text: text, sender: sender)
+        let message = MessageThread.Message(messageText: text, sender: sender)
         messageThreads[index].messages.append(message)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
@@ -114,7 +112,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    //MARK: - updated firebase url
     static let baseURL = URL(string: "https://lambdamessageboard.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
