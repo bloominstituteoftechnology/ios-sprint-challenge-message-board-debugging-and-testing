@@ -16,7 +16,9 @@ class MessageThreadController {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            fetchLocalMessageThreads(completion: completion)
+            fetchLocalMessageThreads {
+                completion()
+            }
             return
         }
         
@@ -29,7 +31,6 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
             do {
                 
                 let messageResults = try JSONDecoder().decode([String: MessageThread].self, from: data)
