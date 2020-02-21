@@ -25,3 +25,6 @@ BUG 1. Threads not being PUT to server
 
 BUG 2. Threads wouldn't be fetched when app loaded (func fetchMessageThreads(completion: @escaping () -> Void))
     Fix - changed to self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({$0.value})
+
+BUG 3. Messages not being PUT
+    Fix - corrected spelling in -> if segue.identifier == "AddMessage" (putting messages now keeps threads from fetching at start though!)
