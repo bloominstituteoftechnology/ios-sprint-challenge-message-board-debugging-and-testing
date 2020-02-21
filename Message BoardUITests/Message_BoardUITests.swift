@@ -23,4 +23,29 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    /*
+     func testExpectation() {
+         let didFinish = expectation(description: "didFinish")
+         var name = ""
+         let url = URL(string: "https://apple.com")!
+
+         URLSession.shared.dataTask(with: url) { (data, _, _) in
+             didFinish.fulfill()
+             name = "Dave"
+         }.resume()
+
+         wait(for: [didFinish], timeout: 5) // blocking sync wait
+
+         // Assertion only happens after the time out, or web request completes
+         XCTAssertEqual("Dave", name)
+     }
+     */
+    func testSearchbarExists() {
+        // I dont know why even this won't work
+        XCTAssert(searchBar.exists)
+    }
+    
+    private var searchBar: XCUIElement {
+        return app.textFields["SearchBar"]
+    }
 }
