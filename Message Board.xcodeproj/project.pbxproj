@@ -115,6 +115,7 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
+				B9D93D4C24003760009B2BB5 /* bugs.md */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
@@ -139,7 +140,6 @@
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
-				B9D93D4C24003760009B2BB5 /* bugs.md */,
 			);
 			path = "Message BoardUITests";
 			sourceTree = "<group>";

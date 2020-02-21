@@ -1,11 +1,3 @@
-//
-//  bugs.md
-//  Message BoardUITests
-//
-//  Created by Kenny on 2/21/20.
-//  Copyright © 2020 Lambda School. All rights reserved.
-//
-
 # UI Bugs
 
 
@@ -18,5 +10,7 @@
 
 
 ### Unknown file (trace)
-* Records aren't being PUT - no error in console
+
+### Resolved
+* Records aren't being PUT - no error in console - dataTask was missing .resume() 
 
