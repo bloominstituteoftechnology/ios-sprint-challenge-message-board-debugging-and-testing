@@ -14,7 +14,6 @@ extension MessageThreadController {
         
         do {
             let mockData = try Data(contentsOf: mockDataURL)
-            
             self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: mockData).values)
             
         } catch {
@@ -33,9 +32,9 @@ extension MessageThreadController {
     
     func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
-        let message = MessageThread.Message(text: text, sender: sender)
+        let message = MessageThread.Message(messageText: text, sender: sender)
         messageThreads[index].messages.append(message)
         
         completion()
