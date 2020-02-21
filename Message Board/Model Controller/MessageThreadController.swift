@@ -28,11 +28,6 @@ class MessageThreadController {
                 return
             }
             
-            if let response = response {
-                print(response)
-                print(String(data: data!, encoding: .utf8))
-            }
-            
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
@@ -86,6 +81,8 @@ class MessageThreadController {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+            #warning("added during debugging another issue test later")
+            completion()
             return
         }
         
