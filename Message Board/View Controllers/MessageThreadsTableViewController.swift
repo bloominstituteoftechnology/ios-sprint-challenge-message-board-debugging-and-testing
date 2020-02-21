@@ -10,14 +10,30 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    
+    let messageThreadController = MessageThreadController()
+    
+    @IBOutlet weak var threadTitleTextField: UITextField!
+    
+    
+    // MARK: - Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if messageThreadController.messageThreads.isEmpty {
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                }
             }
         }
+    }
+    
+   @IBAction func refresh(sender: AnyObject) {
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     // MARK: - Actions
@@ -45,6 +61,7 @@ class MessageThreadsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
+        cell.accessibilityIdentifier = "ThreadCell"
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
 
         return cell
@@ -62,9 +79,4 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Properties
-    
-    let messageThreadController = MessageThreadController()
-    
-    @IBOutlet weak var threadTitleTextField: UITextField!
 }
