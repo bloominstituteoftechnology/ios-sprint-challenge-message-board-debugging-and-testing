@@ -11,7 +11,8 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     enum Identifier: String {
-        case cellLabel = "MessageThreadsTableViewController.CellTitleLabel"
+        case threadsCellLabel = "MessageThreadsTableViewController.CellTitleLabel"
+        case threadDetailCellTitleLabel = "MessageThreadDetailTableViewController.CellTitleLabel"
     }
     
     var app: XCUIApplication!
@@ -30,8 +31,8 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testCellHasLabel() {
-        let cellLabel = label(forId: .cellLabel)
-        XCTAssert(cellLabel.exists)
+        let threadsCellLabel = label(forId: .threadsCellLabel)
+        XCTAssert(threadsCellLabel.exists)
     }
     
 }
