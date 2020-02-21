@@ -9,8 +9,6 @@
 * Dummy Data doesn't load during UITesting
     argument is being passed, verified by breakpoint
     Workaround: Create Local Data in UI Tests (create message) - can then test based on that
-
-
 ***
 ### Resolved
 #### MessageThreadController.createMessageThread
@@ -27,10 +25,11 @@ Resolution: Data comes back as [String: Message] - parsed result to assign messa
 #### MessageDetailVC
 * Messages aren't being PUT - UI in MessageThreadDetailVC doesn't respond
     Resolution: segue identifier being checked when seguing from ThreadDetailVC was incorrect, preventing dependency injection
-
 ***
-##### Possible UX Improvements
-
-* Change keyboard done button text to add or something similar in ThreadsListTableViewVC
+#### Implemented UX Improvements
 * Pop MessageDetailVC on successfull message creation
+***
+
+##### Possible UX Improvements
+* Change keyboard done button text to add or something similar in ThreadsListTableViewVC
 * Error Message in MessageDetailVC when message can't be PUT

@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import Message_Board
 
 class Message_BoardUITests: XCTestCase {
     enum Identifier: String {
@@ -38,22 +37,23 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    func testNewThread() {
+    func newThread() {
         let app = XCUIApplication()
         app.tables["Empty list"].textFields[Identifier.newThreadTextField.rawValue].tap()
         app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
         let newThreadTextField = textField(forId: .newThreadTextField)
         newThreadTextField.tap()
-        newThreadTextField.typeText("Local Test")
+        let newThreadTitle = "Local Test"
+        newThreadTextField.typeText(newThreadTitle)
         app.keyboards.buttons["Return"].tap()
         let threadsCellLabel = label(forId: .threadsCellLabel)
         XCTAssert(threadsCellLabel.exists)
-        XCTAssertEqual(threadsCellLabel.label, "Local Test")
+        XCTAssertEqual(threadsCellLabel.label, newThreadTitle)
     }
     
     func testNewMessage() {
         //create a new local thread
-        testNewThread()
+        newThread()
         //test and tap the first cell
         XCTAssert(app.cells.element(boundBy: 0).isHittable)
         app.cells.element(boundBy: 0).tap()
@@ -66,12 +66,11 @@ class Message_BoardUITests: XCTestCase {
         XCTAssert(newMessageNameTextField.isHittable)
         //type text and save
         newMessageNameTextField.tap()
-        newMessageNameTextField.typeText("I'm a new message")
+        let messageText = "I'm a new message"
+        newMessageNameTextField.typeText(messageText)
         app.navigationBars["New Message"].buttons["Send"].tap()
-        //go back and check for message
-        let backButton = app.navigationBars["New Message"].buttons["Local Test"]
-        backButton.tap() //remove if pop VC
-        XCTAssert(app.staticTexts["I'm a new message"].exists)
+        
+        XCTAssert(app.staticTexts[messageText].exists)
     }
     
 }
