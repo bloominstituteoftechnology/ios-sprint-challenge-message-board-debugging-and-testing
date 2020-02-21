@@ -55,12 +55,15 @@ class MessageThreadController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
+        // MARK: - BUG // Missing "return" at the end of the do/catch block
         do {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            return
         }
         
+        // MARK: - BUG // Added .resume() at the bottom of this URLSession.
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
@@ -72,7 +75,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +114,7 @@ class MessageThreadController {
         }.resume()
     }
     
+    //MARK: - updated firebase url
     static let baseURL = URL(string: "https://lambdamessageboard.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
