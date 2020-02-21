@@ -9,6 +9,5 @@
 import Foundation
 
 var isUITesting: Bool {
-    print(CommandLine.arguments.contains("UITesting"))
     return CommandLine.arguments.contains("UITesting")
 }
