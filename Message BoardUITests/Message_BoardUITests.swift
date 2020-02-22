@@ -35,7 +35,7 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    ///
+    /// Tests to see if you can enter a thread into search bar and if it creates a cell
     func testSearchbarEnters() {
         let cell = app.cells.element(boundBy: 0)
         searchBar.tap()
@@ -44,6 +44,7 @@ class Message_BoardUITests: XCTestCase {
         XCTAssert(cell.exists)
     }
     
+    /// Tests to see if the back bar works after you tap on a cell
     func testFirstBackBar() {
         let cell = app.cells.element(boundBy: 0)
         searchBar.tap()
