@@ -10,6 +10,17 @@ import Foundation
 
 class MessageThreadController {
     
+    // MARK: - Properties (THESE GO AT THE TOP GOD DAMN IT)
+    
+    // This one is from my firebase now
+    static let baseURL = URL(string: "https://messageboardsprint-2f338.firebaseio.com/")!
+    // OLD ONE
+    //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    
+    /// Array of MessageThreads (displaye on main tableview)
+    var messageThreads: [MessageThread] = []
+
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -31,7 +42,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // Bug 2? expects array gets dictionary instead
+                self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -59,6 +71,8 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            completion() // added this, might not need tho
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -68,11 +82,11 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
+            // Success
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume() // Bug 1
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -110,7 +124,4 @@ class MessageThreadController {
             
         }.resume()
     }
-    
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
 }
