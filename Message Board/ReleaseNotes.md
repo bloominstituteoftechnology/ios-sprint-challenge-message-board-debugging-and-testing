@@ -17,7 +17,7 @@ Your messages are being stored safely in the cloud now and you'll be magically w
 You're now magically whisked back to the thread!
 ***
 ### Next Release:
-We plan on improving your user experience with user messages and UI updates!
+We plan on improving your user experience with error messages and UI updates!
 
 ***
 ### Known Issues:
