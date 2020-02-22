@@ -22,6 +22,9 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		B9D93D4D24003760009B2BB5 /* bugs.md in Resources */ = {isa = PBXBuildFile; fileRef = B9D93D4C24003760009B2BB5 /* bugs.md */; };
+		B9D93D4F2400A419009B2BB5 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D93D4E2400A419009B2BB5 /* UserDefaultsWrapper.swift */; };
+		B9D93D512400A70E009B2BB5 /* ReleaseNotes.md in Resources */ = {isa = PBXBuildFile; fileRef = B9D93D502400A70E009B2BB5 /* ReleaseNotes.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		B9D93D4C24003760009B2BB5 /* bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = bugs.md; sourceTree = "<group>"; };
+		B9D93D4E2400A419009B2BB5 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		B9D93D502400A70E009B2BB5 /* ReleaseNotes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReleaseNotes.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +119,13 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
+				B9D93D4C24003760009B2BB5 /* bugs.md */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
 				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602D211ABC0900E7FF73 /* Resources */,
+				B9D93D502400A70E009B2BB5 /* ReleaseNotes.md */,
 			);
 			path = "Message Board";
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				4612B5D9211AB66600E7FF73 /* MessageThread.swift */,
+				B9D93D4E2400A419009B2BB5 /* UserDefaultsWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D93D512400A70E009B2BB5 /* ReleaseNotes.md in Resources */,
 				4612B5D2211AB41300E7FF73 /* LaunchScreen.storyboard in Resources */,
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,
@@ -312,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D93D4D24003760009B2BB5 /* bugs.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +346,7 @@
 				4643602A211AB90900E7FF73 /* HTTPMethod.swift in Sources */,
 				46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */,
 				4629C7DE214B925E00E7FF73 /* IsUITesting.swift in Sources */,
+				B9D93D4F2400A419009B2BB5 /* UserDefaultsWrapper.swift in Sources */,
 				46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */,
 				46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */,
 				4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */,

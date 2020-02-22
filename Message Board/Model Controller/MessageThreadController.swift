@@ -16,11 +16,13 @@ class MessageThreadController {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            fetchLocalMessageThreads(completion: completion)
+            fetchLocalMessageThreads {
+                completion()
+            }
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
@@ -29,14 +31,14 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                
+                let messageResults = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                self.messageThreads = messageResults.map { $0.value }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
-            
             completion()
         }.resume()
     }
@@ -59,6 +61,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -72,7 +75,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +114,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://lambda-journal-debug-sprint.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
