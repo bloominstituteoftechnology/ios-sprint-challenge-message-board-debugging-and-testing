@@ -37,9 +37,21 @@ class Message_BoardUITests: XCTestCase {
     
     ///
     func testSearchbarEnters() {
+        let cell = app.cells.element(boundBy: 0)
         searchBar.tap()
         searchBar.typeText("Goobers")
         app.buttons["Return"].tap()
+        XCTAssert(cell.exists)
+    }
+    
+    func testFirstBackBar() {
+        let cell = app.cells.element(boundBy: 0)
+        searchBar.tap()
+        searchBar.typeText("Goobers")
+        app.buttons["Return"].tap()
+        cell.tap()
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssert(cell.exists)
     }
     
     /*
