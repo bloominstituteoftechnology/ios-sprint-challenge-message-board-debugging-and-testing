@@ -24,6 +24,7 @@
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 		B9D93D4D24003760009B2BB5 /* bugs.md in Resources */ = {isa = PBXBuildFile; fileRef = B9D93D4C24003760009B2BB5 /* bugs.md */; };
 		B9D93D4F2400A419009B2BB5 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D93D4E2400A419009B2BB5 /* UserDefaultsWrapper.swift */; };
+		B9D93D512400A70E009B2BB5 /* ReleaseNotes.md in Resources */ = {isa = PBXBuildFile; fileRef = B9D93D502400A70E009B2BB5 /* ReleaseNotes.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
 		B9D93D4C24003760009B2BB5 /* bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = bugs.md; sourceTree = "<group>"; };
 		B9D93D4E2400A419009B2BB5 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		B9D93D502400A70E009B2BB5 /* ReleaseNotes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReleaseNotes.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				46436031211ABC3900E7FF73 /* View Controllers */,
 				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602D211ABC0900E7FF73 /* Resources */,
+				B9D93D502400A70E009B2BB5 /* ReleaseNotes.md */,
 			);
 			path = "Message Board";
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D93D512400A70E009B2BB5 /* ReleaseNotes.md in Resources */,
 				4612B5D2211AB41300E7FF73 /* LaunchScreen.storyboard in Resources */,
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,
