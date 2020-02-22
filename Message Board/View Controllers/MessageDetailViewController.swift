@@ -9,7 +9,17 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
-
+    // MARK: - Properties
+    private var username = String()
+    
+    // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        if UserDefaultsConfig.username != username {
+            username = UserDefaultsConfig.username
+            senderNameTextField.text = username
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -17,9 +27,11 @@ class MessageDetailViewController: UIViewController {
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
-        
+        UserDefaultsConfig.username = senderName
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
 
