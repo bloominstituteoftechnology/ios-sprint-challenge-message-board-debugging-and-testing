@@ -111,6 +111,18 @@ class MessageThreadController {
         }.resume()
     }
     
+    func decodeMockMessages() {
+        let url = Bundle.main.url(forResource: "MockMessages", withExtension: "json")
+        let data = try! Data(contentsOf: url!)
+        let decoder = JSONDecoder()
+            
+        do {
+            let thread = Array(try decoder.decode([String : MessageThread].self, from: data).values)
+        } catch {
+            NSLog("Error decoding album")
+        }
+    }
+    
     static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
     static let newBaseURL = URL(string: "https://lambda-message-board-8d3fc.firebaseio.com/")!
     var messageThreads: [MessageThread] = []

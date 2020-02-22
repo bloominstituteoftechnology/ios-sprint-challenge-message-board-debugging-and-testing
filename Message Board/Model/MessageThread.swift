@@ -12,6 +12,7 @@ class MessageThread: Codable, Equatable {
 
     let title: String
     var messages: [MessageThread.Message]
+//    var messages: [Message]
     let identifier: String
     
     enum CodingKeys: String, CodingKey {
