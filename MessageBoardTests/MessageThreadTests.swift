@@ -19,8 +19,16 @@ class MessageThreadTests: XCTestCase {
         messageThreadController = MessageThreadController()
     }
     
-    /// Tests to see if MessageThreads can be created (this isn't putting to server though)
+    /// Tests to see if MessageThreads can be created
     func testCreateThread() {
+        messageThreadController?.createMessageThread(with: "Goober", completion: {
+            let allThreads = self.messageThreadController?.messageThreads
+            XCTAssertGreaterThan(allThreads!.count, 0, "testCreateThread failed. Count is 0")
+        })
+    }
+    
+    /// Tests to see if Messages can be created
+    func testCreatMessage() {
         messageThreadController?.createMessageThread(with: "Goober", completion: {
             let allThreads = self.messageThreadController?.messageThreads
             XCTAssertGreaterThan(allThreads!.count, 0, "testCreateThread failed. Count is 0")
