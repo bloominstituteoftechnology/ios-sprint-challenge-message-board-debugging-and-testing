@@ -22,6 +22,9 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		BFA183E7214C1C740025FA01 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA183E6214C1C740025FA01 /* XCTestCase+Extension.swift */; };
+		BFA183E9214C1C8D0025FA01 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA183E8214C1C8D0025FA01 /* TestPage.swift */; };
+		BFA183EB214C1CAC0025FA01 /* MessagesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA183EA214C1CAC0025FA01 /* MessagesPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		BFA183E6214C1C740025FA01 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
+		BFA183E8214C1C8D0025FA01 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		BFA183EA214C1CAC0025FA01 /* MessagesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,9 @@
 			isa = PBXGroup;
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
+				BFA183E6214C1C740025FA01 /* XCTestCase+Extension.swift */,
+				BFA183E8214C1C8D0025FA01 /* TestPage.swift */,
+				BFA183EA214C1CAC0025FA01 /* MessagesPage.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 			);
 			path = "Message BoardUITests";
@@ -345,6 +354,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA183E7214C1C740025FA01 /* XCTestCase+Extension.swift in Sources */,
+				BFA183E9214C1C8D0025FA01 /* TestPage.swift in Sources */,
+				BFA183EB214C1CAC0025FA01 /* MessagesPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
