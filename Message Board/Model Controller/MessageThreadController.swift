@@ -31,7 +31,7 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = Array(try JSONDecoder().decode([String : MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -72,18 +72,22 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
-    func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+    func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping (Error?) -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+            let uicompletion: () -> Void = {
+                
+            }
+            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: uicompletion)
+            completion(nil)
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.index(of: messageThread) else { completion(NSError(domain: "No message thread found", code: -1, userInfo: nil)); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -102,15 +106,29 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
-            completion()
+            guard let data = data else {
+                NSLog("No Data Returned")
+                completion(NSError(domain: "no data", code: -1, userInfo: nil))
+                return
+            }
             
+            let jsonDecoder = JSONDecoder()
+            do {
+                let _ = try jsonDecoder.decode([String: String].self, from: data)
+                
+                completion(nil)
+            } catch {
+                NSLog("Error decoding message: \(error)")
+                completion(error)
+            }
+     
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://message-board-98ac5.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
