@@ -12,15 +12,22 @@ class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
     
-    @IBAction func sendMessage(_ sender: Any) {
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "Detail Right Bar Button Item"
+    }
+    
+    
+    @IBAction func sendMessage(_ sender: UIBarButtonItem) {
+        print("He")
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
-        
+   
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
@@ -28,6 +35,15 @@ class MessageDetailViewController: UIViewController {
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
 
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var senderNameTextField: UITextField! {
+        didSet {
+            senderNameTextField.accessibilityIdentifier = "NameTextField"
+            senderNameTextField.becomeFirstResponder()
+        }
+    }
+    @IBOutlet weak var messageTextView: UITextView! {
+        didSet {
+            messageTextView.accessibilityIdentifier = "MessageTextView"
+        }
+    }
 }

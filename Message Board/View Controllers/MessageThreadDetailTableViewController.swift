@@ -10,9 +10,15 @@ import UIKit
 
 class MessageThreadDetailTableViewController: UITableViewController {
 
+    private enum Identifier : String {
+        case cell = "MessageCell"
+        case addSegue = "AddMessage"
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "Right Bar Button Item"
         title = messageThread?.title
     }
     
@@ -29,7 +35,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.cell.rawValue, for: indexPath)
 
         let message = messageThread?.messages[indexPath.row]
         
@@ -40,9 +46,10 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
-
+    
+   //MARK:- Typo Add Message: -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == Identifier.addSegue.rawValue {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController

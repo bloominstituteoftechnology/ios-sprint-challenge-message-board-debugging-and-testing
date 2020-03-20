@@ -10,8 +10,19 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    //MARK:- Change View Will Appear to View Did Load so that the threads don't disappear everytime we go back and forth.-
+    #warning("""
+    Bug List:
+    - Forgot to call resume()
+    - POST to PUT
+    - Typo
+    - Add CodingKey for text
+    - Decode Dictionary instead of Array
+    
+    """)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
@@ -19,6 +30,7 @@ class MessageThreadsTableViewController: UITableViewController {
             }
         }
     }
+
     
     // MARK: - Actions
     
@@ -31,6 +43,7 @@ class MessageThreadsTableViewController: UITableViewController {
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
+                
                 self.tableView.reloadData()
             }
         }
@@ -66,5 +79,10 @@ class MessageThreadsTableViewController: UITableViewController {
     
     let messageThreadController = MessageThreadController()
     
-    @IBOutlet weak var threadTitleTextField: UITextField!
+    @IBOutlet weak var threadTitleTextField: UITextField! {
+        didSet {
+            threadTitleTextField.accessibilityIdentifier = "MessageThreadsTableViewController.TextField"
+            threadTitleTextField.becomeFirstResponder()
+        }
+    }
 }
