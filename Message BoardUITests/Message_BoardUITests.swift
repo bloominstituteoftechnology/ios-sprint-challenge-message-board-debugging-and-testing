@@ -10,8 +10,19 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+    // MARK: - ENUM Identifier
+    enum Identifier: String {
+        case cellLabel = "MessageThreadsTableViewController.CellTitleLabel"
+    }
+    
     var app: XCUIApplication!
     
+    
+    func label(forID id: Identifier) -> XCUIElement {
+        return app.staticTexts[id.rawValue]
+    }
+    
+    // MARK: - Setup Function
     override func setUp() {
         super.setUp()
         
@@ -22,5 +33,7 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    // MARK: - Tests
     
 }
