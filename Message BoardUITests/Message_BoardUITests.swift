@@ -43,7 +43,17 @@ class Message_BoardUITests: XCTestCase {
     }
     
     
-  
+//    func testGoToMessageThreadDetailTableViewController() {
+//        firstTableCell.tap()
+//
+//        let app = XCUIApplication()
+//
+//
+//        let element = app.otherElements.statusBars.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1)
+//        element.swipeRight()
+//        element.swipeRight()
+//
+//    }
     
     
     
