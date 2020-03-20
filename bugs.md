@@ -42,3 +42,6 @@ SOLVED!! 1.) Decode Error
     MessageThreadController
     
     a.) Added Message Thread encoder @ Line 48 aa.) Added testCheckCreateNewAndEncode() to MessageThreadTests
+
+
+ADDED TESTS TO MESSAGETHREADTESTS & MESSAGE_BOARDUITESTS
