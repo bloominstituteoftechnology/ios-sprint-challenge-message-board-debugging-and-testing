@@ -60,7 +60,7 @@ class Message_BoardUITests: XCTestCase {
         backBtn.tap()
     }
     
-    func testCreateMsge() { // error will try to fix later 
+    func testCreateMsge() { // fixed error :))
         let searchTF = app.textFields["Create a new thread:"]
          searchTF.tap()
 
