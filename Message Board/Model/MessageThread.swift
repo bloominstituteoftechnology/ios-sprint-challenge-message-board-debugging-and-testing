@@ -25,13 +25,18 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
+        var messagesArr: [Message] = []
+        
+        for message in messages {
+            messagesArr.append(message.value)
+        }
         
         self.title = title
+        self.messages = messagesArr
         self.identifier = identifier
-        self.messages = messages
+        
     }
-
     
     struct Message: Codable, Equatable {
         
