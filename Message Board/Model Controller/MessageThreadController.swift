@@ -63,6 +63,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -83,7 +84,6 @@ class MessageThreadController {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
-            completion()
             return
         }
         
