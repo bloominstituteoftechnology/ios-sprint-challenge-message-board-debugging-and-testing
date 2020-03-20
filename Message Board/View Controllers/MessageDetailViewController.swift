@@ -20,6 +20,10 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            
+            DispatchQueue.main.async { // fixed send
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
 
