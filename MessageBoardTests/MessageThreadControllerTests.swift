@@ -32,6 +32,18 @@ class MessageThreadControllerTests: XCTestCase {
         XCTAssertGreaterThan(messageThreadController.messageThreads.count, currentMessageThreadsCount)
     }
     
-    
+    func testGettingThreadsFromServer() {
+        let messageThreadController = MessageThreadController()
+        let currentMessageThreadsCount = messageThreadController.messageThreads.count
+        
+        let dataExpectation = expectation(description: "Get data to API")
+        
+        messageThreadController.fetchMessageThreads {
+            dataExpectation.fulfill()
+        }
+        
+        wait(for: [dataExpectation], timeout: 5)
+        XCTAssertGreaterThan(messageThreadController.messageThreads.count, currentMessageThreadsCount)
+    }
 
 }
