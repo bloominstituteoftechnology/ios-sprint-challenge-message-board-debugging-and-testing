@@ -82,7 +82,7 @@ class Message_BoardUITests: XCTestCase {
         messageTextView.tap()
         detailRightBarButtonItem.tap()
         XCTAssertTrue(app.tables.staticTexts["Hello World"].exists)
-        
+        XCTAssertTrue(app.tables.staticTexts["Message"].exists)
     
     }
 
