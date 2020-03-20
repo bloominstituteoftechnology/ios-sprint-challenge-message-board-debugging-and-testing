@@ -41,19 +41,18 @@ class Message_BoardUITests: XCTestCase {
     
     func testCreateThread() {
         threadTF.tap()
-        threadTF.typeText("UITestThread")
+        threadTF.typeText("CreatedUITestThread")
         app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards.buttons[\"Return\"]",".buttons[\"Return\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
     
     func openThread() {
         app.tables.staticTexts["UITestThread"].tap()
+        
     }
     
     func testOpenThread() {
         openThread()
         app.navigationBars["UITestThread"].buttons["λ Message Board"].tap()
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Fede"]/*[[".cells.staticTexts[\"Fede\"]",".staticTexts[\"Fede\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["Fede"].buttons["λ Message Board"].tap()
     }
     
     func testCreateMessage() {
