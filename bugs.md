@@ -21,7 +21,7 @@ SOLVED!! 1.) Decode Error
 
 
 
-2.) UNSOLVED - App Doesn't Upload New Thread?/NewThread Doesn't Appear in MessageThreadTableViewContoller
+2.) SOLVED!!!! - App Doesn't Upload New Thread?/NewThread Doesn't Appear in MessageThreadTableViewContoller
 
     Message Thread Controller
     a.) Added Message Thread encoder @ Line 48 aa.) Added testCheckCreateNewAndEncode() to MessageThreadTests
