@@ -33,7 +33,7 @@ class MessageThreadController {
             do {
                 let messageDecoded = try JSONDecoder().decode([String:MessageThread].self, from: data)
                 self.messageThreads = messageDecoded.map { $0.value }
-                // Decode Dictionary instead of Array.
+                //MARK:- Decode Dictionary instead of Array-
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -57,7 +57,9 @@ class MessageThreadController {
         
         var request = URLRequest(url: requestURL)
         
-        request.httpMethod = HTTPMethod.put.rawValue // Change post to put for the sake of Firebase .
+       
+        
+        request.httpMethod = HTTPMethod.put.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
@@ -75,29 +77,30 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }.resume() // Forgot to call resume() 
+            //MARK:- Forgot to call resume() -
+        }.resume()
         
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
-            return
-        }
+//        if isUITesting {
+//            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+//            return
+//        }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
-        
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
+   
         let message = MessageThread.Message(text: text, sender: sender)
+        
         messageThreads[index].messages.append(message)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
-        
-        request.httpMethod = HTTPMethod.put.rawValue //
+          //MARK:- Change post to put for the sake of Firebase-
+        request.httpMethod = HTTPMethod.put.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
