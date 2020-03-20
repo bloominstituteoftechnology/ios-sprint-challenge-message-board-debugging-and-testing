@@ -10,7 +10,7 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
-    
+    // Change View Will Appear to View Did Load so that the threads don't disappear everytime we go back and forth.
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -31,7 +31,9 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageDecoded = try JSONDecoder().decode([String:MessageThread].self, from: data)
+                self.messageThreads = messageDecoded.map { $0.value }
+                // Decode Dictionary instead of Array.
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -55,7 +57,7 @@ class MessageThreadController {
         
         var request = URLRequest(url: requestURL)
         
-        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue // Change post to put for the sake of Firebase .
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
@@ -95,7 +97,7 @@ class MessageThreadController {
         
         var request = URLRequest(url: requestURL)
         
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue //
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
