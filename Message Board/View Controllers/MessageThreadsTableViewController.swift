@@ -26,9 +26,10 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.resignFirstResponder()
 
         guard let threadTitle = threadTitleTextField.text else { return }
-        
+		
+		//MARK: TEXT CREATED EMPTY
         threadTitleTextField.text = ""
-        
+		
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()

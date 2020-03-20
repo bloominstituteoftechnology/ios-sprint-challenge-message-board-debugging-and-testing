@@ -19,7 +19,10 @@ class MessageThreadController {
             fetchLocalMessageThreads(completion: completion)
             return
         }
-        
+		
+		
+		// MARK: Error fetching data from firebase
+		
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
@@ -31,7 +34,9 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+				/// MARK - ERROR DECODING JSON
+				let  messageThreadsDecoded = try JSONDecoder().decode([String: MessageThread].self, from: data)
+				self.messageThreads = Array(messageThreadsDecoded.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -50,6 +55,8 @@ class MessageThreadController {
         }
         
         let thread = MessageThread(title: title)
+		
+		// MARK: data not being sent to firebase
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -60,6 +67,8 @@ class MessageThreadController {
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
         }
+		
+		// MARK: messages not being sent to firebase
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
@@ -72,7 +81,9 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
+		
+		
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +122,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://projects-779a2.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
