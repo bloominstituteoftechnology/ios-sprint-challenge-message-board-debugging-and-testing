@@ -29,6 +29,7 @@ SOLVED!! 1.) Decode Error
     c.) Changed request.httpMethod to request.httpMethod = HTTPMethod.put.rawValue
     d.) Added .resume() to line 78
     
-    MessageThreadsTableViewController
-    a.) Added !threadTitle.isEmpty to preserve function
-    
+
+    3.) MessageDetailViewController send button doesn't work:
+        MessageThreadsTableViewController
+        a.) Added !threadTitle.isEmpty to preserve function
