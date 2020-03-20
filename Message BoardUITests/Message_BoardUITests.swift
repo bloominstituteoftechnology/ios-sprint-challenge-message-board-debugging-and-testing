@@ -47,9 +47,43 @@ class Message_BoardUITests: XCTestCase {
         
         let sendButton = navBar.buttons.element(boundBy: 1)
         sendButton.tap()
+        let didFinish = expectation(description: "didFinish")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            XCTAssertFalse(senderField.exists)
+            didFinish.fulfill()
         }
+        wait(for: [didFinish], timeout: 3)
+        XCTAssertFalse(senderField.exists)
+        
+    }
+    
+    func testLoadMessageThreads() {
+        let firstCell = app.cells.firstMatch
+        XCTAssertTrue(firstCell.exists)
+    }
+    
+    func testViewingAMessageThread() {
+        let threadCell = app.cells.firstMatch
+        threadCell.tap()
+        let cells = app.cells
+     
+        let didFinish = expectation(description: "didFinish")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            didFinish.fulfill()
+        }
+        
+        wait(for: [didFinish], timeout: 5)
+        
+        XCTAssertGreaterThan(cells.count, 0)
+        let messageCell = app.cells.firstMatch
+        XCTAssertEqual(messageCell.staticTexts.firstMatch.label, "It’s working!")
+  
+    }
+    
+    func testCreatingAMessageThread() {
+        let newThreadField = app.textFields["CreatNewThreadField"]
+        newThreadField.tap()
+        newThreadField.typeText("Test creating thread in UI Tests")
+        app.keyboards.buttons["Return"].tap()
         
     }
     
