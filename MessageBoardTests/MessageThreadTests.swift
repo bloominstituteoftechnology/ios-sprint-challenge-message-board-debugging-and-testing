@@ -13,6 +13,7 @@ class MessageThreadTests: XCTestCase {
     
    
     
+    
     func testCheckCreateNewAndEncode() {
         let testThreadController = MessageThreadController()
         let testThread = MessageThread(title: "Test Thread")
@@ -26,6 +27,11 @@ class MessageThreadTests: XCTestCase {
         
         XCTAssertEqual(testThread, threadFromJSON)
            
+    }
+    
+    func testFetchRequests() {
+        let testThreadController = MessageThreadController()
+        XCTAssertNotNil(testThreadController.messageThreads)
     }
     
     

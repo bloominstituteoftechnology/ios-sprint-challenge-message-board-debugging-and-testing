@@ -30,7 +30,7 @@ SOLVED!! 1.) Decode Error
     c.) Added .resume() to line 78
     
 
-3.) MessageDetailViewController send button doesn't work
+3.) SOLVED MessageDetailViewController send button doesn't work
 
     MessageThreadsTableViewController
     a.) Added !threadTitle.isEmpty to preserve function
