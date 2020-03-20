@@ -43,19 +43,50 @@ class MessageThreadController {
             
             completion()
         }.resume()
-        
     }
+    
+//    func createMessageThread(with title: String, completion: @escaping () -> Void) {
+//
+//        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+//        if isUITesting {
+//            createLocalMessageThread(with: title, completion: completion)
+//            return
+//        }
+//
+//        let thread = MessageThread(title: title)
+//
+//        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = HTTPMethod.put.rawValue
+//
+//        do {
+//            request.httpBody = try JSONEncoder().encode(thread)
+//        } catch {
+//            NSLog("Error encoding thread to JSON: \(error)")
+//        }
+//
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+//
+//            if let error = error {
+//                NSLog("Error with message thread creation data task: \(error)")
+//                completion()
+//                return
+//            }
+//
+//            self.messageThreads.append(thread)
+//            completion()
+//
+//        }
+//    }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
             return
         }
         
         let thread = MessageThread(title: title)
-        
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
@@ -76,8 +107,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+        }.resume() // We missed you!!!!! :'(
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {

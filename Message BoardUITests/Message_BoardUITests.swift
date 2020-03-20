@@ -32,7 +32,6 @@ class Message_BoardUITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
         continueAfterFailure = false
         
         // NOTE: Keep this setup as is for UI Testing
