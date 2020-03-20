@@ -10,6 +10,10 @@ import Foundation
 
 extension MessageThreadController {
     
+    var mockDataURL: URL {
+        return Bundle.main.url(forResource: "MockMessages", withExtension: "json")!
+    }
+    
     func fetchLocalMessageThreads(completion: @escaping () -> Void) {
         
         do {
@@ -39,9 +43,5 @@ extension MessageThreadController {
         messageThreads[index].messages.append(message)
         
         completion()
-    }
-    
-    var mockDataURL: URL {
-        return Bundle.main.url(forResource: "MockMessages", withExtension: "json")!
     }
 }
