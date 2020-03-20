@@ -11,10 +11,24 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+    // MARK: - Properties
     var app: XCUIApplication! {
         return XCUIApplication()
     }
 
+    private var createThread: XCUIElement {
+        return app.tables.textFields["Create a new thread:"]
+    }
+    
+    private var sender: XCUIElement {
+        return app.textFields["SenderNameTextField"]
+    }
+    
+    private var messageText: XCUIElement {
+        return app.textViews["MessageTextview"]
+    }
+    
+    // MARK: - SetUp Function
     override func setUp() {
         super.setUp()
 
@@ -26,6 +40,7 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 
+    // MARK: - Tests
     func testCreateThread() {
         createThread.tap()
         createThread.typeText("UITest")
@@ -39,16 +54,20 @@ class Message_BoardUITests: XCTestCase {
         app.keyboards.buttons["Return"].tap()
         XCTAssertTrue(app.tables.staticTexts["Another Text"].exists)
     }
+    
+    func testExpectation() {
+        let didFinish = expectation(description: "didFinish")
+        var name = ""
+        let url = URL(string: "https://apple.com")!
 
-    private var createThread: XCUIElement {
-        return app.tables.textFields["Create a new thread:"]
-    }
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            didFinish.fulfill()
+            name = "Enrique"
+        }.resume()
 
-    private var sender: XCUIElement {
-        return app.textFields["SenderNameTextField"]
-    }
+        wait(for: [didFinish], timeout: 5) // blocking sync wait
 
-    private var messageText: XCUIElement {
-        return app.textViews["MessageTextview"]
+        // Assertion only happens after the time out, or web request completes
+        XCTAssertEqual("Enrique", name)
     }
 }
