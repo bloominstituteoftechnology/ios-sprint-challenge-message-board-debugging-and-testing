@@ -20,7 +20,7 @@ class MessageThreadController {
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
+        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
@@ -29,11 +29,7 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
-            if let response = response {
-                print(response)
-                print(String(data: data, encoding: .utf8) as Any)
-            }
+
             
             do {
                 let messageResult = try JSONDecoder().decode([String : MessageThread].self, from: data)
@@ -85,6 +81,7 @@ class MessageThreadController {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+            completion()
             return
         }
         
