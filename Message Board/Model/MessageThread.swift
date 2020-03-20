@@ -25,17 +25,17 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([String:Message].self, forKey: .messages) ?? [:]
+        let messages = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:]
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages.compactMap { $0.value}
+        self.messages = messages.map({ $0.value })
     }
 
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
+        let messageText: String 
         let sender: String
         let timestamp: Date
         
@@ -43,6 +43,12 @@ class MessageThread: Codable, Equatable {
             self.messageText = text
             self.sender = sender
             self.timestamp = timestamp
+        }
+        
+        enum CodingKeys: String, CodingKey {
+            case messageText = "text"
+            case sender
+            case timestamp
         }
     }
     

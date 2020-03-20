@@ -10,21 +10,32 @@ import Foundation
 
 class MessageThreadController {
     
+    
+    static let baseURL = URL(string: "https://sprint-69fc2.firebaseio.com/")!
+       var messageThreads: [MessageThread] = []
+    
+    
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
-                completion()
+                DispatchQueue.main.async {
+                      completion()
+                }
+              
                 return
             }
             
@@ -56,10 +67,8 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
-        
-       
-        
         request.httpMethod = HTTPMethod.put.rawValue
+        
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
@@ -83,44 +92,43 @@ class MessageThreadController {
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+           
+           // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+           if isUITesting {
+               createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+               return
+           }
+           
+           guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+           
+           let message = MessageThread.Message(text: text, sender: sender)
+           messageThreads[index].messages.append(message)
+           
+           let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+           var request = URLRequest(url: requestURL)
+           request.httpMethod = HTTPMethod.post.rawValue
+           
+           do {
+               request.httpBody = try JSONEncoder().encode(message)
+           } catch {
+               NSLog("Error encoding message to JSON: \(error)")
+           }
+           
+           URLSession.shared.dataTask(with: request) { (data, _, error) in
+               
+               if let error = error {
+                   NSLog("Error with message thread creation data task: \(error)")
+                
+                       completion()
+                   
+                   return
+               }
+            
+                   completion()
+               
+           }.resume()
         
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-//        if isUITesting {
-//            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
-//            return
-//        }
-        
-        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
+       }
+       
    
-        let message = MessageThread.Message(text: text, sender: sender)
-        
-        messageThreads[index].messages.append(message)
-        
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
-        
-        var request = URLRequest(url: requestURL)
-          //MARK:- Change post to put for the sake of Firebase-
-        request.httpMethod = HTTPMethod.put.rawValue
-        
-        do {
-            request.httpBody = try JSONEncoder().encode(message)
-        } catch {
-            NSLog("Error encoding message to JSON: \(error)")
-        }
-        
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
-            if let error = error {
-                NSLog("Error with message thread creation data task: \(error)")
-                completion()
-                return
-            }
-            
-            completion()
-            
-        }.resume()
-    }
-    
-    static let baseURL = URL(string: "https://sprint-69fc2.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
 }
