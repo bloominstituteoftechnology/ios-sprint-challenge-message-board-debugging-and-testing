@@ -10,8 +10,9 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
@@ -19,6 +20,7 @@ class MessageThreadsTableViewController: UITableViewController {
             }
         }
     }
+
     
     // MARK: - Actions
     
