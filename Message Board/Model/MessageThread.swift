@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum CodingKeys: String, CodingKey {
+    case title
+    case identifier
+    case messages
+}
+
 class MessageThread: Codable, Equatable {
 
     let title: String
@@ -39,11 +45,30 @@ class MessageThread: Codable, Equatable {
         let sender: String
         let timestamp: Date
         
+//        enum MessageCodingKeys: String, CodingKey {
+//            case text
+//            case sender
+//            case timestamp
+//        }
+        
         init(text: String, sender: String, timestamp: Date = Date()) {
             self.messageText = text
             self.sender = sender
             self.timestamp = timestamp
         }
+        
+//        init(from decoder: Decoder) throws {
+//            let container = try decoder.container(keyedBy: MessageCodingKeys.self)
+//
+//            let text = try container.decode(String.self, forKey: .text)
+//            let sender = try container.decode(String.self, forKey: .sender)
+//            let timestamp = try container.decode(Date.self, forKey: .timestamp)
+//
+//            self.messageText = text
+//            self.sender = sender
+//            self.timestamp = timestamp
+//        }
+        
     }
     
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {

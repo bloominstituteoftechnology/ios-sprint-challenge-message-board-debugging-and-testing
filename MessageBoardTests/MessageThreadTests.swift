@@ -32,7 +32,7 @@ class MessageThreadTests: XCTestCase {
     }
     
     func testGetDataTask() {
-        var thrownError: Error?
+//        var thrownError: Error?
         
         let expectation = XCTestExpectation(description: "Waiting for network")
         URLSession.shared.dataTask(with:  Keys.baseURL.appendingPathComponent("json")) { (data, _, error) in
