@@ -11,7 +11,15 @@ import UIKit
 class MessageThreadsTableViewController: UITableViewController {
 
     //MARK:- Change View Will Appear to View Did Load so that the threads don't disappear everytime we go back and forth.-
+    #warning("""
+    Bug List:
+    - Forgot to call resume()
+    - POST to PUT
+    - Typo
+    - Add CodingKey for text
+    - Decode Dictionary instead of Array
     
+    """)
     
     override func viewDidLoad() {
         super.viewDidLoad()

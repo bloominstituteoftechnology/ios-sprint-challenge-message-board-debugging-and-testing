@@ -68,10 +68,4 @@ class Message_BoardUITests: XCTestCase {
     }
 
 
-    
-    
-    
-    
-    
-    
 }
