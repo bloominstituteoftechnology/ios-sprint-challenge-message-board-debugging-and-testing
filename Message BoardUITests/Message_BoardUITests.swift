@@ -10,18 +10,27 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
-    var app: XCUIApplication!
+   private var app: XCUIApplication!
     
-    var textField: XCUIElement {
+    private var textField: XCUIElement {
         return app.textFields["MessageThreadsTableViewController.TextField"]
     }
     
-    var navTitle: XCUIElement {
+    private var navTitle: XCUIElement {
         return app.navigationBars["λ Message Board"].staticTexts["λ Message Board"]
     }
     
-    var firstTableCell: XCUIElement {
+    private var firstTableCell: XCUIElement {
         return app.tables.element(boundBy: 0)
+    }
+    
+    private var senderNameTextField: XCUIElement {
+        return app.textFields["NameTextField"]
+    }
+    
+    
+    private var messageTextView: XCUIElement {
+        return app.textViews["MessageTextView"]
     }
     
     override func setUp() {
@@ -34,7 +43,9 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
-    
+    private var threadTextField: XCUIElement {
+           return app.tables.textFields["Create a new thread:"]
+       }
     
     
     func testFirstLaunch() {
@@ -42,18 +53,21 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual(textField.placeholderValue!, "Create a new thread:")
     }
     
-    
-//    func testGoToMessageThreadDetailTableViewController() {
-//        firstTableCell.tap()
-//
-//        let app = XCUIApplication()
-//
-//
-//        let element = app.otherElements.statusBars.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1)
-//        element.swipeRight()
-//        element.swipeRight()
-//
-//    }
+    func testCreateThread() {
+        threadTextField.tap()
+        threadTextField.typeText("UITest")
+        app.keyboards.buttons["Return"].tap()
+        XCTAssertTrue(app.tables.staticTexts["UITest"].exists)
+    }
+
+    func testCreateAnotherThread() {
+        threadTextField.tap()
+        threadTextField.typeText("Another Text")
+        app.keyboards.buttons["Return"].tap()
+        XCTAssertTrue(app.tables.staticTexts["Another Text"].exists)
+    }
+
+
     
     
     

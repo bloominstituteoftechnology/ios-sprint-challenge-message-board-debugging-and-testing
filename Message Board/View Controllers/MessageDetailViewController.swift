@@ -36,8 +36,13 @@ class MessageDetailViewController: UIViewController {
 
     @IBOutlet weak var senderNameTextField: UITextField! {
         didSet {
+            senderNameTextField.accessibilityIdentifier = "NameTextField"
             senderNameTextField.becomeFirstResponder()
         }
     }
-    @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var messageTextView: UITextView! {
+        didSet {
+            messageTextView.accessibilityIdentifier = "MessageTextView"
+        }
+    }
 }
