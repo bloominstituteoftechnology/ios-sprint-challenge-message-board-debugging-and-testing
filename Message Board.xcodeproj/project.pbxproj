@@ -71,7 +71,6 @@
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
 		D03C6927D62AE625B95D9EBD /* Pods-Message Board-Message BoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board-Message BoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E3098E13242529E4005326A2 /* bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = bugs.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +177,6 @@
 				4612B5C7211AB41100E7FF73 /* AppDelegate.swift */,
 				4612B5CE211AB41300E7FF73 /* Assets.xcassets */,
 				4612B5D3211AB41300E7FF73 /* Info.plist */,
-				E3098E13242529E4005326A2 /* bugs.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
