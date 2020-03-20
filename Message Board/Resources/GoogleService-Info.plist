@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>384320052623-n8fg2mu4jdpkm2siril2371jvfbbbu2n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.384320052623-n8fg2mu4jdpkm2siril2371jvfbbbu2n</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD_ISgT6m_vfMZqwENtkrPtEE85Ikit4C0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>384320052623</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.LambdaSchool.Message-Board</string>
+	<key>PROJECT_ID</key>
+	<string>messageboard-1f6cf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>messageboard-1f6cf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:384320052623:ios:fb80e6d090cfc89cd63ffa</string>
+	<key>DATABASE_URL</key>
+	<string>https://messageboard-1f6cf.firebaseio.com</string>
+</dict>
+</plist>
