@@ -23,4 +23,34 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreateMessage() {
+        let firstCell = app.cells.firstMatch
+        firstCell.tap()
+        
+        let navBar = app.navigationBars
+        let addButton = navBar.buttons.element(boundBy: 1)
+        addButton.tap()
+        
+        let senderField = app.textFields["SenderTextField"]
+        let messageField = app.textViews["MessageTextField"]
+        XCTAssertTrue(senderField.exists)
+        XCTAssertTrue(messageField.exists)
+        senderField.tap()
+        senderField.typeText("Scott")
+        let sendValue = senderField.value as? String
+        XCTAssertEqual(sendValue, "Scott")
+        
+        messageField.tap()
+        messageField.typeText("a greate message")
+        let messageValue = messageField.value as? String
+        XCTAssertEqual(messageValue, "a greate message")
+        
+        let sendButton = navBar.buttons.element(boundBy: 1)
+        sendButton.tap()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            XCTAssertFalse(senderField.exists)
+        }
+        
+    }
+    
 }

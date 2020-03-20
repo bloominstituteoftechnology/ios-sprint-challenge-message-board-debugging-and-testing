@@ -75,15 +75,19 @@ class MessageThreadController {
         }.resume()
     }
     
-    func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+    func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping (Error?) -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+            let uicompletion: () -> Void = {
+                
+            }
+            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: uicompletion)
+            completion(nil)
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.index(of: messageThread) else { completion(NSError(domain: "No message thread found", code: -1, userInfo: nil)); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -102,12 +106,26 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
-            completion()
+            guard let data = data else {
+                NSLog("No Data Returned")
+                completion(NSError(domain: "no data", code: -1, userInfo: nil))
+                return
+            }
             
+            let jsonDecoder = JSONDecoder()
+            do {
+                let _ = try jsonDecoder.decode([String: String].self, from: data)
+                
+                completion(nil)
+            } catch {
+                NSLog("Error decoding message: \(error)")
+                completion(error)
+            }
+     
         }.resume()
     }
     
