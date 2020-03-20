@@ -11,5 +11,22 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    let messageThreadsTableViewController = MessageThreadsTableViewController()
+    let messageThreadController = MessageThreadController()
     
+    func testLoadingMessageThread() {
+        XCTAssertNotNil(messageThreadController.messageThreads)
+    }
+    
+    func testCreateThread() {
+        messageThreadController.createMessageThread(with: "Test") {
+            XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "Test")
+        }
+    }
+    
+    func testCreateMessage() {
+        messageThreadController.createMessageThread(with: "Test") {
+            XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "Test")
+        }
+    }
 }
