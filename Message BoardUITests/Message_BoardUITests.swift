@@ -12,15 +12,22 @@ class Message_BoardUITests: XCTestCase {
     
     // MARK: - ENUM Identifier
     enum Identifier: String {
-        case cellLabel = "MessageThreadsTableViewController.CellTitleLabel"
+        case threadsCellLabel = "MessageThreadsTableViewController.CellTitleLabel"
+        case newThreadTextField = "ThreadTableViewController.NewThreadTextField"
+        case newMessageNameTextField = "NewMessageVC.NameTextField"
+        case newMessageNameTextArea = "NewMessageVC.NameTextArea"
+        case messageThreadCellNameLabel = "MessageThreadDetailTableViewController.CellTitleLabel"
+        case messageThreadMessageLabel = "MessageThreadDetailTableViewController.CellSubtitleLabel"
     }
     
     var app: XCUIApplication!
     
     
-    func label(forID id: Identifier) -> XCUIElement {
+    func textField(forID id: Identifier) -> XCUIElement {
         return app.staticTexts[id.rawValue]
     }
+    
+    
     
     // MARK: - Setup Function
     override func setUp() {
@@ -35,5 +42,4 @@ class Message_BoardUITests: XCTestCase {
     }
     
     // MARK: - Tests
-    
 }

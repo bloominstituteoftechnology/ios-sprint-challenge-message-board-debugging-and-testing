@@ -16,7 +16,9 @@ class MessageThreadController {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            fetchLocalMessageThreads(completion: completion)
+            fetchLocalMessageThreads {
+                completion()
+            }
             return
         }
         
