@@ -24,12 +24,21 @@ SOLVED!! 1.) Decode Error
 2.) SOLVED!!!! - App Doesn't Upload New Thread?/NewThread Doesn't Appear in MessageThreadTableViewContoller
 
     Message Thread Controller
-    a.) Added Message Thread encoder @ Line 48 aa.) Added testCheckCreateNewAndEncode() to MessageThreadTests
-    b.) Changed requestURL to requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("json") 
-    c.) Changed request.httpMethod to request.httpMethod = HTTPMethod.put.rawValue
-    d.) Added .resume() to line 78
+    
+    a.) Changed requestURL to requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("json") 
+    b.) Changed request.httpMethod to request.httpMethod = HTTPMethod.put.rawValue
+    c.) Added .resume() to line 78
     
 
-    3.) MessageDetailViewController send button doesn't work:
-        MessageThreadsTableViewController
-        a.) Added !threadTitle.isEmpty to preserve function
+3.) MessageDetailViewController send button doesn't work
+
+    MessageThreadsTableViewController
+    a.) Added !threadTitle.isEmpty to preserve function
+    
+    MessageDetailViewController
+    a.) Added pop to to action @ 23
+    b.) changed segue.identifier to "AddMessage"
+    
+    MessageThreadController
+    
+    a.) Added Message Thread encoder @ Line 48 aa.) Added testCheckCreateNewAndEncode() to MessageThreadTests

@@ -10,6 +10,13 @@ import Foundation
 
 class MessageThreadController {
     
+    // MARK: - PROPERTIES
+    
+    static let baseURL = URL(string: "https://messageboard-1f6cf.firebaseio.com/")!
+       var messageThreads: [MessageThread] = []
+    
+    // MARK: - METHODS
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -89,14 +96,19 @@ class MessageThreadController {
         guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
-        messageThreads[index].messages.append(message)
+        
+        // Expanded this for clarity
+        let messageThread = messageThreads[index]
+        messageThread.messages.append(message)
+        
+        //messageThreads[index].messages.append(message)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
         do {
-            request.httpBody = try JSONEncoder().encode(message)
+            request.httpBody = try JSONEncoder().encode(messageThread)
         } catch {
             NSLog("Error encoding message to JSON: \(error)")
         }
@@ -114,6 +126,5 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://messageboard-1f6cf.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
+   
 }
