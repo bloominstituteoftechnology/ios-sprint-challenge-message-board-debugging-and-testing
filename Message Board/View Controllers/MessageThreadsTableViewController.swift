@@ -31,6 +31,7 @@ class MessageThreadsTableViewController: UITableViewController {
         
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {
+                
                 self.tableView.reloadData()
             }
         }
@@ -66,5 +67,9 @@ class MessageThreadsTableViewController: UITableViewController {
     
     let messageThreadController = MessageThreadController()
     
-    @IBOutlet weak var threadTitleTextField: UITextField!
+    @IBOutlet weak var threadTitleTextField: UITextField! {
+        didSet {
+            threadTitleTextField.becomeFirstResponder()
+        }
+    }
 }

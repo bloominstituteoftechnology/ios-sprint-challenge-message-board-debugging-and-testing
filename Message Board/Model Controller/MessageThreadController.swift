@@ -52,7 +52,9 @@ class MessageThreadController {
         let thread = MessageThread(title: title)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+        
         var request = URLRequest(url: requestURL)
+        
         request.httpMethod = HTTPMethod.put.rawValue
         
         do {
@@ -72,7 +74,8 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume() // Forgot to call resume() 
+        
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -89,7 +92,9 @@ class MessageThreadController {
         messageThreads[index].messages.append(message)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        
         var request = URLRequest(url: requestURL)
+        
         request.httpMethod = HTTPMethod.post.rawValue
         
         do {
