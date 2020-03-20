@@ -73,6 +73,7 @@ class MessageThreadsTableViewController: UITableViewController {
     
     @IBOutlet weak var threadTitleTextField: UITextField! {
         didSet {
+            threadTitleTextField.accessibilityIdentifier = "MessageThreadsTableViewController.TextField"
             threadTitleTextField.becomeFirstResponder()
         }
     }

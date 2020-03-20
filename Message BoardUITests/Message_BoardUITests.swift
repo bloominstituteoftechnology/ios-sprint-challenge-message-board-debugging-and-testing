@@ -12,6 +12,18 @@ class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
     
+    var textField: XCUIElement {
+        return app.textFields["MessageThreadsTableViewController.TextField"]
+    }
+    
+    var navTitle: XCUIElement {
+        return app.navigationBars["λ Message Board"].staticTexts["λ Message Board"]
+    }
+    
+    var firstTableCell: XCUIElement {
+        return app.tables.element(boundBy: 0)
+    }
+    
     override func setUp() {
         super.setUp()
         
@@ -22,5 +34,20 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    
+    
+    func testFirstLaunch() {
+        XCTAssertTrue(navTitle.exists)
+        XCTAssertEqual(textField.placeholderValue!, "Create a new thread:")
+    }
+    
+    
+  
+    
+    
+    
+    
+    
     
 }
