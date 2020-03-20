@@ -18,7 +18,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "Right Bar Button Item"
         title = messageThread?.title
     }
     

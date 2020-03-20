@@ -12,8 +12,9 @@ class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "Detail Right Bar Button Item"
     }
     
     

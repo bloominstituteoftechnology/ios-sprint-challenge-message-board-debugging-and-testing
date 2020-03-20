@@ -32,7 +32,10 @@ class Message_BoardUITests: XCTestCase {
     private var messageTextView: XCUIElement {
         return app.textViews["MessageTextView"]
     }
-    
+   
+    private var rightBarButtonItem : XCUIElement {
+        return app.navigationBars.buttons["Right Bar Button Item"]
+    }
     override func setUp() {
         super.setUp()
         
@@ -66,6 +69,22 @@ class Message_BoardUITests: XCTestCase {
         app.keyboards.buttons["Return"].tap()
         XCTAssertTrue(app.tables.staticTexts["Another Text"].exists)
     }
+    private var detailRightBarButtonItem : XCUIElement {
+        return app.navigationBars.buttons["Detail Right Bar Button Item"]
+    }
+     
+    
+    func testAddMessage() {
+        app.tables.staticTexts["A New Thread"].tap()
+        XCTAssertTrue(app.tables.staticTexts["Checking to make sure this works."].exists)
+        rightBarButtonItem.tap()
+        senderNameTextField.typeText("Hello World")
+        messageTextView.tap()
+        detailRightBarButtonItem.tap()
+        XCTAssertTrue(app.tables.staticTexts["Hello World"].exists)
+        
+    
+    }
 
-
+ 
 }
