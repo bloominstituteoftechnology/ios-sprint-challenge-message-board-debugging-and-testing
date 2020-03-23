@@ -12,7 +12,7 @@ class MessageThreadController {
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
-        let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
+        let requestURL = Keys.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
@@ -28,15 +28,22 @@ class MessageThreadController {
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
-            
-            do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
-            } catch {
-                self.messageThreads = []
-                NSLog("Error decoding message threads from JSON data: \(error)")
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                completion()
+                return
             }
-            
+            do {
+                let decodedThreads = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                
+                for thread in decodedThreads{
+                    self.messageThreads.append(thread.value)
+                }
+            } catch {
+                NSLog("Error decoding message threads from JSON data: \(error)")
+                completion()
+                return
+            }
             completion()
         }.resume()
     }
@@ -51,7 +58,7 @@ class MessageThreadController {
         
         let thread = MessageThread(title: title)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+        let requestURL = Keys.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
@@ -72,7 +79,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -88,7 +95,7 @@ class MessageThreadController {
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL = Keys.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
@@ -96,6 +103,8 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(message)
         } catch {
             NSLog("Error encoding message to JSON: \(error)")
+            completion()
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -105,12 +114,14 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
             completion()
-            
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
+}
+
+
+struct Keys {
+     static let baseURL = URL(string: "https://lambdasprintchallenge.firebaseio.com/")!
 }
