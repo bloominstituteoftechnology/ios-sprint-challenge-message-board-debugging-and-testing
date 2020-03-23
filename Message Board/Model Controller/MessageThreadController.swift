@@ -34,7 +34,7 @@ class MessageThreadController {
                 return
             }
             do {
-                let decodedThreads = try JSONDecoder().decode((Dictionary<String, MessageThread>.self), from: data)
+                let decodedThreads = try JSONDecoder().decode([String : MessageThread].self, from: data)
                 
                 for thread in decodedThreads{
                     self.messageThreads.append(thread.value)
@@ -103,6 +103,8 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(message)
         } catch {
             NSLog("Error encoding message to JSON: \(error)")
+            completion()
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -112,12 +114,9 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
             completion()
-            
         }.resume()
     }
-    
     
     var messageThreads: [MessageThread] = []
 }

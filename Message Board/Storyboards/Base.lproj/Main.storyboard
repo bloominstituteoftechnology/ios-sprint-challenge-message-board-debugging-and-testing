@@ -109,7 +109,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BoB-4p-ZG3" kind="show" identifier="ViewMessageThread" id="FjR-Ku-s2c"/>
+                                    <segue destination="BoB-4p-ZG3" kind="show" identifier="ViewMessageDetails" id="FjR-Ku-s2c"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
