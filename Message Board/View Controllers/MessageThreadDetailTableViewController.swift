@@ -31,10 +31,10 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
-        let message = messageThread?.messages[indexPath.row]
+        //let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
-        cell.detailTextLabel?.text = message?.sender
+        //cell.textLabel?.text = message?.messageText
+        //cell.detailTextLabel?.text = message?.sender
         
         return cell
     }
