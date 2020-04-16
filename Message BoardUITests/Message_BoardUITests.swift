@@ -13,7 +13,7 @@ class Message_BoardUITests: XCTestCase {
     // MARK: - Properties
     
     var app: XCUIApplication!
-    
+    lazy var firstCellLabel = app.tables.children(matching: .cell).allElementsBoundByIndex.first!.staticTexts.firstMatch.label
     lazy var aNewThreadCell = app.tables.staticTexts["A New Thread"]
     lazy var aNewThreadNavTitleLabel = app.navigationBars["A New Thread"].staticTexts["A New Thread"].label
     lazy var addMessageButton = app.navigationBars["A New Thread"].buttons["Add"]
@@ -43,7 +43,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testOrderOfMessageThreads() {
-        
+        XCTAssertEqual(firstCellLabel, aNewThreadCell.label)
     }
     
 }
