@@ -35,6 +35,7 @@ class MessageThreadController {
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
+                completion(error)
             }
             
             completion(nil)
