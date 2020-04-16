@@ -22,6 +22,7 @@ class MessageThreadControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 10)
         
         XCTAssertEqual(messageThreadController.messageThreads.count, 1)
+        XCTAssertEqual(messageThreadController.messageThreads[0].title, "Testing")
     }
 
 }
