@@ -51,8 +51,4 @@ class Message_BoardUITests: XCTestCase {
         
         XCTAssertEqual(aNewThreadNavTitleLabel, "A New Thread") // Make sure we went back to correct thread
     }
-    
-   
-    
-    
 }

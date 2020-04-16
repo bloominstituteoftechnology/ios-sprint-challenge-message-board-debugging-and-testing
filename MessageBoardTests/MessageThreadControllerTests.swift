@@ -37,7 +37,7 @@ class MessageThreadControllerTests: XCTestCase {
     }
     
     func testFetchingLocalMessageThreads() throws {
-        let expectation = XCTestExpectation(description: "Fetch Threads")
+        let expectation = XCTestExpectation(description: "Fetch Local Threads")
         let messageThreadController = MessageThreadController()
         
         messageThreadController.fetchLocalMessageThreads { error in
@@ -48,4 +48,26 @@ class MessageThreadControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 10)
     }
 
+    func testCreateMessage() throws {
+        let expectation = XCTestExpectation(description: "Fetch Local Threads")
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.fetchLocalMessageThreads { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+        
+        XCTAssertEqual(messageThreadController.messageThreads[0].messages.count, 1) // Check for initial message
+        
+        let createMessageExpectation = XCTestExpectation(description: "Fetch Local Threads")
+        messageThreadController.createMessage(in: messageThreadController.messageThreads[0], withText: "Testing", sender: "Shawn") {
+            createMessageExpectation.fulfill()
+        }
+        
+        wait(for: [createMessageExpectation], timeout: 10)
+        
+        XCTAssertEqual(messageThreadController.messageThreads[0].messages.count, 2) // Check second message successfully added
+    }
 }
