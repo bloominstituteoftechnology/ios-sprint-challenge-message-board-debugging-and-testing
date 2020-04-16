@@ -39,12 +39,7 @@ class MessageThreadController {
             }
             
             do {
-                let messageThreads: [MessageThread] = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
-                self.messageThreads = messageThreads.sorted(by: { firstThread, secondThread in
-                    let t1 = firstThread.messages[firstThread.messages.count - 1].timestamp
-                    let t2 = secondThread.messages[firstThread.messages.count - 1].timestamp
-                    return t1.distance(to: t2) > 0
-                })
+                self.messageThreads = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -126,5 +121,9 @@ class MessageThreadController {
     }
     
     static let baseURL = URL(string: "https://mymovies-shawngee.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
+    var messageThreads: [MessageThread] = [] {
+        didSet {
+            messageThreads = messageThreads.sorted(by: { $0.title < $1.title })
+        }
+    }
 }

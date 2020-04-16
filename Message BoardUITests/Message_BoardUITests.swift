@@ -36,7 +36,7 @@ class Message_BoardUITests: XCTestCase {
     // MARK: - Tests
     
     func testOrderOfMessageThreads() {
-        XCTAssertEqual(firstCellLabel, testingAgainCell.label)
+        XCTAssertEqual(firstCellLabel, aNewThreadCell.label)
     }
     
     func testShowMessageThread() {
