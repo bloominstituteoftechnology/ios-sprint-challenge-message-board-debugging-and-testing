@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    func fetchMessageThreads(completion: @escaping () -> Void) {
+    func fetchMessageThreads(completion: @escaping (Error?) -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
@@ -24,11 +24,11 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            guard let data = data else { NSLog("No data returned from data task"); completion(error); return }
             
             do {
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
@@ -37,7 +37,7 @@ class MessageThreadController {
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
-            completion()
+            completion(nil)
         }.resume()
     }
     
