@@ -24,9 +24,6 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testNewMessage() {
-        
-        
-        let app = XCUIApplication()
         app.tables/*@START_MENU_TOKEN@*/.staticTexts["A New Thread"]/*[[".cells.staticTexts[\"A New Thread\"]",".staticTexts[\"A New Thread\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.navigationBars["A New Thread"].buttons["Add"].tap()
         app.textFields["Enter your name:"].tap()
