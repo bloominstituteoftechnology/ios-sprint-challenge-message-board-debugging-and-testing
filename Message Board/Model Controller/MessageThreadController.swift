@@ -20,7 +20,7 @@ class MessageThreadController {
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
@@ -28,7 +28,15 @@ class MessageThreadController {
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(error); return }
+            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                completion(nil)
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                completion(error)
+                return
+            }
             
             do {
                 self.messageThreads = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
