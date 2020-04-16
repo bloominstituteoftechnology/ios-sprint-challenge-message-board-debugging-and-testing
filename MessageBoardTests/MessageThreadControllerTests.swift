@@ -23,5 +23,29 @@ class MessageThreadControllerTests: XCTestCase {
         
         XCTAssertEqual(messageThreadController.messageThreads.last!.title, "Testing")
     }
+    
+    func testFetchingMessageThreads() throws {
+        let expectation = XCTestExpectation(description: "Fetch Threads")
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.fetchMessageThreads { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testFetchingLocalMessageThreads() throws {
+        let expectation = XCTestExpectation(description: "Fetch Threads")
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.fetchLocalMessageThreads { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
 
 }
