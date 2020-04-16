@@ -35,16 +35,24 @@ class Message_BoardUITests: XCTestCase {
     
     // MARK: - Tests
     
+    func testOrderOfMessageThreads() {
+        XCTAssertEqual(firstCellLabel, testingAgainCell.label)
+    }
+    
+    func testShowMessageThread() {
+        aNewThreadCell.tap()
+        XCTAssertEqual(aNewThreadNavTitleLabel, "A New Thread") // Make sure showing correct thread
+    }
+    
     func testNewMessage() {
         aNewThreadCell.tap()
         addMessageButton.tap()
         sendButton.tap()
         
-        XCTAssertEqual(aNewThreadNavTitleLabel, "A New Thread") // Make sure we went back to thread
+        XCTAssertEqual(aNewThreadNavTitleLabel, "A New Thread") // Make sure we went back to correct thread
     }
     
-    func testOrderOfMessageThreads() {
-        XCTAssertEqual(firstCellLabel, testingAgainCell.label)
-    }
+   
+    
     
 }
