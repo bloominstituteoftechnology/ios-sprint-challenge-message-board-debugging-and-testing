@@ -25,11 +25,12 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
-        
+        let messagesDict = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
+        let messagesArray: [Message] = Array(messagesDict.values)
         self.title = title
         self.identifier = identifier
-        self.messages = Array(messages.values)
+        
+        self.messages = messagesArray.sorted(by: { $0.timestamp < $1.timestamp })
     }
 
     
