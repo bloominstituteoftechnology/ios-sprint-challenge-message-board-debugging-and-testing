@@ -18,4 +18,13 @@ class MessageThreadTests: XCTestCase {
 //        XCTAssertNoThrow(messages)
 //    }
     
+    func testCreateThread() {
+        let messageThreadController = MessageThreadController()
+        let firstThread = messageThreadController.messageThreads.first?.title
+        let title = "Test Thread"
+        
+        messageThreadController.createMessageThread(with: title) {
+            XCTAssertEqual(firstThread, title)
+        }
+    }
 }
