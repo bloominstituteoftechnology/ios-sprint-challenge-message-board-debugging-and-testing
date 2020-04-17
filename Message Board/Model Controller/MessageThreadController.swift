@@ -57,6 +57,7 @@ class MessageThreadController {
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
+            // TODO: ? How do I look at this memory?
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
         }
@@ -72,7 +73,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
