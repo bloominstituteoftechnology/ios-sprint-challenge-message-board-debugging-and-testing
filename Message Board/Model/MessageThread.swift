@@ -19,6 +19,10 @@ class MessageThread: Codable, Equatable {
         self.messages = messages
         self.identifier = identifier
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case title, messages, identifier
+    }
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

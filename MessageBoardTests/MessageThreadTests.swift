@@ -11,5 +11,11 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+//    func testDecoding() {
+//        let url = Bundle.main.url(forResource: "MockMessages", withExtension: "json")!
+//        let data = try! Data(contentsOf: url)
+//        let messages = try! JSONDecoder().decode([String: MessageThread].self, from: data).map { $0.value }
+//        XCTAssertNoThrow(messages)
+//    }
     
 }
