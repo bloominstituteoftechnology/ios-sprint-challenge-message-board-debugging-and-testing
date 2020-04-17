@@ -113,7 +113,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="tHA-qF-qbA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MRR-1o-pkW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MRR-1o-pkW" userLabel="AddingButton">
                             <connections>
                                 <segue destination="BoB-4p-ZG3" kind="show" identifier="AddMessage" id="3TZ-Xl-1f4"/>
                             </connections>

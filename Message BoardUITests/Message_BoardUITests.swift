@@ -24,6 +24,10 @@ class Message_BoardUITests: XCTestCase {
         return tableView.cells.element(boundBy: index)
     }
     
+    var navigationButtonAdd: XCUIElement {
+        return app.navigationBars.element(boundBy: 0).buttons.element(boundBy: 1)
+    }
+    
     override func setUp() {
         super.setUp()
         
@@ -41,8 +45,10 @@ class Message_BoardUITests: XCTestCase {
         threadTyper.typeText("Testing this out")
         app.keyboards.buttons["Return"].tap()
         
-        
         tableViewCell(at: 0).tap()
+        
+        navigationButtonAdd.tap()
+        
         
         /*
         if let text = tableViewCell(at: 0).textFields.element(boundBy: 0).value as? String {
