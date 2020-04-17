@@ -10,6 +10,14 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
+    // MARK: - Properties
+       
+       let messageThreadController = MessageThreadController()
+       
+       @IBOutlet weak var threadTitleTextField: UITextField!
+    
+    // MARK: - View Controller
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -26,6 +34,7 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.resignFirstResponder()
 
         guard let threadTitle = threadTitleTextField.text else { return }
+        
         
         threadTitleTextField.text = ""
         
@@ -62,9 +71,5 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Properties
-    
-    let messageThreadController = MessageThreadController()
-    
-    @IBOutlet weak var threadTitleTextField: UITextField!
+   
 }

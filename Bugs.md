@@ -9,3 +9,5 @@ When I first launched the app I received an error for decoding json data, same a
 > Hypotheses
 
 There's no button for creating a new thread on storyboard, so can only do so by pressing enter. Gotta check if there's a broken/missing outlet, and also check all "create" methods.
+
+Maybe problem is in encoder? smh ya'll really didn't put .resume()
