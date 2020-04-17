@@ -13,7 +13,7 @@ class MessageThreadsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        messageThreadController.fetchMessageThreads {
+        messageThreadController.fetchMessageThreads { error in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
