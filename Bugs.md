@@ -1,4 +1,5 @@
-Message Board Bugs
+* Message Board Bugs *
+
 - Message threads aren't being created
 Fixed: Added .resume() to dataTask
 
@@ -13,5 +14,3 @@ Fixed: Changed name from messageText to text in Message struct
 
 - Send message button does not pop view controller
 Fixed: Added pop
-
--Ording issue when viewing messages

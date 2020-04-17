@@ -13,29 +13,46 @@ class MessageThreadTests: XCTestCase {
     
     func testThreadCreation() {
         let messageThreadController = MessageThreadController()
-        // 1. Set up the expectation and give it a name
+
         let expectation = XCTestExpectation(description: "Creating Thread")
-        // 2. Schedule some asyncronous work that will happen at a later time
+
         messageThreadController.createMessageThread(with: "Testing Thread Creation") { (error) in
             XCTAssertNil(error)
             expectation.fulfill()
         }
-        // 3. Tell the test to wait for the expectation you made before saying it's "finished"
+
         wait(for: [expectation], timeout: 10)
-        // 6. More tests can be here if you want, but they will only occur after the expectations are fulfilled
+        XCTAssertEqual(messageThreadController.messageThreads.last!.title, "Testing Thread Creation")
+
+    }
+    
+    func testFetchingThread() {
+        let messageThreadController = MessageThreadController()
+
+        let expectation = XCTestExpectation(description: "Fetching Thread")
+
+        messageThreadController.fetchMessageThreads(completion: { (error) in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        })
+        
+        wait(for: [expectation], timeout: 10)
     }
     
     func testMessageCreation() {
         let messageThreadController = MessageThreadController()
-        // 1. Set up the expectation and give it a name
+
         let expectation = XCTestExpectation(description: "Creating Message")
-        // 2. Schedule some asyncronous work that will happen at a later time
+        
+        XCTAssertEqual(messageThreadController.messageThreads[0].messages.count, 1)
+
+
         messageThreadController.createMessage(in: messageThreadController.messageThreads[0], withText: "Creating Message", sender: "Tester") { (error) in
             XCTAssertNil(error)
             expectation.fulfill()
         }
-        // 3. Tell the test to wait for the expectation you made before saying it's "finished"
+
         wait(for: [expectation], timeout: 10)
-        // 6. More tests can be here if you want, but they will only occur after the expectations are fulfilled
+
     }
 }
