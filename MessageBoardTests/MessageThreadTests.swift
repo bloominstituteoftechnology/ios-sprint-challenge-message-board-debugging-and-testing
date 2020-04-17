@@ -13,16 +13,16 @@ class MessageThreadTests: XCTestCase {
     
     func testLoadFirebase() {
         let didFinish = expectation(description: "didFinish")
-        var name = ""
-        let url = URL(string: "https://ios-albums-ff76b.firebaseio.com/")!
+        var threads: [MessageThread] = []
+        let url = URL(string: "https://ios-albums-ff76b.firebaseio.com/.json")!
         
         URLSession.shared.dataTask(with: url) { data, _, _ in
             
             if let data = data {
                 do {
-                    let threads = try JSONDecoder().decode([MessageThread].self, from: data)
+                    let results = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                    threads = Array(results.values)
                     didFinish.fulfill()
-                    name = "Dave"
             } catch {
                 
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -33,7 +33,7 @@ class MessageThreadTests: XCTestCase {
         
         wait(for: [didFinish], timeout: 10)
         
-        XCTAssertEqual(name, "Dave")
+        XCTAssertFalse(threads.isEmpty)
         
     }
     
