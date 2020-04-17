@@ -49,6 +49,10 @@ Still can't create new message even if there is a message loaded in the thread. 
 
 Guard let breaks at let messageThread = messageThread. Broken prepare for segue? But if messages load in detail view of the thread then it works atleast up until that point.
 
+>Tests
+
+First test is a UI test that checks if you can create a new message. It depends on creating a new thread. But this checks if all views can be navigated and if all functionality works
+
 Omg... Don't tell me the typo in the segue.identifier is the reason... lmao I hate yall.
 
 ## Bug :bug: #5 : - Can't load threads after a message with an UUID has been created
