@@ -66,8 +66,6 @@ I thought maybe it wouldn't break if I got rid of the one using my coded message
 Ooh, It's not an array of messages, it's a dictionary. Updating custom decoder fixed this issue.
 
 
-# afterRetro : - Everything done here was done after retrospective was submitted
-
 ## Unit Test : createLocalThread()
 
 ## Unit Test: createLocalMessage()
