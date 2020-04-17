@@ -35,19 +35,25 @@ class Message_BoardUITests: XCTestCase {
     
     func testSaveButtonInMessageDetail() throws {
         
+        // Create a new thread
         app.textFields["ThreadsTV.CreateTextField"].tap()
         app.textFields["ThreadsTV.CreateTextField"].typeText("New Entry")
         app.keyboards.buttons["Return"].tap()
-        
-        app.tables.cells["0"].tap()
-        app.navigationBars["A"].buttons["Add"].tap()
-        app.textFields["Enter your name:"].tap()
 
-//        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
-//        textView.tap()
-//        textView.tap()
-//        app.navigationBars["New Message"].buttons["Send"].tap()
-                
+        // Tap the cell we just added
+        app.tables.cells["0"].tap()
+        
+        // Advance to MessageThreadDetailTableViewController
+        app.buttons["Add"].tap()
+        
+        // Advance to MessageDetailViewController
+        app.textFields["DetailVC.NameTextField"].tap()
+        app.textFields["DetailVC.NameTextField"].typeText("Dennis")
+
+        app.textViews["DetailVC.MessageTextView"].tap()
+        app.textViews["DetailVC.MessageTextView"].typeText("Hello, world!")
+
+        app.buttons["Send"].tap()
     }
     
 }
