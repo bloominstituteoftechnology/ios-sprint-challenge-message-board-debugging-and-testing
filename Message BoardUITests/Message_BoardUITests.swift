@@ -59,76 +59,74 @@ class Message_BoardUITests: XCTestCase {
        }
        
     func testCreateNewMessage() {
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["A New Thread"]/*[[".cells.staticTexts[\"A New Thread\"]",".staticTexts[\"A New Thread\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["A New Thread"].buttons["Add"].tap()
-        app.textFields["Enter your name:"].tap()
+       app.tables/*@START_MENU_TOKEN@*/.staticTexts["A New Thread"]/*[[".cells.staticTexts[\"A New Thread\"]",".staticTexts[\"A New Thread\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+           app.navigationBars["A New Thread"].buttons["Add"].tap()
+           app.textFields["Enter your name:"].tap()
            
-        let shiftButton = app/*@START_MENU_TOKEN@*/.buttons["shift"]/*[[".keyboards.buttons[\"shift\"]",".buttons[\"shift\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        shiftButton.tap()
+           let shiftButton = app/*@START_MENU_TOKEN@*/.buttons["shift"]/*[[".keyboards.buttons[\"shift\"]",".buttons[\"shift\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           shiftButton.tap()
            
-        let aKey = app/*@START_MENU_TOKEN@*/.keys["A"]/*[[".keyboards.keys[\"A\"]",".keys[\"A\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        aKey.tap()
-           
-           
-        let dKey = app/*@START_MENU_TOKEN@*/.keys["d"]/*[[".keyboards.keys[\"d\"]",".keys[\"d\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        dKey.tap()
-        dKey.tap()
+           let aKey = app/*@START_MENU_TOKEN@*/.keys["A"]/*[[".keyboards.keys[\"A\"]",".keys[\"A\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           aKey.tap()
            
            
-        let spaceKey = app/*@START_MENU_TOKEN@*/.keys["space"]/*[[".keyboards.keys[\"space\"]",".keys[\"space\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        spaceKey.tap()
-           
-        shiftButton.tap()
-           
-        let mKey = app/*@START_MENU_TOKEN@*/.keys["M"]/*[[".keyboards.keys[\"M\"]",".keys[\"M\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        mKey.tap()
+           let dKey = app/*@START_MENU_TOKEN@*/.keys["d"]/*[[".keyboards.keys[\"d\"]",".keys[\"d\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           dKey.tap()
+           dKey.tap()
            
            
-        let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        eKey.tap()
+           let spaceKey = app/*@START_MENU_TOKEN@*/.keys["space"]/*[[".keyboards.keys[\"space\"]",".keys[\"space\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           spaceKey.tap()
            
-        let sKey = app/*@START_MENU_TOKEN@*/.keys["s"]/*[[".keyboards.keys[\"s\"]",".keys[\"s\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        sKey.tap()
-        sKey.tap()
+           shiftButton.tap()
            
-        let aKey2 = app/*@START_MENU_TOKEN@*/.keys["a"]/*[[".keyboards.keys[\"a\"]",".keys[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        aKey2.tap()
+           let mKey = app/*@START_MENU_TOKEN@*/.keys["M"]/*[[".keyboards.keys[\"M\"]",".keys[\"M\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           mKey.tap()
            
            
-        let gKey = app/*@START_MENU_TOKEN@*/.keys["g"]/*[[".keyboards.keys[\"g\"]",".keys[\"g\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        gKey.tap()
+           let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           eKey.tap()
+           
+           let sKey = app/*@START_MENU_TOKEN@*/.keys["s"]/*[[".keyboards.keys[\"s\"]",".keys[\"s\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           sKey.tap()
+           sKey.tap()
+           
+           let aKey2 = app/*@START_MENU_TOKEN@*/.keys["a"]/*[[".keyboards.keys[\"a\"]",".keys[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           aKey2.tap()
+           
+           
+           let gKey = app/*@START_MENU_TOKEN@*/.keys["g"]/*[[".keyboards.keys[\"g\"]",".keys[\"g\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           gKey.tap()
           
           
-        eKey.tap()
+           eKey.tap()
            
-        let moreKey = app/*@START_MENU_TOKEN@*/.keys["more"]/*[[".keyboards",".keys[\"letters\"]",".keys[\"more\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
+           let moreKey = app/*@START_MENU_TOKEN@*/.keys["more"]/*[[".keyboards",".keys[\"letters\"]",".keys[\"more\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
            
-        moreKey.tap()
+           moreKey.tap()
            
-        let key = app/*@START_MENU_TOKEN@*/.keys["!"]/*[[".keyboards.keys[\"!\"]",".keys[\"!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        key.tap()
-           
-           
-        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
-        textView.tap()
-           
-        mKey.tap()
-           
-        eKey.tap()
-           
-        sKey.tap()
-           
-        sKey.tap()
-        aKey2.tap()
-        gKey.tap()
-        eKey.tap()
-           
-        app.navigationBars["New Message"].buttons["Send"].tap()
+           let key = app/*@START_MENU_TOKEN@*/.keys["!"]/*[[".keyboards.keys[\"!\"]",".keys[\"!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+           key.tap()
            
            
-        let tablesQuery = XCUIApplication().tables
-        sleep(5)
-        let a = tablesQuery.staticTexts["Add Message!"]
-        XCTAssertTrue(a.exists)
-    }
+           let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+           textView.tap()
+           
+           mKey.tap()
+           
+           eKey.tap()
+           
+           sKey.tap()
+           
+           sKey.tap()
+           aKey2.tap()
+           gKey.tap()
+           eKey.tap()
+           
+           app.navigationBars["New Message"].buttons["Send"].tap()
+           
+           
+           sleep(5)
+           
+       }
 }
