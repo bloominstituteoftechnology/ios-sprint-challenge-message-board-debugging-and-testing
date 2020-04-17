@@ -54,6 +54,19 @@ class Message_BoardUITests: XCTestCase {
         app.textViews["DetailVC.MessageTextView"].typeText("Hello, world!")
 
         app.buttons["Send"].tap()
+        
+        //tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["a"]/*[[".cells.staticTexts[\"a\"]",".staticTexts[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        // Send button should take us back to MessageThreadDetailTableViewController
+        let foundText = app.staticTexts["Hello, world!"]
+        XCTAssertNotNil(foundText) // FIXME: False positive.
+
+        // TODO: ? This doesn't work because it's in the stack some where.
+//        let navBar = app.navigationBars["New Entry"]
+//        XCTAssertNotNil(navBar)
+        
+        // TODO: ? Why doesn't this work?
+//        XCTAssertEqual(navBar.identifier, "New Entry")
     }
     
 }
