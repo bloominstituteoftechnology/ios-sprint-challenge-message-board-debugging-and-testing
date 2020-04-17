@@ -90,4 +90,11 @@ class Message_BoardUITests: XCTestCase {
         
     }
     
+    func testDisplayMessages() {
+        
+        app.tables.staticTexts["A New Thread"].tap()
+        XCTAssert(app.tables.staticTexts["Checking to make sure this works."].exists)
+        
+    }
+    
 }
