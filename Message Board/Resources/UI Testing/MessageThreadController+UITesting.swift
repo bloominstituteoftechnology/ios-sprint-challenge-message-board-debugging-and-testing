@@ -25,21 +25,21 @@ extension MessageThreadController {
         completion(nil)
     }
     
-    func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
+    func createLocalMessageThread(with title: String, completion: @escaping (Error?) -> Void) {
         let thread = MessageThread(title: title)
         messageThreads.append(thread)
         
-        completion()
+        completion(nil)
     }
     
-    func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+    func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping (Error?) -> Void) {
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.index(of: messageThread) else { completion(NSError()); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
-        completion()
+        completion(nil)
     }
     
     var mockDataURL: URL {

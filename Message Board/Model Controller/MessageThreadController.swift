@@ -49,12 +49,18 @@ class MessageThreadController {
         }.resume()
     }
     
-    func createMessageThread(with title: String, completion: @escaping () -> Void) {
+    func createMessageThread(with title: String, completion: @escaping (Error?) -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            createLocalMessageThread(with: title, completion: completion)
-            completion()
+            createLocalMessageThread(with: title) { (error) in
+                if let error = error {
+                    NSLog("Coulnd't create local message thread \(error)")
+                    completion(error)
+                }
+                completion(nil)
+            }
+            completion(nil)
             return
         }
         
@@ -75,26 +81,26 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
             self.messageThreads.append(thread)
-            completion()
+            completion(nil)
             
         }.resume()
     }
     
-    func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+    func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping (Error?) -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
-            completion()
+            completion(nil)
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.index(of: messageThread) else { completion(NSError()); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -113,11 +119,11 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
-            completion()
+            completion(nil)
             
         }.resume()
     }

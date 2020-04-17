@@ -23,4 +23,28 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    private var nameTextField: XCUIElement {
+        return app.textFields["MessageDetailViewController.NameTextField"]
+    }
+    
+    private var messageTextView: XCUIElement {
+        return app.textFields["MessageDetailViewController.MessageTextView"]
+    }
+    
+    func testCreatingThread() {
+        
+    }
+    
+    func textCreatingMessage() {
+        
+    }
+    
+    func testReadingThreads() {
+        
+    }
+    
+    func testReadingMessages() {
+        
+    }
+    
 }
