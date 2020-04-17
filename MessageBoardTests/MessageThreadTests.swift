@@ -12,26 +12,17 @@ import XCTest
 class MessageThreadTests: XCTestCase {
     
     
-    // MARK: - test will not fail
     func testCreateThread () {
-        let messageThreadController = MessageThreadController()
+        let title = "John"
         
-        messageThreadController.createMessageThread(with: "John") {
-            XCTAssert(messageThreadController.messageThreads.count > 0)
-        }
+        let newMessageThread = MessageThread(title: title)
+        
+        XCTAssertNotNil(newMessageThread)
     }
     
-    // MARK: - Test is successful, but not sure if this is accurate
-    func testCreateMessage() {
-        let messageThreadController = MessageThreadController()
-        
-        messageThreadController.createMessageThread(with: "John") {
-            XCTAssert(messageThreadController.messageThreads.count > 0)
-            messageThreadController.createMessage(in: messageThreadController.messageThreads[0], withText: "Test", sender: "Me") {
-                // something goes here
-            }
-        }
-    }
+    
+    
+    
     
     
     
