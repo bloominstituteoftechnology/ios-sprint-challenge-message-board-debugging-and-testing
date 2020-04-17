@@ -10,34 +10,42 @@ import Foundation
 
 class MessageThreadController {
     
-    func fetchMessageThreads(completion: @escaping () -> Void) {
+    func fetchMessageThreads(completion: @escaping (Error?) -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
-            fetchLocalMessageThreads(completion: completion)
+            fetchLocalMessageThreads { (error) in
+                if let error = error {
+                    NSLog("Error decoding local data \(error)")
+                    completion(error)
+                }
+                completion(nil)
+            }
+            completion(nil)
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            guard let data = data else { NSLog("No data returned from data task"); completion(error); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                //self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
-                self.messageThreads = []
+                //self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
-            completion()
+            completion(nil)
         }.resume()
     }
     
@@ -46,6 +54,7 @@ class MessageThreadController {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
+            completion()
             return
         }
         
@@ -59,6 +68,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -80,6 +90,7 @@ class MessageThreadController {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+            completion()
             return
         }
         
