@@ -18,7 +18,7 @@ class MessageThreadTests: XCTestCase {
 //        XCTAssertNoThrow(messages)
 //    }
     
-    func testCreateThread() {
+    func testCreateThreadTitle() {
         let messageThreadController = MessageThreadController()
         let firstThread = messageThreadController.messageThreads.first?.title
         let title = "Test Thread"
@@ -26,5 +26,23 @@ class MessageThreadTests: XCTestCase {
         messageThreadController.createMessageThread(with: title) {
             XCTAssertEqual(firstThread, title)
         }
+    }
+    
+    func testCreateThread() {
+        let messageThreadController = MessageThreadController()
+        let thread = MessageThread(title: "Test Thread")
+        messageThreadController.createMessageThread(with: thread.title) {
+            XCTAssertEqual(messageThreadController.messageThreads.count, 1)
+        }
+    }
+    
+    func testCreateMessage() {
+        let messageThreadController = MessageThreadController()
+        let thread = MessageThread(title: "Test Thread")
+        messageThreadController.messageThreads.append(thread)
+        let message = MessageThread.Message(text: "Test Message", sender: "Tobi")
+        thread.messages.append(message)
+        let testCheck = thread.messages.count == 1
+        XCTAssertTrue(testCheck)
     }
 }
