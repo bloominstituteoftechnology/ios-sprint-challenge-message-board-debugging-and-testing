@@ -26,3 +26,10 @@ Maybe problem is in encoder? smh ya'll really didn't put .resume()
 I'll be going with UITesting for this test because I need to touch things inside.
 
 Wow getting the return.tap was the toughest part.
+
+## Bug :bug: #3 : - Threads have no containers for messages
+
+> Issues & Hypotheses
+
+Pressing send new message made me realize that there is no "Messages" in my firebase threads. Something missing either in initializer or encoder maybe?## Bug :bug: #3 : - Threads have no containers for messages
+
