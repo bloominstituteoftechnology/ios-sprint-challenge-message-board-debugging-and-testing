@@ -14,10 +14,6 @@ class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
     
-    private var turnLabel: XCUIElement {
-        return app.staticTexts["GameViewController.TurnLabel"]
-    }
-
     // MARK: - Test Setup
 
     override func setUp() {
