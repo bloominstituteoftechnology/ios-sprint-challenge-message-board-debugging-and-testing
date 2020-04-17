@@ -27,14 +27,24 @@ I'll be going with UITesting for this test because I need to touch things inside
 
 Wow getting the return.tap was the toughest part.
 
-## Bug :bug: #3 : - Threads have no containers for messages
+## Bug :bug: #3 : - Threads have no containers for messages/ no messages
 
 > Issues & Hypotheses
 
-Pressing send new message made me realize that there is no "Messages" in my firebase threads. Something missing either in initializer or encoder maybe?## Bug :bug: #3 : - Threads have no containers for messages
+Pressing send new message made me realize that there is no "Messages" in my firebase threads. Something missing either in initializer or encoder maybe?
+
+Prepare for segue seems to be fine in both views.
+
+If messages has atleast one message, it seems to actually encode it into the JSON
 
 ## Bug :bug: #4 : - Can't create new message in thread
 
 > Issues & Hypotheses
 
 Pressing send doesn't create new message. Missing outlet? Still not sure if bug #3 is related to this.
+
+Still can't create new message even if there is a message loaded in the thread. So issue may be unrelated.
+
+Guard let breaks at let messageThread = messageThread. Broken prepare for segue? But if messages load in detail view of the thread then it works atleast up until that point.
+
+Omg... Don't tell me the typo in the segue.identifier is the reason... lmao I hate yall.
