@@ -20,11 +20,14 @@ class MessageThreadTests: XCTestCase {
         XCTAssertNotNil(newMessageThread)
     }
     
-    
-    
-    
-    
-    
-    
+    func testCreateMessage() {
+        let sender = "Me"
+        let messageText = "Testing"
+        
+        let newMessage = MessageThread.Message(text: messageText, sender: sender)
+        
+        XCTAssertNotNil(newMessage)
+        
+    }
     
 }
