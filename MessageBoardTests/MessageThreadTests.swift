@@ -47,8 +47,7 @@ class MessageThreadTests: XCTestCase {
         let url = Bundle.main.url(forResource: "MockMessages", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         XCTAssertNoThrow(data)
-        let datas = try! JSONDecoder().decode([String: MessageThread].self, from: data)
-        let result = Array(datas.values)
-        XCTAssertNoThrow(result)
+        let datas = Array(try! JSONDecoder().decode([String: MessageThread].self, from: data).values)
+        XCTAssertNoThrow(datas)
     }
 }
