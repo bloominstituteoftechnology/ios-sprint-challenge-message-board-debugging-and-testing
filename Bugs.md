@@ -33,3 +33,8 @@ Wow getting the return.tap was the toughest part.
 
 Pressing send new message made me realize that there is no "Messages" in my firebase threads. Something missing either in initializer or encoder maybe?## Bug :bug: #3 : - Threads have no containers for messages
 
+## Bug :bug: #4 : - Can't create new message in thread
+
+> Issues & Hypotheses
+
+Pressing send doesn't create new message. Missing outlet? Still not sure if bug #3 is related to this.
