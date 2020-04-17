@@ -57,4 +57,37 @@ class Message_BoardUITests: XCTestCase {
         
     }
     
+    func testCreateMessage() {
+        
+        app.tables.staticTexts["A New Thread"].tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+        
+        let enterYourNameTextField = app.textFields["Enter your name:"]
+        enterYourNameTextField.tap()
+        
+        app/*@START_MENU_TOKEN@*/.buttons["shift"]/*[[".keyboards.buttons[\"shift\"]",".buttons[\"shift\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let mKey = app.keys["M"]
+        mKey.tap()
+        
+        let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        eKey.tap()
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.tap()
+        
+        let tKey = app.keys["T"]
+        tKey.tap()
+        
+        eKey.tap()
+        
+        let sKey = app/*@START_MENU_TOKEN@*/.keys["s"]/*[[".keyboards.keys[\"s\"]",".keys[\"s\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        sKey.tap()
+        
+        let lowerTKey = app.keys["t"]
+        lowerTKey.tap()
+        
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        
+    }
+    
 }
