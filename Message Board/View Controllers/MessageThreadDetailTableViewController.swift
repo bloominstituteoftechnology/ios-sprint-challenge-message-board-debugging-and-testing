@@ -20,6 +20,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.tableView.reloadData()
+        
     }
     
     // MARK: - UITableViewDataSource
