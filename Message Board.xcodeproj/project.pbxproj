@@ -21,10 +21,10 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
-		5718B5FDE81FF1513622C266 /* Pods_Message_Board_Message_BoardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0606AF4313E7C9B83450755C /* Pods_Message_Board_Message_BoardUITests.framework */; };
 		6B0F7D6D86B35E1728471BDC /* Pods_Message_Board.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110258EA03B75B24A9751D87 /* Pods_Message_Board.framework */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 		E3FFE6EE244A098B00198D0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3FFE6ED244A098B00198D0F /* GoogleService-Info.plist */; };
+		E94B524118875B34FF5FA982 /* libPods-Message BoardUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0856E922A0E41B7BB8711B09 /* libPods-Message BoardUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0606AF4313E7C9B83450755C /* Pods_Message_Board_Message_BoardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Message_Board_Message_BoardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0856E922A0E41B7BB8711B09 /* libPods-Message BoardUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Message BoardUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		110258EA03B75B24A9751D87 /* Pods_Message_Board.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Message_Board.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B543F58162117DE5FD385D /* Pods-Message Board.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board.release.xcconfig"; path = "Target Support Files/Pods-Message Board/Pods-Message Board.release.xcconfig"; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,12 +67,15 @@
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		4BAF2E493504F503B4AAA4D8 /* Pods-Message Board.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board.debug.xcconfig"; path = "Target Support Files/Pods-Message Board/Pods-Message Board.debug.xcconfig"; sourceTree = "<group>"; };
+		91407E37124F613DA79E2637 /* Pods-Message BoardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message BoardUITests.release.xcconfig"; path = "Target Support Files/Pods-Message BoardUITests/Pods-Message BoardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
 		BB456B02D7B54B432A339864 /* Pods-Message Board-Message BoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board-Message BoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DAAF4ED40544999F6AF85DC3 /* Pods-Message Board-Message BoardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message Board-Message BoardUITests.release.xcconfig"; path = "Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E3FFE6ED244A098B00198D0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3FFE6EF244A0B9400198D0F /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Bugs.md; sourceTree = "<group>"; };
+		F910B4FC8A3AE1E701A98DA7 /* Pods-Message BoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Message BoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-Message BoardUITests/Pods-Message BoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5718B5FDE81FF1513622C266 /* Pods_Message_Board_Message_BoardUITests.framework in Frameworks */,
+				E94B524118875B34FF5FA982 /* libPods-Message BoardUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				110258EA03B75B24A9751D87 /* Pods_Message_Board.framework */,
-				0606AF4313E7C9B83450755C /* Pods_Message_Board_Message_BoardUITests.framework */,
+				0856E922A0E41B7BB8711B09 /* libPods-Message BoardUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				46436031211ABC3900E7FF73 /* View Controllers */,
 				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602D211ABC0900E7FF73 /* Resources */,
+				E3FFE6EF244A0B9400198D0F /* Bugs.md */,
 			);
 			path = "Message Board";
 			sourceTree = "<group>";
@@ -219,6 +223,8 @@
 				31B543F58162117DE5FD385D /* Pods-Message Board.release.xcconfig */,
 				BB456B02D7B54B432A339864 /* Pods-Message Board-Message BoardUITests.debug.xcconfig */,
 				DAAF4ED40544999F6AF85DC3 /* Pods-Message Board-Message BoardUITests.release.xcconfig */,
+				F910B4FC8A3AE1E701A98DA7 /* Pods-Message BoardUITests.debug.xcconfig */,
+				91407E37124F613DA79E2637 /* Pods-Message BoardUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 				4612B5C0211AB41100E7FF73 /* Sources */,
 				4612B5C1211AB41100E7FF73 /* Frameworks */,
 				4612B5C2211AB41100E7FF73 /* Resources */,
+				7F87D63CDB5BC7B587A0E820 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -261,7 +268,6 @@
 				4629C7E2214BA09600E7FF73 /* Sources */,
 				4629C7E3214BA09600E7FF73 /* Frameworks */,
 				4629C7E4214BA09600E7FF73 /* Resources */,
-				14D700397F8729A0D59B63F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -386,21 +392,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		14D700397F8729A0D59B63F3 /* [CP] Embed Pods Frameworks */ = {
+		7F87D63CDB5BC7B587A0E820 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Message Board/Pods-Message Board-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Message Board/Pods-Message Board-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Message Board-Message BoardUITests/Pods-Message Board-Message BoardUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Message Board/Pods-Message Board-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2C4133086DB055A73E70FD8 /* [CP] Check Pods Manifest.lock */ = {
@@ -418,7 +424,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Message Board-Message BoardUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Message BoardUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -649,7 +655,7 @@
 		};
 		4629C7EE214BA09600E7FF73 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB456B02D7B54B432A339864 /* Pods-Message Board-Message BoardUITests.debug.xcconfig */;
+			baseConfigurationReference = F910B4FC8A3AE1E701A98DA7 /* Pods-Message BoardUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
@@ -668,7 +674,7 @@
 		};
 		4629C7EF214BA09600E7FF73 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAAF4ED40544999F6AF85DC3 /* Pods-Message Board-Message BoardUITests.release.xcconfig */;
+			baseConfigurationReference = 91407E37124F613DA79E2637 /* Pods-Message BoardUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Message BoardUITests/Info.plist";
