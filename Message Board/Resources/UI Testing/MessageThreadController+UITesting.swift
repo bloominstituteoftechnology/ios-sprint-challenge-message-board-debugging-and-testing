@@ -24,11 +24,11 @@ extension MessageThreadController {
         completion()
     }
     
-    func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
+    func createLocalMessageThread(with title: String, completion: @escaping (Error?) -> Void) {
         let thread = MessageThread(title: title)
         messageThreads.append(thread)
         
-        completion()
+        completion(nil)
     }
     
     func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
