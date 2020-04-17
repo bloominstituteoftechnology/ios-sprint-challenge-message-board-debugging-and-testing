@@ -12,6 +12,18 @@ class Message_BoardUITests: XCTestCase {
     
     var app: XCUIApplication!
     
+    var threadTyper: XCUIElement {
+        return app.textFields.element(boundBy: 0)
+    }
+    
+    var tableView: XCUIElement {
+        return app.tables.element(boundBy: 0)
+    }
+    
+    func tableViewCell(at index: Int) -> XCUIElement {
+        return tableView.cells.element(boundBy: index)
+    }
+    
     override func setUp() {
         super.setUp()
         
@@ -24,6 +36,24 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testExpectation() {
+        
+        threadTyper.tap()
+        threadTyper.typeText("Testing this out")
+        app.keyboards.buttons["Return"].tap()
+        
+        
+        tableViewCell(at: 0).tap()
+        
+        /*
+        if let text = tableViewCell(at: 0).textFields.element(boundBy: 0).value as? String {
+            XCTAssertEqual(text, "Testing this out")
+        } else {
+            print("NO GO")
+        }
+        */
+        
+        
+        /*
         let didFinish = expectation(description: "didFinish")
         var name = ""
         let url = URL(string: "https://sprintchallenge-5d5c7.firebaseio.com/")!
@@ -37,6 +67,12 @@ class Message_BoardUITests: XCTestCase {
 
         // Assertion only happens after the time out, or web request completes
         XCTAssertEqual("Dave", name)
+ */
+    }
+    
+    func createTheThread() {
+        threadTyper.tap()
+        threadTyper.typeText("Testing this out")
     }
     
 }

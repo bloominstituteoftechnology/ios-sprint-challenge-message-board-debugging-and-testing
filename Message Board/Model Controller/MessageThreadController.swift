@@ -111,6 +111,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://sprintchallenge-5d5c7.firebaseio.com/")!
+    static let baseURL = URL(string: "https://sprintchallengetest.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
