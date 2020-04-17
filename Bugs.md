@@ -37,6 +37,8 @@ Prepare for segue seems to be fine in both views.
 
 If messages has atleast one message, it seems to actually encode it into the JSON
 
+JJust found .decodeIfPresent in custom decoder. Not a bug afterall.
+
 ## Bug :bug: #4 : - Can't create new message in thread
 
 > Issues & Hypotheses
@@ -54,3 +56,7 @@ Omg... Don't tell me the typo in the segue.identifier is the reason... lmao I ha
 > Issues & Hypotheses
 
 A second ago I could load threads with no issues, even when I created a message with code, what changed?
+
+I thought maybe it wouldn't break if I got rid of the one using my coded message. Still breaks.
+
+Ooh, It's not an array of messages, it's a dictionary. Updating custom decoder fixed this issue.
