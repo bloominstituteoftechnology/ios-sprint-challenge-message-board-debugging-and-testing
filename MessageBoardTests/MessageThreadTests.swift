@@ -31,7 +31,7 @@ class MessageThreadTests: XCTestCase {
             
         }.resume()
         
-        wait(for: [didFinish], timeout: 5)
+        wait(for: [didFinish], timeout: 10)
         
         XCTAssertEqual(name, "Dave")
         

@@ -4,6 +4,15 @@
 
 When I first launched the app I received an error for decoding json data, same as when I changed the firebase link. As of the time of this writing I have no data in my firebase so I'll be skipping over this for the time being
 
+Still can't fetch data with my firebase being populated with entries.
+
+Decoder trying to decode an array of threads, but server returns an array of dictionaries with Strings as keys and Threads as values.
+
+>Tests
+
+I'll use UnitTesting for this as I just need to decipher if data works.
+Simply check to see if is no longer empty.
+
 ## Bug :bug: #2 : - Can't create new thread
 
 > Hypotheses
