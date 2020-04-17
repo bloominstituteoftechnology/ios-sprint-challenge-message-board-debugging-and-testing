@@ -25,13 +25,13 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageThread?.messages.count ?? 0
+        return messageThread?.messagesArray.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
-        let message = messageThread?.messages[indexPath.row]
+        let message = messageThread?.messagesArray[indexPath.row]
         
         cell.textLabel?.text = message?.messageText
         cell.detailTextLabel?.text = message?.sender
@@ -42,7 +42,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
