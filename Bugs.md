@@ -4,3 +4,8 @@
 
 When I first launched the app I received an error for decoding json data, same as when I changed the firebase link. As of the time of this writing I have no data in my firebase so I'll be skipping over this for the time being
 
+## Bug :bug: #2 : - Can't create new thread
+
+> Hypotheses
+
+There's no button for creating a new thread on storyboard, so can only do so by pressing enter. Gotta check if there's a broken/missing outlet, and also check all "create" methods.
