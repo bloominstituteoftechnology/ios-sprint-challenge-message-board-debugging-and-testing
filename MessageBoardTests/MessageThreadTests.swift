@@ -32,9 +32,11 @@ class MessageThreadTests: XCTestCase {
         let threadFromJSON = try? JSONDecoder().decode(MessageThread.self, from: data)
         
         XCTAssertNotNil(testThreadController.messageThreads)
+    }
     
-    
-    
-    
-}
+    func testFetchRequests() {
+        let testThreadController = MessageThreadController()
+        XCTAssertNotNil(testThreadController.messageThreads)
+       }
+       
 }
