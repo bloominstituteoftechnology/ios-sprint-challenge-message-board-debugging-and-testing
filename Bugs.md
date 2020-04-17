@@ -14,3 +14,6 @@ Fixed: Changed name from messageText to text in Message struct
 
 - Send message button does not pop view controller
 Fixed: Added pop
+
+- Messages were not sorted
+Fixed: Only had 5 minutes to fix this. Wrote a quick and dirty solution with .sorted() by timestamp

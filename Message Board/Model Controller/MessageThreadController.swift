@@ -15,7 +15,7 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if true {
+        if isUITesting {
             fetchLocalMessageThreads { (error) in
                 if let error = error {
                     NSLog("Error decoding local data \(error)")
@@ -52,7 +52,7 @@ class MessageThreadController {
     func createMessageThread(with title: String, completion: @escaping (Error?) -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if true {
+        if isUITesting {
             createLocalMessageThread(with: title) { (error) in
                 if let error = error {
                     NSLog("Coulnd't create local message thread \(error)")
@@ -94,7 +94,7 @@ class MessageThreadController {
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping (Error?) -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if true {
+        if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
             completion(nil)
             return
