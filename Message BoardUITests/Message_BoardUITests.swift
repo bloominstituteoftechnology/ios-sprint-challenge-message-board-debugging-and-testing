@@ -37,7 +37,7 @@ class Message_BoardUITests: XCTestCase {
         app.keyboards.buttons["Return"].tap()
 
         // Tap the cell we just added
-        app.tables.cells["0"].tap()
+        app.tables.cells["2"].tap()
         
         // Advance to MessageThreadDetailTableViewController
         app.buttons["Add"].tap()
@@ -55,7 +55,7 @@ class Message_BoardUITests: XCTestCase {
         
         // Send button should take us back to MessageThreadDetailTableViewController
         let foundText = app.staticTexts["Hello, world!"]
-        XCTAssertNotNil(foundText) // FIXME: False positive.
+        XCTAssertNotNil(foundText)
 
         // TODO: ? This doesn't work because it's in the stack some where.
 //        let navBar = app.navigationBars["New Entry"]
@@ -65,4 +65,35 @@ class Message_BoardUITests: XCTestCase {
 //        XCTAssertEqual(navBar.identifier, "New Entry")
     }
     
+    // Find the broken segue. Bug 0002
+    func testUIRoundTrip() throws {
+                
+        let threadName = "New Entry"
+        let name = "Dennis"
+        let message = "Hello, world!"
+        
+        // Create a new thread
+        app.textFields["ThreadsTV.CreateTextField"].tap()
+        app.textFields["ThreadsTV.CreateTextField"].typeText(threadName)
+        app.keyboards.buttons["Return"].tap()
+
+        // Tap the cell we just added
+        app.tables.cells["2"].tap()
+        
+        // Advance to MessageThreadDetailTableViewController
+        app.buttons["Add"].tap()
+        
+        // Advance to MessageDetailViewController
+        app.textFields["DetailVC.NameTextField"].tap()
+        app.textFields["DetailVC.NameTextField"].typeText(name)
+
+        app.textViews["DetailVC.MessageTextView"].tap()
+        app.textViews["DetailVC.MessageTextView"].typeText(message)
+
+        app.buttons["Send"].tap()
+
+        // Retreat to
+        app.navigationBars[threadName].buttons["λ Message Board"].tap()
+    }
+
 }
