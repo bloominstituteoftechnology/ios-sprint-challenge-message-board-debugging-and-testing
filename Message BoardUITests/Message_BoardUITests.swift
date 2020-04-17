@@ -33,7 +33,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
     private var searchBar: XCUIElement {
-        return app.searchFields["MessageThreadsTableViewController.Search"]
+        return app.textFields["MessageThreadsTableViewController.Search"]
     }
     
     func testCreatingNewMessage() {
@@ -47,31 +47,15 @@ class Message_BoardUITests: XCTestCase {
         app.navigationBars["New Message"].buttons["Send"].tap()
     }
     
-    func testCreatingMessage() {
-        
+    func testCreatingNewThread() {
         searchBar.tap()
-        searchBar.typeText("Test")
-        searchBar.typeText("\n")
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        searchBar.typeText("New Thread\n")
     }
     
-    func testReadingThreads() {
-        
-        
-        
-    }
-    
-    func testReadingMessages() {
+    func testReadingThreadsAndMessages() {
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["A New Thread"]/*[[".cells.staticTexts[\"A New Thread\"]",".staticTexts[\"A New Thread\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Checking to make sure this works."]/*[[".cells.staticTexts[\"Checking to make sure this works.\"]",".staticTexts[\"Checking to make sure this works.\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
     }
     
