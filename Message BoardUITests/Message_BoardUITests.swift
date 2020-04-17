@@ -23,4 +23,17 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreateThread() {
+        app.launch()
+        
+        let createANewThreadTextField = app.tables.textFields["Create a new thread:"]
+        
+        createANewThreadTextField.tap()
+        createANewThreadTextField.typeText("New thread")
+        app.buttons["Return"].tap()
+        app.tables.staticTexts["New thread"].tap()
+        app.navigationBars["New thread"].buttons["λ Message Board"].tap()
+        
+    }
+    
 }
