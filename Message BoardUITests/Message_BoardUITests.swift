@@ -19,12 +19,12 @@ class Message_BoardUITests: XCTestCase {
         app = XCUIApplication()
         
         // NOTE: Keep this setup as is for UI Testing
-        app.launchArguments = ["UITesting"]
+        app.launchArguments.append("UITesting")
         app.launch()
     }
     
     func testCreateThread() {
-        
+        app.launch()
         let createANewThreadTextField = app.tables.textFields["Create a new thread:"]
         
         createANewThreadTextField.tap()
@@ -36,6 +36,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testCreateMessage() {
+        app.launch()
         testCreateThread()
         
 //        app.tables/*@START_MENU_TOKEN@*/.staticTexts["thread"]/*[[".cells.staticTexts[\"thread\"]",".staticTexts[\"thread\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
