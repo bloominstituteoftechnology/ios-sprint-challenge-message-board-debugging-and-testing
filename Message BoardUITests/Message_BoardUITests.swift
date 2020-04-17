@@ -50,10 +50,9 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testViewingThreadAndReturn() {
-        testCreatingThread()
         
-        app.tables.children(matching: .cell).element(boundBy: 1).staticTexts["Test"].tap()
-        app.navigationBars["Test"].buttons["λ Message Board"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["A New Thread"].tap()
+        app.navigationBars["A New Thread"].buttons["λ Message Board"].tap()
         
         
     }
