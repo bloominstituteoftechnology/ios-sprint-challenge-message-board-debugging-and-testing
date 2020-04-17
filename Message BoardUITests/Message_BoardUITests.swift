@@ -45,9 +45,11 @@ class Message_BoardUITests: XCTestCase {
         app.navigationBars.buttons["Add"].tap()
         
         nameText.tap()
+        sleep(2)
         nameText.typeText("Lydia")
         
         messageText.tap()
+        sleep(2)
         messageText.typeText("This is a test")
         
         app.navigationBars.buttons["Send"].tap()
