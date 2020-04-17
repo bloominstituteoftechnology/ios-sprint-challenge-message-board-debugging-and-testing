@@ -31,7 +31,7 @@ class MessageThreadTests: XCTestCase {
         
         let threadFromJSON = try? JSONDecoder().decode(MessageThread.self, from: data)
         
-     
+        XCTAssertEqual(testThread, threadFromJSON)
         
         XCTAssertNotNil(testThreadController.messageThreads)
     }
