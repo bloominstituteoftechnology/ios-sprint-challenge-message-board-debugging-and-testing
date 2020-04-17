@@ -8,6 +8,10 @@ target 'Message Board' do
 pod 'Firebase/Database'
 end
 
+target 'MessageBoardTests' do
+	pod 'Firebase/Database'
+	end
+
   # Pods for Message Board
 
   target 'Message BoardUITests' do
