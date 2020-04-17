@@ -30,4 +30,12 @@ class MessageThreadTests: XCTestCase {
         
     }
     
+    func testFetchingMessages() {
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.fetchMessageThreads {
+            XCTAssert(!messageThreadController.messageThreads.isEmpty)
+        }
+    }
+    
 }
