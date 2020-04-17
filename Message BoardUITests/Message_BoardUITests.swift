@@ -35,17 +35,18 @@ class Message_BoardUITests: XCTestCase {
     
     func testSaveButtonInMessageDetail() throws {
         
-        app.tables["Empty list"].textFields["Create a new thread:"].tap()
         app.textFields["ThreadsTV.CreateTextField"].tap()
-
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["A"]/*[[".cells.staticTexts[\"A\"]",".staticTexts[\"A\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.textFields["ThreadsTV.CreateTextField"].typeText("New Entry")
+        app.keyboards.buttons["Return"].tap()
+        
+        app.tables.cells["0"].tap()
         app.navigationBars["A"].buttons["Add"].tap()
         app.textFields["Enter your name:"].tap()
-        
-        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
-        textView.tap()
-        textView.tap()
-        app.navigationBars["New Message"].buttons["Send"].tap()
+
+//        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+//        textView.tap()
+//        textView.tap()
+//        app.navigationBars["New Message"].buttons["Send"].tap()
                 
     }
     
