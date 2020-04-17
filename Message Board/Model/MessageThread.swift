@@ -25,11 +25,12 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        // TODO: ? Why can't I append with .map({$0.value}) but it's fine later?
+        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages
+        self.messages = messages.map({$0.value})
     }
 
     
