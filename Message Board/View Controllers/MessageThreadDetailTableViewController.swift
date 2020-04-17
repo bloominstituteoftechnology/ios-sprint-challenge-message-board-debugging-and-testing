@@ -11,14 +11,11 @@ import UIKit
 class MessageThreadDetailTableViewController: UITableViewController {
 
     
-    var array:[MessageThread.Message]? = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = messageThread?.title
-        
-        array = messageThread?.messages
-        array = array?.sorted(by: {$0.timestamp < $1.timestamp })
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +33,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
-        let message = array?[indexPath.row]
+        let message = messageThread?.messages[indexPath.row]
         
         cell.textLabel?.text = message?.text
         cell.detailTextLabel?.text = message?.sender
