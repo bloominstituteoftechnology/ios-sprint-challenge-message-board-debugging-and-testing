@@ -36,7 +36,7 @@ class Message_BoardUITests: XCTestCase {
         return app.textFields["MessageDetailViewController.SenderNameTextField"]
     }
     private var messageText: XCUIElement {
-        return app.textFields["MessageDetailViewController.MessageTextField"]
+        return app.textViews["MessageDetailViewController.MessageTextField"]
     }
     func testCreateMessage() {
         testCreateThread()
