@@ -32,4 +32,27 @@ class Message_BoardUITests: XCTestCase {
         app.buttons["Return"].tap()
         XCTAssert(app.tables.staticTexts["Hi"].exists)
     }
+    private var nameText: XCUIElement {
+        return app.textFields["MessageDetailViewController.SenderNameTextField"]
+    }
+    private var messageText: XCUIElement {
+        return app.textFields["MessageDetailViewController.MessageTextField"]
+    }
+    func testCreateMessage() {
+        testCreateThread()
+        app.tables.staticTexts["Hi"].tap()
+        app.navigationBars.buttons["Add"].tap()
+        
+        nameText.tap()
+        nameText.typeText("Lydia")
+        //XCTAssertEqual(nameText.title, "Lydia")
+        
+        messageText.tap()
+        messageText.typeText("This is a test")
+        //XCTAssertEqual(messageText.title, "This is a test")
+        
+        app.navigationBars.buttons["Send"].tap()
+        
+        XCTAssert(app.tables.staticTexts["This is a test"].exists)
+    }
 }
