@@ -6,7 +6,8 @@ Bug list:
     
 
 2.) Problem: Error reading json
-
+    a.) Use Unit Testing to check the result of fetching the data
+    Solution: Turn the dictionaries into arrays after changing the Class decoding and converting the dictionary into an array in the fetching function.
 
 
 3.) Problem: Pushing save isn't leaving the view controller

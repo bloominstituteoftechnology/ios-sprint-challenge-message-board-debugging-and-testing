@@ -72,10 +72,6 @@ class Message_BoardUITests: XCTestCase {
  
     }
     
-    // This is for finding the missing .resume() call in the URLSession on func createMessageThread
-    
-
-    
     func createTheThread() {
         threadTyper.tap()
         threadTyper.typeText("Testing this out")
