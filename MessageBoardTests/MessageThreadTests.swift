@@ -30,4 +30,28 @@ class MessageThreadTests: XCTestCase {
         XCTAssertEqual(messageThreadController.messageThreads.count, 1)
         XCTAssertFalse(messageThreadController.messageThreads.count == 2)
     }
+    
+    func testCreateMessage() {
+        let messageThreadController = MessageThreadController()
+        let threadExpectation = XCTestExpectation(description: "Test Thread")
+        
+        messageThreadController.createMessageThread(with: "Test Thread") {
+            threadExpectation.fulfill()
+        }
+        
+        wait(for: [threadExpectation], timeout: 5)
+        XCTAssertEqual(messageThreadController.messageThreads.count, 1)
+        
+        let messageExpectation = XCTestExpectation(description: "Test Message")
+        guard let thread = messageThreadController.messageThreads.first else { return }
+        let message = thread.messages.first
+        
+        XCTAssertNil(message)
+        messageThreadController.createMessage(in: thread, withText: "Testing testing...", sender: "Tobi") {
+            messageExpectation.fulfill()
+        }
+        
+        wait(for: [messageExpectation], timeout: 10)
+        XCTAssertEqual(thread.messages.count, 1)
+    }
 }
