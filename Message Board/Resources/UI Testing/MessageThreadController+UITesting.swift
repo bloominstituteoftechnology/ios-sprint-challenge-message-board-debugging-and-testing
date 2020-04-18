@@ -13,10 +13,12 @@ extension MessageThreadController {
     func fetchLocalMessageThreads(completion: @escaping () -> Void) {
         
         do {
-            let mockData = try Data(contentsOf: mockDataURL)
-            
-            self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: mockData).values)
-            
+            // Using this if test as an "already initialized" flag
+            if self.messageThreads.count == 0 {
+                let mockData = try Data(contentsOf: mockDataURL)
+                
+                self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: mockData).values)
+            }
         } catch {
             NSLog("Error decoding mock data: \(error)")
         }
@@ -33,7 +35,7 @@ extension MessageThreadController {
     
     func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)

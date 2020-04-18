@@ -265,13 +265,16 @@
 				TargetAttributes = {
 					4612B5C3211AB41100E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
 					};
 					4629C7E5214BA09600E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
 						TestTargetID = 4612B5C3211AB41100E7FF73;
 					};
 					9D9B6AFB214B7A66006381F7 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
 						TestTargetID = 4612B5C3211AB41100E7FF73;
 					};
 				};
@@ -519,7 +522,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -537,7 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -554,7 +557,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-BoardUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Message Board";
 			};
@@ -572,7 +575,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-BoardUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Message Board";
 			};
@@ -592,7 +595,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.MessageBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
 			};
@@ -612,7 +615,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.MessageBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
 			};
