@@ -31,9 +31,13 @@ class Message_BoardUITests: XCTestCase {
     
     func testSaveButtonInMessageDetail() throws {
         
+        let threadName = "New Entry"
+        let name = "Dennis"
+        let message = "Hello, world!"
+        
         // Create a new thread
         app.textFields["ThreadsTV.CreateTextField"].tap()
-        app.textFields["ThreadsTV.CreateTextField"].typeText("New Entry")
+        app.textFields["ThreadsTV.CreateTextField"].typeText(threadName)
         app.keyboards.buttons["Return"].tap()
 
         // Tap the cell we just added
@@ -44,25 +48,22 @@ class Message_BoardUITests: XCTestCase {
         
         // Advance to MessageDetailViewController
         app.textFields["DetailVC.NameTextField"].tap()
-        app.textFields["DetailVC.NameTextField"].typeText("Dennis")
+        app.textFields["DetailVC.NameTextField"].typeText(name)
 
         app.textViews["DetailVC.MessageTextView"].tap()
-        app.textViews["DetailVC.MessageTextView"].typeText("Hello, world!")
+        app.textViews["DetailVC.MessageTextView"].typeText(message)
 
         app.buttons["Send"].tap()
         
-        //tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["a"]/*[[".cells.staticTexts[\"a\"]",".staticTexts[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
         // Send button should take us back to MessageThreadDetailTableViewController
-        let foundText = app.staticTexts["Hello, world!"]
-        XCTAssertNotNil(foundText)
+        XCTAssertTrue(app.staticTexts["message"].exists)
 
         // TODO: ? This doesn't work because it's in the stack some where.
-//        let navBar = app.navigationBars["New Entry"]
+//        let navBar = app.navigationBars[threadName]
 //        XCTAssertNotNil(navBar)
         
         // TODO: ? Why doesn't this work?
-//        XCTAssertEqual(navBar.identifier, "New Entry")
+//        XCTAssertEqual(navBar.identifier, threadName)
     }
     
     func testUIRoundTrip() throws {
