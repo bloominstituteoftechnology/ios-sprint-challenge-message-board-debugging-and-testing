@@ -54,4 +54,17 @@ class MessageThreadTests: XCTestCase {
         wait(for: [messageExpectation], timeout: 10)
         XCTAssertEqual(thread.messages.count, 1)
     }
+    
+    func testFetching() {
+        let messageThreadController = MessageThreadController()
+        let expectation = XCTestExpectation(description: "Test Fetching")
+
+        XCTAssertTrue(messageThreadController.messageThreads.isEmpty)
+        messageThreadController.fetchMessageThreads {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+        XCTAssertFalse(messageThreadController.messageThreads.isEmpty)
+    }
 }
