@@ -10,6 +10,8 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
+    let messageThreadsTableViewController = MessageThreadController()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
