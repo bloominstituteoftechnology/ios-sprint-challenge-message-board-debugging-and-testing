@@ -56,7 +56,7 @@ class Message_BoardUITests: XCTestCase {
         app.buttons["Send"].tap()
         
         // Send button should take us back to MessageThreadDetailTableViewController
-        XCTAssertTrue(app.staticTexts["message"].exists)
+        XCTAssertTrue(app.staticTexts[message].exists)
 
         // TODO: ? This doesn't work because it's in the stack some where.
 //        let navBar = app.navigationBars[threadName]
