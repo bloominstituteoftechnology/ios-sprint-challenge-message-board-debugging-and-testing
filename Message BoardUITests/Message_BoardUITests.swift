@@ -63,31 +63,18 @@ class Message_BoardUITests: XCTestCase {
         
         rightNavigationButton.tap()
         
-        /*
+        
         if let text = tableViewCell(at: 0).textFields.element(boundBy: 0).value as? String {
             XCTAssertEqual(text, "Testing this out")
         } else {
             print("NO GO")
         }
-        */
-        
-        
-        /*
-        let didFinish = expectation(description: "didFinish")
-        var name = ""
-        let url = URL(string: "https://sprintchallenge-5d5c7.firebaseio.com/")!
-
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            didFinish.fulfill()
-            name = "Dave"
-        }.resume()
-
-        wait(for: [didFinish], timeout: 5) // blocking sync wait
-
-        // Assertion only happens after the time out, or web request completes
-        XCTAssertEqual("Dave", name)
- */
+ 
     }
+    
+    // This is for finding the missing .resume() call in the URLSession on func createMessageThread
+    
+
     
     func createTheThread() {
         threadTyper.tap()

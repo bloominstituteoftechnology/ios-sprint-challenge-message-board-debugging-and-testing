@@ -66,27 +66,18 @@ class MessageThreadController {
             NSLog("Error encoding thread to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print("URLSESSION HAPPENS")
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
                 return
             }
             
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
-                print("RESPONSE DESCRIPTION: \(response.description)")
-                print("RESPONSE STATUSCODE: \(response.statusCode)")
-                return
-            }
-            
-            print("it got here?")
             self.messageThreads.append(thread)
             completion()
             
         }.resume()
-        print("THERES A URLSESSION CALL THAT SHOULD HAVE WENT OFF")
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
