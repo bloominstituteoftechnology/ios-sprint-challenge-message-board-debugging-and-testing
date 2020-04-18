@@ -15,6 +15,7 @@ class MessageThreadsTableViewController: UITableViewController {
         
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
+                print("completion reload?")
                 self.tableView.reloadData()
             }
         }
@@ -30,6 +31,7 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
+            print("it did the thread")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

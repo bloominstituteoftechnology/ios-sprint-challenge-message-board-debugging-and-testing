@@ -22,6 +22,7 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		C40255D6244A023D009CAB08 /* BugList.md in Resources */ = {isa = PBXBuildFile; fileRef = C40255D5244A023D009CAB08 /* BugList.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		C40255D5244A023D009CAB08 /* BugList.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = BugList.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
+				C40255D4244A01A3009CAB08 /* BugFile */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
@@ -195,6 +198,14 @@
 				9D9B6B00214B7A66006381F7 /* Info.plist */,
 			);
 			path = MessageBoardTests;
+			sourceTree = "<group>";
+		};
+		C40255D4244A01A3009CAB08 /* BugFile */ = {
+			isa = PBXGroup;
+			children = (
+				C40255D5244A023D009CAB08 /* BugList.md */,
+			);
+			path = BugFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40255D6244A023D009CAB08 /* BugList.md in Resources */,
 				4612B5D2211AB41300E7FF73 /* LaunchScreen.storyboard in Resources */,
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,

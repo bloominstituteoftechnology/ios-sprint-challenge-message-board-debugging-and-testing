@@ -31,7 +31,11 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageThreadDictionaries = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                
+                let messageThreads = messageThreadDictionaries.compactMap({ $0.value }) 
+                
+                self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -43,6 +47,8 @@ class MessageThreadController {
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         
+        print("ITS CREATING A THREAD")
+        
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
@@ -51,11 +57,14 @@ class MessageThreadController {
         
         let thread = MessageThread(title: title)
         
+        print("THIS IS THE THREAD: \(thread.identifier)")
+        
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
         do {
+            print("hello request \(request)")
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
@@ -72,7 +81,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +120,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://sprintchallengetest.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
