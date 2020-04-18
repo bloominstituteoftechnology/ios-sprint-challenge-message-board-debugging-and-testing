@@ -6,10 +6,7 @@ Bug 0005: Data from Firebase is not loaded.
 Bug 0006: Mock data cannot be loaded
 Bug 0007: fetchMessageThreads is failing. 
 Bug 0008: Messages cannot be loaded from prod (decoder issue)
+Bug 0009: Added mock thread is discarded upon return to MessageThreadsTableViewController
 
 * - open bugs
 
-fetchMessageThreads...
-
-MessageThread
-	-> messages

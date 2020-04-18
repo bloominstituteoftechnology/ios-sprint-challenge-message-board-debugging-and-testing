@@ -65,7 +65,6 @@ class Message_BoardUITests: XCTestCase {
 //        XCTAssertEqual(navBar.identifier, "New Entry")
     }
     
-    // Find the broken segue. Bug 0002
     func testUIRoundTrip() throws {
                 
         let threadName = "New Entry"
@@ -92,8 +91,12 @@ class Message_BoardUITests: XCTestCase {
 
         app.buttons["Send"].tap()
 
-        // Retreat to
+        // Retreat to MessageThreadsTableViewController
         app.navigationBars[threadName].buttons["λ Message Board"].tap()
+        
+        /// Bug 0009: Added mock thread is discarded upon return to MessageThreadsTableViewController
+        // Verify the thread we created is still there
+        XCTAssertTrue(app.tables.cells["2"].exists)
     }
 
 }
