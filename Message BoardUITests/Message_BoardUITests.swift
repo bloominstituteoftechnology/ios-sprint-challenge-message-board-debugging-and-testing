@@ -49,4 +49,12 @@ class Message_BoardUITests: XCTestCase {
         threadTextField.typeText("SprintUITest")
         returnButton.tap()
     }
+    
+    func testCreateMessage() {
+        app.tables.staticTexts["Testing again"].tap()
+        app.navigationBars["Testing again"].buttons["Add"].tap()
+        nameTextField.tap()
+        nameTextField.typeText("SprintUITestTitle")
+        sendButton.tap()
+    }
 }
