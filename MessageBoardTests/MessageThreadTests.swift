@@ -17,4 +17,17 @@ class MessageThreadTests: XCTestCase {
         let messages = try! JSONDecoder().decode([String: MessageThread].self, from: data).map { $0.value }
         XCTAssertNoThrow(messages)
     }
+    
+    func testCreateThread() {
+        let messageThreadController = MessageThreadController()
+        let expectation = XCTestExpectation(description: "Thread Created")
+        
+        messageThreadController.createMessageThread(with: "Test Thread") {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(messageThreadController.messageThreads.count, 1)
+        XCTAssertFalse(messageThreadController.messageThreads.count == 2)
+    }
 }
