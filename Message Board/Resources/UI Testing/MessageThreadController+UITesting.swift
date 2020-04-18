@@ -20,7 +20,6 @@ extension MessageThreadController {
         } catch {
             NSLog("Error decoding mock data: \(error)")
         }
-        
         completion()
     }
     

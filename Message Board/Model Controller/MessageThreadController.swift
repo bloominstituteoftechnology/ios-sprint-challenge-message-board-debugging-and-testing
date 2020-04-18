@@ -72,7 +72,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }.resume() // URLSeesion was not being called becaouse .resume() was missing
+        }// .resume() // URLSeesion was not being called becaouse .resume() was missing
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
