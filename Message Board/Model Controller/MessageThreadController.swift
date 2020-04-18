@@ -43,6 +43,8 @@ class MessageThreadController {
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         
+        print("ITS CREATING A THREAD")
+        
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
@@ -51,28 +53,40 @@ class MessageThreadController {
         
         let thread = MessageThread(title: title)
         
+        print("THIS IS THE THREAD: \(thread.identifier)")
+        
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
         do {
+            print("hello request \(request)")
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print("URLSESSION HAPPENS")
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
                 return
             }
             
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                print("RESPONSE DESCRIPTION: \(response.description)")
+                print("RESPONSE STATUSCODE: \(response.statusCode)")
+                return
+            }
+            
+            print("it got here?")
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
+        print("THERES A URLSESSION CALL THAT SHOULD HAVE WENT OFF")
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {

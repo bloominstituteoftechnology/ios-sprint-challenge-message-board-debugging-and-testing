@@ -16,6 +16,14 @@ class Message_BoardUITests: XCTestCase {
         return app.textFields.element(boundBy: 0)
     }
     
+    var messageField: XCUIElement {
+        return app.textFields["newMessageField"]
+    }
+    
+    var messageView: XCUIElement {
+        return app.textViews.element(boundBy: 0)
+    }
+    
     var tableView: XCUIElement {
         return app.tables.element(boundBy: 0)
     }
@@ -24,7 +32,7 @@ class Message_BoardUITests: XCTestCase {
         return tableView.cells.element(boundBy: index)
     }
     
-    var navigationButtonAdd: XCUIElement {
+    var rightNavigationButton: XCUIElement {
         return app.navigationBars.element(boundBy: 0).buttons.element(boundBy: 1)
     }
     
@@ -46,9 +54,14 @@ class Message_BoardUITests: XCTestCase {
         app.keyboards.buttons["Return"].tap()
         
         tableViewCell(at: 0).tap()
+        rightNavigationButton.tap()
         
-        navigationButtonAdd.tap()
+        threadTyper.tap()
+     //   threadTyper.typeText("Testing this field")
+        messageView.tap()
+        messageField.typeText("Testing out the view")
         
+        rightNavigationButton.tap()
         
         /*
         if let text = tableViewCell(at: 0).textFields.element(boundBy: 0).value as? String {
