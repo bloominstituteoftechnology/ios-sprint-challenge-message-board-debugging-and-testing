@@ -10,6 +10,9 @@ import Foundation
 
 class MessageThreadController {
     
+    static let baseURL = URL(string: "https://messageboardspringchallenge.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -111,6 +114,5 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
+    
 }
