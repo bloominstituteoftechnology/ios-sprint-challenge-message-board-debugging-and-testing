@@ -20,6 +20,10 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            //Fixed encoding, popping the view once the message is created.
+            DispatchQueue.main.async {
+                          self.navigationController?.popViewController(animated: true)
+                      }
         })
     }
 
