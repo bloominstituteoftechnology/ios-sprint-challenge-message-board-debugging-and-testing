@@ -38,10 +38,7 @@ class MessageThreadsTableViewController: UITableViewController {
                 
             }
         }
-        
-      
-        
-         
+   
     }
     
     // MARK: - UITableViewDataSource

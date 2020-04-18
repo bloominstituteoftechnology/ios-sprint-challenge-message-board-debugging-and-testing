@@ -23,6 +23,8 @@ class MessageThreadController {
             return
         }
         
+        
+        
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
@@ -31,7 +33,10 @@ class MessageThreadController {
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            guard let data = data else { NSLog("No data returned from data task")
+                completion()
+                return
+            }
             
             do {
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
