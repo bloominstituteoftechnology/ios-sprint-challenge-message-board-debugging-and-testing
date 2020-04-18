@@ -28,7 +28,7 @@ class MessageThreadTests: XCTestCase {
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             didFinish.fulfill()
             value = "value"
-        }.resume()
+        }
         
         wait(for: [didFinish], timeout: 5)
         XCTAssertEqual("value", value)

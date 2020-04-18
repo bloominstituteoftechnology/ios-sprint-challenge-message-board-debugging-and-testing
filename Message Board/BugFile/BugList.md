@@ -11,7 +11,7 @@ Bug list:
 
 
 3.) Problem: Pushing save isn't leaving the view controller
-    a.) Run UITests to show process of entering and saving data, then proceed to the "AddMessages" segue
+    a.) Run UITests to show process of entering and saving data, then proceed to the "AddMessages" segue and press "save"
     Solution: 
 
 

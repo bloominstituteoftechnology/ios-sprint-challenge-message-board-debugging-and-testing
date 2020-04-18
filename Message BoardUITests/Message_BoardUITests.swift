@@ -49,6 +49,8 @@ class Message_BoardUITests: XCTestCase {
     
     func testExpectation() {
         
+        // This test runs through 2 of the bugs... it should fail for both 1.) the popping of the view controller when save is pressed, 2.) the segue being named wrong so it doesn't run the "create message" function, thereby having the tableView empty after popping to the view controller
+        
         threadTyper.tap()
         threadTyper.typeText("Testing this out")
         app.keyboards.buttons["Return"].tap()
@@ -57,24 +59,15 @@ class Message_BoardUITests: XCTestCase {
         rightNavigationButton.tap()
         
         threadTyper.tap()
-     //   threadTyper.typeText("Testing this field")
+        threadTyper.typeText("TestingString")
         messageView.tap()
-        messageField.typeText("Testing out the view")
+        messageView.typeText("Testing out the view")
         
         rightNavigationButton.tap()
         
-        
-        if let text = tableViewCell(at: 0).textFields.element(boundBy: 0).value as? String {
-            XCTAssertEqual(text, "Testing this out")
-        } else {
-            print("NO GO")
-        }
+        XCTAssertLessThan(0, tableView.cells.count)
+         
  
-    }
-    
-    func createTheThread() {
-        threadTyper.tap()
-        threadTyper.typeText("Testing this out")
     }
     
 }
