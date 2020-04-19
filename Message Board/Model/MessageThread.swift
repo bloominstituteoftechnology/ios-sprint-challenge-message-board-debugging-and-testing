@@ -25,7 +25,7 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:] // MARK: Bug -> added MessageThread. to type.self
+        let messages = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:] // MARK: Bug -> create a dictionary instead of an array
         
         self.title = title
         self.identifier = identifier

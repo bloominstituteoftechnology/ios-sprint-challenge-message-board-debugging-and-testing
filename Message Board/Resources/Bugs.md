@@ -6,7 +6,7 @@
 
 # Bug #2 
 ## Creating/Sending a message not working
-###  
+###  MessageThread is not being passed to the DetailView where the message is created. -> There was a typo in the identifier
 
 # Bug #3 
 ## Message Threads are not being fetched to the table view

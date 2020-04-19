@@ -118,6 +118,7 @@
                     <navigationItem key="navigationItem" title="Title" id="tHA-qF-qbA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MRR-1o-pkW">
                             <connections>
+                                <action selector="addMessage:" destination="haD-iA-YGa" id="haa-e9-Mlc"/>
                                 <segue destination="BoB-4p-ZG3" kind="show" identifier="AddMessage" id="3TZ-Xl-1f4"/>
                             </connections>
                         </barButtonItem>

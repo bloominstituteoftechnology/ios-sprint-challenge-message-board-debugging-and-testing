@@ -102,6 +102,8 @@ class MessageThreadController {
         } catch {
             NSLog("Error encoding message to JSON: \(error)")
         }
+        self.messageThreads[index].messages.append(message)
+
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
@@ -110,7 +112,6 @@ class MessageThreadController {
                 completion()
                 return
             }
-            self.messageThreads[index].messages.append(message)
             completion()
             
         }.resume()
