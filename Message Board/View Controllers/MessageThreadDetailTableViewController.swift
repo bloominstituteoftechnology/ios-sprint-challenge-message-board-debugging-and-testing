@@ -22,6 +22,11 @@ class MessageThreadDetailTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    // MARK: - Properties
+
+      var messageThread: MessageThread?
+      var messageThreadController: MessageThreadController?
+    
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,8 +55,5 @@ class MessageThreadDetailTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Properties
-
-    var messageThread: MessageThread?
-    var messageThreadController: MessageThreadController?
+  
 }
