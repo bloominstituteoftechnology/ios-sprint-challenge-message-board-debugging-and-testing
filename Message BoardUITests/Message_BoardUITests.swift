@@ -37,8 +37,27 @@ class Message_BoardUITests: XCTestCase {
     
     func testTapOnFirstCell() {
         
-        let threadCell = XCUIApplication().tables.element(boundBy: 0).cells.element(boundBy: 0)
+    let threadCell = XCUIApplication().tables.element(boundBy: 0).cells.element(boundBy: 0)
         threadCell.tap()
     }
+    
+    func testAddNewMessage() {
+
+        let threadCell = XCUIApplication().tables.children(matching: .cell).element.staticTexts["A New Thread"]
+        threadCell.tap()
+        
+        let navigationBar = XCUIApplication().navigationBars["A New Thread"].buttons["Add"]
+        navigationBar.tap()
+        
+        let textField = XCUIApplication().textFields["Enter your name:"]
+        textField.tap()
+        textField.typeText("Billy Bob")
+
+        let addMessage = XCUIApplication().navigationBars["New Message"].buttons["Send"]
+        addMessage.tap()
+
+    }
+    
+    
     
 }
