@@ -10,3 +10,9 @@ import Foundation
 ### Database issue:
 - Threads not being sent to database or stored in tableview. 
 - Bug fix: `.resume()` was missing in createMessageThread function after the URLSession. 
+
+### Database issue:
+- No segue from DetailTableViewController to DetailViewController. Likely segue identifier issue.
+- Bug fix: Fixed type in segue identifier.
+
+
