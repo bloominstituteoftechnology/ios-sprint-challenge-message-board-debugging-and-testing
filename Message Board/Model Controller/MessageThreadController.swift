@@ -50,6 +50,7 @@ class MessageThreadController {
         }
         
         let thread = MessageThread(title: title)
+        self.messageThreads.append(thread)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -69,7 +70,6 @@ class MessageThreadController {
                 return
             }
             
-            self.messageThreads.append(thread)
             completion()
             
         }.resume()

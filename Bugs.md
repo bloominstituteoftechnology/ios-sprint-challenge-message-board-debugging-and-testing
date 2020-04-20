@@ -10,7 +10,7 @@
     [x] 2. Verify test fails
     [x] 3. Fix bug by implementing logic in the code
     [x] 4. Verify test passes
-    [x] 5. Refactor any logic to improve the code (no refactoring needed)
+    [x] 5. Refactor any logic to improve the code
     [x] 6. Make a git commit describing the fix
 
 
