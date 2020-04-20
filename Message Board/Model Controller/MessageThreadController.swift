@@ -10,6 +10,7 @@ import Foundation
 
 class MessageThreadController {
     // MARK: - Properties
+    // Removed static let.
     let baseURL = URL(string: "https://message-board-6d62c.firebaseio.com/")!
     
     var messageThreads: [MessageThread] = []
@@ -40,13 +41,15 @@ class MessageThreadController {
             }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // Changed decoding format to a dictionary
+                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map() { $0.value }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
             completion()
+            // Added .resume()
         }.resume()
     }
     
@@ -68,6 +71,9 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            
+            // Added return
+            return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
