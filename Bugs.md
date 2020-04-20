@@ -18,3 +18,7 @@ import Foundation
 ### Error decoding message threads from JSON data
 - Data not displaying in tableview but is being sent to database. Suspect error in MessageThread.swift in decoding JSON.
 - Bug Fix: refactored code in MessageThread class.
+
+### UI Issue:
+- When creating a new message, the view does not pop back from detail view to detail table view controller.
+- Bug Fix: Added `navigationController?.popViewController(animated: true)`
