@@ -65,4 +65,4 @@ class Message_BoardUITests: XCTestCase {
 
            XCTAssertTrue(app.tables.staticTexts["A flag for my countrymen."].exists)
        }
-       }
+}
