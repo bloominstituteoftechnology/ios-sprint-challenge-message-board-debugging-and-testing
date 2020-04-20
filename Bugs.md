@@ -16,3 +16,5 @@ import Foundation
 - Bug fix: Fixed type in segue identifier.
 
 ### Error decoding message threads from JSON data
+- Data not displaying in tableview but is being sent to database. Suspect error in MessageThread.swift in decoding JSON.
+- Bug Fix: refactored code in MessageThread class.

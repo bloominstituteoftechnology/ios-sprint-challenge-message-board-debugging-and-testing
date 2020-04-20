@@ -12,12 +12,6 @@ class MessageThread: Codable, Equatable {
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case identifier
-        case messages
-    }
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
@@ -28,48 +22,85 @@ class MessageThread: Codable, Equatable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let title = try container.decode(String.self, forKey: .title)
-        let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
-        
-        var messagesArray = [Message]()
-        
-        for message in messages {
-            messagesArray.append(message.value)
+        do {
+            self.identifier = try container.decode(String.self, forKey: .identifier)
+        } catch {
+            self.identifier = UUID().uuidString
+        }
+
+        do {
+            self.title = try container.decode(String.self, forKey: .title)
+            
+        } catch {
+            self.title = "Default Title Here"
         }
         
-        self.title = title
-        self.identifier = identifier
-        self.messages = messagesArray
+        var messages: [MessageThread.Message] = []
         
-    }
-        
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-
-        try container.encode(title, forKey: .title)
-        try container.encode(identifier, forKey: .identifier)
-        var messagesDict = [String : Message]()
-        for message in messages {
-            messagesDict[UUID().uuidString] = message
+        do {
+            
+            let messagesContainer = try container.nestedContainer(keyedBy: GenericCodingKeys.self, forKey: .messages)
+            
+            for key in messagesContainer.allKeys {
+                let messageContainer = try messagesContainer.nestedContainer(keyedBy: MessageThreadCodingKeys.self, forKey: key)
+                
+                let sender = try messageContainer.decode(String.self, forKey: .sender)
+                let messageText = try messageContainer.decode(String.self, forKey: .messageText)
+                let timestamp = try messageContainer.decode(Date.self, forKey: .timestamp)
+                
+                let message = Message(text: messageText, sender: sender, timestamp: timestamp)
+                
+                messages.append(message)
+            }
+            
+//            self.title = title
+//            self.identifier = identifier
+            self.messages = messages
+            
+            
+            
+            
+        } catch {
+//            self.title = title
+//            self.identifier = identifier
+            self.messages = []
         }
-        try container.encode(messagesDict, forKey: .messages)
+        
+        
+        
     }
+    
+    enum MessageThreadCodingKeys: String, CodingKey {
+        case messageText = "text", sender, timestamp
+    }
+    
+    struct GenericCodingKeys: CodingKey {
+        var stringValue: String
+        var intValue: Int?
 
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+        }
+
+        init?(intValue: Int) {
+            self.intValue = intValue
+            self.stringValue = "\(intValue)"
+        }
+    }
 
     
     struct Message: Codable, Equatable {
         
-        let text: String
+        let messageText: String
         let sender: String
         let timestamp: Date
         
         init(text: String, sender: String, timestamp: Date = Date()) {
-            self.text = text
+            self.messageText = text
             self.sender = sender
             self.timestamp = timestamp
         }
-}
+    }
     
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
         return lhs.title == rhs.title &&
