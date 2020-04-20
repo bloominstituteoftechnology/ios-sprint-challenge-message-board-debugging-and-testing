@@ -9,7 +9,12 @@
 import UIKit
 
 class MessageThreadDetailTableViewController: UITableViewController {
+    // MARK: - Properties
 
+    var messageThread: MessageThread?
+    var messageThreadController: MessageThreadController?
+
+    // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,9 +45,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
-
+    // Fixed typo in segue identifier
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
@@ -50,8 +55,5 @@ class MessageThreadDetailTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Properties
-
-    var messageThread: MessageThread?
-    var messageThreadController: MessageThreadController?
+    
 }
