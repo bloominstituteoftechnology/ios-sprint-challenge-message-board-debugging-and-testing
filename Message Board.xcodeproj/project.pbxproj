@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422791A9244D21BA00EEC60C /* Bugs.md in Resources */ = {isa = PBXBuildFile; fileRef = 422791A8244D21BA00EEC60C /* Bugs.md */; };
 		4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612B5C7211AB41100E7FF73 /* AppDelegate.swift */; };
 		4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CB211AB41200E7FF73 /* Main.storyboard */; };
 		4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CE211AB41300E7FF73 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		422791A8244D21BA00EEC60C /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Bugs.md; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		4612B5BB211AB41100E7FF73 = {
 			isa = PBXGroup;
 			children = (
+				422791A8244D21BA00EEC60C /* Bugs.md */,
 				4612B5C6211AB41100E7FF73 /* Message Board */,
 				9D9B6AFD214B7A66006381F7 /* MessageBoardTests */,
 				4629C7E7214BA09600E7FF73 /* Message BoardUITests */,
@@ -265,13 +268,16 @@
 				TargetAttributes = {
 					4612B5C3211AB41100E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
 					};
 					4629C7E5214BA09600E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
 						TestTargetID = 4612B5C3211AB41100E7FF73;
 					};
 					9D9B6AFB214B7A66006381F7 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
 						TestTargetID = 4612B5C3211AB41100E7FF73;
 					};
 				};
@@ -303,6 +309,7 @@
 			files = (
 				4612B5D2211AB41300E7FF73 /* LaunchScreen.storyboard in Resources */,
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
+				422791A9244D21BA00EEC60C /* Bugs.md in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,
 				4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */,
 			);
@@ -519,7 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -537,7 +544,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -554,7 +561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-BoardUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Message Board";
 			};
@@ -572,7 +579,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-BoardUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Message Board";
 			};
@@ -592,7 +599,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.MessageBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
 			};
@@ -612,7 +619,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.MessageBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Message Board.app/Message Board";
 			};

@@ -10,6 +10,10 @@ import Foundation
 
 class MessageThreadController {
     
+    // Default baseURL: https://lambda-message-board.firebaseio.com/
+    static let baseURL = URL(string: "https://message-board-ae8fe.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -20,7 +24,7 @@ class MessageThreadController {
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
@@ -30,8 +34,14 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
+            if let response = response {
+                 print(response)
+                 print(String(data: data, encoding: .utf8) as Any)
+             }
+            
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageResult = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                 self.messageThreads = messageResult.map { $0.value }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -72,7 +82,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -83,7 +93,7 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -110,7 +120,5 @@ class MessageThreadController {
             
         }.resume()
     }
-    
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
+
 }
