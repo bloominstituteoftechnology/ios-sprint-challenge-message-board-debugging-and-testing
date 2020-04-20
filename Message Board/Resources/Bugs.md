@@ -6,5 +6,8 @@
 
 ### Database issue 2:
 - Bug Issue: threadding issue. Data not sent to database or stored locally. 
-- Bug Fix: entered missing '.resume()' in createdMesseageThread func 
+- Bug Fix: added missing '.resume()' in createdMesseageThread func 
+
+### JSON Decoding Issue:
+- Bug Issue: type mismatch, expecting to decode an Array but found a Dictionary Instead
 

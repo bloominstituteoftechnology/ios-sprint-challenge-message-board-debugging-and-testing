@@ -36,7 +36,7 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -55,6 +55,7 @@ class MessageThreadController {
         }
         
         let thread = MessageThread(title: title)
+        self.messageThreads.append(thread)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -74,7 +75,7 @@ class MessageThreadController {
                 return
             }
             
-            self.messageThreads.append(thread)
+            
             completion()
            // Error
         }.resume()
