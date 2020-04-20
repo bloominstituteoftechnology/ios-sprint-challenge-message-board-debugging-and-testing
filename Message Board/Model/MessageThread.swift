@@ -4,7 +4,6 @@
 //
 //  Created by Spencer Curtis on 8/7/18.
 //  Copyright © 2018 Lambda School. All rights reserved.
-//
 
 import Foundation
 
@@ -28,42 +27,23 @@ class MessageThread: Codable, Equatable {
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-          
-          let title = try container.decode(String.self, forKey: .title)
-          let identifier = try container.decode(String.self, forKey: .identifier)
-          let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
-          
-          var messagesArray = [Message]()
-          
-          for message in messages {
-              messagesArray.append(message.value)
-          }
-          
-          self.title = title
-          self.identifier = identifier
-          self.messages = messagesArray
-    }
-
-    
-    struct Message: Codable, Equatable {
         
-        let messageText: String
-        let sender: String
-        let timestamp: Date
+        let title = try container.decode(String.self, forKey: .title)
+        let identifier = try container.decode(String.self, forKey: .identifier)
+        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
-        init(text: String, sender: String, timestamp: Date = Date()) {
-            self.messageText = text
-            self.sender = sender
-            self.timestamp = timestamp
+        var messagesArray = [Message]()
+        
+        for message in messages {
+            messagesArray.append(message.value)
         }
+        
+        self.title = title
+        self.identifier = identifier
+        self.messages = messagesArray
+        
     }
-    
-    static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
-        return lhs.title == rhs.title &&
-            lhs.identifier == rhs.identifier &&
-            lhs.messages == rhs.messages
-    }
-    
+        
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
@@ -76,4 +56,24 @@ class MessageThread: Codable, Equatable {
         try container.encode(messagesDict, forKey: .messages)
     }
 
+
+    
+    struct Message: Codable, Equatable {
+        
+        let text: String
+        let sender: String
+        let timestamp: Date
+        
+        init(text: String, sender: String, timestamp: Date = Date()) {
+            self.text = text
+            self.sender = sender
+            self.timestamp = timestamp
+        }
+}
+    
+    static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
+        return lhs.title == rhs.title &&
+            lhs.identifier == rhs.identifier &&
+            lhs.messages == rhs.messages
+    }
 }

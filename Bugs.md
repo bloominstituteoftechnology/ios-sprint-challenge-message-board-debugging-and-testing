@@ -15,4 +15,4 @@ import Foundation
 - No segue from DetailTableViewController to DetailViewController. Likely segue identifier issue.
 - Bug fix: Fixed type in segue identifier.
 
-
+### Error decoding message threads from JSON data
