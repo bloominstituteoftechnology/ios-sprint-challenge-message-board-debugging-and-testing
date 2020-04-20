@@ -14,18 +14,18 @@
     [x] 6. Make a git commit describing the fix
 
 
-## Bug #2: 
+## Bug #2: MessageThreadController
 
-* Line: 
-* Bug Description: 
-* Proposed Fix: 
+* Line: 34
+* Bug Description: Error decoding message threads from JSON data
+* Proposed Fix: Update code to initially decode JSON into a dictionary, then extract the dictionary's values into an array
 * Todo:
-    [ ] 1. Write Unit or UI test for it
-    [ ] 2. Verify test fails
-    [ ] 3. Fix bug by implementing logic in the code
-    [ ] 4. Verify test passes
-    [ ] 5. Refactor any logic to improve the code
-    [ ] 6. Make a git commit describing the fix
+    [x] 1. Write Unit or UI test for it
+    [x] 2. Verify test fails
+    [x] 3. Fix bug by implementing logic in the code
+    [x] 4. Verify test passes
+    [x] 5. Refactor any logic to improve the code (refactored test code)
+    [x] 6. Make a git commit describing the fix
 
 
 ## Bug #3: 
