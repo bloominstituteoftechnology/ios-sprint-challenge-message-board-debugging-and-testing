@@ -9,10 +9,15 @@
 import Foundation
 
 class MessageThreadController {
+    // MARK: - Properties
+    let baseURL = URL(string: "https://message-board-6d62c.firebaseio.com/")!
     
+    var messageThreads: [MessageThread] = []
+    
+    // MARK: - Methods
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
-        let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
@@ -28,7 +33,11 @@ class MessageThreadController {
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                completion()
+                return
+            }
             
             do {
                 self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
@@ -51,7 +60,7 @@ class MessageThreadController {
         
         let thread = MessageThread(title: title)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
@@ -71,8 +80,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-            
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -88,7 +96,7 @@ class MessageThreadController {
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
@@ -110,7 +118,4 @@ class MessageThreadController {
             
         }.resume()
     }
-    
-    static let baseURL = URL(string: "https://message-board-6d62c.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
 }
