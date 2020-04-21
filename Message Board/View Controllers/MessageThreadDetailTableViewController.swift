@@ -46,10 +46,10 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func prepare(for segue: UIStoryboardSegue, sender: UIBarButtonItem) {
         if segue.identifier == "AddMessage" { // MARK: Bug -> typo in identifier
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
+            sender.accessibilityIdentifier = "MessageThreadDetailTableViewController.AddButton"
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
