@@ -10,6 +10,11 @@ import Foundation
 
 class MessageThreadController {
     
+//    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    
+    static let baseURL = URL(string: "https://lambda-message-board-b5e12.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -20,7 +25,8 @@ class MessageThreadController {
             return
         }
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
+            
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
@@ -31,7 +37,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let messageDict = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                self.messageThreads = Array(messageDict.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -44,12 +51,14 @@ class MessageThreadController {
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+        
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
             return
         }
         
         let thread = MessageThread(title: title)
+        self.messageThreads.append(thread)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -69,10 +78,9 @@ class MessageThreadController {
                 return
             }
             
-            self.messageThreads.append(thread)
             completion()
-            
-        }
+           // Error. Added '.resume
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -83,7 +91,7 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -111,6 +119,5 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
+    
 }
