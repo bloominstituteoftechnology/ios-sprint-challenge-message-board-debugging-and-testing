@@ -12,20 +12,37 @@ import XCTest
 class MessageThreadTests: XCTestCase {
     
     func testCreatingNewThread() {
-        let messageTheadController = MessageThreadController()
-        let exisitingMessageThreadCount = messageTheadController.messageThreads.count
-        let threadTitle = "New Thread Title"
-        XCTAssertEqual(messageTheadController.messageThreads.count, exisitingMessageThreadCount)
+        let messageThreadController = MessageThreadController()
+        createNewThread("New Thread", using: messageThreadController)
+      
+    }
+
+    func testMessageSending() {
+        let messageThreadController = MessageThreadController()
+        let newThread = MessageThread(title: "New Thread")
+        messageThreadController.messageThreads.append(newThread)
         
-        let expectation = self.expectation(description: "Creating new thread")
+        XCTAssertTrue(newThread.messages.count == 0)
         
-        messageTheadController.createMessageThread(with: threadTitle) {
+        let newMessage = MessageThread.Message(text: "This is the message", sender: "Gerardo")
+        newThread.messages.append(newMessage)
+        
+        XCTAssertTrue(messageThreadController.messageThreads.count == 1)
+    }
+    
+    
+    private func createNewThread(_ threadTitle: String, using controller: MessageThreadController) {
+        let existingMessageThreadCount = controller.messageThreads.count
+        let expectation = self.expectation(description: "Creating new message thread")
+        
+        controller.createMessageThread(with: threadTitle) {
             expectation.fulfill()
         }
         
         waitForExpectations(timeout: 3, handler: nil)
-        XCTAssertEqual(messageTheadController.messageThreads.count, exisitingMessageThreadCount + 1)
-        XCTAssertEqual(messageTheadController.messageThreads.last?.title, threadTitle)
-    }
-
+        
+               XCTAssertEqual(controller.messageThreads.count, existingMessageThreadCount + 1)
+               XCTAssertTrue(controller.messageThreads.contains(where: { $0.title == threadTitle }))
+           }
+    
 }

@@ -10,4 +10,8 @@
 
 ### JSON Decoding Issue:
 - Bug Issue: type mismatch, expecting to decode an Array but found a Dictionary Instead
+- Bug Fix: Refactor code to decode 
 
+### UI Issue 1:
+-Bug Issue: view not popping to parent view controller.
+-Bug Fix: 'navigationController?.popViewController(animated: true)'

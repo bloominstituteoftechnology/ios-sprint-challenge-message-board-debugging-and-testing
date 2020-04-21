@@ -27,4 +27,9 @@ class Message_BoardUITests: XCTestCase {
         XCUIApplication().tables["Empty list"].textFields["Create a new thread:"].tap()
               
     }
+    
+    func testSegue() {
+        XCUIApplication().navigationBars["New Message"].buttons["Send"].tap()
+                
+    }
 }
