@@ -48,23 +48,10 @@
 * Bug Description: New messages cannot be created due to dependency injection failure
 * Proposed Fix: Correct the misspelled segue identifier on line 45 from `AddMesage` to `AddMessage`
 * Todo:
-    [ ] 1. Write Unit or UI test for it
-    [ ] 2. Verify test fails
-    [ ] 3. Fix bug by implementing logic in the code
-    [ ] 4. Verify test passes
-    [ ] 5. Refactor any logic to improve the code
-    [ ] 6. Make a git commit describing the fix
+    [x] 1. Write Unit or UI test for it
+    [x] 2. Verify test fails
+    [x] 3. Fix bug by implementing logic in the code
+    [x] 4. Verify test passes
+    [x] 5. Refactor any logic to improve the code
+    [x] 6. Make a git commit describing the fix
 
-
-## Bug #5: 
-
-* Line: 
-* Bug Description: 
-* Proposed Fix: 
-* Todo:
-    [ ] 1. Write Unit or UI test for it
-    [ ] 2. Verify test fails
-    [ ] 3. Fix bug by implementing logic in the code
-    [ ] 4. Verify test passes
-    [ ] 5. Refactor any logic to improve the code
-    [ ] 6. Make a git commit describing the fix

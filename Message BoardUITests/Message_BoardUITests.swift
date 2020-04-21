@@ -10,6 +10,8 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+    // MARK: - Properties
+    
     var app: XCUIApplication!
     
     let mockMessage1 = MockMessage(threadTitle: "A New Thread",
@@ -20,6 +22,8 @@ class Message_BoardUITests: XCTestCase {
                                    sender: "Bob",
                                    message: "It’s working!")
     
+    // MARK: - Setup
+
     override func setUp() {
         super.setUp()
         
@@ -31,11 +35,14 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    // MARK: - UI Testing
+
     func testAddMessageButtonTap() {
         let mockMessage3 = MockMessage(threadTitle: mockMessage1.threadTitle,
                                        sender: "David",
                                        message: "I'm so stoked about this UI testing!")
         
+        sleep(2)
         // MessageThreadsTableViewController
         assertThreadCellExists(for: mockMessage3.threadTitle)
         tapThreadCell(withTitle: mockMessage3.threadTitle)
@@ -52,27 +59,31 @@ class Message_BoardUITests: XCTestCase {
         // MessageThreadDetailTableViewController
         assertMessageCellExists(forMessage: mockMessage3.message, from: mockMessage3.sender)
     }
+
+}
+
+// MARK: - Helper properties and functions
     
-    /*
-    func testSendMessageButtonTap() {
-        
-    }
-    */
+extension Message_BoardUITests {
     
     func enterSenderName(_ sender: String) {
-        app.textFields["MessageThread.Message.sender"].tap()
-        app.textFields["MessageThread.Message.sender"].typeText(sender)
+        app.textFields["MessageThread.Message.Sender"].tap()
+        app.textFields["MessageThread.Message.Sender"].typeText(sender)
     }
     
     func enterMessageText(_ text: String) {
-        app.textViews["MessageThread.Message.messageText"].tap()
-        app.textViews["MessageThread.Message.messageText"].typeText(text)
+        app.textViews["MessageThread.Message.MessageText"].tap()
+        
+        // The Simulator menu setting "I/O -> Keyboard -> Connect Hardware Keyboard"
+        // must be turned OFF in order for this next line of code to input text
+        // TODO: Need to find a better long-term solution to get this code to work
+        app.textViews["MessageThread.Message.MessageText"].typeText(text)
     }
     
     func createNewThread(with title: String) {
-        let createThreadTextField = app.tables.textFields["MessageThreadsTableViewController.createThreadTextField"]
+        let createThreadTextField = app.tables.textFields["MessageThreadsTableViewController.CreateThreadTextField"]
         createThreadTextField.tap()
-        createThreadTextField.typeText("Test Thread")
+        createThreadTextField.typeText(title)
         
         
     }
@@ -108,11 +119,11 @@ class Message_BoardUITests: XCTestCase {
     }
     
     var createThreadTextField: XCUIElement {
-        app.tables.textFields["MessageThreadsTableViewController.createThreadTextField"]
+        app.tables.textFields["MessageThreadsTableViewController.CreateThreadTextField"]
     }
     
     var messageSenderTextField: XCUIElement {
-        app.tables.textFields["MessageThreadsTableViewController.createThreadTextField"]
+        app.tables.textFields["MessageThreadsTableViewController.CreateThreadTextField"]
     }
     
     func tapAddMessageButton() {
@@ -124,13 +135,13 @@ class Message_BoardUITests: XCTestCase {
         app.tables.cells["MessageThreadDetailTableViewController.MessageCell"].staticTexts[messageText].tap()
     }
     
-//    func tapMessageCell(for sender: String, withText text: String) {
-//        app.tables.cells.matching(identifier: "MessageThreadsTableViewController.MessageThreadCell").staticTexts[threadName].tap()
-//    }
+    //    func tapMessageCell(for sender: String, withText text: String) {
+    //        app.tables.cells.matching(identifier: "MessageThreadsTableViewController.MessageThreadCell").staticTexts[threadName].tap()
+    //    }
     
-//    func tapMessageCell(atRow row: Int) {
-//        app.tables.cells.matching(identifier: "MessageThreadsTableViewController.MessageThreadCell").element(boundBy: row).tap()
-//    }
+    //    func tapMessageCell(atRow row: Int) {
+    //        app.tables.cells.matching(identifier: "MessageThreadsTableViewController.MessageThreadCell").element(boundBy: row).tap()
+    //    }
     
     func tapThreadCell(withTitle threadTitle: String) {
         app.tables.cells.matching(identifier: "MessageThreadsTableViewController.MessageThreadCell").staticTexts[threadTitle].tap()
@@ -141,4 +152,5 @@ class Message_BoardUITests: XCTestCase {
         let sender: String
         let message: String
     }
+    
 }
