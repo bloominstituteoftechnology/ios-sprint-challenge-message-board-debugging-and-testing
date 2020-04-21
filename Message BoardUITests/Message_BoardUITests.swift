@@ -14,10 +14,8 @@ class Message_BoardUITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
         continueAfterFailure = false
         app = XCUIApplication()
-        
         // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
         app.launch()
@@ -25,6 +23,9 @@ class Message_BoardUITests: XCTestCase {
     
     func testCreateNewThread() {
         app.tables["Empty list"].textFields["Create a new thread:"].tap()
+        let thread = app.tables.textFields.staticTexts["threadTextField"]
+
+        XCTAssertNotNil(thread)
         
     }
     
