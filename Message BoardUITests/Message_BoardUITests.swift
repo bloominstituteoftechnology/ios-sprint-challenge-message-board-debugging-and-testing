@@ -26,7 +26,26 @@ class Message_BoardUITests: XCTestCase {
     func testCreateNewThread() {
         app.tables["Empty list"].textFields["Create a new thread:"].tap()
         
+    }
+    
+    func testCreateNewMessage() {
         
+        app.tables.children(matching: .cell).element(boundBy: 0).tap()
+        app.navigationBars.buttons["Add"].tap()
+        app.textViews.staticTexts["messageText"].tap()
+        let message = app.textViews.staticTexts["messageText"]
         
+        XCTAssertNotNil(message)
+    }
+    
+    func testSenderExists() {
+        
+        app.tables.children(matching: .cell).element(boundBy: 0).tap()
+        app.navigationBars.buttons["Add"].tap()
+        app.textFields.staticTexts["sender"].tap()
+        
+        let sender = app.textFields.staticTexts["sender"]
+        XCTAssertNotNil(sender)
+
     }
 }
