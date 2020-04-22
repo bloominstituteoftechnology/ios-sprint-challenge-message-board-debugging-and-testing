@@ -33,8 +33,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
         let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.messageText
-        cell.detailTextLabel?.text = message?.sender
+        cell.textLabel?.text = message?.sender
+        cell.detailTextLabel?.text = message?.messageText // inverted 
         
         return cell
     }
@@ -42,7 +42,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" { //found typo
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
