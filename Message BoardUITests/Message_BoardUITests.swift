@@ -23,4 +23,26 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreatingMessageThread(){
+        MessageThreadsPage(testCase: self)
+            .createMessageThread("New Message Thread")
+            .verifyMessageThread(title: "New Message Thread")
+            .createMessageThread("This is another Message Thread")
+            .verifyMessageThread(title: "This is another Message Thread")
+            .createMessageThread("This is another another Message Thread")
+            .verifyMessageThread(title: "This is another another Message Thread")
+    }
+    
+    func testCreatingMessage(){
+        MessageThreadsPage(testCase: self)
+            .createMessageThread("New Message Thread")
+            .tapMessageThread()
+            .tapAddBarButton()
+            .fillMessage(name: "Moin", message: "This is a new message")
+            .verifyMessage(message: "This is a new message")
+            .tapAddBarButton()
+            .fillMessage(name: "Moin", message: "This is a newer message")
+            .verifyMessage(message: "This is a newer message")
+    }
+    
 }
