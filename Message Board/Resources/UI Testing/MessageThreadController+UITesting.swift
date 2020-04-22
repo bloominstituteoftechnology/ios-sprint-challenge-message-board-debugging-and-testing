@@ -10,7 +10,7 @@ import Foundation
 
 extension MessageThreadController {
     
-    func fetchLocalMessageThreads(completion: @escaping () -> Void) {
+    func fetchLocalMessageThreads(completion: @escaping (Error?) -> Void) {
         
         do {
             let mockData = try Data(contentsOf: mockDataURL)
@@ -19,16 +19,17 @@ extension MessageThreadController {
             
         } catch {
             NSLog("Error decoding mock data: \(error)")
+            completion(error)
         }
         
-        completion()
+        completion(nil)
     }
     
-    func createLocalMessageThread(with title: String, completion: @escaping () -> Void) {
+    func createLocalMessageThread(with title: String, completion: @escaping (Error?) -> Void) {
         let thread = MessageThread(title: title)
         messageThreads.append(thread)
         
-        completion()
+        completion(nil)
     }
     
     func createLocalMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
