@@ -16,7 +16,8 @@ extension MessageThreadController {
             let mockData = try Data(contentsOf: mockDataURL)
             
             self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: mockData).values)
-            
+            // Not sure if I'm supposed to leave this alone though but seems to be bug here.
+            // Not being decoded to correct Type // Maybe map it .map({$0.value})
         } catch {
             NSLog("Error decoding mock data: \(error)")
         }

@@ -13,6 +13,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.accessibilityIdentifier = "MessageThreadDetailTableView"
+        
         title = messageThread?.title
     }
     
