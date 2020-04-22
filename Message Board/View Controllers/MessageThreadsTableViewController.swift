@@ -9,15 +9,20 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     // MARK: - Actions
@@ -46,9 +51,18 @@ class MessageThreadsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
-
+        cell.accessibilityIdentifier = "MessageThreadsTableViewController.ThreadCell\(indexPath.row)"
         return cell
     }
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            
+//            let thread = messageThreadController.messageThreads[indexPath.row]
+//            
+//            messageThreadController.deleteMessageThread(with: thread)
+//        }
+//    }
     
     // MARK: - Navigation
 
@@ -67,4 +81,5 @@ class MessageThreadsTableViewController: UITableViewController {
     let messageThreadController = MessageThreadController()
     
     @IBOutlet weak var threadTitleTextField: UITextField!
+    @IBOutlet weak var enterButton: UIButton!
 }

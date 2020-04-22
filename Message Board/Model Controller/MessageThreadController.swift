@@ -30,8 +30,14 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
+            
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageResult = try JSONDecoder().decode([String:MessageThread].self, from: data)
+
+                for messageThread in self.messageResult {
+                    self.messageThreads.append(messageThread.value)
+                }
+                
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -53,7 +59,7 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpMethod = "PUT"
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
@@ -72,8 +78,35 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
+    
+    
+//    func deleteMessageThread(with thread: MessageThread) {
+//        
+//        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+//        if isUITesting {
+////            createLocalMessageThread(with: thread.identifier)
+//            return
+//        }
+//        
+//        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = "DELETE"
+//        
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+//            
+//            if let error = error {
+//                NSLog("Error with message thread creation data task: \(error)")
+//                
+//                    return
+//                }
+//                
+//                self.messageThreads.remove(at: <#T##Int#>)
+//            
+//            
+//            }.resume()
+//    }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
@@ -111,6 +144,8 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://first-project-263b0.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
+    var messageResult: [String : MessageThread] = [:]
+
 }
