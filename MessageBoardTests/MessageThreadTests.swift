@@ -11,5 +11,31 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    let messageThreadController = MessageThreadController()
+    
+    func testCreateMessageThread() {
+        
+        // bug 1) cannot create new thread
+        
+        messageThreadController.createMessageThread(with: "Testing") {
+            XCTAssertNotEqual(self.messageThreadController.messageThreads, [])
+        }
+    }
+    
+    
+    func testCreatingNewMessage() {
+        
+        // bug 2) clicking on send button not creating new message
+        
+        
+        
+    }
+    
+    func testFetchFromServer() {
+        
+        // bug 3) threads are not persisting, wont retrieve from firebase
+        
+    }
+    
     
 }

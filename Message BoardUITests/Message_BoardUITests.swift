@@ -23,4 +23,25 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreateMessageThread() {
+        
+        // bug 1) cannot create new thread
+        
+        let messageThreadsPage = MessageThreadsPage(testCase: self)
+        
+        messageThreadsPage.createMessageThread()
+        .verifyMessageThreadCell(at: 0)
+    }
+    
+    func testCreatingNewMessage() {
+        
+        // bug 2) clicking on send button not creating new message
+        
+    }
+    
+    func testFetchFromServer() {
+        
+        // bug 3) threads are not persisting, wont retrieve from firebase
+        
+    }
 }
