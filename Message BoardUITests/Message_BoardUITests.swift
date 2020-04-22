@@ -23,4 +23,11 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    
+    func testFields()
+    {
+        MessageDetailPage(testCase: self)
+        .typeName(with: name)
+        .typeMessage(with: "message")
+    }
 }
