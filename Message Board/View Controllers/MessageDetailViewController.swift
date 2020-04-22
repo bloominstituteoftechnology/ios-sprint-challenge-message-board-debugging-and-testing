@@ -19,15 +19,20 @@ class MessageDetailViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func sendMessage(_ sender: Any) {
+       createMessage()
+    }
+    
+    func createMessage() {
         
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+            let messageThread = messageThread,
+        let mtc = messageThreadController else { return }
         
-        messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+        mtc.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            self.navigationController?.popViewController(animated: true)
         })
-        
     }
     
     
