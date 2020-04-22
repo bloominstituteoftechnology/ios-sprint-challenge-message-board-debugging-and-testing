@@ -11,5 +11,18 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testCreateNewThread() {
+        
+    }
+    
+    func testSelectThread() {
+        
+        
+    }
+    
+    func testSendingMessage() {
+        
+        
+    }
     
 }

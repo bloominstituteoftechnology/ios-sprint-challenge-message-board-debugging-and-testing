@@ -12,6 +12,7 @@ class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
     
+
     @IBAction func sendMessage(_ sender: Any) {
         
         guard let senderName = senderNameTextField.text,
@@ -20,6 +21,10 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+// Add DispatchQueue and popViewController
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
 

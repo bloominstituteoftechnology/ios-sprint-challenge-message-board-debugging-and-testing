@@ -22,6 +22,10 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		F167ECFB217A4927009B7577 /* MessageThreadsTableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ECFA217A4927009B7577 /* MessageThreadsTableViewUITests.swift */; };
+		F167ECFD217A49AC009B7577 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ECFC217A49AC009B7577 /* TestPage.swift */; };
+		F167ECFF217A49DA009B7577 /* UITestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ECFE217A49DA009B7577 /* UITestCase+Expect.swift */; };
+		F167ED01217A4A17009B7577 /* MessageDetailViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ED00217A4A17009B7577 /* MessageDetailViewUITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		F167ECFA217A4927009B7577 /* MessageThreadsTableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewUITests.swift; sourceTree = "<group>"; };
+		F167ECFC217A49AC009B7577 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		F167ECFE217A49DA009B7577 /* UITestCase+Expect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITestCase+Expect.swift"; sourceTree = "<group>"; };
+		F167ED00217A4A17009B7577 /* MessageDetailViewUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
+				F167ECFA217A4927009B7577 /* MessageThreadsTableViewUITests.swift */,
+				F167ED00217A4A17009B7577 /* MessageDetailViewUITest.swift */,
+				F167ECFC217A49AC009B7577 /* TestPage.swift */,
+				F167ECFE217A49DA009B7577 /* UITestCase+Expect.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
 			);
 			path = "Message BoardUITests";
@@ -265,6 +277,7 @@
 				TargetAttributes = {
 					4612B5C3211AB41100E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					4629C7E5214BA09600E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -345,7 +358,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F167ECFF217A49DA009B7577 /* UITestCase+Expect.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
+				F167ECFD217A49AC009B7577 /* TestPage.swift in Sources */,
+				F167ED01217A4A17009B7577 /* MessageDetailViewUITest.swift in Sources */,
+				F167ECFB217A4927009B7577 /* MessageThreadsTableViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 5KBWP959TD;
 				INFOPLIST_FILE = "$(SRCROOT)/Message Board/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,7 +536,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -529,7 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 5KBWP959TD;
 				INFOPLIST_FILE = "$(SRCROOT)/Message Board/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,7 +554,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Message-Board";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
