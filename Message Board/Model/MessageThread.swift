@@ -20,6 +20,7 @@ class MessageThread: Codable, Equatable {
         self.identifier = identifier
     }
 
+
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -30,6 +31,7 @@ class MessageThread: Codable, Equatable {
         self.title = title
         self.identifier = identifier
         self.messages = messages
+        
     }
 
     
