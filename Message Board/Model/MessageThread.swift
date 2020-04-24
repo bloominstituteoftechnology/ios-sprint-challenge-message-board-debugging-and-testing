@@ -38,9 +38,9 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-//        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
-          let messagesD = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
-        
+
+          let messagesD: [String : Message] = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:]
+             
         var messages: [Message] = []
         if messagesD.count > 0 {
             messages = Array(messagesD.values)
@@ -48,7 +48,7 @@ class MessageThread: Codable, Equatable {
         
         self.title = title
         self.identifier = identifier
-        self.messages = Array(messagesD.values)
+        self.messages = messages
     }
 
     

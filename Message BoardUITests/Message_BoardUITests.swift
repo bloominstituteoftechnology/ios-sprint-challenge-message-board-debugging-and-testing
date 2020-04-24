@@ -10,6 +10,8 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+    
+    
     var app: XCUIApplication!
     
     override func setUp() {
@@ -24,29 +26,31 @@ class Message_BoardUITests: XCTestCase {
     }
     
     
+    // Bug 2 UI test
     func testThreadsLoadedOnStart() {
-        let predicate = NSPredicate(format: "count less than 0")
+        let predicate = NSPredicate(format: "count > 0")
         let fetchedThreadsExpectation = expectation(for: predicate, evaluatedWith: app.tables.cells)
-        fetchedThreadsExpectation.expectationDescription = "Load at start"
+        fetchedThreadsExpectation.expectationDescription = "Threads should have been loaded at start"
         
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: 30)
         
     }
     
+    // Bug 4 UI test
     func testCreateNewMessage() {
         
         let app = XCUIApplication()
         app.tables.cells.firstMatch.tap()
         app.navigationBars.buttons["Add"].tap()
-        let txtName = app.textFields["NewMessage"]
-        txtName.tap()
-        txtName.typeText("Ezra")
+        let textName = app.textFields["NewMessgeTextField"]
+        textName.tap()
+        textName.typeText("Ezra")
                
-        let txtvMessageBody = app.textViews["NewMessage"]
-        txtvMessageBody.tap()
-        txtvMessageBody.typeText("UI Test message.")
+        let textviewMessageBody = app.textViews["NewMessageBodyTextField"]
+        textviewMessageBody.tap()
+        textviewMessageBody.typeText("This is a UI Test message.")
         
-        let newMessageNavigationBar = app.navigationBars["NewMessage"]
+        let newMessageNavigationBar = app.navigationBars["New Message"]
         newMessageNavigationBar.buttons["Send"].tap()
         XCTAssertGreaterThan(app.tables.cells.count, 1)
     }

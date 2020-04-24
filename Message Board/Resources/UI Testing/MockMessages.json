@@ -3,8 +3,8 @@
         "identifier" : "FCAB7137-1D84-40F5-94A7-8931032DAF82",
         "messages" : {
             "-LMIUYlkKPkcO_uQUtnV" : {
-                "sender" : "Joe",
-                "text" : "Checking to make sure this works.",
+                "sender" : "Ezra",
+                "text" : "This is a tested sample JSON.",
                 "timestamp" : 5.58544390219155E8
             }
         },
