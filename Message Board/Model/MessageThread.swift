@@ -32,10 +32,6 @@ class MessageThread: Codable, Equatable {
         self.identifier = identifier
         self.messages = messages
         
-//        func encode(to encoder: Encoder) throws {
-//            var container = encoder.container(keyedBy: CodingKey.self)
-//            try container.encode()
-//        }
     }
 
     

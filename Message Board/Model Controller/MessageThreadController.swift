@@ -11,7 +11,7 @@ import Foundation
 class MessageThreadController {
     
     static let baseURL = URL(string: "https://debuggingunittest.firebaseio.com/")!
-       var messageThreads: [MessageThread] = []
+    var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
@@ -26,25 +26,20 @@ class MessageThreadController {
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
-                NSLog("Error fetching message threads: \(error)")
+                print("Error fetching message threads: \(error)")
                 completion()
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task")
+            guard let data = data else {
+                print("No data returned from data task")
                 completion()
                 return
             }
 
             do {
                 let threadDictionary = try JSONDecoder().decode([String: MessageThread].self, from: data)
-                self.messageThreads = []
-                let value = threadDictionary.values
-                for keys in value {
-                    let newThread = MessageThread(title: keys.title, messages: keys.messages, identifier: keys.identifier)
-                    self.messageThreads.append(newThread)
-                }
-            
+                self.messageThreads = threadDictionary.map { $0.value }
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")

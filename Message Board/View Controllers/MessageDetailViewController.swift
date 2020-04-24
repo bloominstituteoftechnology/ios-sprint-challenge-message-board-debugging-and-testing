@@ -19,7 +19,7 @@ class MessageDetailViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func sendMessage(_ sender: Any) {
-       createMessage()
+        createMessage()
     }
     
     func createMessage() {
@@ -27,7 +27,7 @@ class MessageDetailViewController: UIViewController {
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread,
-        let mtc = messageThreadController else { return }
+            let mtc = messageThreadController else { return }
         
         mtc.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
