@@ -66,6 +66,23 @@ class MessageThreadTests: XCTestCase {
         
     }
     
+    func testFetchingThreads() {
+        let messageThreadController = MessageThreadController()
+        
+        createNewThread(withTitle: "Thread for fetching", using: messageThreadController)
+        messageThreadController.messageThreads = []
+        
+        XCTAssertTrue(messageThreadController.messageThreads.isEmpty)
+        let expectation = self.expectation(description: "fething threads from server")
+        
+        messageThreadController.fetchMessageThreads {
+            expectation.fulfill()
+        }
+        
+        assertExpectations(expectation)
+        XCTAssertTrue(messageThreadController.messageThreads.isEmpty)
+    }
+    
     
 }
 
