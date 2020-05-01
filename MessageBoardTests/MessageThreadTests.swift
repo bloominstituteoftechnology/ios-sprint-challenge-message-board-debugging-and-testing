@@ -40,6 +40,32 @@ class MessageThreadTests: XCTestCase {
         createNewThread(withTitle: "Testing New Thread Title xx", using: messageThreadController)
     }
     
+    // test creating new message
+    func testCreatingNewMessage() {
+        let messageThreadController = MessageThreadController()
+        let threadTitle = "Thread created by: testCreatingNewMessage"
+        createNewThread(withTitle: threadTitle, using: messageThreadController)
+        
+        let thread = messageThreadController.messageThreads.first(where: { $0.title == threadTitle})!
+        thread.messages = []
+        XCTAssertTrue(thread.messages.isEmpty)
+        
+        let text = "This is a sample message"
+        let sender = "Sal"
+        
+        let expectation = self.expectation(description: "created a new message in thread: \(thread.title)")
+        
+        messageThreadController.createMessage(in: thread, withText: text, sender: sender) {
+            expectation.fulfill()
+        }
+        
+        assertExpectations(expectation)
+        XCTAssertEqual(thread.messages.count, 1)
+        XCTAssertEqual(thread.messages[0].sender, sender)
+        XCTAssertEqual(thread.messages[0].messageText, text)
+        
+    }
+    
     
 }
 
