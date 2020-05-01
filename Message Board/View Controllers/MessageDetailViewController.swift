@@ -12,7 +12,7 @@ class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
     
-    @IBAction func sendMessage(_ sender: Any) {
+    @IBAction func sendMessage(_ sender: UIBarButtonItem) {
         
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
@@ -21,6 +21,7 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        self.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties
