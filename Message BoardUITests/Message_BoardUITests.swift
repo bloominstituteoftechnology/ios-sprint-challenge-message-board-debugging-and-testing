@@ -8,14 +8,6 @@
 
 import XCTest
 
-struct FakeMessage {
-    let threadTitle: String
-    let sender: String
-    let message: String
-}
-
-  let fakeMessage1 = FakeMessage(threadTitle: "Thread1", sender: "Sal", message: "checking thread existence")
-  let fakeMessage2 = FakeMessage(threadTitle: "Thread2", sender: "Sal2", message: "second thread check")
 
 /*
  Fields inside App
@@ -54,6 +46,17 @@ struct FakeMessage {
 
 class Message_BoardUITests: XCTestCase {
     
+    struct FakeMessage {
+        let threadTitle: String
+        let sender: String
+        let message: String
+    }
+
+//      let fakeThread =
+      let fakeMessage1 = FakeMessage(threadTitle: "Thread1", sender: "Sal", message: "checking thread existence")
+      let fakeMessage2 = FakeMessage(threadTitle: "Thread2", sender: "Sal2", message: "second thread check")
+
+    
      var app: XCUIApplication!
     
     override func setUp() {
@@ -67,6 +70,7 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+// setup helper functions & refactor
     func enterSenderName(_ sender: String) {
         app.textFields["MessageThreadDetailTableVC.SenderName"].tap()
         app.textFields["MessageThreadDetailTableVC.SenderName"].typeText(sender)
@@ -82,6 +86,7 @@ class Message_BoardUITests: XCTestCase {
         let createNewThreadField = app.tables.textFields["MessageThreadsTableVC.createNewThread"]
         createNewThreadField.tap()
         createNewThreadField.typeText(title)
+        app/*@START_MENU_TOKEN@*/.buttons["return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[1]]@END_MENU_TOKEN@*/.tap()
         
     }
     
@@ -89,8 +94,9 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertTrue(app.tables.cells["MessageThreadsTableVC.threadCell"].staticTexts[threadTitle].exists)
     }
     
+    //assert False
     func assertMessageCellExists(forMessage messageText: String) {
-        XCTAssertTrue(app.tables.cells["MessageThreadDetailTableVC.cell"].staticTexts[messageText].exists)
+        XCTAssertFalse(app.tables.cells["MessageThreadDetailTableVC.cell"].staticTexts[messageText].exists)
          
     }
     
@@ -135,6 +141,33 @@ class Message_BoardUITests: XCTestCase {
     func tapThreadCell(withTitle threadTitle: String) {
         app.tables.cells.matching(identifier: "MessageThreadsTableVC.threadCell").staticTexts[threadTitle].tap()
     }
+    
+    // SET UP TESTS
+    
+    func testCreatingNewThread() {
+//        let app = XCUIApplication()
+        createNewThread(with: "New Thread")
+        sleep(5)
+    }
+     
+     func testMessageButtonTapped() {
+        
+         
+         let fakeMessage3 = FakeMessage(threadTitle: fakeMessage1.threadTitle, sender: "Sal", message: "UI Test number 1")
+         
+         sleep(5)
+//         assertMessageCellExists(forMessage: fakeMessage3.threadTitle)
+         tapThreadCell(withTitle: fakeMessage3.threadTitle)
+         
+         tapToAddMsgBtn()
+         
+         enterSenderName(fakeMessage3.sender)
+         enterMessageText(fakeMessage3.message)
+         tapSendButton()
+         tapBackButton()
+         
+         assertMessageCellExists(forMessage: fakeMessage3.message, from: fakeMessage3.sender)
+     }
 
     
 
