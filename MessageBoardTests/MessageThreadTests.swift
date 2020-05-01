@@ -19,6 +19,10 @@ class MessageThreadTests: XCTestCase {
         controller.createMessageThread(with: threadTitle) {
             expectation.fulfill()
         }
+     
+     assertExpectations(expectation)
+     XCTAssertEqual(controller.messageThreads.count, currentMessageThreadCount + 1)
+     XCTAssertTrue(controller.messageThreads.contains(where: { $0.title == threadTitle }))
         
     }
     // asserting expectations
@@ -30,7 +34,6 @@ class MessageThreadTests: XCTestCase {
         }
     }
     
-    
     // create a new thread test
     func testCreateNewThread() {
         let messageThreadController = MessageThreadController()
@@ -39,3 +42,5 @@ class MessageThreadTests: XCTestCase {
     
     
 }
+
+ 
