@@ -113,6 +113,15 @@ class Message_BoardUITests: XCTestCase {
         return tableView.cells.element(boundBy: row)
     }
     
+    func tapSenderField() {
+        app.tables.textFields["MessageThreadDetailTableVC.SenderName"].tap()
+    }
+    
+    func tapMessageField() {
+        app.tables.textFields["MessageThreadDetailTableVC.SenderMessage"].tap()
+    }
+
+    
     func tapSendButton() {
         app.navigationBars.buttons["Send"].tap()
     }
@@ -156,6 +165,22 @@ class Message_BoardUITests: XCTestCase {
         let title = String("New Thread")
         tapThreadCell(withTitle: title)
         
+    }
+    
+    func testCreatingNewSender() {
+        createNewThread(with: "New Thread")
+        sleep(2)
+        let title = String("New Thread")
+        tapThreadCell(withTitle: title)
+        tapToAddMsgBtn()
+        tapSenderField()
+        enterSenderName(fakeMessage1.sender)
+        tapMessageField()
+        enterMessageText(fakeMessage1.message)
+        sleep(2)
+        tapSendButton()
+        sleep(2)
+        tapBackButton()
     }
      
      func testMessageButtonTapped() {
