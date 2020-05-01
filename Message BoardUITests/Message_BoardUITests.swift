@@ -149,6 +149,14 @@ class Message_BoardUITests: XCTestCase {
         createNewThread(with: "New Thread")
         sleep(5)
     }
+    
+    func testCreatingNewMessageRoom() {
+        createNewThread(with: "New Thread")
+        sleep(2)
+        let title = String("New Thread")
+        tapThreadCell(withTitle: title)
+        
+    }
      
      func testMessageButtonTapped() {
         
