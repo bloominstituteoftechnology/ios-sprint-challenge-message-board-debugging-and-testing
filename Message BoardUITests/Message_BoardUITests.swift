@@ -23,55 +23,63 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
         
     }
-    private var messageTextView: XCUIElement {
-        return app.textViews["MessageDetailViewController.TextView"]
-    }
-
-    private var messageName: XCUIElement {
-        return app.textFields["MessageDetailViewController.NameTextField"]
-    }
-    
-    private var messageSearch: XCUIElement {
-        return app.searchFields["MessageThreadsTableViewController.Search"]
-    }
-    
-    func testCreatingMessage() {
-    
-      
-        let threadName = "New Entry"
-         let name = "Bharat"
-         let message = "Hello, world!"
+  private var nameTextField: XCUIElement {
+         return app.textFields["NameTextField"]
+     }
+     
+     private var messageTextView: XCUIElement {
+         return app.textViews["MessageTextView"]
+     }
+     
+     private var searchBar: XCUIElement {
+         return app.textFields["MessageThreadsTableViewController.Search"]
+     }
+     
+     func testCreatingNewMessage() {
         
-         messageName.tap()
-         messageName.typeText(threadName)
-         app.keyboards.buttons["Return"].tap()
-         app.tables.cells["2"].tap()
-         app.buttons["Add"].tap()
+
+
+           let threadName = "New Entry"
+        
+        // Create a new thread
+        app.textFields["MessageThreadsTableViewController.Search"].tap()
+        app.textFields["MessageThreadsTableViewController.Search"].typeText(threadName)
+        app.keyboards.buttons["Return"].tap()
+
+        // Tap the cell we just added
+        app.tables.cells["0"].tap()
+        
+        // Advance to MessageThreadDetailTableViewController
+        app.buttons["Add"].tap()
+       
+        // Advance to MessageDetailViewController
+
+        messageTextView.tap()
+        messageTextView.typeText("Message\n")
+
+        app.buttons["Send"].tap()
+        
+        // Send button should take us back to MessageThreadDetailTableViewController
+        XCTAssertTrue(app.staticTexts["Message\n"].exists)
+        
+     }
+     
+     func testCreatingNewThread() {
+         searchBar.tap()
+         searchBar.typeText("New Thread\n")
+     }
+     
+     func testReadingThreadsAndMessages() {
+        
+    let threadName = "New Entry"
+        
+        // Create a new thread
+        app.textFields["MessageThreadsTableViewController.Search"].tap()
+        app.textFields["MessageThreadsTableViewController.Search"].typeText(threadName)
+        app.keyboards.buttons["Return"].tap()
+              
          
-         messageName.tap()
-         messageName.typeText(name)
-
-         messageTextView.tap()
-        messageTextView.typeText(message)
-
-         app.buttons["Send"].tap()
-         
-         // Send button should take us back to MessageThreadDetailTableViewController
-         XCTAssertTrue(app.staticTexts[message].exists)
-
-    }
-    
-    func testCreatingNewThread() {
-          messageSearch.tap()
-          messageSearch.typeText("New Thread Message \n")
-      }
-      
-      func testReadingThreadsAndMessages() {
-          let tablesQuery = app.tables
-          tablesQuery.staticTexts["new creation"].tap()
-          tablesQuery.staticTexts["hi"].tap()
-          
-      }
+     }
     
    
     
