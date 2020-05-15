@@ -40,6 +40,17 @@ class Message_BoardUITests: XCTestCase {
         app.navigationBars["New Message"].buttons["FOR TESTING PURPOSES DO NOT DELETE"].tap()
         forTestingPurposesDoNotDeleteNavigationBar.buttons["λ Message Board"].tap()
         
+        //UI Swiping Test
+        app/*@START_MENU_TOKEN@*/.tables.containing(.textField, identifier:"Create a new thread:").element/*[[".tables.containing(.staticText, identifier:\"Create a new thread:\").element",".tables.containing(.textField, identifier:\"Create a new thread:\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["FOR TESTING PURPOSES DO NOT DELETE"]/*[[".cells.staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]",".staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let emptyListTable = app.tables["Empty list"]
+        emptyListTable.swipeDown()
+        emptyListTable.swipeUp()
+        app.navigationBars["FOR TESTING PURPOSES DO NOT DELETE"].buttons["Add"].tap()
+        app.navigationBars["New Message"].buttons["FOR TESTING PURPOSES DO NOT DELETE"].tap()
+        
+        
     }
     
     
