@@ -10,12 +10,6 @@ import Foundation
 
 class MessageThreadController {
     
-    var dataLoader: NetworkDataLoader
-       
-       init(dataLoader: NetworkDataLoader = URLSession.shared) {
-           self.dataLoader = dataLoader
-       }
-    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -37,7 +31,9 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                //                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let threadsDecoded = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                self.messageThreads = Array(threadsDecoded.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -78,7 +74,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
