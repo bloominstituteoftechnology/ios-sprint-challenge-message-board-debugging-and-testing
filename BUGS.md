@@ -1,6 +1,6 @@
 #  Bugs
 
-### Bug 1 : Bug Description Here
+### Bug 1 : DetailVC doesn't pop after sending a new message
 - [ ] Create a test
 - [ ] Verify test fails
 - [ ] Fix the bug
