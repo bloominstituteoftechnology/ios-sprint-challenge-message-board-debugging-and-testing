@@ -34,4 +34,25 @@ class MessageThreadTests: XCTestCase {
         XCTAssertEqual("value", value)
     }
     
+    func testFetchingData() {
+       // This part is to find if it is populating the array with MessageThread data. You need to have to be able to create at least one entry to be able to make the result a success, but it works to check the fetching and converting the dictionary to an array properly
+        
+        let didFinishAgain = expectation(description: "didFinishAgain")
+        
+        var pickedUpMessages: [MessageThread] = []
+        
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.fetchMessageThreads {
+            
+            didFinishAgain.fulfill()
+            pickedUpMessages = messageThreadController.messageThreads
+            
+        }
+        
+        wait(for: [didFinishAgain], timeout: 15)
+        XCTAssertLessThan([MessageThread]().count, pickedUpMessages.count)
+        
+    }
+    
 }
