@@ -10,6 +10,12 @@ import Foundation
 
 class MessageThreadController {
     
+    var dataLoader: NetworkDataLoader
+       
+       init(dataLoader: NetworkDataLoader = URLSession.shared) {
+           self.dataLoader = dataLoader
+       }
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
