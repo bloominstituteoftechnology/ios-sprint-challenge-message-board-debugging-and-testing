@@ -13,7 +13,6 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: Any) {
-        
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
@@ -30,6 +29,8 @@ class MessageDetailViewController: UIViewController {
     
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
+
+
 
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
