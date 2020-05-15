@@ -11,5 +11,31 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    private var messageThreadController: MessageThreadController{
+        MessageThreadController()
+    }
     
+    func testCreatingThreadWithServer() {
+        let didFinish = expectation(description: "didFinish")
+        
+        messageThreadController.createMessageThread(with: "New Thread") {
+            didFinish.fulfill()
+        }
+        
+        wait(for: [didFinish], timeout: 5)
+        
+        XCTAssert(true)
+    }
+    
+    func testSyncingThreadsWithServer() {
+        let didFinish = expectation(description: "didFinish")
+        
+        messageThreadController.fetchMessageThreads {
+            didFinish.fulfill()
+        }
+        
+        wait(for: [didFinish], timeout: 5)
+        
+        XCTAssert(true)
+    }
 }
