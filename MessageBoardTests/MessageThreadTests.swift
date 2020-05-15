@@ -11,5 +11,50 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testExpectation() {
+        let didFinish = expectation(description: "didFinish")
+        var name = ""
+        let url = URL(string: "https://apple.com")!
+
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            didFinish.fulfill()
+            name = "Dave"
+        }.resume()
+
+        wait(for: [didFinish], timeout: 5) // blocking sync wait
+
+        // Assertion only happens after the time out, or web request completes
+        XCTAssertEqual("Dave", name)
+    }
     
+    func testCreatingMessageThread() {
+        
+        let messageController = MessageThreadController()
+        let expectation1 = XCTestExpectation(description: "Creating Thread")
+        
+        messageController.createMessageThread(with: "Testing Thread Creation") {
+            expectation1.fulfill()
+        }
+        
+        wait(for: [expectation1], timeout: 10)
+        XCTAssertEqual(messageController.messageThreads.last!.title, "Testing Thread Creation")
+        XCTAssertTrue(!expectation1.isInverted, "⚠️ Writing message to the server failed.")
+    
+    }
+    
+    func testFetchingMessageThread() {
+        let messageController = MessageThreadController()
+        
+        let expectation = XCTestExpectation(description: "Creating fetching thread")
+        
+        messageController.fetchMessageThreads {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+        
+         XCTAssertEqual(messageController.messageThreads.last!.title, "Testing Thread Creation")
+        XCTAssertTrue(!expectation.isInverted, "⚠️ Writing message to the server failed.")
+    
+    }
 }
