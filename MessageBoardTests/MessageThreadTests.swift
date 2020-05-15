@@ -11,7 +11,11 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
 
+    //MARK: - Properties
+    
     let messageThreadController = MessageThreadController()
+
+    //MARK: - Tests
 
      func testAddThread() {
          var count = 0
