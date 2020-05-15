@@ -18,10 +18,14 @@ class MessageDetailViewController: UIViewController {
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
         
-        messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            print("Message created!")
-        })
-    }
+          messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+                  print("Message created!")
+                  //Fixed encoding, popping the view once the message is created. small concurrency bug.
+                  DispatchQueue.main.async {
+                                self.navigationController?.popViewController(animated: true)
+                            }
+              })
+          }
 
     // MARK: - Properties
     
