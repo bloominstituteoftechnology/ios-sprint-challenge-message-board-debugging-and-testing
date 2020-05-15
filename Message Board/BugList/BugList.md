@@ -12,5 +12,5 @@ Solution: Pop the view controller after the save happens in MessageDetailViewCon
 
 4.) Problem: Data doesn't show up after pushing "save" to save a message
 a.) Run the same UITest from #3 to prove that a newly created thread/message results in the tableview showing the new entry
-Solution: 
+Solution: Message in the segue from main VC spelled incorrectly
 

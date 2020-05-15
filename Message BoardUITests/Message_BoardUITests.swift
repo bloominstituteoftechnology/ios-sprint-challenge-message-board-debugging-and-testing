@@ -49,7 +49,7 @@ class Message_BoardUITests: XCTestCase {
     
     func testExpectation() {
         
-        // This test will fail if there's
+        // This test runs through 2 of the bugs... it should fail for both 1.) the popping of the view controller when save is pressed, 2.) the segue being named wrong so it doesn't run the "create message" function, thereby having the tableView empty after popping to the view controller
         
         threadTyper.tap()
         threadTyper.typeText("Testing this out")
