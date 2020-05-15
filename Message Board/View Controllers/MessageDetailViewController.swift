@@ -9,6 +9,14 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    @IBOutlet weak var sendButton: UIBarButtonItem!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        sendButton.accessibilityIdentifier = "MessageBoard.sendButton"
+    }
 
     // MARK: - Actions
     
@@ -20,6 +28,9 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
 
