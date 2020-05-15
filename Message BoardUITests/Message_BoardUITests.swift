@@ -22,5 +22,8 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+
+ 
+
     
 }
