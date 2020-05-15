@@ -14,6 +14,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = messageThread?.title
+        print("Message Thread: \(messageThread)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,11 +42,12 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
+            print("Executing?")
         }
     }
     
