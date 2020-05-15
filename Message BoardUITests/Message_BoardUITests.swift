@@ -28,6 +28,10 @@ class Message_BoardUITests: XCTestCase {
         return app.tables.element(boundBy: 0)
     }
     
+    var saveButton: XCUIElement {
+        return app.navigationBars.buttons["MessageBoard.sendButton"]
+    }
+    
     func tableViewCell(at index: Int) -> XCUIElement {
         return tableView.cells.element(boundBy: index)
     }
@@ -63,7 +67,8 @@ class Message_BoardUITests: XCTestCase {
         messageView.tap()
         messageView.typeText("Testing out the view")
         
-        rightNavigationButton.tap()
+        saveButton.tap()
+    //    rightNavigationButton.tap()
         
         XCTAssertLessThan(0, tableView.cells.count)
          

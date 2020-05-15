@@ -9,6 +9,14 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    @IBOutlet weak var sendButton: UIBarButtonItem!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        sendButton.accessibilityIdentifier = "MessageBoard.sendButton"
+    }
 
     // MARK: - Actions
     
