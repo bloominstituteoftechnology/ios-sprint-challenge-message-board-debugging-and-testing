@@ -20,6 +20,7 @@ class MessageDetailViewController: UIViewController {
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            // When the send button is hit the view will pop back to the message thread
             DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }
