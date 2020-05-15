@@ -10,6 +10,15 @@ import UIKit
 
 class MessageDetailViewController: UIViewController {
 
+    // MARK: - Properties
+    
+    var messageThreadController: MessageThreadController?
+    var messageThread: MessageThread?
+    
+    // MARK: - Outlets
+    @IBOutlet weak var senderNameTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
+    
     // MARK: - Actions
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -27,11 +36,4 @@ class MessageDetailViewController: UIViewController {
             })
         }
 
-    // MARK: - Properties
-    
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
 }

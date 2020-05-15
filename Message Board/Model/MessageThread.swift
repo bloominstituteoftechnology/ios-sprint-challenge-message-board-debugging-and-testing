@@ -40,10 +40,12 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
+        // Made the Messages into a dictionary of strings
         let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
         self.title = title
         self.identifier = identifier
+        // The message are now an array and we are focusing on the values
         self.messages = Array(messages.values)
     }
 

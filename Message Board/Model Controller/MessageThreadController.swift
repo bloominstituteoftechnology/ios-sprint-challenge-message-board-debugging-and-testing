@@ -11,7 +11,7 @@ import Foundation
 class MessageThreadController {
     
     // MARK: - Properties
-    
+    // Moved them to the top
     let baseURL = URL(string: "https://messageboard-e600b.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
     
@@ -39,6 +39,7 @@ class MessageThreadController {
                 return
             }
             do {
+                // Made the MessageThread into a dictionary and read the values
                 self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map() { $0.value }
             } catch {
                 self.messageThreads = []
