@@ -31,13 +31,13 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = try JSONDecoder().decode([String: MessageThread].self, from: data).map({$0.value})
+                completion()
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
+                return
             }
-            
-            completion()
         }.resume()
     }
     
@@ -51,12 +51,13 @@ class MessageThreadController {
         
         let thread = MessageThread(title: title)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json") //Fixed Identifier appendingPathComponent to Extension
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(thread)
+
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
         }
@@ -72,7 +73,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -98,7 +99,7 @@ class MessageThreadController {
             NSLog("Error encoding message to JSON: \(error)")
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
@@ -106,11 +107,21 @@ class MessageThreadController {
                 return
             }
             
+            guard let urlResponse = response as? HTTPURLResponse else {
+                //NSLog("urlResponse POSTing task to server \(urlResponse)")
+                print("Bad Response in POST")
+                completion()
+                return
+            }
+            
+            print("Post StatusCode: \(urlResponse.statusCode)")
+            
+            
             completion()
             
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://debug-sprint.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
