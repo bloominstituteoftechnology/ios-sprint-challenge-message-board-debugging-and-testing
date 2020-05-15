@@ -25,10 +25,24 @@ class MessageThreadTests: XCTestCase {
         messageThreadController.createMessageThread(with: thread2) {
             XCTAssertTrue(self.messageThreadController.messageThreads.count == 2)
         }
+    
     }
     
     let thread1 = "Thread 1"
     let thread2 = "Thread 2"
     
-    
+    // Testing to create message
+    func testCreateMessage() {
+        
+        XCTAssertEqual(messageThreadController.messageThreads.count, 0)
+        let newThread = MessageThread(title: "Unit Testing New Thread")
+        messageThreadController.messageThreads.append(newThread)
+        
+        let newMessage = MessageThread.Message(text: "Unit Testing New Message", sender: "Chris")
+        newThread.messages.append(newMessage)
+        XCTAssertEqual(newThread.messages.count, 1)
+        XCTAssertEqual(newThread.messages[0].sender, "Chris")
+        XCTAssertEqual(newThread.messages[0].messageText, "Unit Testing New Message")
+
+    }
 }
