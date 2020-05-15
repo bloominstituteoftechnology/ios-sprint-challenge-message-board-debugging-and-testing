@@ -74,6 +74,7 @@ class Message_BoardUITests: XCTestCase {
     let threadName = "New Entry"
         
         // Create a new thread
+//        I didn't used the properties as it was giving me some errors before.
         app.textFields["MessageThreadsTableViewController.Search"].tap()
         app.textFields["MessageThreadsTableViewController.Search"].typeText(threadName)
         app.keyboards.buttons["Return"].tap()
