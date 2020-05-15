@@ -45,4 +45,19 @@ class MessageThreadTests: XCTestCase {
         XCTAssertEqual(newThread.messages[0].messageText, "Unit Testing New Message")
 
     }
+    // Testing BaseURL
+    func testBaseURL() {
+        XCTAssertEqual(messageThreadController.baseURL, URL(string: "https://messageboard-e600b.firebaseio.com/"))
+    }
+    
+    // Testing Encoding Message
+    func testEncodeMessage() {
+        let newMessage = ["TestMessage":MessageThread.Message(text: "Hi", sender: "Chris")]
+        let encodedMessage = try? JSONEncoder().encode(newMessage.self)
+        XCTAssertNotNil(encodedMessage)
+    }
+    
+    
+
+    
 }
