@@ -8,8 +8,23 @@
 
 import Foundation
 
+// MARK: - Coding Key Enums For Decoding
+enum CodingKeys: String, CodingKey {
+    case title
+    case messages
+    case identifier
+    
+    enum MessagesKeys: String, CodingKey {
+        case text
+        case sender
+        case timestamp
+    }
+}
+
 class MessageThread: Codable, Equatable {
 
+    
+    // MARK: - Properties
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
@@ -25,11 +40,13 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        // Made the Messages into a dictionary of strings
+        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
         self.title = title
         self.identifier = identifier
-        self.messages = messages
+        // The message are now an array and we are focusing on the values
+        self.messages = Array(messages.values)
     }
 
     
