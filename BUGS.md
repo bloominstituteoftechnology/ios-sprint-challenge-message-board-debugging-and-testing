@@ -15,3 +15,11 @@
 - [ ] Verify test passes
 - [ ] Refactor logic to improve any relevant code
 - [ ] Commit & push the bug fix
+
+### Bug 3 : Decoding process has type mismatches, leading to a failure to decode properly
+- [ ] Create a test
+- [ ] Verify test fails
+- [ ] Fix the bug
+- [ ] Verify test passes
+- [ ] Refactor logic to improve any relevant code
+- [ ] Commit & push the bug fix
