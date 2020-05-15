@@ -23,10 +23,18 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
         
     }
+    private var messageTextView: XCUIElement {
+        return app.textViews["MessageDetailViewController.TextView"]
+    }
 
-    func testSavingMessage() {
-        
+    private var messageName: XCUIElement {
+        return app.textFields["MessageDetailViewController.NameTextField"]
     }
     
+    private var messageSearch: XCUIElement {
+        return app.searchFields["MessageThreadsTableViewController.Search"]
+    }
+    
+   
     
 }
