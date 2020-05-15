@@ -14,6 +14,7 @@ class Message_BoardUITests: XCTestCase {
         XCUIApplication()
     }
     
+    //MARK: - Computed Property Test
     var functionalityTest: Bool {
         //Testing Basic UI Functionality
         app.tables/*@START_MENU_TOKEN@*/.staticTexts["FOR TESTING PURPOSES DO NOT DELETE"]/*[[".cells.staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]",".staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -49,6 +50,8 @@ class Message_BoardUITests: XCTestCase {
         return true
     }
     
+    
+    //MARK: - Testing Functions
     override func setUp() {
         super.setUp()
         
@@ -58,7 +61,6 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
         
-        //Make a thread
     }
     
     func testExample() throws {
