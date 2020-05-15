@@ -44,17 +44,27 @@ class MessageThreadTests: XCTestCase {
     }
     
     func testCreatingMessageWithServer() {
-        let didFinish = expectation(description: "didFinish")
-        let messageThread = MessageThread(title: "MessageThread")
+        let didFinishCreating = expectation(description: "didFinishCreating")
+        var successfulCreation = false
+        
+        messageThreadController.createMessageThread(with: "Message Thread") {
+            didFinishCreating.fulfill()
+            successfulCreation = true
+        }
+        
+        wait(for: [didFinishCreating], timeout: 5)
+        XCTAssertTrue(successfulCreation)
+        
+        let didFinishMessage = expectation(description: "didFinishMessage")
         var success = false
-        messageThreadController.messageThreads.append(messageThread)
+        let messageThread = messageThreadController.messageThreads[0]
         
         messageThreadController.createMessage(in: messageThread, withText: "Text", sender: "More Text") {
-            didFinish.fulfill()
+            didFinishMessage.fulfill()
             success = true
         }
         
-        wait(for: [didFinish], timeout: 5)
+        wait(for: [didFinishMessage], timeout: 5)
         
         XCTAssertTrue(success)
     }
