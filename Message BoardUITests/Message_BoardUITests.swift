@@ -23,7 +23,13 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 
- 
-
-    
+    func testAddNewMessageBoard() {
+        let table = app.tables.matching(identifier: "MessageThreadsTableViewController")
+        let newMessageTextField = table.textFields.element(boundBy: 0)
+        newMessageTextField.tap()
+        newMessageTextField.typeText("Creating a New Thread for UI Testing")
+        newMessageTextField.typeText("\n")
+        let verifyNewElement = table.cells.staticTexts["Creating a New Thread for UI Testing"]
+        XCTAssertTrue(verifyNewElement.label == "Creating a New Thread for UI Testing")
+    }
 }
