@@ -11,7 +11,7 @@
 ### Bug 2 : Creating new threads is broken and does not send to server
 - [ ] Create a test
 - [ ] Verify test fails
-- [ ] Fix the bug
+- [x] Fix the bug
 - [ ] Verify test passes
 - [ ] Refactor logic to improve any relevant code
 - [ ] Commit & push the bug fix
