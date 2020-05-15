@@ -38,5 +38,4 @@ class Message_BoardUITests: XCTestCase {
        app.keyboards.buttons["Return"].tap()
        XCTAssertEqual(app.tables.cells.count, 1)
    }
-    
 }
