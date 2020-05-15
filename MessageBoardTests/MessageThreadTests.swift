@@ -57,7 +57,16 @@ class MessageThreadTests: XCTestCase {
         XCTAssertNotNil(encodedMessage)
     }
     
-    
+    // Testing Decoding Message
+    func testDecodeMessage() {
+       let newMessage = ["TestMessage":MessageThread.Message(text: "Hi", sender: "Chris")]
+       let encodedMessage = try? JSONEncoder().encode(newMessage.self)
+        XCTAssertNotNil(encodedMessage)
+        let decodedMessageResult = try! JSONDecoder().decode([String:MessageThread.Message].self, from: encodedMessage!)
+        let decodedMessage = decodedMessageResult.map { $0.value }
+        XCTAssert(decodedMessage[0].messageText == "Hi")
+        XCTAssert(decodedMessage[0].sender == "Chris")
+    }
 
     
 }
