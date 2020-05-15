@@ -15,6 +15,7 @@ class MessageThreadsTableViewController: UITableViewController {
         
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
+                print("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ IF YOU ARE TESTING THIS APP BE SURE TO DELETE ANY COPIES OR CACHE YOU HAVE FOR TESTING PURPOSES")
                 self.tableView.reloadData()
             }
         }
