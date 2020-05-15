@@ -19,7 +19,7 @@
 ### Bug 3 : Decoding process has type mismatches, leading to a failure to decode properly
 - [ ] Create a test
 - [ ] Verify test fails
-- [x ] Fix the bug
+- [x] Fix the bug
 - [ ] Verify test passes
 - [ ] Refactor logic to improve any relevant code
 - [x] Commit & push the bug fix
@@ -27,7 +27,7 @@
 ### Bug 4 : Messages are not being sent
 - [ ] Create a test
 - [ ] Verify test fails
-- [ ] Fix the bug
+- [x] Fix the bug
 - [ ] Verify test passes
-- [ ] Refactor logic to improve any relevant code
-- [ ] Commit & push the bug fix
+- [x] Refactor logic to improve any relevant code
+- [x] Commit & push the bug fix
