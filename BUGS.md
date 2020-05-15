@@ -35,7 +35,7 @@
 ### Bug 5 : Decoding process has type mismatches for the messages, leading to another failure to decode properly
 - [ ] Create a test
 - [ ] Verify test fails
-- [ ] Fix the bug
-- [ ] Verify test passes
-- [ ] Refactor logic to improve any relevant code
-- [ ] Commit & push the bug fix
+- [x] Fix the bug
+- [x] Verify test passes
+- [x] Refactor logic to improve any relevant code
+- [x] Commit & push the bug fix
