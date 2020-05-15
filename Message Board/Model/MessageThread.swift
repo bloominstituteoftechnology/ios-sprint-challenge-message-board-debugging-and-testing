@@ -8,8 +8,23 @@
 
 import Foundation
 
+// MARK: - Helper Coding Key Enums
+enum CodingKeys: String, CodingKey {
+    case title
+    case messages
+    case identifier
+    
+    enum MessagesKeys: String, CodingKey {
+        case text
+        case sender
+        case timestamp
+    }
+}
+
 class MessageThread: Codable, Equatable {
 
+    
+    // MARK: - Properties
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
