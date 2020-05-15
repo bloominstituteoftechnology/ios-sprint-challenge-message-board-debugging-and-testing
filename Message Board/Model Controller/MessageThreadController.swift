@@ -33,7 +33,7 @@ class MessageThreadController {
             do {
                 self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
-                self.messageThreads = []
+//                self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             
