@@ -23,13 +23,21 @@ class MessageThread: Codable, Equatable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let title = try container.decode(String.self, forKey: .title)
-        let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        self.title = try container.decode(String.self, forKey: .title)
+        self.identifier = try container.decode(String.self, forKey: .identifier)
+        self.messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
         
-        self.title = title
-        self.identifier = identifier
-        self.messages = messages
+        /*
+         //Doesn't work
+         //let me = try (container.decodeIfPresent([String: Message].self, forKey: .messages)).map({$0.values}) ?? []
+        self.messages = try (container.decodeIfPresent([String: Message].self, forKey: .messages)).map({$0.value}) ?? []
+         let dictionary = try container.decodeIfPresent([String: Message].self, forKey: .messages)
+        
+        let allMessages:[Message] = []
+        for (value) in dictionary {
+            allMessages.append(value)
+        }*/
+        //print(self.messages)
     }
 
     

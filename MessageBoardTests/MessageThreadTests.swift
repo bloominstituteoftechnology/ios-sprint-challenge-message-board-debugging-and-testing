@@ -31,6 +31,25 @@ class MessageThreadTests: XCTestCase {
         return returnType
     }
     
+    var fetchThreads: Bool {
+        var messageThread = MessageThreadController()
+        
+        //Expectation
+        let didFinish = expectation(description: "didFinish")
+        var returnType = false
+        
+        //Networking
+        messageThread.fetchMessageThreads {
+            DispatchQueue.main.async {
+                didFinish.fulfill()
+                returnType = true
+            }
+        }
+        
+        wait(for: [didFinish], timeout: 5)
+        return returnType
+    }
+    
    /* var creatingMessages: Bool {
         
     }*/
@@ -38,6 +57,6 @@ class MessageThreadTests: XCTestCase {
     
     func testAll() {
         XCTAssertTrue(creatingThreads)
-        //XCTAssertTrue(<#T##expression: Bool##Bool#>)
+        XCTAssertTrue(fetchThreads)
     }
 }

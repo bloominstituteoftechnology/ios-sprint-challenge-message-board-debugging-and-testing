@@ -24,8 +24,6 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
         
         //Make a thread
-        
-        
     }
     
     func testExample() throws {
@@ -41,9 +39,6 @@ class Message_BoardUITests: XCTestCase {
         forTestingPurposesDoNotDeleteNavigationBar.buttons["Add"].tap()
         app.navigationBars["New Message"].buttons["FOR TESTING PURPOSES DO NOT DELETE"].tap()
         forTestingPurposesDoNotDeleteNavigationBar.buttons["λ Message Board"].tap()
-        
-        
-        
         
     }
     
