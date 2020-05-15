@@ -38,7 +38,23 @@ class MessageThreadTests: XCTestCase {
         
         wait(for: [expectation1], timeout: 10)
         XCTAssertEqual(messageController.messageThreads.last!.title, "Testing Thread Creation")
+        XCTAssertTrue(!expectation1.isInverted, "⚠️ Writing message to the server failed.")
     
     }
     
+    func testFetchingMessageThread() {
+        let messageController = MessageThreadController()
+        
+        let expectation = XCTestExpectation(description: "Creating fetching thread")
+        
+        messageController.fetchMessageThreads {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+        
+         XCTAssertEqual(messageController.messageThreads.last!.title, "Testing Thread Creation")
+        XCTAssertTrue(!expectation.isInverted, "⚠️ Writing message to the server failed.")
+    
+    }
 }
