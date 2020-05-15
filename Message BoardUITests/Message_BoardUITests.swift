@@ -35,6 +35,44 @@ class Message_BoardUITests: XCTestCase {
         return app.searchFields["MessageThreadsTableViewController.Search"]
     }
     
+    func testCreatingMessage() {
+    
+      
+        let threadName = "New Entry"
+         let name = "Bharat"
+         let message = "Hello, world!"
+        
+         messageName.tap()
+         messageName.typeText(threadName)
+         app.keyboards.buttons["Return"].tap()
+         app.tables.cells["2"].tap()
+         app.buttons["Add"].tap()
+         
+         messageName.tap()
+         messageName.typeText(name)
+
+         messageTextView.tap()
+        messageTextView.typeText(message)
+
+         app.buttons["Send"].tap()
+         
+         // Send button should take us back to MessageThreadDetailTableViewController
+         XCTAssertTrue(app.staticTexts[message].exists)
+
+    }
+    
+    func testCreatingNewThread() {
+          messageSearch.tap()
+          messageSearch.typeText("New Thread Message \n")
+      }
+      
+      func testReadingThreadsAndMessages() {
+          let tablesQuery = app.tables
+          tablesQuery.staticTexts["new creation"].tap()
+          tablesQuery.staticTexts["hi"].tap()
+          
+      }
+    
    
     
 }
