@@ -21,7 +21,6 @@ class MessageThreadsTableViewController: UITableViewController {
     }
     
     // MARK: - Actions
-    
     @IBAction func createThread(_ sender: Any) {
         threadTitleTextField.resignFirstResponder()
 
