@@ -11,5 +11,24 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    // MARK: - Properties
+    var messageThreadController: MessageThreadController {
+        MessageThreadController()
+    }
+    
+    // Testing to see if multiple threads can be created
+    func testCreatingMessageThread() {
+        
+        messageThreadController.createMessageThread(with: thread1) {
+            XCTAssertTrue(self.messageThreadController.messageThreads.count == 1)
+        }
+        messageThreadController.createMessageThread(with: thread2) {
+            XCTAssertTrue(self.messageThreadController.messageThreads.count == 2)
+        }
+    }
+    
+    let thread1 = "Thread 1"
+    let thread2 = "Thread 2"
+    
     
 }
