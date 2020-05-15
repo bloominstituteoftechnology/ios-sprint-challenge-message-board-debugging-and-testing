@@ -26,14 +26,26 @@ class Message_BoardUITests: XCTestCase {
     
     var swipeTest: Bool {
         //UI Swiping Test
-        app/*@START_MENU_TOKEN@*/.tables.containing(.textField, identifier:"Create a new thread:").element/*[[".tables.containing(.staticText, identifier:\"Create a new thread:\").element",".tables.containing(.textField, identifier:\"Create a new thread:\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app.tables.staticTexts["FOR TESTING PURPOSES DO NOT DELETE"].tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["FOR TESTING PURPOSES DO NOT DELETE"]/*[[".cells.staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]",".staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let emptyListTable = app.tables["Empty list"]
-        emptyListTable.swipeDown()
-        emptyListTable.swipeUp()
-        app.navigationBars["FOR TESTING PURPOSES DO NOT DELETE"].buttons["Add"].tap()
-        app.navigationBars["New Message"].buttons["FOR TESTING PURPOSES DO NOT DELETE"].tap()
+        let forTestingPurposesDoNotDeleteNavigationBar = app.navigationBars["FOR TESTING PURPOSES DO NOT DELETE"]
+        forTestingPurposesDoNotDeleteNavigationBar.buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        forTestingPurposesDoNotDeleteNavigationBar.buttons["λ Message Board"].tap()
+        return true
+    }
+    
+    var addMessageToThread: Bool {
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["FOR TESTING PURPOSES DO NOT DELETE"]/*[[".cells.staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]",".staticTexts[\"FOR TESTING PURPOSES DO NOT DELETE\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let forTestingPurposesDoNotDeleteNavigationBar = app.navigationBars["FOR TESTING PURPOSES DO NOT DELETE"]
+        forTestingPurposesDoNotDeleteNavigationBar.buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["NewMessage"]/*[[".cells.staticTexts[\"NewMessage\"]",".staticTexts[\"NewMessage\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        forTestingPurposesDoNotDeleteNavigationBar.buttons["λ Message Board"].tap()
         return true
     }
     
@@ -57,7 +69,9 @@ class Message_BoardUITests: XCTestCase {
         
         //Tests
         XCTAssertTrue(functionalityTest)
+        XCTAssertTrue(addMessageToThread)
         XCTAssertTrue(swipeTest)
+        
 
     }
     
