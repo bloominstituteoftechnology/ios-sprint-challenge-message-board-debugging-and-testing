@@ -5,3 +5,9 @@ Solution: Add ".resume( )" to the end of the URLSession
 2.) Problem: Error reading json
 a.) Use Unit Testing to check the result of fetching the data
 Solution: Turn the dictionaries into arrays after changing the Class decoding and converting the dictionary into an array in the fetching function.
+
+3.) Problem: Pushing save isn't leaving the view controller
+a.) Run UITests to show process of entering and saving data, then proceed to the "AddMessages" segue and press "save"
+Solution: Pop the view controller after the save happens in MessageDetailViewController
+
+
