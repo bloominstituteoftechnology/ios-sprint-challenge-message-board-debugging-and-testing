@@ -10,4 +10,7 @@ Solution: Turn the dictionaries into arrays after changing the Class decoding an
 a.) Run UITests to show process of entering and saving data, then proceed to the "AddMessages" segue and press "save"
 Solution: Pop the view controller after the save happens in MessageDetailViewController
 
+4.) Problem: Data doesn't show up after pushing "save" to save a message
+a.) Run the same UITest from #3 to prove that a newly created thread/message results in the tableview showing the new entry
+Solution: 
 
