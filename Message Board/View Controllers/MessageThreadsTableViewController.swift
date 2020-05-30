@@ -33,7 +33,7 @@ class MessageThreadsTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+            }
     }
     
     // MARK: - UITableViewDataSource

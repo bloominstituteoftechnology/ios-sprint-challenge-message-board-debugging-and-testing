@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Message_Board
 
 class Message_BoardUITests: XCTestCase {
     
@@ -24,6 +25,12 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testTableViewUpdatingWithThread() {
+        let textField = XCUIApplication().tables["Empty list"].textFields["Create a new thread:"]
         
+        textField.tap()
+        textField.typeText("Blah")
+       
+        
+                                
     }
 }
