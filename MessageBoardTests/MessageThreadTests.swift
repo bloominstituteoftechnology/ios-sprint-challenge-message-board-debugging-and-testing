@@ -11,5 +11,12 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    
+    func testLoadingMessagesFromJSON() {
+        
+        let messageThreadController = MessageThreadController()
+        
+        messageThreadController.fetchLocalMessageThreads {
+            XCTAssert(messageThreadController.messageThreads.count > 0)
+        }
+    }
 }

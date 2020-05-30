@@ -6,6 +6,8 @@ First fix: segue identifier in code did not match segue identifier in storyboard
 * `Send` button triggers a print statement but nothing happens on-screen.
 Fix: have NavigationController pop the current View Controller 
 
+* JSON is a dictionary, but app expects to find an array
+
 
 
 
