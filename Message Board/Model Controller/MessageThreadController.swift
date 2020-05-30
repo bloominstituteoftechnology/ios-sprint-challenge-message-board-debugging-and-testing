@@ -13,6 +13,8 @@ class MessageThreadController {
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
@@ -83,7 +85,7 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
