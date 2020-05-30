@@ -26,11 +26,16 @@ class Message_BoardUITests: XCTestCase {
     
     func testTableViewUpdatingWithThread() {
         let textField = XCUIApplication().tables["Empty list"].textFields["Create a new thread:"]
-        
         textField.tap()
         textField.typeText("Blah")
-       
         
+        let app = XCUIApplication()
+        app.tables["Empty list"].textFields["Create a new thread:"].tap()
+        let tableViewText = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Blah"]/*[[".cells.staticTexts[\"Blah\"]",".staticTexts[\"Blah\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        tableViewText.tap()
+        
+       
+        XCTAssertTrue(textField.staticTexts == tableViewText)
                                 
     }
 }
