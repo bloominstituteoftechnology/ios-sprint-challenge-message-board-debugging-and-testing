@@ -10,6 +10,8 @@ import Foundation
 
 class MessageThreadController {
     
+    var baseURL = URL(fileURLWithPath: "https://messageboardtestingsprint.firebaseio.com/")
+    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
