@@ -10,13 +10,27 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
-    var app: XCUIApplication!
+    var app: XCUIApplication {
+        return XCUIApplication()
+    }
+    
+    var createThread: XCUIElement {
+        return app.tables.textFields["Create a new thread:"]
+    }
+    
+    var senderName: XCUIElement {
+        return app.textFields["MessageDetailViewController.NameTextField"]
+    }
+    
+    var messageText: XCUIElement {
+        return app.textViews["MessageDetailViewController.MessageTextView"]
+    }
     
     override func setUp() {
         super.setUp()
         
         continueAfterFailure = false
-        app = XCUIApplication()
+        let app = XCUIApplication()
         
         // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
