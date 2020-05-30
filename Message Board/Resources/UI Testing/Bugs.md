@@ -8,5 +8,6 @@ Second bug: TableView not loading local message threads.
 Third bug: "Send" button not responding when tapped
 Segue identifier was misspelled. Changed that! 
 
+Fourth bug: Send button now working, but stays on same page.
 
 
