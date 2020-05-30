@@ -33,7 +33,7 @@ class Message_BoardUITests: XCTestCase {
        let tableViewText = XCUIApplication().tables.children(matching: .cell).element(boundBy: 0).staticTexts["Blah"]
         tableViewText.tap()
         
-        XCTAssertTrue(textField.staticTexts == tableViewText.staticTexts)
+        XCTAssertEqual(textField.staticTexts, tableViewText.staticTexts)
                                 
     }
     
