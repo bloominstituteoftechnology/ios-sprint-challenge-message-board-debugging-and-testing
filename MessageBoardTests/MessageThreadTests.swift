@@ -10,6 +10,8 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    
+    func testCreateNewThread() {
+
+    }
     
 }

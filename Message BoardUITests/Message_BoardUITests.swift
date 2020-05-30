@@ -22,5 +22,14 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
-    
+    func testCreateNewThread() {
+        
+        let newThread = XCUIApplication().tables["Empty list"].textFields["com.messageboard.createboard"]
+            newThread.tap()
+        
+        newThread.typeText("New Thread\n")
+        
+        XCTAssert(app.staticTexts["New Thread"].exists)
+        
+    }
 }
