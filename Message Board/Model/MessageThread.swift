@@ -8,6 +8,7 @@
 
 import Foundation
 
+let baseURL = URL(string: "https://codequality-1e269.firebaseio.com/")!
 class MessageThread: Codable, Equatable {
 
     let title: String
@@ -20,6 +21,8 @@ class MessageThread: Codable, Equatable {
         self.identifier = identifier
     }
 
+
+    
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -35,12 +38,12 @@ class MessageThread: Codable, Equatable {
     
     struct Message: Codable, Equatable {
         
-        let messageText: String
+        let text: String
         let sender: String
         let timestamp: Date
         
         init(text: String, sender: String, timestamp: Date = Date()) {
-            self.messageText = text
+            self.text = text
             self.sender = sender
             self.timestamp = timestamp
         }
@@ -51,4 +54,32 @@ class MessageThread: Codable, Equatable {
             lhs.identifier == rhs.identifier &&
             lhs.messages == rhs.messages
     }
+    
+    /*
+    
+    private func put(message: MessageThread, completion: @escaping ((Error?)->Void) = {_ in }){
+        let identifier = message.identifier
+        let requestURL = baseURL.appendingPathComponent(identifier).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(message)
+            
+        } catch {
+            NSLog("Error encoding message : \(error)")
+            completion(error)
+            return
+        }
+        URLSession.shared.dataTask(with: request){(data, _, error) in
+            if let error = error {
+                NSLog("Error PUTTING message to server: \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+            
+            
+        }.resume()
+    } */
 }
