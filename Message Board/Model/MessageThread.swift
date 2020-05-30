@@ -11,13 +11,16 @@ import Foundation
 class MessageThread: Codable, Equatable {
 
     let title: String
-    var messages: [MessageThread.Message]
+    var messages: [String: MessageThread.Message]
     let identifier: String
+    var messagesArray: [MessageThread.Message]
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+    init(title: String, messages: [String: MessageThread.Message] = [:], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
+        self.messagesArray = Array(messages.values)
+
     }
 
     required init(from decoder: Decoder) throws {
@@ -25,11 +28,12 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messages = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
         self.title = title
         self.identifier = identifier
         self.messages = messages
+        self.messagesArray = Array(messages.values)
     }
 
     
