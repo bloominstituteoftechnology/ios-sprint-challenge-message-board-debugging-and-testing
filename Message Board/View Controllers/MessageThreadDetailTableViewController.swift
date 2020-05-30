@@ -16,6 +16,16 @@ class MessageThreadDetailTableViewController: UITableViewController {
         title = messageThread?.title
     }
     
+    @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+            self.messageThreadController!.fetchMessageThreads {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
+        }
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
