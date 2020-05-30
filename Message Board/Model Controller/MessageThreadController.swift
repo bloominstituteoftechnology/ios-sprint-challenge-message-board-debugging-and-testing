@@ -10,8 +10,6 @@ import Foundation
 
 class MessageThreadController {
     
-    var firebaseURL = URL(fileURLWithPath: "https://messageboardtestingsprint.firebaseio.com/")
-    
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
@@ -113,6 +111,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messageboardtestingsprint.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
