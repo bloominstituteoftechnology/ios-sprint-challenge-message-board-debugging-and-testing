@@ -25,24 +25,23 @@ class Message_BoardUITests: XCTestCase {
     
     func testNewMessageSend() {
         
-        app.tables["Empty list"].textFields["Create a new thread:"].tap()
+        app.tables.element(boundBy: 0).textFields["Create a new thread:"].tap()
         
         app.keys["h"].tap()
         app.keys["e"].tap()
         app.keys["y"].tap()
-        
         app.buttons["Return"].tap()
+        
         app.tables.cells.staticTexts["hey"].tap()
         app.navigationBars["hey"].buttons["Add"].tap()
-        app.textFields["Enter your name:"].tap()
-
+        
+        app.textFields["nameText"].tap()
         app.keys["c"].tap()
         app.keys["h"].tap()
         app.keys["a"].tap()
         app.keys["d"].tap()
         
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.tap()
-        
+        app.textViews["messageText"].tap()
         app.keys["H"].tap()
         app.keys["e"].tap()
         app.keys["y"].tap()
