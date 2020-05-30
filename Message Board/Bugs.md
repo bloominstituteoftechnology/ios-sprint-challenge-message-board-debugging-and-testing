@@ -12,3 +12,6 @@
 
 4. New messages aren't being sent to the server
 **Fix:** Fixed the typo from "AddMesage"  to "AddMessage" 
+
+5. Messages not syncing with server
+**Fix:** Had to decode the messages properly by changing the identifier
