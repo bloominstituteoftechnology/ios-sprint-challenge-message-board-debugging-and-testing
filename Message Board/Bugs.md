@@ -7,6 +7,7 @@ First fix: segue identifier in code did not match segue identifier in storyboard
 Fix: have NavigationController pop the current View Controller 
 
 * JSON is a dictionary, but app expects to find an array
+Fix: decode as dictionary, map values to array, also fix Message CodingKeys 
 
 
 
