@@ -26,29 +26,28 @@ class Message_BoardUITests: XCTestCase {
     func testNewMessageSend() {
         
         app.tables.element(boundBy: 0).textFields["Create a new thread:"].tap()
-        
-        app.keys["h"].tap()
-        app.keys["e"].tap()
-        app.keys["y"].tap()
+
+        type("hey")
         app.buttons["Return"].tap()
         
         app.tables.cells.staticTexts["hey"].tap()
         app.navigationBars["hey"].buttons["Add"].tap()
         
         app.textFields["nameText"].tap()
-        app.keys["c"].tap()
-        app.keys["h"].tap()
-        app.keys["a"].tap()
-        app.keys["d"].tap()
+        type("chad")
         
         app.textViews["messageText"].tap()
-        app.keys["H"].tap()
-        app.keys["e"].tap()
-        app.keys["y"].tap()
+        type("Hey")
         
         app.navigationBars["New Message"].buttons["Send"].tap()
         
         XCTAssert(app.tables.cells.staticTexts["Hey"].exists)
+    }
+    
+    func type(_ text: String) {
+        text.forEach { character in
+            app.keys[String(character)].tap()
+        }
     }
     
 //    // Test asynchronous logic using an expectation
