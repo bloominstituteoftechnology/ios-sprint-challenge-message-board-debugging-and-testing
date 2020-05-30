@@ -28,14 +28,30 @@ class Message_BoardUITests: XCTestCase {
         let textField = XCUIApplication().tables["Empty list"].textFields["Create a new thread:"]
         textField.tap()
         textField.typeText("Blah")
+        app.buttons["Return"].tap()
         
-        let app = XCUIApplication()
-        app.tables["Empty list"].textFields["Create a new thread:"].tap()
-        let tableViewText = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Blah"]/*[[".cells.staticTexts[\"Blah\"]",".staticTexts[\"Blah\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+       let tableViewText = XCUIApplication().tables.children(matching: .cell).element(boundBy: 0).staticTexts["Blah"]
         tableViewText.tap()
         
-       
-        XCTAssertTrue(textField.staticTexts == tableViewText)
+        XCTAssertTrue(textField.staticTexts == tableViewText.staticTexts)
                                 
+    }
+    
+    func testBackButtonPressed() {
+        
+        let app = XCUIApplication()
+        
+        let textField = XCUIApplication().tables["Empty list"].textFields["Create a new thread:"]
+              textField.tap()
+        
+        textField.typeText("Blah")
+        app.buttons["Return"].tap()
+        
+        app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["Blah"].tap()
+        let backButton = app.navigationBars.buttons["λ Message Board"]
+        backButton.tap()
+        
+        XCTAssertTrue(backButton.isSelected)
+        
     }
 }
