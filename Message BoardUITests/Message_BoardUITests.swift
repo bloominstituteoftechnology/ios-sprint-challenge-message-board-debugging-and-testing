@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Message_Board
 
 class Message_BoardUITests: XCTestCase {
     
@@ -23,4 +24,34 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testTableViewUpdatingWithThread() {
+        let textField = XCUIApplication().tables["Empty list"].textFields["Create a new thread:"]
+        textField.tap()
+        textField.typeText("Blah")
+        app.buttons["Return"].tap()
+        
+       let tableViewText = XCUIApplication().tables.children(matching: .cell).element(boundBy: 0).staticTexts["Blah"]
+        tableViewText.tap()
+        
+        XCTAssertEqual(textField.staticTexts, tableViewText.staticTexts)
+                                
+    }
+    
+    func testBackButtonPressed() {
+        
+        let app = XCUIApplication()
+        
+        let textField = XCUIApplication().tables["Empty list"].textFields["Create a new thread:"]
+              textField.tap()
+        
+        textField.typeText("Blah")
+        app.buttons["Return"].tap()
+        
+        app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["Blah"].tap()
+        let backButton = app.navigationBars.buttons["λ Message Board"]
+        backButton.tap()
+        
+        XCTAssertTrue(backButton.isSelected)
+        
+    }
 }
