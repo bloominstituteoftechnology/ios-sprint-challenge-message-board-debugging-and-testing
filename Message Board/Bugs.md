@@ -10,8 +10,3 @@ Fix: have NavigationController pop the current View Controller
 Fix: decode as dictionary, map values to array, also fix Message CodingKeys 
 
 
-
-
-
-
-Possible decoding error
