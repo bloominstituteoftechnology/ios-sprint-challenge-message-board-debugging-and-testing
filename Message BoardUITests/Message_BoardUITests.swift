@@ -23,4 +23,7 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testTableViewUpdatingWithThread() {
+        
+    }
 }
