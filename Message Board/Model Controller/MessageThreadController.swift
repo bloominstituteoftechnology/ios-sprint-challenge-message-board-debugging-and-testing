@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    var baseURL = URL(fileURLWithPath: "https://messageboardtestingsprint.firebaseio.com/")
+    var firebaseURL = URL(fileURLWithPath: "https://messageboardtestingsprint.firebaseio.com/")
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
         
@@ -74,7 +74,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {

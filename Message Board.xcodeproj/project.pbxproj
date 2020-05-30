@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		117E6CCA2481EF6200B106F4 /* Bugs.md in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CC92481EF6200B106F4 /* Bugs.md */; };
+		117E6CCB2481EF6200B106F4 /* Bugs.md in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CC92481EF6200B106F4 /* Bugs.md */; };
 		4612B5C8211AB41100E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612B5C7211AB41100E7FF73 /* AppDelegate.swift */; };
 		4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CB211AB41200E7FF73 /* Main.storyboard */; };
 		4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4612B5CE211AB41300E7FF73 /* Assets.xcassets */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		117E6CC92481EF6200B106F4 /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Bugs.md; sourceTree = "<group>"; };
 		4612B5C4211AB41100E7FF73 /* Message Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Message Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4612B5C7211AB41100E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4612B5CC211AB41200E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 				46436031211ABC3900E7FF73 /* View Controllers */,
 				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602D211ABC0900E7FF73 /* Resources */,
+				117E6CC92481EF6200B106F4 /* Bugs.md */,
 			);
 			path = "Message Board";
 			sourceTree = "<group>";
@@ -312,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117E6CCB2481EF6200B106F4 /* Bugs.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117E6CCA2481EF6200B106F4 /* Bugs.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
