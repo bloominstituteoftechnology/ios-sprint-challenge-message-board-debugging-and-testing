@@ -48,7 +48,7 @@ class Message_BoardUITests: XCTestCase {
         
         app.navigationBars["New Message"].buttons["Send"].tap()
         
-        
+        XCTAssert(app.tables.cells.staticTexts["Hey"].exists)
     }
     
 //    // Test asynchronous logic using an expectation
