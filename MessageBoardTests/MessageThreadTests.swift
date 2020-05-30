@@ -11,7 +11,7 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     func testCreateNewThread() {
-
+        
     }
     
 }
