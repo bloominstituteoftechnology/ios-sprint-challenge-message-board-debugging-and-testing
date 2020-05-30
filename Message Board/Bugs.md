@@ -10,4 +10,5 @@
 3. When fixed #2. Found an error with decoding messages from JSON Data
 **Fix:** deoded the messages into an array
 
-4. N
+4. New messages aren't being sent to the server
+**Fix:** Fixed the typo from "AddMesage"  to "AddMessage" 
