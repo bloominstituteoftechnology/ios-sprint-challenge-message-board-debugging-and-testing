@@ -61,6 +61,7 @@ class MessageThreadController {
             NSLog("Error encoding thread to JSON: \(error)")
         }
         
+        // MARK: Bug - .resume() missing (Bug 1)
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
@@ -69,10 +70,11 @@ class MessageThreadController {
                 return
             }
             
+            // This was appending correctly, but the dataTask was not being resumed.
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {

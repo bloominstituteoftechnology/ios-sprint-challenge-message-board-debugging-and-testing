@@ -11,5 +11,23 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    // MARK: Bug 1 test .resume() missing
+    
+    // This test fails without .resume() and passes with .resume()
+    func testCreateNewThread() {
+        let messageThreadController = MessageThreadController()
+        
+        let expectedResult = XCTestExpectation(description: "New message thread should have been created")
+        let initialMessageThreadCount = messageThreadController.messageThreads.count
+        
+        messageThreadController.createMessageThread(with: "This is a test thread") {
+            expectedResult.fulfill()
+        }
+        
+        wait(for: [expectedResult], timeout: 6)
+        XCTAssertEqual(messageThreadController.messageThreads.count,
+                       initialMessageThreadCount + 1)
+        
+    }
     
 }
