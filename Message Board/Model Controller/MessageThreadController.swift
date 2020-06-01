@@ -15,10 +15,7 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if !isUITesting {
-            fetchLocalMessageThreads(completion: completion)
-            return
-        }
+
         
         // MARK: Bug - Decoding was failing to decode threads we already created (Bug 2)
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
@@ -53,6 +50,11 @@ class MessageThreadController {
             
             completion()
         }.resume()
+        
+        if isUITesting {
+            fetchLocalMessageThreads(completion: completion)
+            return
+        }
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {

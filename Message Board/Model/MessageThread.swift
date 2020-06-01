@@ -17,6 +17,7 @@ class MessageThread: Codable, Equatable {
         case identifier
     }
     
+    // Creates Message Coding Keys
     enum MessageKeys: String, CodingKey {
         case messageText = "text"
         case sender
@@ -34,12 +35,23 @@ class MessageThread: Codable, Equatable {
     }
 
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
         
+        // MARK: Bug - decoder isn't using the correct coding keys(Bug 3)
+        let container = try decoder.container(keyedBy: MessageThreadKeys.self)
+        
+        // Bug Note: Adding the proper coding keys decodes the title and identifier correctly.
+        // messages is not decoding properly. Looks like it needs to be a dictionary
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
         
+        let dictionaryOfMessages: [String : Message] = try container.decodeIfPresent([String : Message].self, forKey: .messages) ?? [:]
+        
+        var messages: [Message] = []
+        
+        if dictionaryOfMessages.count > 0 {
+            messages = Array(dictionaryOfMessages.values)
+        }
+            
         self.title = title
         self.identifier = identifier
         self.messages = messages
@@ -57,6 +69,24 @@ class MessageThread: Codable, Equatable {
             self.sender = sender
             self.timestamp = timestamp
         }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: MessageKeys.self)
+            let messageText = try container.decode(String.self, forKey: .messageText)
+            let sender = try container.decode(String.self, forKey: .sender)
+            let timestamp = try container.decode(Date.self, forKey: .timestamp)
+            self.messageText = messageText
+            self.sender = sender
+            self.timestamp = timestamp
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: MessageKeys.self)
+            try container.encode(messageText, forKey: .messageText)
+            try container.encode(sender, forKey: .sender)
+            try container.encode(timestamp, forKey: .timestamp)
+        }
+        
     }
     
     static func ==(lhs: MessageThread, rhs: MessageThread) -> Bool {
