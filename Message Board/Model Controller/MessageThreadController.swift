@@ -14,6 +14,9 @@ class MessageThreadController {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
+        guard let path = Bundle.main.path(forResource: "MockMessages", ofType: "json") else { return }
+        let fileURL = URL(fileURLWithPath: path)
+        
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
@@ -31,10 +34,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                let jsonDecoder = JSONDecoder()
-                self.messageThreads = try jsonDecoder.decode([MessageThread].self, from: data)
-                jsonDecoder.dateDecodingStrategy = .deferredToDate
-                self.messageThreads = Array(try jsonDecoder.decode([String:MessageThread].self, from: data).values)
+                let messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = messageThreads
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -71,6 +72,8 @@ class MessageThreadController {
                 completion()
                 return
             }
+            self.messageThreads.append(thread)
+            completion()
         }.resume()
     }
     
