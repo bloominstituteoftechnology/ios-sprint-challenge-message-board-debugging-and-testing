@@ -19,7 +19,6 @@ class MessageThreadTests: XCTestCase {
         messageThreadController.createMessageThread(with: threadTitle) {
             XCTAssertTrue(newMessageThread?.title == threadTitle)
         }
-        
     }
     
     // Test asynchronous logic using an expectation
