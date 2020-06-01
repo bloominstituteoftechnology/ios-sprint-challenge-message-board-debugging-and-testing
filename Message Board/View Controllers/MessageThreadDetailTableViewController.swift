@@ -9,6 +9,8 @@
 import UIKit
 
 class MessageThreadDetailTableViewController: UITableViewController {
+    
+    let addMessageSegue = "AddMessage"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +43,9 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     // MARK: - Navigation
     
+    // MARK: Bug segue identifier is misspelled. Changing it to a String.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == addMessageSegue {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController

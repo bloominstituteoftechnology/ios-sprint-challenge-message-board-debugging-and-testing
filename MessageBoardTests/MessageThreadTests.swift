@@ -30,4 +30,17 @@ class MessageThreadTests: XCTestCase {
         
     }
     
+    // MARK: Bug 3 test
+    func testDecodingMessages() {
+        let messageThreadController = MessageThreadController()
+        
+        let expectedResult = XCTestExpectation(description: "Decoding messages failed")
+        messageThreadController.fetchLocalMessageThreads {
+            expectedResult.fulfill()
+        }
+        
+        wait(for: [expectedResult], timeout: 10)
+        let first = messageThreadController.messageThreads.first
+        XCTAssertGreaterThan(first?.messages.count ?? 0,0)
+    }
 }
