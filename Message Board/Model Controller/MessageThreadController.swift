@@ -15,11 +15,12 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
+        if !isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
         }
         
+        // MARK: Bug - Decoding was failing to decode threads we already created (Bug 2)
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
@@ -31,7 +32,20 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // BUG NOTES: po data gives data, but it's not being decoded properly.
+                // These threads are the ones we create locally
+                
+                // self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                // print(self.messageThreads)
+                
+                // Decoding the message threads as dicitonaries.
+                let dictionaryOfThreads = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                let arrayOfThreads = Array(dictionaryOfThreads.values)
+                
+                self.messageThreads = arrayOfThreads
+                print("There are currently \(dictionaryOfThreads.count) threads")
+                
+                
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -113,6 +127,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messages-78aa7.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }

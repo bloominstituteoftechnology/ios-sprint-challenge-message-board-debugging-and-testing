@@ -9,6 +9,19 @@
 import Foundation
 
 class MessageThread: Codable, Equatable {
+    
+    // Created Message Thread Coding Keys
+    enum MessageThreadKeys: String, CodingKey {
+        case title
+        case messages
+        case identifier
+    }
+    
+    enum MessageKeys: String, CodingKey {
+        case messageText = "text"
+        case sender
+        case timestamp
+    }
 
     let title: String
     var messages: [MessageThread.Message]
