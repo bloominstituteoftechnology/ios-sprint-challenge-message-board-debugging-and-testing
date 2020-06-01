@@ -57,7 +57,7 @@ class Message_BoardUITests: XCTestCase {
         XCTAssert(!lastCell!.exists, "Error: A cell with an empty String exists!")
     }
     
-    func testMessageCreation() {
+    func testLastMessageCreation() {
         let searchBar = app.tables.textFields["Create a new thread:"]
         app.tables.textFields["Create a new thread:"].tap()
         
