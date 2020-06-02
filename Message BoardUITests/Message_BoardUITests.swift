@@ -47,14 +47,41 @@ class Message_BoardUITests: XCTestCase {
     }
     
     // This test is checking to make sure that no empty Message Thread can be populated. This must have text within the textfield
-    func testCantCreateEmptyThreads() {
+    func testdetailVCSendButton() {
         
         let searchBar = app.tables.textFields["Create a new thread:"]
         app.tables.textFields["Create a new thread:"].tap()
+        let tKey = app.keys["t"]
+        tKey.tap()
+        
+        let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        eKey.tap()
+        
+        let sKey = app.keys["s"]
+        sKey.tap()
+        
+        tKey.tap()
         app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
-        let lastCell = app.tables.allElementsBoundByIndex.last?.staticTexts[""]
-//        let cell = app.tables.children(matching: .cell).element(boundBy: lastCellIndex)
-        XCTAssert(!lastCell!.exists, "Error: A cell with an empty String exists!")
+        
+        app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["test"].tap()
+        
+        
+        app.navigationBars["test"].buttons["Add"].tap()
+        
+        app.textFields["Enter your name:"].tap()
+                
+        tKey.tap()
+        
+        eKey.tap()
+        
+        sKey.tap()
+        
+        tKey.tap()
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.tap()
+        
+        app.navigationBars["New Message"].buttons["Send"].tap()
+
     }
     
     func testLastMessageCreation() {

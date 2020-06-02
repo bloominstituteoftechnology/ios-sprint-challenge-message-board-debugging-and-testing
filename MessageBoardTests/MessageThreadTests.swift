@@ -11,7 +11,32 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    func testAddMessageDataPassage() {
+    let messageThreadController = MessageThreadController()
+    let messageThreadsTableViewController = MessageThreadsTableViewController()
+    let messageThreadDetailTableViewController = MessageThreadDetailTableViewController()
+    let messageDetailViewController = MessageDetailViewController()
+    
+    func testCreatedMainTableViewThreads() {
         
+        XCTAssert((messageThreadsTableViewController.tableView != nil))
     }
+    
+    func testCreatedDetailTableViewThreads() {
+        
+        XCTAssert(messageThreadDetailTableViewController.tableView != nil)
+    }
+    
+    func testfetchLocalMessageThreads() {
+        
+        let expectation = self.expectation(description: "Wait for live data")
+        
+        messageThreadController.fetchMessageThreads {
+            XCTAssertEqual(self.messageThreadController.messageThreads.count, 2)
+            expectation.fulfill()
+        }
+        
+        self.wait(for: [expectation], timeout: 5)
+    }
+    
+    
 }

@@ -7,6 +7,7 @@
 // FIX: Had to add an "S" to "AddMessage" identifier
 
 3.)When trying to pull information from Firebase server, message threads are not populating upon app startup.
-    //FIX: When trying to decode incoming messageThreads through JSON, Typecasting the incoming data in order to allow xcode to decode the JSON
+//FIX: Making sure that the incoming data on the MessageThread is displayed as a dictionary and then using a compactMap filter to sort them out.
+
     
 
