@@ -37,4 +37,34 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
+    func testCreatingThread() {
+        createThread.tap()
+        createThread.typeText("Another Test")
+        app.keyboards.buttons["Return"].tap()
+        XCTAssertTrue(app.tables.staticTexts["Another Test"].exists)
+    }
+    
+    func testCreatingMessage() {
+        createThread.tap()
+        createThread.typeText("Another Test")
+        app.keyboards.buttons["Return"].tap()
+        
+        let thread = app.tables.staticTexts["Another Test"]
+        XCTAssertTrue(thread.exists)
+        
+        thread.tap()
+        app.navigationBars.buttons["Add"].tap()
+        
+        senderName.tap()
+        senderName.typeText("Don")
+        
+        messageText.tap()
+        messageText.typeText("This is a test.")
+        
+        app.navigationBars.buttons["Send"].tap()
+        
+        let message = app.tables.staticTexts["This is a test"]
+        XCTAssertTrue(message.exists)
+    }
+    
 }
