@@ -60,6 +60,11 @@ class Message_BoardUITests: XCTestCase {
         messageName.typeText("Kevin")
         app.keyboards.buttons["Return"].tap()
         
+        let messageBody = app.textViews.element
+        messageBody.tap()
+        messageBody.typeText("Hello Kevin!")
+        app.keyboards.buttons["Return"].tap()
+        
         // Taps send button
         let sendButton = app.buttons["Send"]
         sendButton.tap()
