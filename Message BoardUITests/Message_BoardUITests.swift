@@ -19,7 +19,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
     var senderName: XCUIElement {
-        return app.textFields["MessageDetailViewController.NameTextField"]
+        return app.textFields["Enter your name:"]
     }
     
     var messageText: XCUIElement {
