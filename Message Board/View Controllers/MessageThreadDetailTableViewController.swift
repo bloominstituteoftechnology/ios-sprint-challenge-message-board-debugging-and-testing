@@ -48,6 +48,13 @@ class MessageThreadDetailTableViewController: UITableViewController {
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
+        
+        if segue.identifier == "ShowDetailMessage" {
+            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+            
+            destinationVC.messageThreadController = messageThreadController
+            destinationVC.messageThread = messageThread
+        }
     }
     
     // MARK: - Properties
