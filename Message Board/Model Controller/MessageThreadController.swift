@@ -31,7 +31,8 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
+                let results = try JSONDecoder().decode([String : MessageThread].self, from: data)
+                self.messageThreads = Array(results.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -50,7 +51,6 @@ class MessageThreadController {
         }
         
         let thread = MessageThread(title: title)
-        self.messageThreads.append(thread)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -70,6 +70,7 @@ class MessageThreadController {
                 return
             }
             
+            self.messageThreads.append(thread)
             completion()
             
         }.resume()
@@ -83,7 +84,7 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -110,8 +111,7 @@ class MessageThreadController {
             
         }.resume()
     }
-    
     //static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    static let baseURL = URL(string: "https://messageboardspringchallenge.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messagethread-c2a3c.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }

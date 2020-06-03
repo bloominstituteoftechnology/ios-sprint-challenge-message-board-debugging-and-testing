@@ -11,6 +11,13 @@ import UIKit
 class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
+  
+  
+  override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      messageTextView.accessibilityIdentifier = "EnterMessage.TextView"
+      senderNameTextField.accessibilityIdentifier = "EnterName.TextField"
+  }
     
     @IBAction func sendMessage(_ sender: UIBarButtonItem) {
         
