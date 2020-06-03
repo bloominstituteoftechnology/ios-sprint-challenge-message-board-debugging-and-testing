@@ -11,8 +11,15 @@ import UIKit
 class MessageDetailViewController: UIViewController {
 
     // MARK: - Actions
+  
+  
+  override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      messageTextView.accessibilityIdentifier = "EnterMessage.TextView"
+      senderNameTextField.accessibilityIdentifier = "EnterName.TextField"
+  }
     
-    @IBAction func sendMessage(_ sender: Any) {
+    @IBAction func sendMessage(_ sender: UIBarButtonItem) {
         
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
@@ -21,6 +28,7 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        self.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Properties

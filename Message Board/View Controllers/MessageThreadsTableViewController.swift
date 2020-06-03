@@ -9,6 +9,8 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
+  
+    let messageThreadController = MessageThreadController()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,17 +56,14 @@ class MessageThreadsTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ViewMessageThread" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+                guard let indexPath = tableView.indexPathForSelectedRow,
+                    let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
+                
+                destinationVC.messageThreadController = messageThreadController
+                destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+            }
         }
-    }
     
-    // MARK: - Properties
-    
-    let messageThreadController = MessageThreadController()
     
     @IBOutlet weak var threadTitleTextField: UITextField!
 }
