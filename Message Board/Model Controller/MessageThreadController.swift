@@ -1,3 +1,11 @@
+//
+//  MessageThreadController.swift
+//  Message Board
+//
+//  Created by Spencer Curtis on 8/7/18.
+//  Copyright © 2018 Lambda School. All rights reserved.
+//
+
 import Foundation
 
 class MessageThreadController {
@@ -23,7 +31,7 @@ class MessageThreadController {
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -42,6 +50,7 @@ class MessageThreadController {
         }
         
         let thread = MessageThread(title: title)
+        self.messageThreads.append(thread)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -61,10 +70,10 @@ class MessageThreadController {
                 return
             }
             
-            self.messageThreads.append(thread)
+            
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -75,7 +84,7 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -103,6 +112,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://journal-debugging-1200d.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messageboard-89bdc.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
