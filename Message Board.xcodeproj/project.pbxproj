@@ -113,11 +113,11 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
+				4643602D211ABC0900E7FF73 /* Resources */,
+				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
 				46436031211ABC3900E7FF73 /* View Controllers */,
-				4643602E211ABC1100E7FF73 /* Storyboards */,
-				4643602D211ABC0900E7FF73 /* Resources */,
 			);
 			path = "Message Board";
 			sourceTree = "<group>";

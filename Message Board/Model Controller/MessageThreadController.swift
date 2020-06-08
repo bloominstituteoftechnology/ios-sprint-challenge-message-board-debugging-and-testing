@@ -1,11 +1,3 @@
-//
-//  MessageThreadController.swift
-//  Message Board
-//
-//  Created by Spencer Curtis on 8/7/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
-//
-
 import Foundation
 
 class MessageThreadController {
@@ -111,6 +103,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://journal-debugging-1200d.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }
