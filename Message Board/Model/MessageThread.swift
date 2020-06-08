@@ -1,11 +1,3 @@
-//
-//  MessageThread.swift
-//  Message Board
-//
-//  Created by Spencer Curtis on 8/7/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
-//
-
 import Foundation
 
 class MessageThread: Codable, Equatable {
@@ -25,7 +17,7 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messages = try container.decodeIfPresent([Message].self, forKey: .messages) ?? []
+        let messages = Array(try (container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [String: Message]()).values)
         
         self.title = title
         self.identifier = identifier
