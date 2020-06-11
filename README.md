@@ -4,13 +4,13 @@
 
 **Please read this entire README to make sure you understand what is expected of you before you begin.**
 
-This sprint challenge is designed to ensure that you are competent with the concepts taught throughout Sprint 8, Code Quality.
+This sprint challenge is designed to ensure that you are competent with the concepts taught throughout the Code Quality Sprint.
 
 Begin by forking this repository. Clone your forked repository to your machine. Use the provided Xcode project in the repository. It includes the project to debug and create tests for. Commit as appropriate while you work. Push your final project to GitHub, then create a pull request back to this original repository.
 
 **You will have 3 hours to complete this sprint challenge**
 
-If you have any questions about the project requirements or expectations, ask your PM or instructor. Good luck!
+If you have any questions about the project requirements or expectations, ask your TL. Good luck!
 
 ## Requirements
 
