@@ -9,11 +9,21 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var messageThreadController: MessageThreadController?
+    var messageThread: MessageThread?
+
+    @IBOutlet weak var senderNameTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
 
     // MARK: - Actions
     
+    @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+    }
+    
     @IBAction func sendMessage(_ sender: Any) {
-        
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
@@ -22,12 +32,4 @@ class MessageDetailViewController: UIViewController {
             print("Message created!")
         })
     }
-
-    // MARK: - Properties
-    
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
 }
