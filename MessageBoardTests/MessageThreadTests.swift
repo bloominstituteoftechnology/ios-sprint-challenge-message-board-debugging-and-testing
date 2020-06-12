@@ -9,37 +9,43 @@
 import XCTest
 @testable import Message_Board
 
-import XCTest
-@testable import Message_Board
-
 class MessageThreadTests: XCTestCase {
     
-
-    private var messageThreadController: MessageThreadController!
+    // MARK: - Instances
     
-  
-    override func setUp() {
-        messageThreadController = MessageThreadController()
+    let messageThreadController = MessageThreadController()
+    
+    // MARK: - Tests
+
+    func testNewThread() {
+        messageThreadController.createMessageThread(with: "New Test") {
+            XCTAssertFalse(self.messageThreadController.messageThreads.isEmpty)
+        }
     }
     
-
-    func testCreateThread() {
-        messageThreadController?.createMessageThread(with: "Goober", completion: {
-            let allThreads = self.messageThreadController?.messageThreads
-            XCTAssertGreaterThan(allThreads!.count, 0, "testCreateThread failed. Count is 0")
-        })
+    func testThreadExists() {
+        messageThreadController.createMessageThread(with: "New Test") {
+            XCTAssert(self.messageThreadController.messageThreads.last?.title == "New Test")
+        }
     }
     
-
-    func testCreatMessage() {
-        messageThreadController?.createMessageThread(with: "Goober", completion: {
-            let allThreads = self.messageThreadController?.messageThreads
-            guard let firstThread = allThreads?.first else {return}
-            
-            self.messageThreadController.createMessage(in: firstThread, withText: "test message", sender: "Ben Dover") {
-                let allMessages = firstThread.messages
-                XCTAssertGreaterThan(allMessages.count, 0, "testCreateMessage failed. Count is 0")
+    func testThreadFetch() {
+        messageThreadController.createMessageThread(with: "New Test") {
+            self.messageThreadController.fetchMessageThreads {
+                XCTAssertTrue(self.messageThreadController.messageThreads.count > 0)
             }
-        })
+        }
     }
+    
+    func testMessageExists() {
+        messageThreadController.createMessageThread(with: "New Test") {
+            XCTAssert(self.messageThreadController.messageThreads.last?.title == "New Test")
+            self.messageThreadController.createMessage(in: self.messageThreadController.messageThreads.last!, withText: "Testing 123.", sender: "Alex") {
+                XCTAssert(self.messageThreadController.messageThreads.last?.messages.last?.messageText == "Testing 123.")
+            }
+        }
+    }
+    
+    
+    
 }

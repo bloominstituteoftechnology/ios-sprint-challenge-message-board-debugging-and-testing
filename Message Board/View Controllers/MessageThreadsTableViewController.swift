@@ -10,15 +10,15 @@ import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewWillAppear(true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-
     
     // MARK: - Actions
     
