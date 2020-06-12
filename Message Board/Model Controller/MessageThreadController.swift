@@ -115,5 +115,5 @@ class MessageThreadController {
     }
     
     static let baseURL = URL(string: "https://msgbrdtsb.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
+  
 }
