@@ -19,6 +19,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = messageThread?.title
+        tableView.accessibilityIdentifier = "MessageThreadDetailTableViewController"
     }
     
     override func viewWillAppear(_ animated: Bool) {

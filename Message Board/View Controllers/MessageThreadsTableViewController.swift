@@ -24,6 +24,11 @@ class MessageThreadsTableViewController: UITableViewController {
             }
         }
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.accessibilityIdentifier = "MessageThreadsTableViewController"
+    }
     
     // MARK: - Actions
     
