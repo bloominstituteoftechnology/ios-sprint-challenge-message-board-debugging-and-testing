@@ -26,7 +26,6 @@
 		79DB1EE52493F385008163FA /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB1EE42493F385008163FA /* TestPage.swift */; };
 		79DB1EE72493F395008163FA /* XCTestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB1EE62493F395008163FA /* XCTestCase+Expect.swift */; };
 		79DB1EE92493F39B008163FA /* DetailViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB1EE82493F39B008163FA /* DetailViewPage.swift */; };
-		79DB1EEB2493F3A3008163FA /* ThreadDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB1EEA2493F3A3008163FA /* ThreadDetailPage.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 		CE840C982492D40500817BC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE840C972492D40500817BC8 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -72,7 +71,6 @@
 		79DB1EE42493F385008163FA /* TestPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestPage.swift; path = "../../../../Downloads/ios-sprint8-challenge-master/Message BoardUITests/TestPage.swift"; sourceTree = "<group>"; };
 		79DB1EE62493F395008163FA /* XCTestCase+Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "XCTestCase+Expect.swift"; path = "../../../../Downloads/ios-sprint8-challenge-master/Message BoardUITests/XCTestCase+Expect.swift"; sourceTree = "<group>"; };
 		79DB1EE82493F39B008163FA /* DetailViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewPage.swift; path = "../../../../Downloads/ios-sprint8-challenge-master/Message BoardUITests/DetailViewPage.swift"; sourceTree = "<group>"; };
-		79DB1EEA2493F3A3008163FA /* ThreadDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadDetailPage.swift; path = "../../../../Downloads/ios-sprint8-challenge-master/Message BoardUITests/ThreadDetailPage.swift"; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				4629C7E8214BA09600E7FF73 /* Message_BoardUITests.swift */,
 				79DB1EE42493F385008163FA /* TestPage.swift */,
 				79DB1EE22493F35D008163FA /* ThreadsTablePage.swift */,
-				79DB1EEA2493F3A3008163FA /* ThreadDetailPage.swift */,
 				79DB1EE82493F39B008163FA /* DetailViewPage.swift */,
 				79DB1EE62493F395008163FA /* XCTestCase+Expect.swift */,
 				4629C7EA214BA09600E7FF73 /* Info.plist */,
@@ -382,7 +379,6 @@
 				79DB1EE92493F39B008163FA /* DetailViewPage.swift in Sources */,
 				4629C7E9214BA09600E7FF73 /* Message_BoardUITests.swift in Sources */,
 				79DB1EE72493F395008163FA /* XCTestCase+Expect.swift in Sources */,
-				79DB1EEB2493F3A3008163FA /* ThreadDetailPage.swift in Sources */,
 				79DB1EE52493F385008163FA /* TestPage.swift in Sources */,
 				79DB1EE32493F35D008163FA /* ThreadsTablePage.swift in Sources */,
 			);

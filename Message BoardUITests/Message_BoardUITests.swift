@@ -24,7 +24,7 @@ class Message_BoardUITests: XCTestCase {
     }
     
     func testAddThread(){
-        let title = "Check this out!"
+        let title = "Testing"
         ThreadsTablePage(testCase: self)
             .addMessageThread(text: title)
             .verifyMessageAdded(inputText: title)

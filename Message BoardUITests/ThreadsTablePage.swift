@@ -24,8 +24,8 @@ struct ThreadsTablePage: TestPage {
     @discardableResult func addMessageThread(text: String, file: String = #file, line: UInt = #line) -> ThreadsTablePage {
         testCase.expect(exists: textInput, file: file, line: line)
         textInput.tap()
-        textInput.typeText("Check this out")
-        textInput.typeText("\n")
+        textInput.typeText("Testing")
+        textInput.typeText("Testing")
         return self
     }
     
