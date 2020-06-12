@@ -37,7 +37,7 @@ class MessageThreadController {
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             completion()
-        }
+        }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
