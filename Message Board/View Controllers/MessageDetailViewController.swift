@@ -24,8 +24,7 @@ class MessageDetailViewController: UIViewController {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    #warning("Changed guard let to not allow empty entry")
-    
+    //Changed guard let to not allow empty entry
     @IBAction func sendMessage(_ sender: Any) {
         guard let senderName = senderNameTextField.text, !senderName.isEmpty,
             let messageText = messageTextView.text, !messageText.isEmpty,
@@ -35,7 +34,7 @@ class MessageDetailViewController: UIViewController {
             print("Message created!")
             #warning("Send button wasn't going back to initial view")
             DispatchQueue.main.async {
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             }
         })
     }
