@@ -1,6 +1,7 @@
 #  Bugs
 
-1. The text field isn't doing anything with the information that is typed into it.
+1. The text field isn't doing anything with the information that is typed into it. 
+2. The table view doesn't populate any data. 
 
 When you hit enter, the breakpoint hits:
 threadTitleTextField.resignFirstResponder()
@@ -26,5 +27,8 @@ however when hitting step over it skips:
 DispatchQueue.main.async {
 self.tableView.reloadData()
 
-
-
+3. The cancel tapped func in the MessageDetailViewController didn't have the dismiss func.
+I added it.
+@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+       dismiss(animated: true, completion: nil)
+   }
