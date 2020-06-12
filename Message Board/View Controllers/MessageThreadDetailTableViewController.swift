@@ -11,10 +11,10 @@ import UIKit
 class MessageThreadDetailTableViewController: UITableViewController {
     
     // MARK: - Properties
-
+    
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let _ = messageThread else {
@@ -28,16 +28,16 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
-
+    
     // MARK: - UITableViewDataSource
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageThread?.messages.count ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-
+        
         let message = messageThread?.messages[indexPath.row]
         
         cell.textLabel?.text = message?.text
@@ -45,15 +45,16 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         return cell
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddMessage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+            if let navC = segue.destination as? UINavigationController,
+                let destinationVC = navC.viewControllers.first as? MessageDetailViewController {
+                destinationVC.messageThreadController = messageThreadController
+                destinationVC.messageThread = messageThread
+            }
         }
     }
 }
