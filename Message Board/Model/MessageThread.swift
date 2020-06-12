@@ -8,19 +8,23 @@
 
 import Foundation
 
-class MessageThread: Codable, Equatable {
+enum CodeKeys: String, CodingKey {
+    case title
+    case identifier
+    
+    enum MessagesCodingKeys: CodingKey {
+        
+        case messages
 
+    }
+
+}
+class MessageThread: Codable, Equatable {
 
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
 
-    enum CodingKeys: String, CodingKey {
-        case title
-        case messages
-        case identifier
-    }
-    
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
@@ -32,13 +36,16 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messagesContainer = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
-        var messagesArray = [Message]()
-        for message in messagesContainer {messagesArray.append(message.value)}
+        
+        
+        let messagesContainer = try container.nestedContainer(keyedBy: CodeKeys.MessagesCodingKeys.self, forKey: .messages)
+        
+
+        let messages = try messagesContainer.decodeIfPresent(Message.self, forKey: .messages)
         
         self.title = title
         self.identifier = identifier
-        self.messages = messagesArray
+        self.messages = []
     }
 
     

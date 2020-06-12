@@ -21,9 +21,7 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a new thread:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72q-hR-yhN">
                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
-                                    <accessibility key="accessibilityConfiguration">
-                                        <bool key="isElement" value="NO"/>
-                                    </accessibility>
+                                    <accessibility key="accessibilityConfiguration" identifier="ThreadsTable.TextInput"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
@@ -56,6 +54,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <segue destination="haD-iA-YGa" kind="show" identifier="ViewMessageThread" id="pxs-pL-1M3"/>
                                 </connections>
@@ -107,6 +108,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </tableViewCell>
                         </prototypes>
                         <connections>
