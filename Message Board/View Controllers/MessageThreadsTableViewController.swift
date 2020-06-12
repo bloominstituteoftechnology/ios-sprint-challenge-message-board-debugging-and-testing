@@ -13,10 +13,15 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Properties
     
     let messageThreadController = MessageThreadController()
+    
+    
     @IBOutlet weak var threadTitleTextField: UITextField!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+//        tableView.reloadData()
         
         messageThreadController.fetchMessageThreads {
             DispatchQueue.main.async {
@@ -28,6 +33,7 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
+
         threadTitleTextField.resignFirstResponder()
 
         guard let threadTitle = threadTitleTextField.text else { return }
