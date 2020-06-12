@@ -27,8 +27,8 @@ class Message_BoardUITests: XCTestCase {
         let newMessageTextField = table.textFields.element(boundBy: 0)
         newMessageTextField.tap()
         newMessageTextField.typeText("Creating new message thread for UI testing\n")
-        let verifyNewElement = table.cells.staticTexts["Creating new message thread for UI testing"]
-        XCTAssertTrue(verifyNewElement.label == "Creating new message thread for UI testing")
+        let newElement = table.cells.staticTexts["Creating new message thread for UI testing"]
+        XCTAssertTrue(newElement.label == "Creating new message thread for UI testing")
     }
 
     func testCreatingNewMessage() {
