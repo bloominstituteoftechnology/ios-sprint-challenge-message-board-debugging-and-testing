@@ -10,6 +10,7 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    
+
+    let messageThreadController = MessageThreadController() 
     
 }
