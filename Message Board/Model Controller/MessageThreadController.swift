@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+
     var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
@@ -28,10 +28,17 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
+//   MARK: BUG 1 - FIX DECODING
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            
+            
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+//                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                let threadsDictionary =  try JSONDecoder().decode([String: MessageThread].self, from: data)
+                let threadsArray = Array(threadsDictionary.values)
+                
+                self.messageThreads = threadsArray
+                print("Thread Total = \(threadsDictionary.count)")
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -39,6 +46,7 @@ class MessageThreadController {
             completion()
         }
     }
+    
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
