@@ -145,6 +145,9 @@
                                         <accessibility key="accessibilityConfiguration" identifier="NewMessageVC.NameTextField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="senderNameTextField:" destination="clf-fM-PNR" eventType="editingDidEnd" id="llu-O2-w3n"/>
+                                        </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tpX-xP-KsX">
                                         <rect key="frame" x="0.0" y="42" width="343" height="173.5"/>
@@ -168,12 +171,12 @@
                     <navigationItem key="navigationItem" title="New Message" id="cEt-mi-t96">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0pp-pH-R8r">
                             <connections>
-                                <action selector="cancelTapped:" destination="BoB-4p-ZG3" id="TqF-bL-JPS"/>
+                                <action selector="cancelButtonTapped:" destination="clf-fM-PNR" id="hNi-ZV-wCT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="eC1-90-vuB">
                             <connections>
-                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="k5g-wb-Dsb"/>
+                                <action selector="sendMessage:" destination="clf-fM-PNR" id="Gd5-X6-Q7J"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -183,6 +186,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rI9-du-mle" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="clf-fM-PNR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3108" y="-566"/>
         </scene>

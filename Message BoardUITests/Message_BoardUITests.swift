@@ -10,53 +10,54 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+
     var app = XCUIApplication()
 
-    
     override func setUpWithError() throws {
-        
         continueAfterFailure = false
-        
+
         // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
         app.launch()
     }
 
-    func testMockDataInTableView() {
-
-          let threadTextField = XCUIApplication().tables.textFields["Create a new thread:"]
-          XCTAssertEqual(app.tables.cells.count, 2)
-
-          threadTextField.tap()
-          threadTextField.typeText("This is the name of a new thread")
-          app.keyboards.buttons["Return"].tap()
-          XCTAssertEqual(app.tables.cells.count, 3)
+    func testCreateThread() {
+        setUpThread()
+        XCTAssertTrue(app.staticTexts["test test"].exists)
     }
 
-    func testAddNewMessage() {
-
-
-        let threadTextField = XCUIApplication().tables.textFields["Create a new thread:"]
-        XCTAssertEqual(app.tables.cells.count, 2)
-
-        threadTextField.tap()
-        threadTextField.typeText("This is a new thread name.")
-        app.keyboards.buttons["Return"].tap()
-        XCTAssertEqual(app.tables.cells.count, 2)
-
-        let threadCell = XCUIApplication().tables.children(matching: .cell).element.staticTexts["This is a new thread name."]
-        threadCell.tap()
-        let navigationBar = XCUIApplication().navigationBars["This is a new thread name."].buttons["Add"]
-        navigationBar.tap()
-        let textField = XCUIApplication().textFields["Enter your name:"]
-        textField.tap()
-        textField.typeText("John Smith")
-        let addMessage = XCUIApplication().navigationBars["New Message"].buttons["Send"]
-        addMessage.tap()
-
-        // this should check that the navigation does pop and the user isn't stuck after pressing send
-        XCTAssertEqual(app.tables.cells.count, 1)
+    func testCreateMessage() {
+        setUpThread()
+        app.tables.staticTexts["test test"].tap()
+        toAddMessage()
+        setUpMessage()
+        app.buttons["Send"].tap()
+        XCTAssertTrue(app.staticTexts["Message"].exists)
+    }
+    //MARK: - Private 
+    private func setUpThread() {
+        app.launch()
+        app.textFields["Create a new thread:"].tap()
+        app.keys["h"].tap()
+        app.keys["e"].tap()
+        app.keys["l"].tap()
+        app.keys["l"].tap()
+        app.keys["o"].tap()
+        app.buttons["Return"].tap()
     }
 
+    private func toAddMessage() {
+        app.buttons["Add"].tap()
+    }
 
+    private func setUpMessage() {
+        app.textFields["Enter your name:"].tap()
+
+        app.keys["J"].tap()
+        app.keys["O"].tap()
+        app.keys["E"].tap()
+    }
 }
+
+
+

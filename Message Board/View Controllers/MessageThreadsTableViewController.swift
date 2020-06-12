@@ -36,7 +36,9 @@ class MessageThreadsTableViewController: UITableViewController {
 
 
         messageThreadController.createMessageThread(with: threadTitle) {
-//            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
