@@ -11,5 +11,19 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testCreateThread() {
+        let messageThreadController = MessageThreadController()
+        messageThreadController.createLocalMessageThread(with: "Test") {
+            XCTAssertTrue(messageThreadController.messageThreads.contains(MessageThread(title: "Test")))
+        }
+    }
+    
+    func testCreateReplyMessage() {
+        let testThread = MessageThread(title: "Test")
+        let testReply = MessageThread.Message(text: "I disagree.", sender: "Disagreeable123")
+        testThread.messages.append(testReply)
+        XCTAssertTrue(testThread.messages.contains(testReply))
+    }
+    
     
 }
