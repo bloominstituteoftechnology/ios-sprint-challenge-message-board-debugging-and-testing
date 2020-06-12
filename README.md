@@ -1,4 +1,4 @@
-# Debugging and Testing Lambda Message Board
+# Debugging and Testing Lambda Message Board 
 
 ### Instructions
 
