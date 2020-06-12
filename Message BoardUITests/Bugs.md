@@ -32,3 +32,5 @@ I added it.
 @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
        dismiss(animated: true, completion: nil)
    }
+
+4. .resume() was missing on two of the network calls. Added .resume() to the line after the completions.
