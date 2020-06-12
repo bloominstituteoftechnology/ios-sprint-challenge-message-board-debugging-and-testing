@@ -48,6 +48,7 @@ class MessageThreadController {
     }
     
     
+//    MARK: BUG 2: NO "RESUME"
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
@@ -76,7 +77,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
