@@ -21,12 +21,15 @@ class MessageThreadDetailTableViewController: UITableViewController {
         title = messageThread?.title
         tableView.accessibilityIdentifier = "MessageThreadDetailTableViewController"
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tableView.reloadData()
     }
+
+
     
     // MARK: - UITableViewDataSource
 
@@ -49,10 +52,11 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddMessage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+            if let navC = segue.destination as? UINavigationController,
+                let destinationVC = navC.viewControllers.first as? MessageDetailViewController {
+                destinationVC.messageThread = messageThread
+                destinationVC.messageThreadController = messageThreadController
+            }
         }
     }
 }
