@@ -8,6 +8,19 @@
 
 import Foundation
 
+// MARK: - Helper Coding Key Enums
+enum CodingKeys: String, CodingKey {
+    case title
+    case messages
+    case identifier
+
+    enum MessagesKeys: String, CodingKey {
+        case text
+        case sender
+        case timestamp
+    }
+}
+
 class MessageThread: Codable, Equatable {
 
     let title: String
@@ -34,7 +47,6 @@ class MessageThread: Codable, Equatable {
         self.messages = messages
     }
 
-    
     struct Message: Codable, Equatable {
         let text: String
         let sender: String

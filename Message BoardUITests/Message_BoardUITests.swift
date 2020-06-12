@@ -35,12 +35,12 @@ class Message_BoardUITests: XCTestCase {
 
 
         let threadTextField = XCUIApplication().tables.textFields["Create a new thread:"]
-        XCTAssertEqual(app.tables.cells.count, 0)
+        XCTAssertEqual(app.tables.cells.count, 2)
 
         threadTextField.tap()
         threadTextField.typeText("This is a new thread name.")
         app.keyboards.buttons["Return"].tap()
-        XCTAssertEqual(app.tables.cells.count, 1)
+        XCTAssertEqual(app.tables.cells.count, 3)
 
         let threadCell = XCUIApplication().tables.children(matching: .cell).element.staticTexts["This is a new thread name."]
         threadCell.tap()

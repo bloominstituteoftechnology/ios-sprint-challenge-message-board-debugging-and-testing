@@ -2,6 +2,14 @@
 
 bugs.md (I don't know how to create new .md file, didn't want to waste time at the beginning figuring it out)
 
+Bug 1: Typo in table view segue
+    -Fixed
+Bug 2: Creating new threads is not working
+
+Bug 2: request URL had wrong methods called in ThreadController
+
+
+    
 
 
 
