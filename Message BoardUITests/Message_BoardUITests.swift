@@ -19,4 +19,18 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    // MARK: - Test to create new thread on first table controller & show it on cell
+    func testCreateMessageThread() {
+         let messageTextField = app.tables.textFields["Create a new thread:"]
+         messageTextField.tap()
+         messageTextField.typeText("testy test test")
+         app.keyboards.buttons["Return"].tap()
+
+         XCTAssertTrue(app.tables.staticTexts["testy test test"].exists)
+     }
+    
+    
+    
+    
 }
