@@ -29,7 +29,7 @@ class MessageThreadsTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.accessibilityIdentifier = "MessageThreadsTableViewController"
     }
-    
+
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
