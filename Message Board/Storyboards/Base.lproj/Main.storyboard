@@ -123,7 +123,7 @@
                     <navigationItem key="navigationItem" title="Title" id="tHA-qF-qbA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MRR-1o-pkW">
                             <connections>
-                                <segue destination="Myh-kZ-stt" kind="show" identifier="AddMessage" id="3TZ-Xl-1f4"/>
+                                <segue destination="Myh-kZ-stt" kind="presentation" identifier="AddMessage" modalPresentationStyle="fullScreen" id="3TZ-Xl-1f4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
