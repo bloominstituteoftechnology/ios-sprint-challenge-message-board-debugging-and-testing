@@ -13,3 +13,7 @@ Fix: missing call to resume() applied to fetchMessageThreads()
 
 Issue: Expected to decode Array<Any> but found a dictionary instead
 Fix: Change JsonDecoder to output a dictionary and map the resulting data into the correct format
+
+Issue: MessageThread object not being passed from vc to vc
+Fix:   - Fixed typo in ViewMessageThread segue identifier
+         - Removed extra navigation controller to allow object to be passed from vc to vc

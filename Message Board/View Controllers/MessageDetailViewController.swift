@@ -21,15 +21,34 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+        guard let senderName = senderNameTextField.text else {
+            NSLog("senderName found to be nil")
+            return
+        }
+        
+        guard let messageText = messageTextView.text else {
+            NSLog("messageText found to be nil")
+            return
+        }
+        
+        guard let messageThread = messageThread else {
+            NSLog("messageThread found to be nil")
+            return
+        }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            self.popViewController()
         })
+    }
+    
+    private func popViewController() {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
