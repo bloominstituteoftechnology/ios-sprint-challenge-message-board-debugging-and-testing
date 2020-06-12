@@ -20,12 +20,10 @@ import Foundation
  Problem: Cancel and Send Buttons not working
     - Check both methods to see how they are specifically designed and if they need to be refactored
     
+ Problem: No value for messageThread being passed
+    - Check dependency injection in segues
  
- 
- 
- 
- 
- 
- 
- 
+ Problem: Message not populating on Detail View upon save dismissal
+    - Check segue's type/presentation
+
  */
