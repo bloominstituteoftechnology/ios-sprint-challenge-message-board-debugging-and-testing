@@ -22,7 +22,7 @@ class Message_BoardUITests: XCTestCase {
 
     // MARK: - Tests
 
-    func testAddNewMessageThread() {
+    func testAddNewThread() {
         let table = app.tables.matching(identifier: "MessageThreadsTableViewController")
         let newMessageTextField = table.textFields.element(boundBy: 0)
         newMessageTextField.tap()
@@ -34,4 +34,5 @@ class Message_BoardUITests: XCTestCase {
     func testCreatingNewMessage() {
         
     }
+
 }
