@@ -10,9 +10,15 @@ import Foundation
 
 class MessageThread: Codable, Equatable {
 
+    
+//    MARK: BUG 3: Incorrect decoding strategy, fix by decoding from dictionary
+    
+
+
     let title: String
     var messages: [MessageThread.Message]
     let identifier: String
+
 
     init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
@@ -25,9 +31,11 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages)
-        
-        let messages = messagesDictionaries?.compactMap({ $0.value }) ?? []
+        let messagesDictionary = try container.decodeIfPresent([String: Message].self, forKey: .messages)
+        var messages: [Message] = []
+        if let newDictionary = messagesDictionary {
+            messages = Array(newDictionary.values)
+        }
         
         self.title = title
         self.identifier = identifier

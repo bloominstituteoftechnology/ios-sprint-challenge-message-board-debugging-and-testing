@@ -77,6 +77,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
+//            added resume here
         }.resume()
     }
     
