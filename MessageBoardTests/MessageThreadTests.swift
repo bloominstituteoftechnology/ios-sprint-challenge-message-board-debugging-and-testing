@@ -20,7 +20,12 @@ class MessageThreadTests: XCTestCase {
     }
 
     func testCreatingNewMessage() {
-        
+        messageThreadController.createMessageThread(with: "UI Testing Thread") {
+            XCTAssert(self.messageThreadController.messageThreads.count > 0)
+            self.messageThreadController.createMessage(in: self.messageThreadController.messageThreads[0], withText: "Test", sender: "Harmony") {
+                sleep(4)
+            }
+        }
     }
     
 }
