@@ -35,7 +35,9 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -49,19 +51,32 @@ class MessageThreadsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
         
         cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
-
+        print(messageThreadController.messageThreads[indexPath.row].title)
+        
         return cell
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMesageThread" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
+        
+        if segue.identifier == "ViewMessageThread" {
+            guard let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+                destinationVC.messageThreadController = messageThreadController
+            }
+            
         }
+        
+        
+//        if segue.identifier == "ViewMesageThread" {
+//            guard let indexPath = tableView.indexPathForSelectedRow,
+//                let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
+//            
+//            destinationVC.messageThreadController = messageThreadController
+//            destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+//        }
     }
 }
