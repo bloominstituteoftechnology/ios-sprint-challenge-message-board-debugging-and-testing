@@ -17,13 +17,15 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        guard let _ = messageThread else {
+            NSLog("No message thread to load")
+            return
+        }
         title = messageThread?.title
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tableView.reloadData()
     }
 

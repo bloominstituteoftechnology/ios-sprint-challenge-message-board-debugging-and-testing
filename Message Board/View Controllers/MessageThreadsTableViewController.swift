@@ -31,9 +31,8 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.resignFirstResponder()
 
         guard let threadTitle = threadTitleTextField.text else { return }
-        
-        threadTitleTextField.text = ""
 
+        threadTitleTextField.text = ""
 
         messageThreadController.createMessageThread(with: threadTitle) {
             DispatchQueue.main.async {

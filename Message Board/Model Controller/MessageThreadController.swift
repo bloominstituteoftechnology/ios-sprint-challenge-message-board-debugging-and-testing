@@ -23,6 +23,7 @@ class MessageThreadController {
         }
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
                 completion()
@@ -30,7 +31,7 @@ class MessageThreadController {
             }
             
             guard let data = data else {
-                NSLog("No data returned from data task")
+                NSLog("No data")
                 completion()
                 return }
 
@@ -42,11 +43,6 @@ class MessageThreadController {
             }
             completion()
         }.resume()
-
-        if isUITesting {
-            fetchMessageThreads(completion: completion)
-            return
-        }
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -57,7 +53,6 @@ class MessageThreadController {
         }
         
         let thread = MessageThread(title: title)
-        self.messageThreads.append(thread)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -93,23 +88,23 @@ class MessageThreadController {
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
-        let requestURL =  MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+        let requestURL =  MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
         } catch {
-            NSLog("Error encoding message to JSON: \(error)")
+            NSLog("Error encoding JSON: \(error)")
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
-                NSLog("Error with message thread creation data task: \(error)")
+                NSLog("Error with message: \(error)")
                 completion()
                 return
             }
-
+            completion()
         }.resume()
     }
 }

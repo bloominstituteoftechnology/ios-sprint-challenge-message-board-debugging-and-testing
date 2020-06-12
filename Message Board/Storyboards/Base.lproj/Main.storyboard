@@ -171,12 +171,12 @@
                     <navigationItem key="navigationItem" title="New Message" id="cEt-mi-t96">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0pp-pH-R8r">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="clf-fM-PNR" id="hNi-ZV-wCT"/>
+                                <action selector="cancelTapped:" destination="BoB-4p-ZG3" id="85z-Cl-QcU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="eC1-90-vuB">
                             <connections>
-                                <action selector="sendMessage:" destination="clf-fM-PNR" id="Gd5-X6-Q7J"/>
+                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="Jch-0g-Cvi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

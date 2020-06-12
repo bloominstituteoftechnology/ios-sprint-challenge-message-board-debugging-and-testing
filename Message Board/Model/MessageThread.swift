@@ -8,6 +8,18 @@
 
 import Foundation
 
+enum CodingKeys: String, CodingKey {
+    case title
+    case messages
+    case identifier
+
+    enum MessagesKeys: String, CodingKey {
+        case text
+        case sender
+        case timestamp
+    }
+}
+
 class MessageThread: Codable, Equatable {
 
     let title: String
