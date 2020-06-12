@@ -10,26 +10,24 @@ import UIKit
 
 class MessageDetailViewController: UIViewController {
     
-    // MARK: - Properties
-    
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
-
+    
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
-
+    
     // MARK: - Actions
     
-    @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
-    }
-    
     @IBAction func sendMessage(_ sender: Any) {
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
-        
+        print("tapped send message")
+        guard let senderName = senderNameTextField.text, let messageText = messageTextView.text, let messageThread = messageThread else { return }
+        print("passed the guard let")
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
+            
         })
     }
 }

@@ -15,8 +15,6 @@ class MessageThreadController {
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
-        
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             fetchLocalMessageThreads(completion: completion)
             return
@@ -41,7 +39,6 @@ class MessageThreadController {
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
             return
@@ -68,17 +65,14 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-        }
+            } .resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
-        
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
             return
         }
-        
         guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
