@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://sprint-message-debug.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
