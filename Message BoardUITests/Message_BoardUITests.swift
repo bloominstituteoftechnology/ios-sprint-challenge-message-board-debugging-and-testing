@@ -30,4 +30,8 @@ class Message_BoardUITests: XCTestCase {
         let verifyNewElement = table.cells.staticTexts["Creating new message thread for UI testing"]
         XCTAssertTrue(verifyNewElement.label == "Creating new message thread for UI testing")
     }
+
+    func testCreatingNewMessage() {
+        
+    }
 }
