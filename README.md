@@ -1,5 +1,24 @@
 # Debugging and Testing Lambda Message Board
 
+bugs.md (I don't know how to create new .md file, didn't want to waste time at the beginning figuring it out)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Instructions
 
 **Please read this entire README to make sure you understand what is expected of you before you begin.**
