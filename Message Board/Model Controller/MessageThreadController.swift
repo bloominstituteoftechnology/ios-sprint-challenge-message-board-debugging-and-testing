@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://mymessageboard-7462e.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
@@ -31,13 +31,13 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             completion()
-        }
+        }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -48,6 +48,7 @@ class MessageThreadController {
         }
         
         let thread = MessageThread(title: title)
+        self.messageThreads.append(thread)
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
@@ -57,6 +58,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -65,10 +67,8 @@ class MessageThreadController {
                 completion()
                 return
             }
-            
-            self.messageThreads.append(thread)
             completion()
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {

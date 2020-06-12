@@ -19,13 +19,16 @@ class MessageThreadDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = messageThread?.title
+        tableView.accessibilityIdentifier = "MessageThreadDetailTableViewController"
     }
-    
+
+    // modally - full screen
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tableView.reloadData()
     }
+
+
     
     // MARK: - UITableViewDataSource
 
@@ -47,11 +50,12 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+        if segue.identifier == "AddMessage" {
+            if let navC = segue.destination as? UINavigationController,
+                let destinationVC = navC.viewControllers.first as? MessageDetailViewController {
+                destinationVC.messageThread = messageThread
+                destinationVC.messageThreadController = messageThreadController
+            }
         }
     }
 }

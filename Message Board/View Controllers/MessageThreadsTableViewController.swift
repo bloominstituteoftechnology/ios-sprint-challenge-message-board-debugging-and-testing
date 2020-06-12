@@ -24,7 +24,12 @@ class MessageThreadsTableViewController: UITableViewController {
             }
         }
     }
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.accessibilityIdentifier = "MessageThreadsTableViewController"
+    }
+
     // MARK: - Actions
     
     @IBAction func createThread(_ sender: Any) {
@@ -35,7 +40,9 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -56,12 +63,14 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMesageThread" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+        // Corrected misspelled identifier
+        if segue.identifier == "ViewMessageThread" {
+            guard let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
+
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+                destinationVC.messageThreadController = messageThreadController
+            }
         }
     }
 }
