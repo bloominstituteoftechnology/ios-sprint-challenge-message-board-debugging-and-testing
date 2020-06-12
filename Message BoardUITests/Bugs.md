@@ -96,3 +96,10 @@ Need to change the model it is decoding to fix the issue.
 
 8. When the app first loads, it is giving this error 
 2020-06-12 10:44:19.981042-0700 Message Board[3303:179504] Error decoding message threads from JSON data: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil))
+
+9. segue identifier was mistyped. 
+Changed the spelling and the title now changes when you click the cell in the table view.
+
+10. Fixed segue idenftired mistype.
+
+11. for the save button tapped, added functionality to get the save button to do the work on the main queue and pop the vc off of the stack
