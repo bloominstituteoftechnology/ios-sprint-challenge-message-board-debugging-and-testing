@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xR7-u7-o4e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xR7-u7-o4e">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +21,7 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a new thread:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72q-hR-yhN">
                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
-                                    <accessibility key="accessibilityConfiguration" identifier="threadTextField">
+                                    <accessibility key="accessibilityConfiguration">
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -118,7 +117,7 @@
                     <navigationItem key="navigationItem" title="Title" id="tHA-qF-qbA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MRR-1o-pkW">
                             <connections>
-                                <segue destination="BoB-4p-ZG3" kind="show" identifier="AddMessage" id="3TZ-Xl-1f4"/>
+                                <segue destination="Myh-kZ-stt" kind="presentation" identifier="AddMessage" id="3TZ-Xl-1f4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -132,11 +131,11 @@
             <objects>
                 <viewController id="BoB-4p-ZG3" customClass="MessageDetailViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hj8-j0-bJt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="duX-rG-AEh">
-                                <rect key="frame" x="16" y="112" width="343" height="222.5"/>
+                                <rect key="frame" x="16" y="72" width="343" height="215.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEl-Se-Sz1">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -144,7 +143,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tpX-xP-KsX">
-                                        <rect key="frame" x="0.0" y="42" width="343" height="180.5"/>
+                                        <rect key="frame" x="0.0" y="42" width="343" height="173.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -162,6 +161,11 @@
                         <viewLayoutGuide key="safeArea" id="Uch-WW-3au"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Message" id="cEt-mi-t96">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0pp-pH-R8r">
+                            <connections>
+                                <action selector="cancelTapped:" destination="BoB-4p-ZG3" id="TqF-bL-JPS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="eC1-90-vuB">
                             <connections>
                                 <action selector="sendMessage:" destination="BoB-4p-ZG3" id="k5g-wb-Dsb"/>
@@ -175,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rI9-du-mle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2254" y="231"/>
+            <point key="canvasLocation" x="3108" y="-566"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zeM-Zo-RjD">
@@ -194,6 +198,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AzK-AI-jzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-38" y="231"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rdr-Es-W84">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Myh-kZ-stt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1pM-v2-DYp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BoB-4p-ZG3" kind="relationship" relationship="rootViewController" id="MR5-rs-ZNr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AYH-2O-8Ab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2319" y="-566"/>
         </scene>
     </scenes>
 </document>
