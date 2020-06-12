@@ -15,6 +15,7 @@ class Message_BoardUITests: XCTestCase {
         case testing = "Testing"
         case addName = "Enter your name:"
         case newMessage = "New Message"
+        case title = "Title"
     }
     
     
@@ -27,7 +28,7 @@ class Message_BoardUITests: XCTestCase {
         return app.keyboards.buttons["Return"]
     }
     var addReplyButton: XCUIElement {
-        return app.navigationBars[StringID.testing.rawValue].buttons["Add"]
+        return app.navigationBars[StringID.title.rawValue].buttons["Add"]
     }
     var nameField: XCUIElement {
         return app.textFields[StringID.addName.rawValue]
@@ -52,7 +53,7 @@ class Message_BoardUITests: XCTestCase {
     
     
     //MARK: - Tests -
-    func testPostNewThread() {
+    func testPostAndUpdate() {
         //check the two tester posts
         XCTAssertEqual(app.tables.cells.count, 2)
         newThreadField.tap()
@@ -62,7 +63,7 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual(app.tables.cells.count, 3)
     }
     
-    func testPostReplyMessage() {
+    func testPostReplyAndPop() {
         //create a message to reply to
         newThreadField.tap()
         newThreadField.typeText(StringID.testing.rawValue)

@@ -11,10 +11,10 @@ import Foundation
 class MessageThread: Codable, Equatable {
 
     let title: String
-    var messages: [MessageThread.Message]
+    var messages: [Message]
     let identifier: String
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+    init(title: String, messages: [Message] = [], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
