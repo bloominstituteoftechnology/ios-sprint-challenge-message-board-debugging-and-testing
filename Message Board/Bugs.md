@@ -4,7 +4,7 @@
 /// Fixed by putting the data task inside of a do block and resume the task at the end of the do block and placing the tableView.ReloadData() on the main thread.
 
 ///BUG: Detail view does not update with thread title as the view controller's title
-
+// Fixed by making sure the correct segue identifier was in place for the segue in order to correctly inject information.
 
 ///BUG: Table view controller does not pull down data from firebase and update the tableview.
 /// Fixed by making the required coding keys and changing the decoding strategy from an array to a dictionary.
@@ -14,6 +14,7 @@
 ///Fixed by added a self.dissmiss method to the IBAction
 
 ///BUG: View Controller does not dissmiss after clicking save on the send message modal view controller
+///Fixed added a self.dismiss inside of the detail view controller related to the cancel button.
 
 ///BUG: Unable to create a new message to send to the thread.
 /// Fixed weird X-code error where I was unable to use the segue identifier provided in the starter project. So I had to completely refactor the code for all dependency injections.
