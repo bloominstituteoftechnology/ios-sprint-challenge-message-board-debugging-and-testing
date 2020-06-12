@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-
+    static let baseURL = URL(string: "https://msgbrdtsb.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
@@ -114,6 +114,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://msgbrdtsb.firebaseio.com/")!
+
   
 }
