@@ -8,13 +8,13 @@
 
 import Foundation
 
-class MessageThread: Codable, Equatable {
+class MessageThread: Codable, Hashable {
 
     let title: String
-    var messages: [MessageThread.Message]
+    var messages: [MessageThread:Message]
     let identifier: String
 
-    init(title: String, messages: [MessageThread.Message] = [], identifier: String = UUID().uuidString) {
+    init(title: String, messages: [MessageThread:Message] = [:], identifier: String = UUID().uuidString) {
         self.title = title
         self.messages = messages
         self.identifier = identifier
@@ -25,9 +25,9 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages)
+        let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [:]
         
-        let messages = messagesDictionaries?.compactMap({ $0.value }) ?? []
+        let messages = messagesDictionaries.compactMap({ $0.value }) ?? [:]
         
         self.title = title
         self.identifier = identifier
@@ -35,7 +35,7 @@ class MessageThread: Codable, Equatable {
     }
 
     
-    struct Message: Codable, Equatable {
+    struct Message: Codable, Hashable {
         let text: String
         let sender: String
         let timestamp: Date
