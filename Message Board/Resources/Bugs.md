@@ -17,7 +17,7 @@ was missing a .resume() call at the end of message posting function on line 71 o
 could have had to do with decoding error [#4], retesting
 
 3. Detail VC won't pop away when finished
-create test [/] [/]
+create test [/] [Y]
 fix bug [N]
 passes test [/] [N]
 
@@ -25,11 +25,27 @@ passes test [/] [N]
 
 
 4. Found JSON decoding error
-create test [Y] [Y]
+create test [Y] [/]
 fix bug [N]
-passed test [N] [N]
+passed test [N] [/]
 
 think I fixed this we'll see. decoding errors were in trnslation and in model
 
 
 5. Post Detail VC shows wrong title.
+create test [/] [N]
+fix bug [N]
+passed test [/] [N]
+
+
+6. MessageDetailVC wasn't getting enough info from segue in prepare method. fixed.
+
+
+
+
+
+
+
+
+
+
