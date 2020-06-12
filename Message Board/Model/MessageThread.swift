@@ -8,19 +8,6 @@
 
 import Foundation
 
-// MARK: - Helper Coding Key Enums
-enum CodingKeys: String, CodingKey {
-    case title
-    case messages
-    case identifier
-
-    enum MessagesKeys: String, CodingKey {
-        case text
-        case sender
-        case timestamp
-    }
-}
-
 class MessageThread: Codable, Equatable {
 
     let title: String
@@ -38,9 +25,7 @@ class MessageThread: Codable, Equatable {
         
         let title = try container.decode(String.self, forKey: .title)
         let identifier = try container.decode(String.self, forKey: .identifier)
-        let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages)
-        
-        let messages = messagesDictionaries?.compactMap({ $0.value }) ?? []
+        let messages = Array(try (container.decodeIfPresent([String: Message].self, forKey: .messages) ?? [String: Message]()).values)
         
         self.title = title
         self.identifier = identifier

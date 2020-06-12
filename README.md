@@ -8,6 +8,14 @@ Bug 2: Creating new threads is not working
 
 Bug 2: request URL had wrong methods called in ThreadController
 
+Bug 3: Tableview isn't populating with new thread   
+found bug: .resume() needed to be called in createmessagethread
+tableview is reloading on a background thread. need to switch it main thread
+
+
+
+
+
 
     
 

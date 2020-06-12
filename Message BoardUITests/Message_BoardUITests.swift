@@ -11,8 +11,10 @@ import XCTest
 class Message_BoardUITests: XCTestCase {
     
     var app = XCUIApplication()
+
     
     override func setUpWithError() throws {
+        
         continueAfterFailure = false
         
         // NOTE: Keep this setup as is for UI Testing
@@ -40,7 +42,7 @@ class Message_BoardUITests: XCTestCase {
         threadTextField.tap()
         threadTextField.typeText("This is a new thread name.")
         app.keyboards.buttons["Return"].tap()
-        XCTAssertEqual(app.tables.cells.count, 3)
+        XCTAssertEqual(app.tables.cells.count, 2)
 
         let threadCell = XCUIApplication().tables.children(matching: .cell).element.staticTexts["This is a new thread name."]
         threadCell.tap()
