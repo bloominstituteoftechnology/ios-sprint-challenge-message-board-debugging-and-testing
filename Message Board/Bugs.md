@@ -16,3 +16,4 @@
 ///BUG: View Controller does not dissmiss after clicking save on the send message modal view controller
 
 ///BUG: Unable to create a new message to send to the thread.
+/// Fixed weird X-code error where I was unable to use the segue identifier provided in the starter project. So I had to completely refactor the code for all dependency injections.

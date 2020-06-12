@@ -12,7 +12,11 @@ class MessageThreadDetailTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var messageThread: MessageThread?
+    var messageThread: MessageThread? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var messageThreadController: MessageThreadController?
     
     override func viewDidLoad() {
@@ -21,9 +25,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         updateViews()
     }
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            self.updateViews()
-        }
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,22 +50,29 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         let message = messageThread?.messages[indexPath.row]
         
-        cell.textLabel?.text = message?.text
-        cell.detailTextLabel?.text = message?.sender
-        
+            cell.textLabel?.text = message?.text
+            cell.detailTextLabel?.text = message?.sender
+
         return cell
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddAMessage" {
             
-            if let navC = segue.destination as? UINavigationController,
-                let destinationVC = navC.viewControllers.first as? MessageDetailViewController {
-                destinationVC.messageThread = messageThread
-//                destinationVC.messageThreadController = messageThreadController
+            
+            if let navigationController = segue.destination as? UINavigationController,
+                let createMessageVC = navigationController.viewControllers.first as? MessageDetailViewController {
+                createMessageVC.messageThread = messageThread
+                createMessageVC.messageThreadController = messageThreadController
             }
+            
+//            if let navC = segue.destination as? UINavigationController,
+//                let destinationVC = navC.viewControllers.first as? MessageDetailViewController {
+//                destinationVC.messageThread = messageThread
+//                destinationVC.messageThreadController = messageThreadController
+//            }
         }
     }
 }
