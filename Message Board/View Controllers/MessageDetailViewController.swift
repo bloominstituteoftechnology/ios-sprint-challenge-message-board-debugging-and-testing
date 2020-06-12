@@ -21,15 +21,21 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    //Changed guard let to not allow empty entry
     @IBAction func sendMessage(_ sender: Any) {
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
+        guard let senderName = senderNameTextField.text, !senderName.isEmpty,
+            let messageText = messageTextView.text, !messageText.isEmpty,
             let messageThread = messageThread else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            #warning("Send button wasn't going back to initial view")
+            DispatchQueue.main.async {
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
         })
     }
 }

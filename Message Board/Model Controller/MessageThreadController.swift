@@ -10,11 +10,13 @@ import Foundation
 
 class MessageThreadController {
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://message-board-sprint-3cdf8.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
@@ -31,13 +33,15 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+               #warning ("not decoding - debug error #3.")
+                let messageDictionary = try JSONDecoder().decode([String: MessageThread].self, from: data)
+                self.messageThreads = messageDictionary.compactMap ({ $0.value })
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
             completion()
-        }
+        }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -57,6 +61,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            // return?
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -68,7 +73,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
