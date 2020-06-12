@@ -94,3 +94,5 @@ Need to change the model it is decoding to fix the issue.
 2020-06-12 10:05:33.713765-0700 Message Board[2868:144361] Error decoding message threads from JSON data: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil))
 2020-06-12 10:05:49.516641-0700 Message Board[2868:144506] Error decoding message threads from JSON data: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil))
 
+8. When the app first loads, it is giving this error 
+2020-06-12 10:44:19.981042-0700 Message Board[3303:179504] Error decoding message threads from JSON data: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil))
