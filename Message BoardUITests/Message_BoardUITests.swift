@@ -55,5 +55,4 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertTrue(app.tables.staticTexts["Knowles"].exists)
     }
  
-    
 }

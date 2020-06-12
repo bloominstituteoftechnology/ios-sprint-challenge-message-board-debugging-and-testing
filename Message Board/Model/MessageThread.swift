@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class MessageThread: Codable, Equatable {
 
     let title: String
