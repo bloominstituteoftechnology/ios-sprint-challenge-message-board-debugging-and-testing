@@ -24,4 +24,6 @@ class MessageThreadTests: XCTestCase {
         testThread.messages.append(testReply)
         XCTAssertTrue(testThread.messages.contains(testReply))
     }
+    
+    
 }
