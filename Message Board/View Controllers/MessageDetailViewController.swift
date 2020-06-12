@@ -24,9 +24,11 @@ class MessageDetailViewController: UIViewController {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    #warning("Changed guard let to not allow empty entry")
+    
     @IBAction func sendMessage(_ sender: Any) {
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
+        guard let senderName = senderNameTextField.text, !senderName.isEmpty,
+            let messageText = messageTextView.text, !messageText.isEmpty,
             let messageThread = messageThread else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {

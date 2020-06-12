@@ -60,6 +60,7 @@ class MessageThreadController {
             request.httpBody = try JSONEncoder().encode(thread)
         } catch {
             NSLog("Error encoding thread to JSON: \(error)")
+            // return?
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
