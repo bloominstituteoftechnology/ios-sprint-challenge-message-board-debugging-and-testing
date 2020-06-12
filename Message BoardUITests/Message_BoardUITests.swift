@@ -16,7 +16,6 @@ class Message_BoardUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
 
-        // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
         app.launch()
     }
