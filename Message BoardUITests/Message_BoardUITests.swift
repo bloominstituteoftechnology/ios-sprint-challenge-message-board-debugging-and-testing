@@ -54,10 +54,10 @@ class Message_BoardUITests: XCTestCase {
      }
     
     
-    // MARK: - Test to click on thread and add title and message, press send button and see it added to thread (failing)
-//    func testCreateMessageFromThread() {
+//     MARK: - Test to click on thread and add title and message, press send button and see it added to thread (failing)
+    func testCreateMessageFromThread() {
 //
-//        app.tables.cells.staticTexts["A New Thread"].tap()
+//        app.tables.cells.staticTexts["Testing again"].tap()
 //        app.navigationBars["titleTextField"].buttons["Add"].tap()
 //
 //        let nameTextField = app.textFields["Enter your name:"]
@@ -71,6 +71,6 @@ class Message_BoardUITests: XCTestCase {
 //
 //        app.navigationBars["New Message"].buttons["Send"].tap()
 //        XCTAssertTrue(app.tables.staticTexts["Beyonce"].exists)
-//    }
+    }
  
 }
