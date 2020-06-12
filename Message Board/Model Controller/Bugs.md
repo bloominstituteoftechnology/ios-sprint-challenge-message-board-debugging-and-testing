@@ -8,9 +8,7 @@
 
 4. Cancel button now dispatching to the MessageThreadsTableViewController. Added functionality for that button. Previously wasn't doing anything.
 
-3. Send button not popping back even after adding dispatch main queue to table view - MessageDetailViewController. 
+5. Send button now working, had to switch the navigation popover to "dismiss instead". Also adjusted Segue.
 
-4. Not sending the information Save button to Firebase.
-
-5. in MessageThreadsTableViewController, segue.identifier == "ViewMessageThread was mispelled to "ViewMesageThread"
+6. in MessageThreadsTableViewController, segue.identifier == "ViewMessageThread was mispelled to "ViewMesageThread"
 

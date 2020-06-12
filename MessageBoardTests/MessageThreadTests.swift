@@ -13,8 +13,7 @@ class MessageThreadTests: XCTestCase {
     
     let mockController = MessageThreadController()
     var tableView: UITableView?
-    
-    
+
     func testCreateThreadOnServer() {
         let title = "Testy"
         var count = mockController.messageThreads.count
@@ -25,5 +24,17 @@ class MessageThreadTests: XCTestCase {
         XCTAssertEqual(count, mockController.messageThreads.count)
      }
     
-    
+    func testFetchDataFromServer() {
+
+           let didFinish = expectation(description: "didFinish")
+
+           var messageThreads: [MessageThread] = []
+
+           mockController.fetchMessageThreads {
+               didFinish.fulfill()
+               messageThreads = self.mockController.messageThreads
+           }
+           wait(for: [didFinish], timeout: 5)
+           XCTAssertNotNil(messageThreads)
+    }
 }
