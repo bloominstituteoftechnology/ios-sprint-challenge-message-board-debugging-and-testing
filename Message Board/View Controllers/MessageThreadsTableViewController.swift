@@ -9,11 +9,6 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
-    
-    // MARK: - Properties
-    
-    let messageThreadController = MessageThreadController()
-    @IBOutlet weak var threadTitleTextField: UITextField!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,7 +30,9 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -56,7 +53,7 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMesageThread" {
+        if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
@@ -64,4 +61,10 @@ class MessageThreadsTableViewController: UITableViewController {
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
         }
     }
+    
+    // MARK: - Properties
+    
+    let messageThreadController = MessageThreadController()
+    
+    @IBOutlet weak var threadTitleTextField: UITextField!
 }

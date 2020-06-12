@@ -10,10 +10,8 @@ import Foundation
 
 class MessageThreadController {
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
-    var messageThreads: [MessageThread] = []
-    
     func fetchMessageThreads(completion: @escaping () -> Void) {
+        
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
@@ -23,6 +21,7 @@ class MessageThreadController {
         }
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+            
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
                 completion()
@@ -30,17 +29,23 @@ class MessageThreadController {
             }
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+//                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                
+                var decodedThreadDict = try JSONDecoder().decode([String: MessageThread].self, from: data) // switched to dict
+                self.messageThreads = Array(decodedThreadDict.values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
             }
+            
             completion()
-        }
+        }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
+        
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
@@ -60,15 +65,15 @@ class MessageThreadController {
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
                 return
             }
-            
             self.messageThreads.append(thread)
             completion()
-        }
+        } .resume() // fixed
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -79,7 +84,7 @@ class MessageThreadController {
             return
         }
         
-        guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
+        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
@@ -95,12 +100,18 @@ class MessageThreadController {
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
             if let error = error {
                 NSLog("Error with message thread creation data task: \(error)")
                 completion()
                 return
             }
+            
             completion()
+            
         }.resume()
     }
+    
+    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    var messageThreads: [MessageThread] = []
 }
