@@ -31,3 +31,5 @@ passed test [N] [N]
 
 think I fixed this we'll see. decoding errors were in trnslation and in model
 
+
+5. Post Detail VC shows wrong title.
