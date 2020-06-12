@@ -25,7 +25,7 @@
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <action selector="createThread:" destination="5nQ-VB-nXu" eventType="editingDidEndOnExit" id="m9D-Dw-mp7"/>
                                     </connections>
