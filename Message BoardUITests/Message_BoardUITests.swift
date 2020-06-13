@@ -38,14 +38,20 @@
         private var tappedCell: XCUIElement {
                return app.cells["messageThreadCell"]
            }
+        private var returnButton: XCUIElement {
+            return app.keyboards.buttons["Return"]
+        }
         
         
 func testAddNewMessageThread() {
 
        XCTAssertTrue(threadTextField.exists)
        threadTextField.tap()
-        threadTextField.typeText("UI Works.")
-        app.buttons["return"].tap()
+        threadTextField.typeText("UI Works.\n")
+        returnButton.tap()
+        let table = app.tables.matching(identifier: "MessageThreadsTableViewController")
+        let checkForThread = table.cells.staticTexts["UI Works."]
+        XCTAssertTrue(checkForThread.label == "UI Works.")
         }
     
  func testEnterThreadDetail() {
