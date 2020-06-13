@@ -59,10 +59,10 @@ func testAddNewMessageThread() {
         app.buttons["return"].tap()
         app.staticTexts["UI Works."].tap()
     app.navigationBars.buttons["Add"].tap()
+    let textView = app.textViews.firstMatch
     let textField = app.textFields.firstMatch
+    textView.tap()
     textField.tap()
-    textField.typeText("Is Working.")
-    
     
     
     
