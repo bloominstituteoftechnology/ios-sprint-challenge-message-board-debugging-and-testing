@@ -41,6 +41,14 @@
         private var returnButton: XCUIElement {
             return app.keyboards.buttons["Return"]
         }
+        
+        private var messageTextField: XCUIElement {
+            return app.textFields["messageTextField"]
+        }
+        
+        private var messageTextView: XCUIElement {
+            return app.textViews["messageTextView"]
+        }
     
 func testAddNewMessageThread() {
     
@@ -58,11 +66,13 @@ func testAddNewMessageThread() {
         threadTextField.typeText("UI Works.")
         app.buttons["return"].tap()
         app.staticTexts["UI Works."].tap()
-    app.navigationBars.buttons["Add"].tap()
-    let textView = app.textViews.firstMatch
-    let textField = app.textFields.firstMatch
-    textView.tap()
-    textField.tap()
+        app.navigationBars.buttons["Add"].tap()
+//        messageTextField.tap()
+//        messageTextField.typeText("hello?")
+//        
+    messageTextView.tap()
+//    messageTextView.typeText("we in business?")
+//    app.typeText("whats going on")
     
     
     
