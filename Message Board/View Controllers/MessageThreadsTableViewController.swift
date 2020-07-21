@@ -9,80 +9,79 @@
 import UIKit
 
 class MessageThreadsTableViewController: UITableViewController {
+  
 
-    //MARK:- Change View Will Appear to View Did Load so that the threads don't disappear everytime we go back and forth.-
-    #warning("""
-    Bug List:
-    - Forgot to call resume()
-    - POST to PUT
-    - Typo
-    - Add CodingKey for text
-    - Decode Dictionary instead of Array
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    """)
+    messageThreadController.fetchMessageThreads {
+      DispatchQueue.main.async {
+        self.tableView.reloadData()
+      }
+    }
+  }
+  
+  
+  // MARK: - Actions
+  
+  @IBAction func createThread(_ sender: Any) {
+    threadTitleTextField.resignFirstResponder()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    guard let threadTitle = threadTitleTextField.text else { return }
+    
+    threadTitleTextField.text = ""
+    
+    messageThreadController.createMessageThread(with: threadTitle) {
+      DispatchQueue.main.async {
         
-        messageThreadController.fetchMessageThreads {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        self.tableView.reloadData()
+      }
     }
-
+  }
+  
+  // MARK: - UITableViewDataSource
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return messageThreadController.messageThreads.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
     
-    // MARK: - Actions
+    cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
     
-    @IBAction func createThread(_ sender: Any) {
-        threadTitleTextField.resignFirstResponder()
-
-        guard let threadTitle = threadTitleTextField.text else { return }
-        
-        threadTitleTextField.text = ""
-        
-        messageThreadController.createMessageThread(with: threadTitle) {
-            DispatchQueue.main.async {
-                
-                self.tableView.reloadData()
-            }
-        }
+    return cell
+  }
+  
+  // MARK: - Navigation
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "ViewMessageThread" {
+      guard let indexPath = tableView.indexPathForSelectedRow,
+        let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
+      
+      destinationVC.messageThreadController = messageThreadController
+      destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
     }
-    
-    // MARK: - UITableViewDataSource
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageThreadController.messageThreads.count
+  }
+  
+  // MARK: - Properties
+  
+  let messageThreadController = MessageThreadController()
+  
+  @IBOutlet weak var threadTitleTextField: UITextField! {
+    didSet {
+      threadTitleTextField.accessibilityIdentifier = "MessageThreadsTableViewController.TextField"
+      threadTitleTextField.becomeFirstResponder()
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageThreadCell", for: indexPath)
-        
-        cell.textLabel?.text = messageThreadController.messageThreads[indexPath.row].title
-
-        return cell
-    }
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMessageThread" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
-        }
-    }
-    
-    // MARK: - Properties
-    
-    let messageThreadController = MessageThreadController()
-    
-    @IBOutlet weak var threadTitleTextField: UITextField! {
-        didSet {
-            threadTitleTextField.accessibilityIdentifier = "MessageThreadsTableViewController.TextField"
-            threadTitleTextField.becomeFirstResponder()
-        }
-    }
+  }
 }
+#warning("""
+Bug List:
+- Forgot to call resume()
+- POST to PUT
+- Typo
+- Add CodingKey for text
+- Decode Dictionary instead of Array
+
+""")

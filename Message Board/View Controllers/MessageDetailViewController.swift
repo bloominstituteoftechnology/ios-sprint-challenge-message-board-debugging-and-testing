@@ -9,41 +9,41 @@
 import UIKit
 
 class MessageDetailViewController: UIViewController {
-
-    // MARK: - Actions
+  
+  // MARK: - Actions
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    navigationItem.rightBarButtonItem?.accessibilityIdentifier = "Detail Right Bar Button Item"
+  }
+  
+  
+  @IBAction func sendMessage(_ sender: UIBarButtonItem) {
+    print("He")
+    guard let senderName = senderNameTextField.text,
+      let messageText = messageTextView.text,
+      let messageThread = messageThread else { return }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "Detail Right Bar Button Item"
+    messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+      print("Message created!")
+    })
+    navigationController?.popViewController(animated: true)
+  }
+  
+  // MARK: - Properties
+  
+  var messageThreadController: MessageThreadController?
+  var messageThread: MessageThread?
+  
+  @IBOutlet weak var senderNameTextField: UITextField! {
+    didSet {
+      senderNameTextField.accessibilityIdentifier = "NameTextField"
+      senderNameTextField.becomeFirstResponder()
     }
-    
-    
-    @IBAction func sendMessage(_ sender: UIBarButtonItem) {
-        print("He")
-        guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
-   
-        messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
-            print("Message created!")
-        })
-        navigationController?.popViewController(animated: true)
+  }
+  @IBOutlet weak var messageTextView: UITextView! {
+    didSet {
+      messageTextView.accessibilityIdentifier = "MessageTextView"
     }
-
-    // MARK: - Properties
-    
-    var messageThreadController: MessageThreadController?
-    var messageThread: MessageThread?
-
-    @IBOutlet weak var senderNameTextField: UITextField! {
-        didSet {
-            senderNameTextField.accessibilityIdentifier = "NameTextField"
-            senderNameTextField.becomeFirstResponder()
-        }
-    }
-    @IBOutlet weak var messageTextView: UITextView! {
-        didSet {
-            messageTextView.accessibilityIdentifier = "MessageTextView"
-        }
-    }
+  }
 }
