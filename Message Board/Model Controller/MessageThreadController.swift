@@ -103,4 +103,8 @@ class MessageThreadController {
             completion()
         }.resume()
     }
+    
+    func deleteMessage() {
+        // TODO
+    }
 }

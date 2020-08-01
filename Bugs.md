@@ -12,6 +12,8 @@ Entries stored in firebase are not being synced after fetchMessageThreads is bei
 
 ## Bug #4:
 Send/Cancel do not work when entering a thread.
->Solution: Added dismiss(animated: true, completion: nil) to cancelTapped. Fixed typo in segue.identifier. Fixed second typo. Changed prepareForSegue to allow for secondary nav controller.
+> Solution: Added dismiss(animated: true, completion: nil) to cancelTapped. Fixed typo in segue.identifier. Fixed second typo. Changed prepareForSegue to allow for secondary nav controller.
 
-
+## Bug #5:
+Table view not reloading. Easy fix: change modal view of thread detail view to fullscreen. Other fix may involve use of delegates.
+> Solution: Changed modal view to fullscreen.
