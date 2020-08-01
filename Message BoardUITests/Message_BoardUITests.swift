@@ -19,8 +19,9 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    func testCancelMessage(){
+    func testCancelMessage() {
         try! setUpWithError()
+        
         app.tables.staticTexts["A New Thread"].tap()
         let NavigationBar = app.navigationBars["A New Thread"]
         let StaticText = NavigationBar.staticTexts["A New Thread"]
@@ -31,7 +32,24 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual(StaticText.label, "A New Thread")
     }
     
-    func testCreateMessage(){
+    func testCreateMessage() {
+        try! setUpWithError()
+        
+        let app = XCUIApplication()
+        app.tables.staticTexts["A New Thread"].tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+        let nameTextField = app.textFields["Enter your name:"]
+        nameTextField.tap()
+        nameTextField.typeText("Clay")
+        let newMessageTextFieldTextView = app.textViews["newMessageTextField"]
+        newMessageTextFieldTextView.tap()
+        newMessageTextFieldTextView.typeText("You've got mail.")
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        XCTAssert(app.tables.cells.staticTexts["Clay"].exists)
+    }
+    
+    func testCreateThread() {
+        try! setUpWithError()
         
     }
 }
