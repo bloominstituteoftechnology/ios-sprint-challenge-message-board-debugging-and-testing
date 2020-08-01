@@ -7,3 +7,11 @@ JSONDecoder not decoding properly in `fetchMessageThreads` function. Created a d
 Bug 3:
 JSONDecoder missing codingKeys. Added codingKeys for the MessageThread and implemented the dictionary in the model.
 
+Bug 4:
+Segue identifier mispelled in prepare for segue function. Corrected spelling.
+
+Bug 5:
+Send button wouldn't pop back to main screen. Added popToRootViewController to the IBAction.
+
+Bug 6:
+
