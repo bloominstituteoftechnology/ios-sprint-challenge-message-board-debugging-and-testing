@@ -15,6 +15,13 @@
   Set breakpoints to check Send function: message thread not initialized so function returning without creating a message.
   Fixed incorrect segue identifier and changed destination controller to account for the navigation controller first.
   
+  5. New message not saving in message thread.
+  added navigationController.dismiss to Send button.
+  Trying to create UITest 
+
+  
+  
+  
   
   
   
