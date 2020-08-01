@@ -10,6 +10,13 @@
   3. DetailView title doesnt update to thread title.
   Used breakpoints to check what message thread was being sent, realized segue wasnt being triggered because of incorrect identifier.
   
+  4. Save and Cancel buttons on MessageDetailViewController dont trigger any action. 
+  Cancel function has no associated code so added navigationController.dismiss.
+  Set breakpoints to check Send function: message thread not initialized so function returning without creating a message.
+  Fixed incorrect segue identifier and changed destination controller to account for the navigation controller first.
+  
+  
+  
   
   
 
