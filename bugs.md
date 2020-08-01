@@ -7,5 +7,9 @@
   Added .resume() after data task.  Created MessageBoardTest to check that the fetchMessageThreads was not returning an empty messageThreads array and checked decoding error message.
   Fixed issue by changing the json decoder to decode an array instead of a dictonary.
   
+  3. DetailView title doesnt update to thread title.
+  Used breakpoints to check what message thread was being sent, realized segue wasnt being triggered because of incorrect identifier.
+  
+  
   
 

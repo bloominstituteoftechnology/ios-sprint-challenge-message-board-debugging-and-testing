@@ -27,4 +27,12 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
 
+    func testDetailTableViewPassesThread() {
+        let app = launch()
+
+        app.tables.children(matching: .cell).matching(identifier: "MessageThreadCell").element(boundBy: 0)/*@START_MENU_TOKEN@*/.staticTexts["MessageThreadTitle"]/*[[".staticTexts[\"New Thread\"]",".staticTexts[\"MessageThreadTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+
+    }
+
 }
