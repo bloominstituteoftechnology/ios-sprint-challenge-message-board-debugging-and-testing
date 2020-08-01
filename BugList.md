@@ -1,7 +1,7 @@
 #  Bug List
 
 ## Fixed Issues:
-### Fixed issue with Creating Thread. Network call not being initiated
+### Fixed issue with Creating Thread.
 * Added .resume() to network call when creating a message thread
 * Confirmed Fix with unit test [func testCreatingThreadAndSendingToServer()]
 
@@ -25,21 +25,28 @@
 * Second segue does not take in account of the additional navigationController
 * Fixed both segues
 
+### Fixed issue with new messages not being displayed
+* When dismissing a modal view, viewWillAppear is not called because the view techically never left
+* In Main.storyboard, made the modal segue "fullscreen" so that viewWillAppear will be called
+
 ## Known Issues:
-~~Can't create message thread~~
+### ~~Can't create message thread~~
 * [FIXED SEE ABOVE]
 
-### App crashes when tableView is reloaded 
+### ~~App crashes when tableView is reloaded ~~
 * [FIXED SEE ABOVE]
 
-### Error Fetching from server
+### ~~Error Fetching from server~~
 * [FIXED SEE ABOVE]
 
-### Error decoding message threads from JSON
+### ~~Error decoding message threads from JSON~~
 * [FIXED SEE ABOVE]
 
-### Cancel button does nothing
+### ~~Cancel button does nothing~~
 * [FIXED SEE ABOVE]
 
-### Send button does nothing
+### ~~Send button does nothing~~
+* [FIXED SEE ABOVE]
+
+### ~~New messages not being displayed~~
 * [FIXED SEE ABOVE]
