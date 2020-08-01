@@ -22,6 +22,7 @@ class Message_BoardUITests: XCTestCase {
     
     func testCreateNewThread() {
         try! setUpWithError()
+        
         let createTextField = XCUIApplication().tables.textFields["Create a new thread:"]
         createTextField.tap()
         createTextField.typeText("UI Test 1")
@@ -33,12 +34,16 @@ class Message_BoardUITests: XCTestCase {
     func testCreateNewMessage() {
         try! setUpWithError()
         
+        let app = XCUIApplication()
         app.tables.staticTexts["A New Thread"].tap()
-    }
-    
-    func testCheckThreadMessages() {
-        try! setUpWithError()
-        XCUIApplication().tables.children(matching: .cell).element(boundBy: 0).staticTexts["Unit Test 1"].tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.textFields["Enter your name:"].typeText("Bronson")
         
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+        textView.tap()
+        textView.typeText("Free armor trimming")
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        XCTAssert(app.tables.cells.staticTexts["Bronson"].exists)
     }
 }
