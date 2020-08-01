@@ -14,13 +14,14 @@ class MessageDetailViewController: UIViewController {
     
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
-
+    
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
-
+    
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -31,5 +32,6 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        self.dismiss(animated: true, completion: nil)
     }
 }
