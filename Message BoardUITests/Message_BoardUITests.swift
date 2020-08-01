@@ -19,4 +19,31 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    func testCreateNewThread() {
+        try! setUpWithError()
+        
+        let createTextField = XCUIApplication().tables.textFields["Create a new thread:"]
+        createTextField.tap()
+        createTextField.typeText("UI Test 1")
+        
+        app.keyboards.buttons["return"].tap()
+        XCTAssert(app.tables.cells.staticTexts["UI Test 1"].exists)
+    }
+    
+    func testCreateNewMessage() {
+        try! setUpWithError()
+        
+        let app = XCUIApplication()
+        app.tables.staticTexts["A New Thread"].tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.textFields["Enter your name:"].typeText("Bronson")
+        
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+        textView.tap()
+        textView.typeText("Free armor trimming")
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        XCTAssert(app.tables.cells.staticTexts["Bronson"].exists)
+    }
 }
