@@ -8,7 +8,7 @@
 
 import Foundation
 
-let baseURL = URL(string: "https://codequality-1e269.firebaseio.com/")!
+let baseURL = URL(string: "https://console.firebase.google.com/project/messageboard-882f6/database/messageboard-882f6/data")!
 class MessageThread: Codable, Equatable {
 
     let title: String
@@ -55,7 +55,7 @@ class MessageThread: Codable, Equatable {
             lhs.messages == rhs.messages
     }
     
-    /*
+    
     
     private func put(message: MessageThread, completion: @escaping ((Error?)->Void) = {_ in }){
         let identifier = message.identifier
@@ -81,5 +81,5 @@ class MessageThread: Codable, Equatable {
             
             
         }.resume()
-    } */
+    } 
 }

@@ -16,3 +16,7 @@ class MessageThreadTests: XCTestCase {
 
 
 // Unit testing file
+// success
+// failure
+
+// for creating a thread, a message, navigating to other screens, showing the correct info
