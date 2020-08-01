@@ -21,6 +21,7 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        
     }
     
     @IBAction func sendMessage(_ sender: Any) {

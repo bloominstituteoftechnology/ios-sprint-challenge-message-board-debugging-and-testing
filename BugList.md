@@ -12,7 +12,14 @@
 - Fixed issue when trying to fetch data from server. Network call not being initiated
 * Added .resume() to network call when fetching message thread
 
+- Fixed and issue when decoding JSON involving message threads
+* When JSON is being decoded, the identifier is missing from the thread
+* Made the object being decoded into a dictionary
+* Wrapped the decoder into an Array
+* Extracted the value from the array to get just the message thread
 
+- Fixed issue when tapping "Cancel"
+* 
 
 ## Known Issues:
 - Can't create message thread 
@@ -22,4 +29,10 @@
 * [FIXED SEE ABOVE]
 
 - Error Fetching from server
+* [FIXED SEE ABOVE]
+
+- Error decoding message threads from JSON
+* [FIXED SEE ABOVE]
+
+- Cancel button does nothing
 * [FIXED SEE ABOVE]

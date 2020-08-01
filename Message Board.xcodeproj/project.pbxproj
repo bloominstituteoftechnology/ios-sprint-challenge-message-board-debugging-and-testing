@@ -96,11 +96,11 @@
 		4612B5BB211AB41100E7FF73 = {
 			isa = PBXGroup;
 			children = (
-				0B14AA5B24D4F748006448B5 /* BugList.md */,
 				4612B5C6211AB41100E7FF73 /* Message Board */,
 				9D9B6AFD214B7A66006381F7 /* MessageBoardTests */,
 				4629C7E7214BA09600E7FF73 /* Message BoardUITests */,
 				4612B5C5211AB41100E7FF73 /* Products */,
+				0B14AA5B24D4F748006448B5 /* BugList.md */,
 			);
 			sourceTree = "<group>";
 		};
