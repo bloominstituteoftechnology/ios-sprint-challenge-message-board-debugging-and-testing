@@ -11,6 +11,13 @@ import XCTest
 class Message_BoardUITests: XCTestCase {
     
     var app = XCUIApplication()
+
+    func launch() -> XCUIApplication {
+          // UI tests must launch the application that they test.
+          let app = XCUIApplication()
+          app.launch()
+          return app
+      }
     
     override func setUpWithError() throws {
         continueAfterFailure = false
@@ -19,4 +26,5 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+
 }

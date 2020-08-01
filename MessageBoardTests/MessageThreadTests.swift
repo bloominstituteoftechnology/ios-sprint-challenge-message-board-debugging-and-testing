@@ -10,6 +10,12 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
-    
+
+   func testFetchingMessageThreads() {
+        let messageController = MessageThreadController()
+    messageController.fetchMessageThreads {
+        XCTAssert(!messageController.messageThreads.isEmpty)
+    }
+    }
     
 }
