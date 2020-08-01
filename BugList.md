@@ -33,7 +33,7 @@
 ### ~~Can't create message thread~~
 * [FIXED SEE ABOVE]
 
-### ~~App crashes when tableView is reloaded ~~
+### ~~App crashes when tableView is reloaded~~
 * [FIXED SEE ABOVE]
 
 ### ~~Error Fetching from server~~

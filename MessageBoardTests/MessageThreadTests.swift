@@ -37,5 +37,4 @@ class MessageThreadTests: XCTestCase {
        func testLoadingMessageThreads(){
            XCTAssertNotNil(controller.messageThreads)
        }
-    
 }
