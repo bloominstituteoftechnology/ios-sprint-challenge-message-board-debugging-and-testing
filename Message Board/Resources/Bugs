@@ -2,4 +2,8 @@ Bug 1:
 .resume() was missing from URLSession.shared.dataTask inside the `createMessageThread` function in MessageThreadController.swift. Added .resume() to the dataTask.
 
 Bug 2:
+JSONDecoder not decoding properly in `fetchMessageThreads` function. Created a dictionary and converted that into an array of values for that dictionary.
+
+Bug 3:
+JSONDecoder missing codingKeys. Added codingKeys for the MessageThread and implemented the dictionary in the model.
 
