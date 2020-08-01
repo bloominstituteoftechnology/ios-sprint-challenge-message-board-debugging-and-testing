@@ -19,7 +19,7 @@
 * Extracted the value from the array to get just the message thread
 
 - Fixed issue when tapping "Cancel"
-* 
+* Added ability to dismiss
 
 ## Known Issues:
 - Can't create message thread 
