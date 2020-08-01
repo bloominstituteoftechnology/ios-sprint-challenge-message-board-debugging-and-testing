@@ -34,8 +34,6 @@ class Message_BoardUITests: XCTestCase {
     
     func testCreateMessage() {
         try! setUpWithError()
-        
-        let app = XCUIApplication()
         app.tables.staticTexts["A New Thread"].tap()
         app.navigationBars["A New Thread"].buttons["Add"].tap()
         let nameTextField = app.textFields["Enter your name:"]
@@ -50,6 +48,10 @@ class Message_BoardUITests: XCTestCase {
     
     func testCreateThread() {
         try! setUpWithError()
-        
+        let createThreadTextField = XCUIApplication().tables.textFields["Create a new thread:"]
+        createThreadTextField.tap()
+        createThreadTextField.typeText("For the Alliance!")
+        app.keyboards.buttons["Return"].tap()
+        XCTAssert(app.tables.cells.staticTexts["For the Alliance!"].exists)
     }
 }
