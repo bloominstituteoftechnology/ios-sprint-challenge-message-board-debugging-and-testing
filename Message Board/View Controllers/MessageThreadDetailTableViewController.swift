@@ -23,9 +23,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DispatchQueue.main.async {
             self.tableView.reloadData()
-        }
     }
     
     // MARK: - UITableViewDataSource
@@ -48,11 +46,13 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+        if segue.identifier == "AddMessage" {
+            if let navController = segue.destination as? UINavigationController,
+                let destinationVC = navController.viewControllers.first as? MessageDetailViewController {
+                destinationVC.messageThreadController = messageThreadController
+                destinationVC.messageThread = messageThread
+            }
         }
     }
+    
 }
