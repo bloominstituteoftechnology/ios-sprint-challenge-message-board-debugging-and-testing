@@ -11,8 +11,8 @@ import UIKit
 class MessageThreadsTableViewController: UITableViewController {
     
     // MARK: - Properties
-    
     let messageThreadController = MessageThreadController()
+    
     @IBOutlet weak var threadTitleTextField: UITextField!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +58,7 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMesageThread" {
+        if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
