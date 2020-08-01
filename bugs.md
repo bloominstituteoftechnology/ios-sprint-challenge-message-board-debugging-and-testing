@@ -16,8 +16,10 @@
   Fixed incorrect segue identifier and changed destination controller to account for the navigation controller first.
   
   5. New message not saving in message thread.
-  added navigationController.dismiss to Send button.
-  Trying to create UITest 
+  added navigationController.dismiss to Send button.  Realized problem was internet related.
+
+6. Created unit tests to check that message and message threads were being created.
+
 
   
   

@@ -132,7 +132,7 @@
         <!--New Message-->
         <scene sceneID="usB-8K-2MY">
             <objects>
-                <viewController id="BoB-4p-ZG3" customClass="MessageDetailViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BoB-4p-ZG3" customClass="MessageDetailViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hj8-j0-bJt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,7 +207,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Rdr-Es-W84">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Myh-kZ-stt" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Myh-kZ-stt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BbB-c5-P03"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1pM-v2-DYp">

@@ -17,5 +17,18 @@ class MessageThreadTests: XCTestCase {
         XCTAssert(!messageController.messageThreads.isEmpty)
     }
     }
+
+    func testCreatingMessageThread() {
+        let title = "Title"
+        let createMessage = MessageThread(title: title)
+        XCTAssertNotNil(createMessage)
+    }
+
+    func testCreateAMessage() {
+        let text = "Text"
+        let sender = "Sender"
+        let createMessage = MessageThread.Message(text: text, sender: sender)
+        XCTAssertNotNil(createMessage)
+    }
     
 }
