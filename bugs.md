@@ -19,7 +19,7 @@
   added navigationController.dismiss to Send button.  Realized problem was internet related.
 
 6. Created unit tests to check that message and message threads were being created.
-
+7. Fixed UI test for creating messages.
 
   
   
