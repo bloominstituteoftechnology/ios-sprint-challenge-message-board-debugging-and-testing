@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageThreadDetailTableViewController: UITableViewController {
+class MessageThreadDetailTableViewController: UITableViewController, MessageDelegate {
     
     // MARK: - Properties
 
@@ -30,6 +30,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(messageThread?.messages.count ?? 0)
         return messageThread?.messages.count ?? 0
     }
 
@@ -47,11 +48,22 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+        // Bug: Same typo here; changed "AddMesage" to "AddMessage"
+        if segue.identifier == "AddMessage" {
+            // Bug: Code never gets past this guard statement, which is weird cuz it looks totally legit.
+            // Ok, now after looking at the storyboard I see the problem. The segue destination appears to be
+            // the MessageDetailViewController when running the app, but it's actually a UINavigationController,
+            // so I fixed that so the correct data could be sent and the Send button would work just fine.
+            guard let navController = segue.destination as? UINavigationController,
+                let destinationVC = navController.viewControllers.first as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
+            destinationVC.delegate = self
         }
+    }
+    
+    func didAddMessage() {
+        self.tableView.reloadData()
     }
 }
