@@ -12,7 +12,7 @@ class Message_BoardUITests: XCTestCase {
     
     var app = XCUIApplication()
     
-     func setUpWithError() throws {
+      func setUpWithError() throws {
         continueAfterFailure = false
         
         // NOTE: Keep this setup as is for UI Testing
@@ -26,7 +26,7 @@ class Message_BoardUITests: XCTestCase {
 
      try! setUpWithError()
 
-        let newThreadTextField = XCUIApplication().tables.textFields["Create new thread"]
+        let newThreadTextField = XCUIApplication().tables.textFields["Create new message thread"]
         newThreadTextField.tap()
 
         newThreadTextField.typeText("Test New Thread")
