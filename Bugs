@@ -1,1 +1,11 @@
 found .resume() missing on line 71 and line 40 within MessageThreadController
+found unnecessary semi-colons within MessageThreadController
+let thread on line 52.. missing ", messages: []" within construct for use in dictionary creation..?
+MessageThreadsTableViewController, line 35 had an empty threadTitleTextField being initialized
+DispatchQueue.main.async missing for self.tableView.reloadData() call within createThread method
+let messagesDictionaries, line 28 of MessageThread.swift had bad decode properties, missing a ":Messasge:
+    - and the forKey should use .title not .message.
+ MessageThreadController had a messageThreads array being emtied in the catch block of fetchMessageThreads
+ messageThread variable is nil within MessageThreadDetailViewController to MessageDetailViewController, preventing Send from working', even from MessageThreadsTableViewController
+      - due to most likely the array/dictionary conflict
+      
