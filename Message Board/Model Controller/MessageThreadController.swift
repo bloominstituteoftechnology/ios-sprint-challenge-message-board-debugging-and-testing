@@ -49,7 +49,7 @@ class MessageThreadController {
             return
         }
         
-        let thread = MessageThread(title: title)//, messages: [])//  HERE?
+        let thread = MessageThread(title: title, messages: [])//  HERE?
         
         let requestURL = MessageThreadController.baseURL.appendingPathComponent(thread.identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
