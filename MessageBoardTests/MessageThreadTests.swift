@@ -10,6 +10,16 @@ import XCTest
 @testable import Message_Board
 
 class MessageThreadTests: XCTestCase {
+
+   let messageThreadController = MessageThreadController()
+
+    // Test ability to create new thread
+        func testCreateNewThread() {
+            let newThread = MessageThread(title: "New Thread")
+            messageThreadController.createMessageThread(with: newThread.title) {
+                XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "New Thread")
+
+        }
     
-    
+}
 }
