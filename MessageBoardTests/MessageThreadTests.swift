@@ -11,17 +11,15 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
 
-   let messageThreadController = MessageThreadController()
+    let messageThreadController = MessageThreadController()
 
     // Test ability to create new thread
-        func testCreateNewThread() {
-            let newThread = MessageThread(title: "New Thread")
-            messageThreadController.createMessageThread(with: newThread.title) {
-                XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "New Thread")
-
+    func testCreateNewThread() {
+        let newThread = MessageThread(title: "New Thread")
+        messageThreadController.createMessageThread(with: newThread.title) {
+            XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "New Thread")
         }
-    
-}
+    }
 
     func testCreatingMessage() {
         let messageThread = MessageThread(title: "Unit Thread Test")
@@ -31,7 +29,6 @@ class MessageThreadTests: XCTestCase {
             }
         }
     }
-
 
     // Test asynchronous logic using an expectation
     func testExpectation() {

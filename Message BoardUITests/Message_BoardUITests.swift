@@ -33,7 +33,7 @@ func testCreateThread() {
     }
 
 
-
+/*
         func testCreateMessage() {
             try! setUpWithError()
 
@@ -94,9 +94,48 @@ func testCreateThread() {
 
     }
 
+*/
+    func testNewMessage(){
+        try! setUpWithError()
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery.textFields["Create a new thread:"].tap()
+
+        app.keys["m"].tap()
+        app.keys["o"].tap()
+        app.keys["c"].tap()
+        app.keys["k"].tap()
 
 
+        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
 
+        let mock1StaticText = tablesQuery.staticTexts["A New Thread"]
+        mock1StaticText.tap()
 
-        }
+        let mock1NavigationBar = app.navigationBars["A New Thread"]
+        mock1NavigationBar.buttons["Add"].tap()
+
+        let enterYourNameTextField = app.textFields["Enter your name:"]
+        enterYourNameTextField.tap()
+
+        app.keys["i"].tap()
+        app.keys["g"].tap()
+        app.keys["f"].tap()
+
+//        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+  //      textView.tap()
+
+        app.textViews["newMessageText"].tap()
+       
+
+        app.keys["A"].tap()
+        app.keys["f"].tap()
+        app.keys["k"].tap()
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        mock1NavigationBar.buttons["λ Message Board"].tap()
+
+        XCTAssert(app.navigationBars["A New Thread"].staticTexts["A New Thread"].exists)
+
+    }
+}
 

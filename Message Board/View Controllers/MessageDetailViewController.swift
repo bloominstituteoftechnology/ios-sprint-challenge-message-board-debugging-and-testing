@@ -18,6 +18,15 @@ class MessageDetailViewController: UIViewController {
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
 
+    @IBOutlet weak var stackView: UIStackView!
+
+    func viewdidLoad() {
+        super.viewDidLoad()
+        stackView.isAccessibilityElement = false
+        messageTextView.isAccessibilityElement = true
+        messageTextView.accessibilityIdentifier = "newMessageText"
+        
+    }
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
