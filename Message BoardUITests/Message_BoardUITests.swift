@@ -42,4 +42,17 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual(app.navigationBars.staticTexts.firstMatch.label, "Thread 1")
     }
 
+    func testMessageThreadsAppearing() {
+        let app = XCUIApplication()
+        let loadedThread = app.tables.cells.matching(identifier: "MessageThreadCell").staticTexts["A New Thread"]
+        XCTAssertTrue(loadedThread.exists)
+    }
+
+    func testDetailViewTitle() {
+        let app = XCUIApplication()
+        let loadedThread = app.tables.cells.matching(identifier: "MessageThreadCell").staticTexts["A New Thread"]
+        loadedThread.tap()
+        XCTAssertEqual(app.navigationBars.staticTexts.firstMatch.label, "A New Thread")
+    }
+
 }
