@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xR7-u7-o4e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xR7-u7-o4e">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,6 +57,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="CreatedMessages"/>
                                 <connections>
                                     <segue destination="haD-iA-YGa" kind="show" identifier="ViewMessageThread" id="pxs-pL-1M3"/>
                                 </connections>
@@ -92,7 +94,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1SF-b8-xnd">
-                                            <rect key="frame" x="16" y="10" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="16" y="10" width="33" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -107,6 +109,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="MessageText"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -139,18 +142,21 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEl-Se-Sz1">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="NewMessageSender"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tpX-xP-KsX">
                                         <rect key="frame" x="0.0" y="42" width="343" height="173.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="NewMessageText"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Uch-WW-3au"/>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93517836902857143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="duX-rG-AEh" firstAttribute="top" secondItem="Uch-WW-3au" secondAttribute="top" constant="16" id="9sH-ja-GVK"/>
@@ -158,17 +164,16 @@
                             <constraint firstItem="Uch-WW-3au" firstAttribute="trailing" secondItem="duX-rG-AEh" secondAttribute="trailing" constant="16" id="Uwo-mH-euL"/>
                             <constraint firstItem="duX-rG-AEh" firstAttribute="leading" secondItem="Uch-WW-3au" secondAttribute="leading" constant="16" id="yEE-IP-SDu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Uch-WW-3au"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Message" id="cEt-mi-t96">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0pp-pH-R8r">
                             <connections>
-                                <action selector="cancelTapped:" destination="BoB-4p-ZG3" id="TqF-bL-JPS"/>
+                                <action selector="cancelTapped:" destination="BoB-4p-ZG3" id="bt0-id-2yj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="eC1-90-vuB">
                             <connections>
-                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="k5g-wb-Dsb"/>
+                                <action selector="sendMessage:" destination="BoB-4p-ZG3" id="Uga-MP-yOp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -179,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rI9-du-mle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108" y="-566"/>
+            <point key="canvasLocation" x="3156" y="231"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zeM-Zo-RjD">
@@ -215,7 +220,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYH-2O-8Ab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2319" y="-566"/>
+            <point key="canvasLocation" x="2377" y="231"/>
         </scene>
     </scenes>
 </document>
