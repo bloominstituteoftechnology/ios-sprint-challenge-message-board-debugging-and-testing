@@ -26,12 +26,46 @@ class Message_BoardUITests: XCTestCase {
 
      try! setUpWithError()
 
-        let newThreadTextField = XCUIApplication().tables.textFields["Create new message thread"]
-        newThreadTextField.tap()
+        let createThreadTextField = XCUIApplication().tables.textFields["Create new message thread"]
+        createThreadTextField.tap()
 
-        newThreadTextField.typeText("Test New Thread")
+        createThreadTextField.typeText("Test New Thread")
         app.keyboards.buttons["Return"].tap()
         XCTAssert(app.tables.cells.staticTexts["Test New Thread"].exists)
     }
 
-}
+
+
+        func testCreateMessage() {
+            try! setUpWithError()
+
+            let table = app.tables.matching(identifier: "MessageThreadsTableViewController")
+
+                let messageTextField = table.textFields.element(boundBy: 0)
+                messageTextField.tap()
+                messageTextField.typeText("Message for UI Test\n")
+
+                let newThread = table.cells.staticTexts["Message for UI Test"]
+                newThread.tap()
+
+                let messageButton = app.navigationBars["Message for UI Test"].buttons["Add"]
+                messageButton.tap()
+                let nameTextField = app.textFields.firstMatch
+            
+                XCTAssert(nameTextField.isHittable)
+
+                nameTextField.tap()
+                nameTextField.typeText("Ian")
+
+                let sendButton = app.navigationBars["New Message"].buttons["Send"]
+                sendButton.tap()
+
+                let detailTable = app.tables.matching(identifier: "MessageThreadDetailTableViewController")
+                let message = detailTable.cells.staticTexts["Ian"]
+
+                XCTAssertEqual(message.label, "Ian")
+            }
+
+
+        }
+//}

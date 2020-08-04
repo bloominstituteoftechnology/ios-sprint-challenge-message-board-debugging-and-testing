@@ -22,4 +22,13 @@ class MessageThreadTests: XCTestCase {
         }
     
 }
+
+    func testCreatingMessage() {
+        let messageThread = MessageThread(title: "Unit Thread Test")
+        messageThreadController.createMessageThread(with: messageThread.title){
+            self.messageThreadController.createMessage(in: messageThread, withText: "Positive result", sender: "IGF") {
+                XCTAssertTrue(self.messageThreadController.messageThreads[0].messages[0].sender == "IGF")
+            }
+        }
+    }
 }
