@@ -21,12 +21,16 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        // #1 Storyboard: This is part of the first bug the cancel button was non-functional
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
         guard let senderName = senderNameTextField.text,
             let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+            let messageThread = messageThread,
+            // #1 Storyboard: This is part of the first but f the text field is empty than the thread is not sent to the server.
+            !messageText.isEmpty else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")

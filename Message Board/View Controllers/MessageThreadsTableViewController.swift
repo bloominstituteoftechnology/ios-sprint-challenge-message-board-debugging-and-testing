@@ -62,6 +62,12 @@ class MessageThreadsTableViewController: UITableViewController {
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
+            // // #1 Storyboard: This is part of the first created a segue to the detial View Controller to be able to added new threads.
+        } else if segue.identifier == "CreateNewMessageThread" {
+            if let navigationControllerVC = segue.destination as? UINavigationController,
+               let createNewMessageThreadVC = navigationControllerVC.viewControllers.first as? MessageThreadDetailTableViewController {
+                createNewMessageThreadVC.messageThreadController = messageThreadController
+            }
         }
     }
 }
