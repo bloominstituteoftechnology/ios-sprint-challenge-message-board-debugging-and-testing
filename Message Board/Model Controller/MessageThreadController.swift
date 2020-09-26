@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://sprintmessageboard.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
@@ -29,15 +29,18 @@ class MessageThreadController {
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            guard let data = data else {
+                NSLog("Error fetching message threads: \(error)")
+                completion()
+                return
+            }
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = Array(try JSONDecoder().decode([String: MessageThreads].self, from: data).values)
             } catch {
                 self.messageThreads = []
-                NSLog("Error decoding message threads from JSON data: \(error)")
             }
             completion()
-        }
+        }.resume()
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
@@ -68,7 +71,7 @@ class MessageThreadController {
             
             self.messageThreads.append(thread)
             completion()
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
