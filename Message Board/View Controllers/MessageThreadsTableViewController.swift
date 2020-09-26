@@ -35,7 +35,7 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
-            self.tableView.reloadData()
+           // self.tableView.reloadData()
         }
     }
     

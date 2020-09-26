@@ -17,14 +17,17 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let messageThread = messageThread else {return}
 
-        title = messageThread?.title
+        title = messageThread.title
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.tableView.reloadData()
+        
+       
     }
     
     // MARK: - UITableViewDataSource
@@ -37,7 +40,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
         let message = messageThread?.messages[indexPath.row]
-        
+    
         cell.textLabel?.text = message?.text
         cell.detailTextLabel?.text = message?.sender
         
