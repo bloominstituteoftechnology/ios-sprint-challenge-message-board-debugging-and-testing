@@ -64,4 +64,16 @@ class Message_BoardUITests: XCTestCase {
         waitForExpectations(timeout: 2)
     }
     
+    func testThreadMessage() {
+        XCTAssert(app.staticTexts["A New Thread"].exists)
+        app.staticTexts["A New Thread"].tap()
+        XCTAssert(app.staticTexts["Checking to make sure this works."].exists)
+    }
+    
+    func testBackButton() {
+        firstChild.tap()
+        XCTAssertFalse(app.staticTexts["λ Message Board"].exists)
+        app.buttons["λ Message Board"].tap()
+        XCTAssert(app.staticTexts["λ Message Board"].exists)
+    }
 }
