@@ -16,6 +16,10 @@ class Message_BoardUITests: XCTestCase {
         return app.textFields["Create a new thread:"]
     }
     
+    private var firstChild: XCUIElement {
+        return app.tables.children(matching: .cell).element(boundBy: 0)
+    }
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
         
@@ -31,6 +35,13 @@ class Message_BoardUITests: XCTestCase {
         threadTitleTextField.typeText("Test")
         app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
         waitForExpectations(timeout: 2)
+    }
+    
+    func testLeaveThreadTableViewAndReturn() {
+        let count = app.tables.cells.count
+        firstChild.tap()
+        app.navigationBars["Title"].buttons["λ Message Board"].tap()
+        XCTAssertEqual(app.tables.cells.count, count)
     }
     
 }
