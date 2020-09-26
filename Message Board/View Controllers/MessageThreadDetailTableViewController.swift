@@ -47,7 +47,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             if let navController = segue.destination as? UINavigationController,
                 let destVC = navController.viewControllers.first as? MessageDetailViewController {
                 

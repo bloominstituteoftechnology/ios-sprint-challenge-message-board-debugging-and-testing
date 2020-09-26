@@ -34,10 +34,9 @@ class MessageThreadTests: XCTestCase {
                 XCTAssertTrue(self.messageThreadController.messageThreads[0].messages[0].sender == "NTL")
             }
         }
-        
-        
-        
-        
     }
+    
+    
+    
     
 }//

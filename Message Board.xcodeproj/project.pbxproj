@@ -21,12 +21,20 @@
 		46436030211ABC3700E7FF73 /* MessageThreadsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */; };
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
+		86D03AE6251FBF5400E11F0F /* Message_BoardUITests2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D03AE5251FBF5400E11F0F /* Message_BoardUITests2.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 		CE840C982492D40500817BC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE840C972492D40500817BC8 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		4629C7EB214BA09600E7FF73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4612B5C3211AB41100E7FF73;
+			remoteInfo = "Message Board";
+		};
+		86D03AE8251FBF5400E11F0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4612B5BC211AB41100E7FF73 /* Project object */;
 			proxyType = 1;
@@ -61,6 +69,10 @@
 		4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadsTableViewController.swift; sourceTree = "<group>"; };
 		46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadDetailTableViewController.swift; sourceTree = "<group>"; };
 		46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		86D03ADE251FB39F00E11F0F /* BugList.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = BugList.md; sourceTree = "<group>"; };
+		86D03AE3251FBF5300E11F0F /* Message BoardUITests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Message BoardUITests2.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		86D03AE5251FBF5400E11F0F /* Message_BoardUITests2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message_BoardUITests2.swift; sourceTree = "<group>"; };
+		86D03AE7251FBF5400E11F0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
@@ -76,6 +88,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4629C7E3214BA09600E7FF73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86D03AE0251FBF5300E11F0F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -98,6 +117,8 @@
 				4612B5C6211AB41100E7FF73 /* Message Board */,
 				9D9B6AFD214B7A66006381F7 /* MessageBoardTests */,
 				4629C7E7214BA09600E7FF73 /* Message BoardUITests */,
+				86D03ADE251FB39F00E11F0F /* BugList.md */,
+				86D03AE4251FBF5300E11F0F /* Message BoardUITests2 */,
 				4612B5C5211AB41100E7FF73 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +129,7 @@
 				4612B5C4211AB41100E7FF73 /* Message Board.app */,
 				9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */,
 				4629C7E6214BA09600E7FF73 /* Message BoardUITests.xctest */,
+				86D03AE3251FBF5300E11F0F /* Message BoardUITests2.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +212,15 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		86D03AE4251FBF5300E11F0F /* Message BoardUITests2 */ = {
+			isa = PBXGroup;
+			children = (
+				86D03AE5251FBF5400E11F0F /* Message_BoardUITests2.swift */,
+				86D03AE7251FBF5400E11F0F /* Info.plist */,
+			);
+			path = "Message BoardUITests2";
+			sourceTree = "<group>";
+		};
 		9D9B6AFD214B7A66006381F7 /* MessageBoardTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +277,24 @@
 			productReference = 4629C7E6214BA09600E7FF73 /* Message BoardUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		86D03AE2251FBF5300E11F0F /* Message BoardUITests2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86D03AEA251FBF5400E11F0F /* Build configuration list for PBXNativeTarget "Message BoardUITests2" */;
+			buildPhases = (
+				86D03ADF251FBF5300E11F0F /* Sources */,
+				86D03AE0251FBF5300E11F0F /* Frameworks */,
+				86D03AE1251FBF5300E11F0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86D03AE9251FBF5400E11F0F /* PBXTargetDependency */,
+			);
+			name = "Message BoardUITests2";
+			productName = "Message BoardUITests2";
+			productReference = 86D03AE3251FBF5300E11F0F /* Message BoardUITests2.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9D9B6AFB214B7A66006381F7 /* MessageBoardTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D9B6B05214B7A66006381F7 /* Build configuration list for PBXNativeTarget "MessageBoardTests" */;
@@ -270,7 +319,7 @@
 		4612B5BC211AB41100E7FF73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
@@ -281,6 +330,10 @@
 					4629C7E5214BA09600E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1150;
+						TestTargetID = 4612B5C3211AB41100E7FF73;
+					};
+					86D03AE2251FBF5300E11F0F = {
+						CreatedOnToolsVersion = 11.6;
 						TestTargetID = 4612B5C3211AB41100E7FF73;
 					};
 					9D9B6AFB214B7A66006381F7 = {
@@ -306,6 +359,7 @@
 				4612B5C3211AB41100E7FF73 /* Message Board */,
 				9D9B6AFB214B7A66006381F7 /* MessageBoardTests */,
 				4629C7E5214BA09600E7FF73 /* Message BoardUITests */,
+				86D03AE2251FBF5300E11F0F /* Message BoardUITests2 */,
 			);
 		};
 /* End PBXProject section */
@@ -323,6 +377,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4629C7E4214BA09600E7FF73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86D03AE1251FBF5300E11F0F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,6 +425,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		86D03ADF251FBF5300E11F0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86D03AE6251FBF5400E11F0F /* Message_BoardUITests2.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9D9B6AF8214B7A66006381F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +448,11 @@
 			isa = PBXTargetDependency;
 			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
 			targetProxy = 4629C7EB214BA09600E7FF73 /* PBXContainerItemProxy */;
+		};
+		86D03AE9251FBF5400E11F0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4612B5C3211AB41100E7FF73 /* Message Board */;
+			targetProxy = 86D03AE8251FBF5400E11F0F /* PBXContainerItemProxy */;
 		};
 		9D9B6B02214B7A66006381F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -597,6 +671,49 @@
 			};
 			name = Release;
 		};
+		86D03AEB251FBF5400E11F0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4QZT23CN4;
+				INFOPLIST_FILE = "Message BoardUITests2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.norlantibanear.Message-BoardUITests2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Message Board";
+			};
+			name = Debug;
+		};
+		86D03AEC251FBF5400E11F0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4QZT23CN4;
+				INFOPLIST_FILE = "Message BoardUITests2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.norlantibanear.Message-BoardUITests2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Message Board";
+			};
+			name = Release;
+		};
 		9D9B6B03214B7A66006381F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -665,6 +782,15 @@
 			buildConfigurations = (
 				4629C7EE214BA09600E7FF73 /* Debug */,
 				4629C7EF214BA09600E7FF73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86D03AEA251FBF5400E11F0F /* Build configuration list for PBXNativeTarget "Message BoardUITests2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86D03AEB251FBF5400E11F0F /* Debug */,
+				86D03AEC251FBF5400E11F0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
