@@ -23,7 +23,6 @@
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
 		CE840C982492D40500817BC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE840C972492D40500817BC8 /* SceneDelegate.swift */; };
-		E4F1128F251ECC0B00A0FB55 /* Bugs in Resources */ = {isa = PBXBuildFile; fileRef = E4F1128E251ECC0B00A0FB55 /* Bugs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,7 @@
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
 		CE840C972492D40500817BC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E4F1128E251ECC0B00A0FB55 /* Bugs */ = {isa = PBXFileReference; lastKnownFileType = text; path = Bugs; sourceTree = "<group>"; };
+		E4F11290251EE9B700A0FB55 /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Bugs.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +116,7 @@
 		4612B5C6211AB41100E7FF73 /* Message Board */ = {
 			isa = PBXGroup;
 			children = (
-				E4F1128E251ECC0B00A0FB55 /* Bugs */,
+				E4F11290251EE9B700A0FB55 /* Bugs.md */,
 				CE840C992492D4EA00817BC8 /* Application */,
 				4643602B211ABBF800E7FF73 /* Model */,
 				4643602C211ABBFE00E7FF73 /* Model Controller */,
@@ -322,7 +321,6 @@
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,
 				4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */,
-				E4F1128F251ECC0B00A0FB55 /* Bugs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

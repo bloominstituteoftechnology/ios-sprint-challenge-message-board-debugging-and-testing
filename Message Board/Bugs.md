@@ -1,3 +1,4 @@
+#  Bugs
 Bug 1
     .resume wasn't being called in the createMessageThread function in file MessageThreadController
         Added .resume()
