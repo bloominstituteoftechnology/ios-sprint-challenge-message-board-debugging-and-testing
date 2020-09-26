@@ -40,4 +40,18 @@ class MessageThreadTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
     }
     
+    func testCreateMessage() {
+        let messageThreadController = MessageThreadController()
+        let expectation = XCTestExpectation(description: "Wait for data task.")
+        
+        messageThreadController.createMessageThread(with: "Message Test") {
+            messageThreadController.createMessage(in: messageThreadController.messageThreads[0], withText: "Testing...", sender: "Cora") {
+                XCTAssert(messageThreadController.messageThreads[0].messages[0].text == "Testing...")
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 2)
+    }
+    
 }

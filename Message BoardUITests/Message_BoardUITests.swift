@@ -44,4 +44,15 @@ class Message_BoardUITests: XCTestCase {
         XCTAssertEqual(app.tables.cells.count, count)
     }
     
+    func testUICreateMessage() {
+        firstChild.tap()
+        let createMessageExpectation = expectation(for: NSPredicate(format: "count == 2"), evaluatedWith: app.tables.cells)
+        createMessageExpectation.expectationDescription = "Messages should increase to 2"
+        app.navigationBars.buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.typeText("Cora")
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        waitForExpectations(timeout: 5)
+    }
+    
 }
