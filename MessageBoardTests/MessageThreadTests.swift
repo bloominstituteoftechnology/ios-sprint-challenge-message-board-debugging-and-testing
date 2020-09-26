@@ -15,4 +15,19 @@ class MessageThreadTests: XCTestCase {
         return XCUIApplication()
     }
     
+    func testCreateThread() {
+        let controller = MessageThreadController()
+        controller.createMessageThread(with: "UITest Thread") {
+            XCTAssert(controller.messageThreads.count > 0)
+        }
+    }
+    func testCreateMessage() {
+        let controller = MessageThreadController()
+        controller.createMessageThread(with: "UITest Thread") {
+            XCTAssert(controller.messageThreads.count > 0)
+            controller.createMessage(in: controller.messageThreads[0], withText: "Testing", sender: "MEE") {
+                sleep(8)
+            }
+        }
+    }
 }
