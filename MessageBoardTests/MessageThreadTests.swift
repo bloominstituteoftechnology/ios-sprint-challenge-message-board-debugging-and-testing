@@ -27,4 +27,17 @@ class MessageThreadTests: XCTestCase {
                 
     }
     
+    func testFetchDataTask() {
+        let messageThreadController = MessageThreadController()
+        let count = messageThreadController.messageThreads.count
+        let expectation = XCTestExpectation(description: "Wait for data task.")
+                
+        messageThreadController.fetchMessageThreads {
+            XCTAssertNotEqual(messageThreadController.messageThreads.count, count)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2)
+    }
+    
 }
