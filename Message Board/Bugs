@@ -1,4 +1,9 @@
 Bug 1
     .resume wasn't being called in the createMessageThread function in file MessageThreadController
         Added .resume()
-
+Bug 2
+    JSONDecoder didn't have codingKeys
+        Added them for the MessageThread.
+Bug 3
+    JSONDecoder not decoding right in the fetchMessageThread function.
+        Created a dictionary and changed it into an array of values for the dictionary
