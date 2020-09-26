@@ -55,4 +55,13 @@ class Message_BoardUITests: XCTestCase {
         waitForExpectations(timeout: 5)
     }
     
+    func testCancelButton() {
+        firstChild.tap()
+        app.navigationBars.buttons["Add"].tap()
+        let cancelButtonExpectation = expectation(for: NSPredicate(format: "count == 1"), evaluatedWith: app.tables.cells)
+        cancelButtonExpectation.expectationDescription = "Table view should be visible"
+        app.navigationBars.buttons["Cancel"].tap()
+        waitForExpectations(timeout: 2)
+    }
+    
 }
