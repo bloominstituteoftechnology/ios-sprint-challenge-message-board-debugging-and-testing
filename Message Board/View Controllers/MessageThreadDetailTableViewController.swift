@@ -17,16 +17,16 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let messageThread = messageThread else {return}
-
-        title = messageThread.title
+        title = messageThread?.title
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         self.tableView.reloadData()
-        
+       // guard let messageThread = messageThread else {return}
+       // title = messageThread?.title
        
     }
     
@@ -50,7 +50,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
+        if segue.identifier == "AddMessage" {
             guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController

@@ -76,7 +76,7 @@
             </objects>
             <point key="canvasLocation" x="708" y="231"/>
         </scene>
-        <!--Title-->
+        <!--Message Thread Detail Table View Controller-->
         <scene sceneID="AGx-wy-cw2">
             <objects>
                 <tableViewController id="haD-iA-YGa" customClass="MessageThreadDetailTableViewController" customModule="Message_Board" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +115,7 @@
                             <outlet property="delegate" destination="haD-iA-YGa" id="pF4-ie-2QS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="tHA-qF-qbA">
+                    <navigationItem key="navigationItem" id="tHA-qF-qbA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MRR-1o-pkW">
                             <connections>
                                 <segue destination="Myh-kZ-stt" kind="presentation" identifier="AddMessage" id="3TZ-Xl-1f4"/>
@@ -205,6 +205,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Myh-kZ-stt" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="B4J-Un-aBw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1pM-v2-DYp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
