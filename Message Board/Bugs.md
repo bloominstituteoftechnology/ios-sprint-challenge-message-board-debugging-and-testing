@@ -24,6 +24,7 @@
 - correct spelling errors in prepare forSegue in both TableViewControllers
 - changed guard statement in second prepare forSegue to include navController
 - added DispatchQueue.main.async { dismiss... }
+- unit test - testSegue()
 - ui test - testUICreateMessage()
 - Note: UI testing was producing errors with app.typeText for the messageTextView. Manual testing of this textView works perfectly, and I can see that the textView is being selected during the test (cursor is blinking there.)  I believe this is a bug in the UI Testing itself, not in my methods, so I rewrote the createMessage function to not require input in that field in order to pass the test.
 
