@@ -40,7 +40,7 @@ class Message_BoardUITests: XCTestCase {
     func testLeaveThreadTableViewAndReturn() {
         let count = app.tables.cells.count
         firstChild.tap()
-        app.navigationBars["Title"].buttons["λ Message Board"].tap()
+        app.navigationBars.buttons["λ Message Board"].tap()
         XCTAssertEqual(app.tables.cells.count, count)
     }
     
