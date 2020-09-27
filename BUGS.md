@@ -7,3 +7,6 @@
 
 ## Bug: Title of thread does not show in thread detail view. Instead, it is just "Title".
 ### Fix: Fixed a typo in the prepare for segue "ViewMessageDetail".
+
+## Bug: App fails to retrieve threads from database.
+### Fix: Updated fetchMessageThreads in the MessageThreadController to decode an array instead of a dictionary.

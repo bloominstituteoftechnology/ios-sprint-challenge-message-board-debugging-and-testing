@@ -28,6 +28,7 @@ class MessageThread: Codable, Equatable {
         let messagesDictionaries = try container.decodeIfPresent([String: Message].self, forKey: .messages)
         
         let messages = messagesDictionaries?.compactMap({ $0.value }) ?? []
+        print(messages)
         
         self.title = title
         self.identifier = identifier
