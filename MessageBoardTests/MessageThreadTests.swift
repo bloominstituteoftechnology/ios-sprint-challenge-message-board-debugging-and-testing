@@ -11,5 +11,29 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
+    func testCreateNewThread() {
+        let messageThreadController = MessageThreadController()
+        XCTAssertEqual(messageThreadController.messageThreads.count, 0)
+        messageThreadController.createMessageThread(with: "Thread title yo") {
+            XCTAssertEqual(messageThreadController.messageThreads.count, 1)
+            XCTAssertEqual(messageThreadController.messageThreads[0].title, "Thread title yo")
+        }
+    }
+    
+    func testExpectation() {
+        let didFinish = expectation(description: "didFinish")
+        var name = ""
+        let url = URL(string: "https://apple.com")!
+
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            didFinish.fulfill()
+            name = "Dave"
+        }.resume()
+
+        wait(for: [didFinish], timeout: 5) // blocking sync wait
+
+        // Assertion only happens after the time out, or web request completes
+        XCTAssertEqual("Dave", name)
+    }
     
 }
