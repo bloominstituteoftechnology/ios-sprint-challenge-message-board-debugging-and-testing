@@ -28,6 +28,23 @@ class Message_BoardUITests: XCTestCase {
         newThreadTextField.tap()
         newThreadTextField.typeText("Hurry and create it rn")
         app.buttons["Return"].tap()
+        
         XCTAssert(app.tables.staticTexts["Hurry and create it rn"].exists)
+    }
+    
+    func testThreadTitle() {
+        newThreadTextField.tap()
+        newThreadTextField.typeText("Hurry and create it rn")
+        app.buttons["Return"].tap()
+        
+        XCTAssert(app.tables.staticTexts["Hurry and create it rn"].exists)
+        
+        app.tables.staticTexts["Hurry and create it rn"].tap()
+        
+        XCTAssert(app.navigationBars["Hurry and create it rn"].exists)
+        
+//        app.navigationBars.buttons["λ Message Board"].tap()
+//        
+//        XCTAssert(app.tables.staticTexts["Hurry and create it rn"].exists)
     }
 }

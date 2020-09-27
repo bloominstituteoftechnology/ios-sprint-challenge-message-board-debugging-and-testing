@@ -4,3 +4,6 @@
 
 ## Bug: Newly created threads do not appear in the table until the table is acted on (e.g. scrolling).
 ### Fix: Move tableView.reloadData to background queue.
+
+## Bug: Title of thread does not show in thread detail view. Instead, it is just "Title".
+### Fix: Fixed a typo in the prepare for segue "ViewMessageDetail".
