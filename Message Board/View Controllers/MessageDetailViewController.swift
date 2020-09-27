@@ -17,19 +17,30 @@ class MessageDetailViewController: UIViewController {
 
     @IBOutlet weak var senderNameTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        messageTextView.accessibilityIdentifier = "MessageDetailViewController.MessageTextView"
+    }
 
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
+        var messageText = "..."
         guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
             let messageThread = messageThread else { return }
-        
+        if let message = messageTextView.text {
+            messageText = message
+        }
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
         })
     }
 }
