@@ -8,15 +8,9 @@
 
 import UIKit
 
-protocol MessageDelegate: class {
-    func didAddMessage()
-}
-
 class MessageDetailViewController: UIViewController {
     
     // MARK: - Properties
-    
-    weak var delegate: MessageDelegate?
     
     var messageThreadController: MessageThreadController?
     var messageThread: MessageThread?
@@ -27,7 +21,6 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -38,9 +31,5 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
-        
-        self.delegate?.didAddMessage()
-        
-        dismiss(animated: true, completion: nil)
     }
 }
