@@ -20,6 +20,21 @@ class MessageThreadTests: XCTestCase {
         }
     }
     
+    func testCreateNewMessage() {
+        let mTC = MessageThreadController()
+        XCTAssertEqual(mTC.messageThreads.count, 0)
+        mTC.createMessageThread(with: "Thread title yo") {
+            XCTAssertEqual(mTC.messageThreads.count, 1)
+            XCTAssertEqual(mTC.messageThreads[0].title, "Thread title yo")
+            XCTAssertEqual(mTC.messageThreads[0].messages.count, 0)
+            mTC.createMessage(in: mTC.messageThreads[0], withText: "Hey what up?", sender: "Me") {
+                XCTAssertEqual(mTC.messageThreads[0].messages.count, 1)
+                XCTAssertEqual(mTC.messageThreads[0].messages[0].text, "Hey what up?")
+                XCTAssertEqual(mTC.messageThreads[0].messages[0].sender, "Me")
+            }
+        }
+    }
+    
     func testExpectation() {
         let didFinish = expectation(description: "didFinish")
         var name = ""

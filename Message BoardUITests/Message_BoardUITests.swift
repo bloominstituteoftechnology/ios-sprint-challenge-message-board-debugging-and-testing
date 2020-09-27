@@ -16,6 +16,14 @@ class Message_BoardUITests: XCTestCase {
         return app.tables.textFields["Create a new thread:"]
     }
     
+    private var nameTextField: XCUIElement {
+        return app.textFields["Enter your name:"]
+    }
+    
+    private var messageView: XCUIElement {
+        return app.textViews.element(boundBy: 0)
+    }
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
         
@@ -42,9 +50,41 @@ class Message_BoardUITests: XCTestCase {
         app.tables.staticTexts["Hurry and create it rn"].tap()
         
         XCTAssert(app.navigationBars["Hurry and create it rn"].exists)
+    }
+    
+    func testCreateNewMessage() {
+        newThreadTextField.tap()
+        newThreadTextField.typeText("Hurry and create it rn")
+        app.keyboards.buttons["Return"].tap()
         
-//        app.navigationBars.buttons["λ Message Board"].tap()
-//        
-//        XCTAssert(app.tables.staticTexts["Hurry and create it rn"].exists)
+        XCTAssert(app.tables.staticTexts["Hurry and create it rn"].exists)
+        
+        app.tables.staticTexts["Hurry and create it rn"].tap()
+        app.navigationBars["Hurry and create it rn"].buttons["Add"].tap()
+        nameTextField.tap()
+        nameTextField.typeText("Kent Clark")
+        messageView.tap()
+        messageView.typeText("Mansuper")
+        app.buttons["Send"].tap()
+        
+        XCTAssert(app.tables.staticTexts["Mansuper"].exists)
+    }
+    
+    func testCancelNewMessage() {
+        newThreadTextField.tap()
+        newThreadTextField.typeText("Hurry and create it rn")
+        app.keyboards.buttons["Return"].tap()
+        
+        XCTAssert(app.tables.staticTexts["Hurry and create it rn"].exists)
+        
+        app.tables.staticTexts["Hurry and create it rn"].tap()
+        app.navigationBars["Hurry and create it rn"].buttons["Add"].tap()
+        nameTextField.tap()
+        nameTextField.typeText("Kent Clark")
+        messageView.tap()
+        messageView.typeText("Mansuper")
+        app.buttons["Cancel"].tap()
+        
+        XCTAssertFalse(app.tables.staticTexts["Mansuper"].exists)
     }
 }

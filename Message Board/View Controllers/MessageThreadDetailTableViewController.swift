@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageThreadDetailTableViewController: UITableViewController {
+class MessageThreadDetailTableViewController: UITableViewController, MessageDelegate {
     
     // MARK: - Properties
 
@@ -47,11 +47,17 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+        if segue.identifier == "AddMessage" {
+            guard let navC = segue.destination as? UINavigationController,
+                  let destinationVC = navC.viewControllers.first as? MessageDetailViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
+            destinationVC.delegate = self
         }
+    }
+    
+    func didAddMessage() {
+        self.tableView.reloadData()
     }
 }
