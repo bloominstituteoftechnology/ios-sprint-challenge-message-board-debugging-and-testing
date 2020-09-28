@@ -24,7 +24,10 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tableView.reloadData()
+        
+            self.tableView.reloadData()
+        
+       
     }
     
     // MARK: - UITableViewDataSource
