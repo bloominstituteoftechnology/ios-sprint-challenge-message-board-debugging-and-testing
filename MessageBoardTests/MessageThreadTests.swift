@@ -40,6 +40,8 @@ class MessageThreadTests: XCTestCase {
             XCTAssertEqual(thread.messages[0].sender, sender)
         }
     
+    
+    
 }
 
 extension MessageThreadTests {
