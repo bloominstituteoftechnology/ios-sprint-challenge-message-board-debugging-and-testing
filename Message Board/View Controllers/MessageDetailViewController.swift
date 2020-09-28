@@ -21,7 +21,7 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
-         dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -33,6 +33,6 @@ class MessageDetailViewController: UIViewController {
             print("Message created!")
         })
         
-        navigationController?.popToRootViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
