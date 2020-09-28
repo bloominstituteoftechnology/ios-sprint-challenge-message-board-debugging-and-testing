@@ -19,27 +19,6 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
-    
-    
-//    func testNewMessage() {
-//        
-//        app.launch()
-//        
-//        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Michael Cookies"]/*[[".cells.staticTexts[\"Michael Cookies\"]",".staticTexts[\"Michael Cookies\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        
-//        let michaelCookiesNavigationBar = app.navigationBars["Michael Cookies"]
-//        michaelCookiesNavigationBar.buttons["Add"].tap()
-//        app/*@START_MENU_TOKEN@*/.textFields["newMessageTitleTextfield"]/*[[".textFields[\"Enter your name:\"]",".textFields[\"newMessageTitleTextfield\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        
-//        let newmessagetextviewTextView = app.textViews["newMessageTextView"]
-//        newmessagetextviewTextView.tap()
-//        newmessagetextviewTextView.tap()
-//        app.navigationBars["New Message"].buttons["Send"].tap()
-//        michaelCookiesNavigationBar.buttons["λ Message Board"].tap()
-//        
-//    }
-    
-    
 
     
     func testCancelMessage() {
@@ -56,7 +35,24 @@ class Message_BoardUITests: XCTestCase {
       
     }
 
-    
-    
+    func testCreateNewMessage() {
+        
+        let app = XCUIApplication()
+        app.tables.staticTexts["A New Thread"].tap()
+        
+        let newThreadNavigationBar = app.navigationBars["A New Thread"]
+        newThreadNavigationBar.buttons["Add"].tap()
+        
+        let newmessagetitletextfieldTextField = app/*@START_MENU_TOKEN@*/.textFields["newMessageTitleTextfield"]/*[[".textFields[\"Enter your name:\"]",".textFields[\"newMessageTitleTextfield\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        newmessagetitletextfieldTextField.tap()
+        newmessagetitletextfieldTextField.tap()
+        
+        let newmessagetextviewTextView = app.textViews["newMessageTextView"]
+        newmessagetextviewTextView.tap()
+        newmessagetextviewTextView.tap()
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        newThreadNavigationBar.buttons["λ Message Board"].tap()
+        
+    }
     
 }//

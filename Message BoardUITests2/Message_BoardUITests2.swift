@@ -19,6 +19,24 @@ class Message_BoardUITests2: XCTestCase {
                 XCUIApplication().launch()
                 
                 
+                
+                let app = XCUIApplication()
+                app.tables/*@START_MENU_TOKEN@*/.staticTexts["New Thread"]/*[[".cells.staticTexts[\"New Thread\"]",".staticTexts[\"New Thread\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+                
+                let newThreadNavigationBar = app.navigationBars["New Thread"]
+                newThreadNavigationBar.buttons["Add"].tap()
+                
+                let newmessagetitletextfieldTextField = app/*@START_MENU_TOKEN@*/.textFields["newMessageTitleTextfield"]/*[[".textFields[\"Enter your name:\"]",".textFields[\"newMessageTitleTextfield\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+                newmessagetitletextfieldTextField.tap()
+                newmessagetitletextfieldTextField.tap()
+                
+                let newmessagetextviewTextView = app.textViews["newMessageTextView"]
+                newmessagetextviewTextView.tap()
+                newmessagetextviewTextView.tap()
+                app.navigationBars["New Message"].buttons["Send"].tap()
+                newThreadNavigationBar.buttons["λ Message Board"].tap()
+                
+                
                                 
             }
         }
