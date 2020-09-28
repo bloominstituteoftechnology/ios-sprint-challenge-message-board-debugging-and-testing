@@ -28,17 +28,6 @@ class MessageThreadController {
                 completion()
                 return
             }
-            /*
-             do {
-                 let taskRepresentations = Array(try JSONDecoder().decode([String : TaskRepresentation].self, from: data).values)
-                 try self.updateTasks(with: taskRepresentations)
-                 completion(.success(true))
-             } catch {
-                 print("Error decoding task representations: \(error)")
-                 completion(.failure(.noDecode))
-                 return
-             }
-             */
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             do {
