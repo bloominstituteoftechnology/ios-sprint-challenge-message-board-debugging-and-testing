@@ -19,6 +19,15 @@
 # Fixed Bugs
 1. unable to create a new thread- fixed-perform reloadData in a async block + .resume calls
 
-2.
+2. CANCEL working
 
-3.
+3. FetchMessage() working
+        messageThreads is of type array.        
+        wrapped  decoder in an array, make decoded object a dictionary, extract .value : messageThread
+        
+4. fixed
+
+5.
+        
+        
+        
