@@ -19,4 +19,17 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    func creatingNewThread() {
+        app.tables.textFields["CreateNewThread"].tap()
+        app.tables.staticTexts["NewThread"].tap()
+    }
+    
+    func sendButton() {
+        
+    }
+    
+    func cancelButton() {
+        
+    }
 }

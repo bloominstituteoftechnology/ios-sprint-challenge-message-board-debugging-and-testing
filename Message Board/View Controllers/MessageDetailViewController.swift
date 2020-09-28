@@ -14,7 +14,7 @@ class MessageDetailViewController: UIViewController {
     
     var messageThreadController: MessageThreadController? {
         didSet {
-            print("Message Thread Controller: \(messageThreadController)")
+         //   print("Message Thread Controller: \(messageThreadController)")
         }
     }
     var messageThread: MessageThread?
@@ -29,18 +29,22 @@ class MessageDetailViewController: UIViewController {
     }
     
     @IBAction func sendMessage(_ sender: UIBarButtonItem) {
-        createMessage()
-        dismiss(animated: true, completion: nil)
-        print("dismissed")
-    }
-    
-    private func createMessage() {
+        
         guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+              let messageText = messageTextView.text,
+              let messageThread = messageThread else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        
+        //TRYING TO SAVE MESSAGES SENT - Stretch Goal
+        
+//        messageThreadController?.createLocalMessageThread(with: "\(messageThread.messages)", completion: {
+//            print("Message saved!")
+//        })
+        
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }
+
