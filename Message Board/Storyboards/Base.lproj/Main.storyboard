@@ -29,7 +29,7 @@
                                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <action selector="createThread:" destination="5nQ-VB-nXu" eventType="editingDidEndOnExit" id="m9D-Dw-mp7"/>
-                                        <segue destination="haD-iA-YGa" kind="show" id="MpB-hG-eDh"/>
+                                        <segue destination="haD-iA-YGa" kind="show" identifier="CreateNewMessageThread" id="MpB-hG-eDh"/>
                                     </connections>
                                 </textField>
                             </subviews>
@@ -221,6 +221,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pxs-pL-1M3"/>
+        <segue reference="MpB-hG-eDh"/>
     </inferredMetricsTieBreakers>
 </document>
