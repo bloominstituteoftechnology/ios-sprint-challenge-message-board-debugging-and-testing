@@ -38,7 +38,7 @@ class MessageThreadsTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    
+
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
