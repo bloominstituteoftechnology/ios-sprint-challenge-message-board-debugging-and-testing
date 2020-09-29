@@ -37,13 +37,6 @@ class MessageDetailViewController: UIViewController {
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
-        
-        //TRYING TO SAVE MESSAGES SENT - Stretch Goal
-        
-//        messageThreadController?.createLocalMessageThread(with: "\(messageThread.messages)", completion: {
-//            print("Message saved!")
-//        })
-        
         navigationController?.dismiss(animated: true, completion: nil)
     }
 }

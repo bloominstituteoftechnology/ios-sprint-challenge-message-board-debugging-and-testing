@@ -13,12 +13,23 @@ class MessageThreadTests: XCTestCase {
     
     var messageThreadController = MessageThreadController()
     
-    func creatingNewThread() {
-        messageThreadController.createMessageThread(with: "test") {
-            XCTAssert(self.messageThreadController.messageThreads.count > 0)
-            self.messageThreadController.createMessage(in: self.messageThreadController.messageThreads[0], withText: "hello", sender: "craig") {
-                print("test completted")
-            }
+    func testCreatingNewThread() throws {
+        let expectation = XCTestExpectation(description: "NewThread")
+        messageThreadController.createMessageThread(with: "Test") {
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 2)
+        
+        XCTAssertEqual(messageThreadController.messageThreads.last!.title, "Test")
+    }
+    
+    func testFetchingMessageThreads() throws {
+       let expectation = XCTestExpectation(description: "FetchThread")
+        messageThreadController.fetchMessageThreads {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 2)
+        
+        XCTAssertGreaterThan(messageThreadController.messageThreads.count, 3)
     }
 }

@@ -24,7 +24,6 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
-        updateViews()
     }
     
     // MARK: - UITableViewDataSource
@@ -56,22 +55,5 @@ class MessageThreadDetailTableViewController: UITableViewController {
                 
             }
         }
-    }
-}
-
-extension MessageThreadDetailTableViewController {
-    private func updateViews() {
-        
-        //STRETCH GOALS
-        
-        
-//        guard let messageThread = messageThread?.messages, let message = message else {return}
-//
-//        let text = message.text
-//        let sender = message.sender
-//
-//        messageThreadController?.createMessage(in: messages, withText: text, sender: sender, completion: {
-//            print("Message Saved")
-//        })
     }
 }

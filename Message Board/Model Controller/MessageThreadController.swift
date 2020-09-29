@@ -84,11 +84,12 @@ class MessageThreadController {
         guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
         let message = MessageThread.Message(text: text, sender: sender)
+        
         messageThreads[index].messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("messages").appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.title).appendingPathExtension("json").appendingPathExtension("messages")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue
         
         do {
             request.httpBody = try JSONEncoder().encode(message)
