@@ -28,11 +28,15 @@ class MessageThreadTests: XCTestCase {
     }
     func testCreateMessage() {
         let messageThread = MessageThread(title: "Where are you?")
+        let expectation = XCTestExpectation(description: "Create Message")
         controller.createMessageThread(with: messageThread.title) {
-            self.controller.createMessage(in: messageThread, withText: "Right here", sender: "Rob") {
+            self.controller.createMessage(in: messageThread, withText: "Right here", sender: "Bill") {
                 
-                XCTAssertTrue(self.controller.messageThreads[0].messages[0].sender == "Rob")
+                expectation.fulfill()
             }
+            self.wait(for: [expectation], timeout: 10)
+            
+            XCTAssertTrue(self.controller.messageThreads[0].messages[0].sender == "Rob")
         }
     }
     func testLoadingMessages() {
