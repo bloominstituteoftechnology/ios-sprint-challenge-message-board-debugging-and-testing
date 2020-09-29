@@ -11,4 +11,6 @@
 3.  self.tableView.reloadData( ) on MessageThreadDetailTableViewController line 38 not running on main thread.
     a. solution is to implement DispatchQueue.main.async on self.tableView.reloadData()
   
-4. 
+4. Threads and messages are not being fetched and or saved to dictionary
+
+5. Send message and cancel ui buttons do not work

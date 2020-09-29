@@ -39,7 +39,7 @@ class MessageThreadTests: XCTestCase {
             XCTAssertEqual(thread.messages.count, 1)
             XCTAssertEqual(thread.messages[0].sender, sender)
         }
-    
+
     
     
 }
