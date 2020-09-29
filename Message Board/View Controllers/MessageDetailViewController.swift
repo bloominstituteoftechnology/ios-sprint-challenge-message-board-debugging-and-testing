@@ -12,7 +12,11 @@ class MessageDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-    var messageThreadController: MessageThreadController?
+    var messageThreadController: MessageThreadController? {
+        didSet {
+         //   print("Message Thread Controller: \(messageThreadController)")
+        }
+    }
     var messageThread: MessageThread?
 
     @IBOutlet weak var senderNameTextField: UITextField!
@@ -21,15 +25,19 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func sendMessage(_ sender: Any) {
+    @IBAction func sendMessage(_ sender: UIBarButtonItem) {
+        
         guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+              let messageText = messageTextView.text,
+              let messageThread = messageThread else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }
+
