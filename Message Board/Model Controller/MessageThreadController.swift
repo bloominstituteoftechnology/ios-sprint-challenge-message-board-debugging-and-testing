@@ -17,10 +17,10 @@ class MessageThreadController {
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            fetchLocalMessageThreads(completion: completion)
-            return
-        }
+//        if isUITesting {
+//            fetchLocalMessageThreads(completion: completion)
+//            return
+//        }
         
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
@@ -46,11 +46,11 @@ class MessageThreadController {
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            createLocalMessageThread(with: title, completion: completion)
-            return
-        }
+//         This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+//        if isUITesting {
+//            createLocalMessageThread(with: title, completion: completion)
+//            return
+//        }
         
         let thread = MessageThread(title: title)
         
@@ -79,10 +79,10 @@ class MessageThreadController {
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
         
         // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
-        if isUITesting {
-            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
-            return
-        }
+//        if isUITesting {
+//            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+//            return
+//        }
         
         guard let index = messageThreads.firstIndex(of: messageThread) else { completion(); return }
         
