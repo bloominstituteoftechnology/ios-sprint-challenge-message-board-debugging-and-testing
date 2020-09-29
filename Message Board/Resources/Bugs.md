@@ -6,3 +6,5 @@ Debug Strategy:
 #2 Missing resume in the apicontroller
 
 #3 Misspelling of the segue identifier "AddMessage" 
+
+#4 Segue was not set up properly 
