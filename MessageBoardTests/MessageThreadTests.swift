@@ -14,23 +14,43 @@ class MessageThreadTests: XCTestCase {
     
     let controller = MessageThreadController()
     
-    func testCreatingThreadAndSendToServer() {
-        let messageThread = MessageThread(title: "Test")
-        controller.createMessageThread(with: messageThread.title) {
-        XCTAssertTrue(self.controller.messageThreads[0].title == "Test")
+//    func testCreatingThreadAndSendToServer() {
+//        let messageThread = MessageThread(title: "Test")
+//        controller.createMessageThread(with: messageThread.title) {
+//        XCTAssertTrue(self.controller.messageThreads[0].title == "Test")
+//        }
+//    }
+//    
+//    func testCreatingMessageOnThread() {
+//        let messageThread = MessageThread(title: "Lambda")
+//        controller.createMessageThread(with: messageThread.title){
+//            self.controller.createMessage(in: messageThread, withText: "We've come so far", sender: "Clay") {
+//                XCTAssertTrue(self.controller.messageThreads[0].messages[0].sender == "Clay")
+//            }
+//        }
+//    }
+//    
+//    func testLoadingMessageThreads() {
+//        XCTAssertNotNil(controller.messageThreads)
+//    }
+    
+    func testFetchingMessageThreads() {
+        let messageController = MessageThreadController()
+    messageController.fetchMessageThreads {
+        XCTAssert(!messageController.messageThreads.isEmpty)
         }
     }
     
-    func testCreatingMessageOnThread() {
-        let messageThread = MessageThread(title: "Lambda")
-        controller.createMessageThread(with: messageThread.title){
-            self.controller.createMessage(in: messageThread, withText: "We've come so far", sender: "Clay") {
-                XCTAssertTrue(self.controller.messageThreads[0].messages[0].sender == "Clay")
-            }
-        }
+    func testCreatingMessageThread() {
+        let title = "Title"
+        let createMessage = MessageThread(title: title)
+        XCTAssertNotNil(createMessage)
     }
     
-    func testLoadingMessageThreads() {
-        XCTAssertNotNil(controller.messageThreads)
+    func testCreateAMessage() {
+        let text = "Text"
+        let sender = "Sender"
+        let createMessage = MessageThread.Message(text: text, sender: sender)
+        XCTAssertNotNil(createMessage)
     }
 }
