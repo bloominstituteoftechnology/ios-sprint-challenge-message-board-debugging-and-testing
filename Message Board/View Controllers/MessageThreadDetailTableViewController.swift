@@ -18,7 +18,7 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = messageThread?.title
+        setUpViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +26,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         self.tableView.reloadData()
     }
+    
+
     
     // MARK: - UITableViewDataSource
 
@@ -36,10 +38,10 @@ class MessageThreadDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
 
-        let message = messageThread?.messages[indexPath.row]
+        guard let message = messageThread?.messages[indexPath.row] else { return UITableViewCell() }
         
-        cell.textLabel?.text = message?.text
-        cell.detailTextLabel?.text = message?.sender
+        cell.textLabel?.text = message.text
+        cell.detailTextLabel?.text = message.sender
         
         return cell
     }
@@ -47,11 +49,21 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
+        if segue.identifier == "AddMessage" {
+            guard let navController = segue.destination as? UINavigationController, let destinationVC = navController.viewControllers.first as? MessageDetailViewController else {
+                print("No destinationVC")
+                return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThread
         }
+    }
+    
+    func setUpViews() {
+        guard let messageThread = messageThread else {
+            print("No Message Thread")
+            return
+        }
+        title = messageThread.title
     }
 }

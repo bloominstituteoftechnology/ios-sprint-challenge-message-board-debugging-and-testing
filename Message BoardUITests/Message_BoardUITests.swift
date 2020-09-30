@@ -19,4 +19,15 @@ class Message_BoardUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    
+    func testCreateNewThread() {
+        
+        
+    }
+    
+    func testCreateNewMessage() {
+        try! setUpWithError()
+        
+    }
 }
