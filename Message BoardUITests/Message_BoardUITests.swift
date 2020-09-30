@@ -28,7 +28,6 @@ class Message_BoardUITests: XCTestCase {
     func testSegueToViewMessageThread() {
         
         let app = XCUIApplication()
-//        app.tables/*@START_MENU_TOKEN@*/.staticTexts["HI"]/*[[".cells.staticTexts[\"HI\"]",".staticTexts[\"HI\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         tapThread()
         let navagationBarTitle = app.navigationBars["HI"].staticTexts["HI"]
         
@@ -37,9 +36,7 @@ class Message_BoardUITests: XCTestCase {
     
     func testSendingMessage() {
         let app = XCUIApplication()
-//        app.tables.staticTexts["HI"].tap()
         tapThread()
-//        app.navigationBars["HI"].buttons["Add"].tap()
         tappedAddButton()
         let nameTextField = app.textFields["Enter your name:"]
         nameTextField.tap()
@@ -50,13 +47,17 @@ class Message_BoardUITests: XCTestCase {
     }
     func testCancelButtonTapped() {
         
-        let app = XCUIApplication()
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Create A New Thread"]/*[[".cells.staticTexts[\"Create A New Thread\"]",".staticTexts[\"Create A New Thread\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        let createANewThreadNavigationBar = app.navigationBars["Create A New Thread"]
-        createANewThreadNavigationBar.buttons["Add"].tap()
-        app.navigationBars["New Message"].buttons["Cancel"].tap()
         
-        XCTAssertEqual(createANewThreadNavigationBar.label, "")
+        let app = XCUIApplication()
+        app.tables.children(matching: .cell).element(boundBy: 2).staticTexts["Where are you?"].tap()
+        
+        let navigationBar = app.navigationBars["Where are you?"]
+        let StaticText = navigationBar.staticTexts["Where are you?"]
+        navigationBar.buttons["Add"].tap()
+        app.navigationBars["New Message"].buttons["Cancel"].tap()
+        navigationBar.staticTexts["Where are you?"].tap()
+      
+        XCTAssertEqual(StaticText.label, "Where are you?")
     }
     
     //MARK: - Functions -

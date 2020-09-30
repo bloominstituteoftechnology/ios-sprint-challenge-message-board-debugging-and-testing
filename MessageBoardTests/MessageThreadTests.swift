@@ -27,17 +27,19 @@ class MessageThreadTests: XCTestCase {
         XCTAssertTrue(self.controller.messageThreads[0].title == "Test")
     }
     func testCreateMessage() {
-        let messageThread = MessageThread(title: "Where are you?")
+        let threadTitle = "Where are you?"
+        let message = "Right here"
+        let sender = "Rob"
         let expectation = XCTestExpectation(description: "Create Message")
-        controller.createMessageThread(with: messageThread.title) {
-            self.controller.createMessage(in: messageThread, withText: "Right here", sender: "Bill") {
-                
+        controller.createMessageThread(with: threadTitle) {
+            self.controller.createMessage(in: self.controller.messageThreads[0], withText: message, sender: sender) {
                 expectation.fulfill()
             }
-            self.wait(for: [expectation], timeout: 10)
             
-            XCTAssertTrue(self.controller.messageThreads[0].messages[0].sender == "Rob")
         }
+        
+        self.wait(for: [expectation], timeout: 10)
+        XCTAssertEqual(self.controller.messageThreads[0].messages[0].sender, sender)
     }
     func testLoadingMessages() {
         XCTAssertNotNil(controller.messageThreads)
