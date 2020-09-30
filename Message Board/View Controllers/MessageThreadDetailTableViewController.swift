@@ -11,14 +11,15 @@ import UIKit
 class MessageThreadDetailTableViewController: UITableViewController {
     
     // MARK: - Properties
-
+    
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = messageThread?.title
+        print("Messages: \(messageThread?.messages.count)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,14 +29,14 @@ class MessageThreadDetailTableViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDataSource
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageThread?.messages.count ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-
+        
         let message = messageThread?.messages[indexPath.row]
         
         cell.textLabel?.text = message?.text
@@ -43,15 +44,16 @@ class MessageThreadDetailTableViewController: UITableViewController {
         
         return cell
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+        if segue.identifier == "AddMessage" {
+            guard let navController = segue.destination as? UINavigationController,
+            let destinationVC = navController.viewControllers.first as? MessageDetailViewController else { return }
+                destinationVC.messageThreadController = messageThreadController
+                destinationVC.messageThread = messageThread
+            }
         }
     }
-}
+

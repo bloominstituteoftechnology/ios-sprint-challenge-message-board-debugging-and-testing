@@ -10,13 +10,52 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
-    var app = XCUIApplication()
+    private var app: XCUIApplication {
+        return XCUIApplication()
+    }
+    
+    private var firstRow: XCUIElement {
+        return app.tables.children(matching: .cell).element(boundBy: 0)
+    }
     
     override func setUpWithError() throws {
         continueAfterFailure = false
-        
-        // NOTE: Keep this setup as is for UI Testing
         app.launchArguments = ["UITesting"]
         app.launch()
     }
+    
+    func testCreateNewThread() {
+        try! setUpWithError()
+        
+        let createTextField = XCUIApplication().tables.textFields["Create a new thread:"]
+        createTextField.tap()
+        createTextField.typeText("A New Thread")
+        app.keyboards.buttons["return"].tap()
+        XCTAssert(app.tables.cells.staticTexts["A New Thread"].exists)
+    }
+    
+    
+    func testCheckThreadMessages() {
+        try! setUpWithError()
+        
+        
+        firstRow.tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
+        app.textFields["Enter your name:"].tap()
+        app.textFields["Enter your name:"].typeText("Bohdan")
+        app.navigationBars["New Message"].buttons["Send"].tap()
+        XCTAssert(app.tables.cells.staticTexts["Bohdan"].exists)
+    }
+    
+    func testThreadMessage() {
+        XCTAssert(app.staticTexts["A New Thread"].exists)
+        app.staticTexts["A New Thread"].tap()
+        XCTAssert(app.staticTexts["Bohdan"].exists)
+    }
+    
+    
 }
+
+
+
+

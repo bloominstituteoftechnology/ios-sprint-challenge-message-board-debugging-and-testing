@@ -53,3 +53,4 @@ class MessageThread: Codable, Equatable {
             lhs.messages == rhs.messages
     }
 }
+

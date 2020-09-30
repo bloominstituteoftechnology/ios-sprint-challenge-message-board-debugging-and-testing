@@ -14,6 +14,11 @@ class MessageThreadsTableViewController: UITableViewController {
     
     let messageThreadController = MessageThreadController()
     @IBOutlet weak var threadTitleTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.reloadData()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,7 +40,9 @@ class MessageThreadsTableViewController: UITableViewController {
         threadTitleTextField.text = ""
         
         messageThreadController.createMessageThread(with: threadTitle) {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -53,12 +60,13 @@ class MessageThreadsTableViewController: UITableViewController {
         return cell
     }
     
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewMesageThread" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
+        if segue.identifier == "ViewMessageThread" {
+        guard let indexPath = tableView.indexPathForSelectedRow,
+              let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
