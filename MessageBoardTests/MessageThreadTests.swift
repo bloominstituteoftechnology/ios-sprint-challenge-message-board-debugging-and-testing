@@ -11,41 +11,37 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    // I tried to add expectations but either I did it wrong or my tests just fail now. I left the tests as I first had them below these commented ones.
-    
-//    func testCreateNewThread() {
-//        let messageThreadController = MessageThreadController()
-//        let didFinish = expectation(description: "didFinish")
-//
-//        XCTAssertEqual(messageThreadController.messageThreads.count, 0)
-//        messageThreadController.createMessageThread(with: "Thread title yo") {
-//            didFinish.fulfill()
-//            self.wait(for: [didFinish], timeout: 5)
-//
-//            XCTAssertEqual(messageThreadController.messageThreads.count, 1)
-//            XCTAssertEqual(messageThreadController.messageThreads[0].title, "Thread title yo")
-//        }
-//    }
-//
-//    func testCreateNewMessage() {
-//        let mTC = MessageThreadController()
-//        let didFinish = expectation(description: "didFinish")
-//
-//        XCTAssertEqual(mTC.messageThreads.count, 0)
-//        mTC.createMessageThread(with: "Thread title yo") {
-//            didFinish.fulfill()
-//            self.wait(for: [didFinish], timeout: 5)
-//
-//            XCTAssertEqual(mTC.messageThreads.count, 1)
-//            XCTAssertEqual(mTC.messageThreads[0].title, "Thread title yo")
-//            XCTAssertEqual(mTC.messageThreads[0].messages.count, 0)
-//            mTC.createMessage(in: mTC.messageThreads[0], withText: "Hey what up?", sender: "Me") {
-//                XCTAssertEqual(mTC.messageThreads[0].messages.count, 1)
-//                XCTAssertEqual(mTC.messageThreads[0].messages[0].text, "Hey what up?")
-//                XCTAssertEqual(mTC.messageThreads[0].messages[0].sender, "Me")
-//            }
-//        }
-//    }
+    func testCreateNewThreadWithExpectation() {
+        let messageThreadController = MessageThreadController()
+        let didFinish = expectation(description: "didFinish")
+
+        XCTAssertEqual(messageThreadController.messageThreads.count, 0)
+        messageThreadController.createMessageThread(with: "Thread title yo") {
+            XCTAssertEqual(messageThreadController.messageThreads.count, 1)
+            XCTAssertEqual(messageThreadController.messageThreads[0].title, "Thread title yo")
+            didFinish.fulfill()
+        }
+        wait(for: [didFinish], timeout: 5)
+    }
+
+    func testCreateNewMessageWithExpectation() {
+        let mTC = MessageThreadController()
+        let didFinish = expectation(description: "didFinish")
+
+        XCTAssertEqual(mTC.messageThreads.count, 0)
+        mTC.createMessageThread(with: "Thread title yo") {
+            XCTAssertEqual(mTC.messageThreads.count, 1)
+            XCTAssertEqual(mTC.messageThreads[0].title, "Thread title yo")
+            XCTAssertEqual(mTC.messageThreads[0].messages.count, 0)
+            mTC.createMessage(in: mTC.messageThreads[0], withText: "Hey what up?", sender: "Me") {
+                XCTAssertEqual(mTC.messageThreads[0].messages.count, 1)
+                XCTAssertEqual(mTC.messageThreads[0].messages[0].text, "Hey what up?")
+                XCTAssertEqual(mTC.messageThreads[0].messages[0].sender, "Me")
+                didFinish.fulfill()
+            }
+        }
+        wait(for: [didFinish], timeout: 5)
+    }
     
     func testCreateNewThread() {
         let messageThreadController = MessageThreadController()
