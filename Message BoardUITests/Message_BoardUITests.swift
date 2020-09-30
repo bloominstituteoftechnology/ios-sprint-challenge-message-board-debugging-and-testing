@@ -14,8 +14,8 @@ class Message_BoardUITests: XCTestCase {
         return XCUIApplication()
     }
     
-    private var messageTextView: XCUIElement {
-        return app.textViews["MessageDetailViewController.TextView"]
+    private var firstRow: XCUIElement {
+        return app.tables.children(matching: .cell).element(boundBy: 0)
     }
     
     override func setUpWithError() throws {
@@ -24,58 +24,36 @@ class Message_BoardUITests: XCTestCase {
         app.launch()
     }
     
-    private func createThreadExample() -> XCUIElement {
-        let createTextField = XCUIApplication().tables.textFields["Create a new thread:"]
-        createTextField.tap()
-        createTextField.typeText("UI Test 1")
-        return createTextField
-    }
-    
     func testCreateNewThread() {
         try! setUpWithError()
-
-      // createThreadExample()
+        
         let createTextField = XCUIApplication().tables.textFields["Create a new thread:"]
         createTextField.tap()
-        createTextField.typeText("UI Test 1")
+        createTextField.typeText("A New Thread")
         app.keyboards.buttons["return"].tap()
-        XCTAssert(app.tables.cells.staticTexts["UI Test 1"].exists)
+        XCTAssert(app.tables.cells.staticTexts["A New Thread"].exists)
     }
-
-    func testCreateNewMessage() {
-        try! setUpWithError()
-        
-       
-        app.tables.staticTexts["UI Test 1"].tap()
-    }
-
+    
+    
     func testCheckThreadMessages() {
         try! setUpWithError()
         
-       
-        app.tables.staticTexts["UI Test 1"].tap()
-        app.navigationBars["UI Test 1"].buttons["Add"].tap()
+        
+        firstRow.tap()
+        app.navigationBars["A New Thread"].buttons["Add"].tap()
         app.textFields["Enter your name:"].tap()
         app.textFields["Enter your name:"].typeText("Bohdan")
-        messageTextView.tap()
-        messageTextView.typeText("Hey! The test is still going!")
         app.navigationBars["New Message"].buttons["Send"].tap()
         XCTAssert(app.tables.cells.staticTexts["Bohdan"].exists)
     }
-
-    func testCancelMessage() {
-        try! setUpWithError()
-
-        app.tables.staticTexts["UI Test 1"].tap()
-        let NavigationBar = app.navigationBars["UI Test 1"]
-        let StaticText = NavigationBar.staticTexts["UI Test 1"]
-        StaticText.tap()
-        NavigationBar.buttons["Add"].tap()
-        app.navigationBars["New Message"].buttons["Cancel"].tap()
-        StaticText.tap()
-        XCTAssertEqual(StaticText.label, "UI Test 1")
+    
+    func testThreadMessage() {
+        XCTAssert(app.staticTexts["A New Thread"].exists)
+        app.staticTexts["A New Thread"].tap()
+        XCTAssert(app.staticTexts["Bohdan"].exists)
     }
-
+    
+    
 }
 
 

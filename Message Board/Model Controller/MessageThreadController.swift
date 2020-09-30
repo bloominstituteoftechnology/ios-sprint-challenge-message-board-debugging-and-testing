@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    static let baseURL = URL(string: "https://messageboardtest-874fb.firebaseio.com/")!
+    static let baseURL = URL(string: "https://messageboardtests-d73c1.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
     
     func fetchMessageThreads(completion: @escaping () -> Void) {
@@ -31,8 +31,9 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             do {
-                let messageDictionary = try JSONDecoder().decode([String: MessageThread].self, from: data)
-                self.messageThreads = messageDictionary.compactMap ({ $0.value })
+//                let messageDictionary = try JSONDecoder().decode([String: MessageThread].self, from: data)
+//                self.messageThreads = messageDictionary.compactMap ({ $0.value })
+                self.messageThreads = try Array(JSONDecoder().decode([String : MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
@@ -42,7 +43,7 @@ class MessageThreadController {
     }
     
     func createMessageThread(with title: String, completion: @escaping () -> Void) {
-        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+        //  This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
         if isUITesting {
             createLocalMessageThread(with: title, completion: completion)
             return
@@ -85,7 +86,7 @@ class MessageThreadController {
         let message = MessageThread.Message(text: text, sender: sender)
         messageThreads[index].messages.append(message)
         
-        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathExtension("messages").appendingPathExtension("json")
+        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
