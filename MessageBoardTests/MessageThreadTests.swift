@@ -14,43 +14,37 @@ class MessageThreadTests: XCTestCase {
     
     let controller = MessageThreadController()
     
-//    func testCreatingThreadAndSendToServer() {
-//        let messageThread = MessageThread(title: "Test")
-//        controller.createMessageThread(with: messageThread.title) {
-//        XCTAssertTrue(self.controller.messageThreads[0].title == "Test")
-//        }
-//    }
-//    
-//    func testCreatingMessageOnThread() {
-//        let messageThread = MessageThread(title: "Lambda")
+    let expectation = XCTestExpectation()
+    
+    func testCreatingThreadAndSendToServer() {
+        let expectation = XCTestExpectation()
+        let messageThread = MessageThread(title: "Test")
+        controller.createMessageThread(with: messageThread.title) {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
+        XCTAssertTrue(self.controller.messageThreads[0].title == "Test")
+
+    }
+    
+    func testCreatingMessageOnThread() {
+        let expectation = XCTestExpectation()
+        let messageThread = MessageThread(title: "Lambda")
+        controller.fetchMessageThreads {
+            expectation.fulfill()
+        }
 //        controller.createMessageThread(with: messageThread.title){
 //            self.controller.createMessage(in: messageThread, withText: "We've come so far", sender: "Clay") {
-//                XCTAssertTrue(self.controller.messageThreads[0].messages[0].sender == "Clay")
-//            }
-//        }
-//    }
-//    
-//    func testLoadingMessageThreads() {
-//        XCTAssertNotNil(controller.messageThreads)
-//    }
-    
-    func testFetchingMessageThreads() {
-        let messageController = MessageThreadController()
-    messageController.fetchMessageThreads {
-        XCTAssert(!messageController.messageThreads.isEmpty)
-        }
+          
+        wait(for: [expectation], timeout: 2.0)//
+        XCTAssertTrue(!controller.messageThreads.isEmpty)
+      //  XCTAssertTrue(self.controller.messageThreads[0].messages[0].sender == "Clay")
     }
     
-    func testCreatingMessageThread() {
-        let title = "Title"
-        let createMessage = MessageThread(title: title)
-        XCTAssertNotNil(createMessage)
+    func testLoadingMessageThreads() {
+        XCTAssertNotNil(controller.messageThreads)
     }
     
-    func testCreateAMessage() {
-        let text = "Text"
-        let sender = "Sender"
-        let createMessage = MessageThread.Message(text: text, sender: sender)
-        XCTAssertNotNil(createMessage)
-    }
 }
+

@@ -12,6 +12,10 @@ import XCTest
 
 class Message_BoardUITests: XCTestCase {
     
+    private var newMessageTextFieldTextView: XCUIElement {
+       return app.textViews["MessageDetailViewController.messageTextView"]
+    }
+    
     var app = XCUIApplication()
     
     override func setUpWithError() throws {
