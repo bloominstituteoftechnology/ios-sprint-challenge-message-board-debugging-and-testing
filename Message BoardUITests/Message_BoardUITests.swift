@@ -52,6 +52,13 @@ class Message_BoardUITests: XCTestCase {
         XCTAssert(app.navigationBars["Hurry and create it rn"].exists)
     }
     
+    /*
+     *
+     *  WARNING!!!!!
+     *  The following tests will not work in the simulator unless
+     *  you disable the connection to your hardware keyboard.
+     *
+     */
     func testCreateNewMessage() {
         newThreadTextField.tap()
         newThreadTextField.typeText("Hurry and create it rn")
