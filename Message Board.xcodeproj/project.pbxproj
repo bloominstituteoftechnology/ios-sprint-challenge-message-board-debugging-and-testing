@@ -22,6 +22,7 @@
 		46436033211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */; };
 		46436035211ABC6B00E7FF73 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */; };
 		9D9B6B07214B7A7B006381F7 /* MessageThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */; };
+		C295F3E42520FD3F0032DF2A /* MyBug in Resources */ = {isa = PBXBuildFile; fileRef = C295F3E32520FD3F0032DF2A /* MyBug */; };
 		CE840C982492D40500817BC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE840C972492D40500817BC8 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		C295F3E32520FD3F0032DF2A /* MyBug */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyBug; sourceTree = "<group>"; };
 		CE840C972492D40500817BC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,6 +188,7 @@
 				4643602F211ABC3700E7FF73 /* MessageThreadsTableViewController.swift */,
 				46436032211ABC5800E7FF73 /* MessageThreadDetailTableViewController.swift */,
 				46436034211ABC6B00E7FF73 /* MessageDetailViewController.swift */,
+				C295F3E32520FD3F0032DF2A /* MyBug */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				4612B5D2211AB41300E7FF73 /* LaunchScreen.storyboard in Resources */,
 				4612B5CF211AB41300E7FF73 /* Assets.xcassets in Resources */,
 				4629C7DC214B924900E7FF73 /* MockMessages.json in Resources */,
+				C295F3E42520FD3F0032DF2A /* MyBug in Resources */,
 				4612B5CD211AB41200E7FF73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
