@@ -11,92 +11,71 @@ import XCTest
 
 class MessageThreadTests: XCTestCase {
     
-    var messageThreadController = MessageThreadController()
+    let messageThreadController = MessageThreadController()
+    
    
-    // Creating a new Thread
-//    func testNewThread() {
-//        let messageThread = MessageThread(title: "Testing")
-//        messageThreadController.createMessageThread(with: messageThread.title) {
-//            XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "Testing")
-//        }
-//        
-//    }
-    
-    func testLoadMessage() {
-        XCTAssertNotNil(messageThreadController.messageThreads)
-    }
-    
-    
-    func testcreateMessage() {
-        let messageTitle = MessageThread(title: "Sprint Challenge")
+    func testCreateThread() {
+        let messageTitle = MessageThread(title: "Test")
+        let exp = XCTestExpectation(description: "Create Thread")
+        
         messageThreadController.createMessageThread(with: messageTitle.title) {
-            self.messageThreadController.createMessage(in: messageTitle, withText: "This one is confusing", sender: "NTL") {
-                XCTAssertTrue(self.messageThreadController.messageThreads[0].messages[0].sender == "NTL")
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 5)
+        
+        XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "Test")
+    }//
+
+    
+    func testCreateMessage() {
+        let title = "Michael's Cookies"
+        let message = "Did you get the cookies"
+        let sender = "Norlan"
+        let exp = XCTestExpectation(description: "Create Message")
+        
+        messageThreadController.createMessageThread(with: title) {
+            self.messageThreadController.createMessage(in: self.messageThreadController.messageThreads[0], withText: message, sender: sender) {
+                exp.fulfill()
             }
         }
+        
+        self.wait(for: [exp], timeout: 10)
+        XCTAssertEqual(self.messageThreadController.messageThreads[0].messages[0].sender, sender)
     }
     
-    // Testing BaseURL
+    
+    func testFetchMessageThread() {
+        let exp = XCTestExpectation()
+        
+        messageThreadController.fetchMessageThreads {
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 5)
+        XCTAssertEqual(messageThreadController.messageThreads.count, messageThreadController.messageThreads.count)
+    }
+  
+    
+    
     func testBaseURL() {
         XCTAssertEqual(MessageThreadController.baseURL, URL(string: "https://journal-ef092.firebaseio.com/"))
     }
     
     
-    func testCreatingThreadWithServer() {
-        let didFinish = expectation(description: "didFinish")
-        var success = false
-        
-        messageThreadController.createMessageThread(with: "New Thread") {
-            didFinish.fulfill()
-            success = true
-        }
-        
-        wait(for: [didFinish], timeout: 5)
-        
-        XCTAssertTrue(success)
+    func testLoadMessage() {
+        XCTAssertNotNil(messageThreadController.messageThreads)
     }
+
+
+
+    
+
+
+  
+
     
     
-    func testThreadsWithServer() {
-        let didFinish = expectation(description: "didFinish")
-        var success = false
-        
-        messageThreadController.fetchMessageThreads {
-            didFinish.fulfill()
-            success = true
-        }
-        
-        wait(for: [didFinish], timeout: 5)
-        
-        XCTAssertTrue(success)
-    }
-    
-    
-    func testCreatingMessageWithServer() {
-        let didFinishCreating = expectation(description: "didFinishCreating")
-        var successCreation = false
-        
-        messageThreadController.createMessageThread(with: "Message Thread") {
-            didFinishCreating.fulfill()
-            successCreation = true
-        }
-        
-        wait(for: [didFinishCreating], timeout: 5)
-        XCTAssertTrue(successCreation)
-        
-        let didFinishMessage = expectation(description: "didFinishMessage")
-        var success = false
-        let messageThread = messageThreadController.messageThreads[0]
-        
-        messageThreadController.createMessage(in: messageThread, withText: "Text", sender: "More Text") {
-            didFinishMessage.fulfill()
-            success = true
-        }
-        
-        wait(for: [didFinishMessage], timeout: 5)
-        
-        XCTAssertTrue(success)
-    }
-    
+
+
     
 }//

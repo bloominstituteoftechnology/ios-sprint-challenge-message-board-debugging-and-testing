@@ -52,7 +52,41 @@ class Message_BoardUITests: XCTestCase {
         newmessagetextviewTextView.tap()
         app.navigationBars["New Message"].buttons["Send"].tap()
         newThreadNavigationBar.buttons["λ Message Board"].tap()
+    }
+    
+    func testBackButton() {
+        let app = XCUIApplication()
         
+        app.tables.staticTexts["A New Thread"].tap()
+        
+        XCTAssertFalse(app.staticTexts["λ Message Board"].exists)
+        app.buttons["λ Message Board"].tap()
+        XCTAssert(app.staticTexts["λ Message Board"].exists)
+    }
+    
+    func testSendButton() {
+        let app = XCUIApplication()
+        
+        app.tables.staticTexts["A New Thread"].tap()
+        
+        let newThreadNavigationBar = app.navigationBars["A New Thread"]
+        newThreadNavigationBar.buttons["Add"].tap()
+        
+        let newmessagetitletextfieldTextField = app/*@START_MENU_TOKEN@*/.textFields["newMessageTitleTextfield"]/*[[".textFields[\"Enter your name:\"]",".textFields[\"newMessageTitleTextfield\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        newmessagetitletextfieldTextField.tap()
+        newmessagetitletextfieldTextField.tap()
+        
+        let newmessagetextviewTextView = app.textViews["newMessageTextView"]
+        newmessagetextviewTextView.tap()
+        newmessagetextviewTextView.tap()
+        app.navigationBars["New Message"].buttons["Send"].tap()
+    }
+    
+    func testThreadClickForward() {
+        let app = XCUIApplication()
+        
+        app.tables.staticTexts["A New Thread"].tap()
+        XCTAssertFalse(app.staticTexts["λ Message Board"].exists)
     }
     
 }//
