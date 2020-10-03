@@ -24,6 +24,7 @@ class MessageThreadTests: XCTestCase {
         wait(for: [exp], timeout: 5)
         
         XCTAssertTrue(self.messageThreadController.messageThreads[0].title == "Test")
+        XCTAssertTrue(!self.messageThreadController.messageThreads.isEmpty)
     }//
 
     
@@ -42,6 +43,27 @@ class MessageThreadTests: XCTestCase {
         self.wait(for: [exp], timeout: 10)
         XCTAssertEqual(self.messageThreadController.messageThreads[0].messages[0].sender, sender)
     }
+    
+    
+    func testAddSecondMessageToThread() {
+        let title = "Michael's Cookies"
+        let message = "Did you get the cookies"
+        let sender = "Norlan"
+        let messageTwo = MessageThread.Message(text: message, sender: sender)
+        
+        let exp = XCTestExpectation(description: "Create Message")
+        
+        messageThreadController.messageThreads.append(MessageThread(title: title, messages: [messageTwo], identifier: "4FA24AF4-B9E0-48D2-85C0-C55562C39625"))
+        
+            self.messageThreadController.createMessage(in: self.messageThreadController.messageThreads[0], withText: "Still Waiting", sender: sender) {
+                exp.fulfill()
+            }
+        
+        
+        self.wait(for: [exp], timeout: 10)
+        XCTAssertEqual(self.messageThreadController.messageThreads[0].messages[0].sender, sender)
+    }
+    
     
     
     func testFetchMessageThread() {
