@@ -27,16 +27,20 @@ class MessageDetailViewController: UIViewController {
     
     @IBAction func sendMessage(_ sender: Any) {
         guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread,
-            // #1 Storyboard: This is part of the first but f the text field is empty than the thread is not sent to the server.
-            !senderName.isEmpty else { return }
+              let messageText = messageTextView.text,
+              let messageThread = messageThread,
+              // #1 Storyboard: This is part of the first but f the text field is empty than the thread is not sent to the server.
+              !senderName.isEmpty else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
+            DispatchQueue.main.async {
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
             print("Message created!")
 
             
         })
+
 
     }
 }

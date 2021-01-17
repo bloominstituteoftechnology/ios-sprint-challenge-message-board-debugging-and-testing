@@ -4,3 +4,7 @@ Debug Strategy:
 1= Create Segue from text field to UIViewController(New Message)
 
 #2 Missing resume in the apicontroller
+
+#3 Misspelling of the segue identifier "AddMessage" 
+
+#4 Segue was not set up properly 
