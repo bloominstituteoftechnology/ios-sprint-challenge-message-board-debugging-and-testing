@@ -47,14 +47,15 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Bug #3 Misspelling of the AddMessage
-        // Bug #4 naVC was not segue properly 
+        // MARK: - Bug Misspelling for segue identifier "AddMesage" correct spelling "AddMessage"
         if segue.identifier == "AddMessage" {
-            guard let navigationController = segue.destination as? UINavigationController,
-                  let destinationVC = navigationController.viewControllers.first as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+            // MARK: - Bug NavigationController was not setup correctlly as the NVC was not instantiating to the UINC.This did not allow for the correct path for the messageThread to be sent to.
+            if let navigationController = segue.destination as? UINavigationController,
+               let destinationVC = navigationController.viewControllers.first as? MessageDetailViewController {
+                
+                destinationVC.messageThreadController = messageThreadController
+                destinationVC.messageThread = messageThread
+            }
         }
     }
 }

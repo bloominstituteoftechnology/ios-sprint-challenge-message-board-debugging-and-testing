@@ -58,7 +58,7 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // MARK: -  Misspelling for segue Identifier "ViewMessage"; Correct Spelling "ViewMessageThread"
+        // MARK: - Bug Misspelling for segue Identifier "ViewMessage"; Correct Spelling "ViewMessageThread"
         if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
