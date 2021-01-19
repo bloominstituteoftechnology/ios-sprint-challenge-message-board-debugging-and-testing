@@ -31,7 +31,7 @@ class MessageThreadController {
             
             guard let data = data else { NSLog("No data returned from data task"); completion(); return }
             do {
-                // Bug #3 array type
+                // MARK: - Missing Array initializer
                 self.messageThreads = Array(try JSONDecoder().decode([String: MessageThread].self, from: data) .values)
             } catch {
                 self.messageThreads = []

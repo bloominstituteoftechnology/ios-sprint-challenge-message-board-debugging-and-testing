@@ -58,21 +58,13 @@ class MessageThreadsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Bug #4 Misspelling fo the ViewMessage
+        // MARK: -  Misspelling for segue Identifier "ViewMessage"; Correct Spelling "ViewMessageThread"
         if segue.identifier == "ViewMessageThread" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? MessageThreadDetailTableViewController else { return }
             
             destinationVC.messageThreadController = messageThreadController
             destinationVC.messageThread = messageThreadController.messageThreads[indexPath.row]
-            // // #1 Storyboard: This is part of the first created a segue to the detial View Controller to be able to added new threads.
         }
-
-//        else if segue.identifier == "CreateNewMessageThread" {
-//            if let navigationControllerVC = segue.destination as? UINavigationController,
-//               let createNewMessageThreadVC = navigationControllerVC.viewControllers.first as? MessageThreadDetailTableViewController {
-//                createNewMessageThreadVC.messageThreadController = messageThreadController
-//            }
-//        }
     }
 }

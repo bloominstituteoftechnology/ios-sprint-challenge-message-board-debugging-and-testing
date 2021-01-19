@@ -1,7 +1,13 @@
 #  Bugs List
-#1 Storyboard: Text field ("Create a new thread:") = No segue to (New Message UIViewController)
-Debug Strategy: 
-1= Create Segue from text field to UIViewController(New Message)
+#1: Two .resume() missing in MessageThreadController. Under the function fetchMessageThreads, and createMessageThread.
+
+#2: Missing Array Initializers in function fetchMessageThreads in the do try catch. 
+
+#3: Misspelling in prepare for segue Identifier "ViewMessage"; Correct Spelling "ViewMessageThread"
+
+
+
+
 
 #2 Missing resume in the apicontroller
 
