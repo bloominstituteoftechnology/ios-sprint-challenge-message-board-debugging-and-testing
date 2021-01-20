@@ -10,11 +10,3 @@
 #5: NavigationController was not setup correctlly as the NVC was not instantiating to the UINC
 
 
-
-
-
-#2 Missing resume in the apicontroller
-
-#3 Misspelling of the segue identifier "AddMessage" 
-
-#4 Segue was not set up properly 
