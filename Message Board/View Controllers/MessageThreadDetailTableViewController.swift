@@ -14,6 +14,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
+//    let addButton = UIButton(type: .system)
+//    let addTitle = NSAttributedString(string: "+", attributes: <#T##[NSAttributedString.Key : Any]?#>)
 
     override func viewDidLoad() {
         super.viewDidLoad()
