@@ -14,6 +14,8 @@ class MessageThreadDetailTableViewController: UITableViewController {
 
     var messageThread: MessageThread?
     var messageThreadController: MessageThreadController?
+//    let addButton = UIButton(type: .system)
+//    let addTitle = NSAttributedString(string: "+", attributes: <#T##[NSAttributedString.Key : Any]?#>)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +49,15 @@ class MessageThreadDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMesage" {
-            guard let destinationVC = segue.destination as? MessageDetailViewController else { return }
-            
-            destinationVC.messageThreadController = messageThreadController
-            destinationVC.messageThread = messageThread
+        // MARK: - Bug Misspelling for segue identifier "AddMesage" correct spelling "AddMessage"
+        if segue.identifier == "AddMessage" {
+            // MARK: - Bug NavigationController was not setup correctlly as the NVC was not instantiating to the UINC.This did not allow for the correct path for the messageThread to be sent to.
+            if let navigationController = segue.destination as? UINavigationController,
+               let destinationVC = navigationController.viewControllers.first as? MessageDetailViewController {
+                
+                destinationVC.messageThreadController = messageThreadController
+                destinationVC.messageThread = messageThread
+            }
         }
     }
 }

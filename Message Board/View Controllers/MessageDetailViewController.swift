@@ -21,15 +21,18 @@ class MessageDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        // MARK: The cancel tapped function was missing the dismissal code of the navigation controller.
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
         guard let senderName = senderNameTextField.text,
-            let messageText = messageTextView.text,
-            let messageThread = messageThread else { return }
+              let messageText = messageTextView.text,
+              let messageThread = messageThread else { return }
         
         messageThreadController?.createMessage(in: messageThread, withText: messageText, sender: senderName, completion: {
             print("Message created!")
         })
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }
