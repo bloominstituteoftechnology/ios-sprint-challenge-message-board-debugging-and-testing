@@ -35,7 +35,7 @@ class Message_BoardUITests: XCTestCase {
         enterYourNameTextField.tap()
         enterYourNameTextField.tap()
         
-        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+        _ = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
 //        textView.tap()
 //        textView.tap()
         app.navigationBars["New Message"].buttons["Send"].tap()
